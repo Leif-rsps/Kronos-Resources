@@ -1,8 +1,0 @@
-
-/.gradle
-/.idea
-/buildSrc/.gradle
-/buildSrc/build
-/http-api/build
-/runelite-api/build
-/runelite-client/build
