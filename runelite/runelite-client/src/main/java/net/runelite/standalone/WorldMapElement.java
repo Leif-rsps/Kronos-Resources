@@ -1,104 +1,29 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSSprite;
-import net.runelite.rs.api.RSWorldMapElement;
+import net.runelite.api.MapElementConfig;
 
-@ObfuscatedName("ij")
-public class WorldMapElement extends DualNode implements RSWorldMapElement {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "[Lij;"
-   )
+public class WorldMapElement extends DualNode implements MapElementConfig {
    public static WorldMapElement[] WorldMapElement_cached;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable WorldMapElement_cachedSprites;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1558298053
-   )
    public static int WorldMapElement_count;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive WorldMapElement_archive;
-   @ObfuscatedName("o")
    public String menuTargetName;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -1840035745
-   )
    public int sprite1;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1186818379
-   )
    int sprite2;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1924770341
-   )
    public final int objectId;
-   @ObfuscatedName("s")
    int[] field3188;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      intValue = -1982173019
-   )
    int field3196;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = -1206163627
-   )
    int field3192;
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "Lin;"
-   )
    public HorizontalAlignment horizontalAlignment;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = 1029556521
-   )
    public int field3189;
-   @ObfuscatedName("a")
    int[] field3183;
-   @ObfuscatedName("b")
    public String[] menuActions;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = 404495527
-   )
    int field3194;
-   @ObfuscatedName("f")
    byte[] field3201;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = 1981308333
-   )
    int field3197;
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      signature = "Lim;"
-   )
    public VerticalAlignment verticalAlignment;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 1307651093
-   )
    public int textSize;
-   @ObfuscatedName("j")
-   @ObfuscatedGetter(
-      intValue = 1937119401
-   )
    public int category;
-   @ObfuscatedName("m")
    public String name;
 
    static {
@@ -120,11 +45,6 @@ public class WorldMapElement extends DualNode implements RSWorldMapElement {
       this.objectId = var1;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "-1143859499"
-   )
    public void method4373(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
@@ -136,16 +56,11 @@ public class WorldMapElement extends DualNode implements RSWorldMapElement {
       }
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(II)Llf;",
-      garbageValue = "-444494070"
-   )
    Sprite method4370(int var1) {
       if(var1 < 0) {
          return null;
       } else {
-         Sprite var2 = (Sprite)WorldMapElement_cachedSprites.method3032((long)var1);
+         Sprite var2 = (Sprite)WorldMapElement_cachedSprites.get((long)var1);
          if(var2 != null) {
             return var2;
          } else {
@@ -159,30 +74,15 @@ public class WorldMapElement extends DualNode implements RSWorldMapElement {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "1309666771"
-   )
    public int method4371() {
       return this.objectId;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(ZB)Llf;",
-      garbageValue = "-63"
-   )
    public Sprite method4369(boolean var1) {
       int var2 = this.sprite1;
       return this.method4370(var2);
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "9"
-   )
    public void method4368() {
       if(this.field3183 != null) {
          for(int var1 = 0; var1 < this.field3183.length; var1 += 2) {
@@ -202,11 +102,6 @@ public class WorldMapElement extends DualNode implements RSWorldMapElement {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "-195345385"
-   )
    void method4367(Buffer var1, int var2) {
       if(var2 == 1) {
          this.sprite1 = var1.method5507();
@@ -291,19 +186,15 @@ public class WorldMapElement extends DualNode implements RSWorldMapElement {
 
    }
 
-   public RSSprite getMapIcon(boolean var1) {
+   @Override
+   public Sprite getMapIcon(boolean var1) {
       int var2 = this.sprite1;
 
       return this.method4370(var2);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "-1979971580"
-   )
    public static void method4378(int var0, int var1) {
-      VarbitDefinition var3 = (VarbitDefinition)VarbitDefinition.VarbitDefinition_cached.method3032((long)var0);
+      VarbitDefinition var3 = (VarbitDefinition)VarbitDefinition.VarbitDefinition_cached.get((long)var0);
       VarbitDefinition var2;
       if(var3 != null) {
          var2 = var3;

@@ -4,25 +4,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSSprite;
-
-@ObfuscatedName("lf")
-public final class Sprite extends Rasterizer2D implements RSSprite {
-   @ObfuscatedName("n")
+public final class Sprite extends Rasterizer2D implements net.runelite.api.Sprite {
    public int subWidth;
-   @ObfuscatedName("p")
    public int width;
-   @ObfuscatedName("q")
    public int height;
-   @ObfuscatedName("r")
    int yOffset;
-   @ObfuscatedName("u")
    public int xOffset;
-   @ObfuscatedName("v")
    public int subHeight;
-   @ObfuscatedName("z")
    public int[] pixels;
 
    public Sprite(int[] var1, int var2, int var3) {
@@ -67,10 +55,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "()Llf;"
-   )
    public Sprite method6137() {
       Sprite var1 = new Sprite(this.width, this.height);
 
@@ -83,7 +67,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       return var1;
    }
 
-   @ObfuscatedName("p")
    public void method6108() {
       int[] var1 = new int[this.subWidth * this.subHeight];
       int var2 = 0;
@@ -98,7 +81,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       this.xOffset = this.width - this.subWidth - this.xOffset;
    }
 
-   @ObfuscatedName("q")
    public void method6098() {
       int[] var1 = new int[this.subWidth * this.subHeight];
       int var2 = 0;
@@ -113,7 +95,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       this.yOffset = this.height - this.subHeight - this.yOffset;
    }
 
-   @ObfuscatedName("r")
    public void method6101(int var1) {
       if(this.subWidth != this.width || this.subHeight != this.height) {
          int var2 = var1;
@@ -154,7 +135,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("s")
    public void method6114(int var1, int var2, int var3) {
       var1 += this.xOffset;
       var2 += this.yOffset;
@@ -199,7 +179,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("u")
    public void method6100() {
       if(this.subWidth != this.width || this.subHeight != this.height) {
          int[] var1 = new int[this.width * this.height];
@@ -218,12 +197,10 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("v")
-   public void method6185() {
+   public void setRaster() {
       Rasterizer2D.method6409(this.pixels, this.subWidth, this.subHeight);
    }
 
-   @ObfuscatedName("x")
    public void method6112(int var1, int var2, int var3, int var4) {
       if(var3 == 256) {
          this.method6159(var1, var2);
@@ -272,7 +249,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("y")
    public void method6105(int var1) {
       for(int var2 = this.subHeight - 1; var2 > 0; --var2) {
          int var3 = var2 * this.subWidth;
@@ -286,10 +262,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "()Llf;"
-   )
    public Sprite method6097() {
       Sprite var1 = new Sprite(this.subWidth, this.subHeight);
       var1.width = this.width;
@@ -306,7 +278,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       return var1;
    }
 
-   @ObfuscatedName("a")
    public void method6110(int var1, int var2, int var3, int var4) {
       if(var3 > 0 && var4 > 0) {
          int var5 = this.subWidth;
@@ -370,7 +341,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("aa")
    public void method6120(int var1, int var2, int var3, int var4, int var5) {
       if(var3 > 0 && var4 > 0) {
          int var6 = this.subWidth;
@@ -439,7 +409,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("ab")
    public void method6123(int var1, int var2, int var3, int var4, int var5, int var6, int[] var7, int[] var8) {
       int var9 = var2 < 0?-var2:0;
       int var10 = var2 + this.subHeight <= var6?this.subHeight:var6 - var2;
@@ -487,7 +456,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("ad")
    public void method6128(int var1, int var2, int var3, int var4) {
       if(var3 <= this.width && var4 <= this.height) {
          int var5 = var3 * this.xOffset / this.width + var1;
@@ -609,7 +577,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("al")
    void method6127(int var1, int var2, int var3, int var4, int var5, int var6) {
       if(var6 != 0) {
          var1 -= this.xOffset << 4;
@@ -1078,12 +1045,10 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("ao")
    public void method6126(int var1, int var2, int var3, int var4) {
       this.method6127(this.width << 3, this.height << 3, var1 << 4, var2 << 4, var3, var4);
    }
 
-   @ObfuscatedName("as")
    public void method6125(int var1, int var2, int var3, int var4, int var5, int var6, double var7, int var9) {
       try {
          int var10 = -var3 / 2;
@@ -1123,7 +1088,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("ax")
    public void method6205(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int[] var9, int[] var10) {
       try {
          int var11 = -var3 / 2;
@@ -1158,7 +1122,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("b")
    public void method6159(int var1, int var2) {
       var1 += this.xOffset;
       var2 += this.yOffset;
@@ -1203,10 +1166,12 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
+   @Override
    public int getWidth() {
       return this.subWidth;
    }
 
+   @Override
    public int getHeight() {
       return this.subHeight;
    }
@@ -1265,6 +1230,7 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
+   @Override
    public int[] getPixels() {
       return this.pixels;
    }
@@ -1281,47 +1247,51 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       return var2;
    }
 
+   @Override
    public void setOffsetX(int var1) {
       this.xOffset = var1;
    }
 
+   @Override
    public int getOffsetX() {
       return this.xOffset;
    }
 
+   @Override
    public void setOffsetY(int var1) {
       this.yOffset = var1;
    }
 
+   @Override
    public int getOffsetY() {
       return this.yOffset;
    }
 
+   @Override
    public void setMaxWidth(int var1) {
       this.width = var1;
    }
 
+   @Override
    public int getMaxWidth() {
       return this.width;
    }
 
+   @Override
    public void setMaxHeight(int var1) {
       this.height = var1;
    }
 
+   @Override
    public int getMaxHeight() {
       return this.height;
    }
 
-   public void setRaster() {
-      this.method6185();
-   }
-
+   @Override
    public void drawAt(int var1, int var2) {
       this.method6159(var1, var2);
    }
 
-   @ObfuscatedName("i")
    public void method6102(int var1, int var2) {
       var1 += this.xOffset;
       var2 += this.yOffset;
@@ -1366,7 +1336,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("j")
    public void method6213(int var1, int var2, int var3, int var4, int var5) {
       if(var3 > 0 && var4 > 0) {
          int var6 = this.subWidth;
@@ -1430,7 +1399,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("l")
    public void method6117(int var1, int var2, int var3) {
       var1 += this.xOffset;
       var2 += this.yOffset;
@@ -1480,7 +1448,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       }
    }
 
-   @ObfuscatedName("m")
    public void method6104(int var1) {
       int[] var2 = new int[this.subWidth * this.subHeight];
       int var3 = 0;
@@ -1507,7 +1474,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
       this.pixels = var2;
    }
 
-   @ObfuscatedName("o")
    static void method6109(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       int var9 = -(var5 >> 2);
       var5 = -(var5 & 3);
@@ -1559,7 +1525,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("ac")
    static void method6119(int var0, int var1, int var2, int[] var3, int[] var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13) {
       for(var8 = -var10; var8 < 0; ++var8) {
          for(var6 = -var9; var6 < 0; ++var6) {
@@ -1583,7 +1548,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("ap")
    static void method6121(int var0, int var1, int var2, int var3, int[] var4, int[] var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15) {
       for(int var16 = var3; var8 < 0; ++var8) {
          var7 = var15 * (var9 >> 16);
@@ -1610,7 +1574,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("ar")
    static void method6118(int var0, int var1, int var2, int var3, int[] var4, int[] var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16) {
       for(int var17 = var3; var8 < 0; ++var8) {
          var7 = var15 * (var9 >> 16);
@@ -1639,7 +1602,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("c")
    static void method6107(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       for(int var8 = -var5; var8 < 0; ++var8) {
          int var9;
@@ -1659,7 +1621,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("d")
    static void method6116(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12) {
       int var13 = 256 - var12;
       int var14 = var3;
@@ -1686,7 +1647,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("e")
    static void method6111(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
       int var12 = var3;
 
@@ -1711,7 +1671,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("f")
    static void method6165(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
       int var10 = 256 - var9;
 
@@ -1732,7 +1691,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("h")
    static void method6113(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
       int var11 = 256 - var9;
       int var12 = (var10 & 16711935) * var11 & -16711936;
@@ -1757,7 +1715,6 @@ public final class Sprite extends Rasterizer2D implements RSSprite {
 
    }
 
-   @ObfuscatedName("k")
    static void method6106(int var0, int var1, int var2, int[] var3, int[] var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12) {
       for(var8 = -var10; var8 < 0; ++var8) {
          for(var6 = -var9; var6 < 0; ++var6) {

@@ -1,90 +1,32 @@
 package net.runelite.standalone;
 
 import java.util.Random;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dk")
 public class Instrument {
-   @ObfuscatedName("x")
    static int[] Instrument_noise;
-   @ObfuscatedName("d")
    static int[] Instrument_volumeSteps;
-   @ObfuscatedName("f")
    static int[] Instrument_phases;
-   @ObfuscatedName("g")
    static int[] Instrument_samples;
-   @ObfuscatedName("h")
    static int[] Instrument_sine;
-   @ObfuscatedName("j")
    static int[] Instrument_delays;
-   @ObfuscatedName("k")
    static int[] Instrument_pitchBaseSteps;
-   @ObfuscatedName("l")
    static int[] Instrument_pitchSteps;
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope volume;
-   @ObfuscatedName("o")
    int delayDecay;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope volumeMultiplierAmplitude;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope release;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope volumeMultiplier;
-   @ObfuscatedName("t")
    int offset;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope pitchModifierAmplitude;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope pitchModifier;
-   @ObfuscatedName("w")
    int duration;
-   @ObfuscatedName("y")
    int[] oscillatorVolume;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope pitch;
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "Lds;"
-   )
    AudioFilter filter;
-   @ObfuscatedName("b")
    int delayTime;
-   @ObfuscatedName("c")
    int[] oscillatorDelays;
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope filterEnvelope;
-   @ObfuscatedName("i")
    int[] oscillatorPitch;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Ldm;"
-   )
    SoundEnvelope attack;
 
    static {
@@ -120,15 +62,10 @@ public class Instrument {
       this.offset = 0;
    }
 
-   @ObfuscatedName("n")
    final int method2434(int var1, int var2, int var3) {
       return var3 == 1?((var1 & 32767) < 16384?var2:-var2):(var3 == 2?Instrument_sine[var1 & 32767] * var2 >> 14:(var3 == 3?(var2 * (var1 & 32767) >> 14) - var2:(var3 == 4?var2 * Instrument_noise[var1 / 2607 & 32767]:0)));
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;)V"
-   )
    final void method2443(Buffer var1) {
       this.pitch = new SoundEnvelope();
       this.pitch.method2448(var1);
@@ -181,7 +118,6 @@ public class Instrument {
       this.filter.method2504(var1, this.filterEnvelope);
    }
 
-   @ObfuscatedName("z")
    final int[] method2435(int var1, int var2) {
       class288.method5208(Instrument_samples, 0, var1);
       if(var2 < 10) {

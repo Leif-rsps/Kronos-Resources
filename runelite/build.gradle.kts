@@ -52,7 +52,7 @@ fun isNonStable(version: String): Boolean {
 }
 
 allprojects {
-    apply<MavenPlugin>()
+//    apply<MavenPlugin>()
 
     group = "com.openosrs"
     version = ProjectVersions.rlVersion
@@ -72,7 +72,7 @@ subprojects {
 
         maven(url = "https://mvnrepository.com/artifact")
         maven(url = "https://repo1.maven.org/maven2")
-        maven(url = "http://repo.runelite.net")
+        maven(url = "https://repo.runelite.net")
         maven(url = "https://repo.maven.apache.org/maven2")
         maven(url = "https://raw.githubusercontent.com/open-osrs/hosting/master")
 
@@ -90,6 +90,14 @@ subprojects {
         withType<JavaCompile> {
             options.encoding = "UTF-8"
         }
+    }
+
+    tasks.withType<ProcessResources> {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
+
+    tasks.withType<Jar> {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }
 }
 

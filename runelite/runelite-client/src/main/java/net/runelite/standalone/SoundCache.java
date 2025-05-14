@@ -1,34 +1,11 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("dq")
 public class SoundCache {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    AbstractArchive musicSampleIndex;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Llq;"
-   )
    NodeHashTable rawSounds;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Llq;"
-   )
    NodeHashTable musicSamples;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    AbstractArchive soundEffectIndex;
 
-   @ObfuscatedSignature(
-      signature = "(Lhp;Lhp;)V"
-   )
    public SoundCache(AbstractArchive var1, AbstractArchive var2) {
       this.musicSamples = new NodeHashTable(256);
       this.rawSounds = new NodeHashTable(256);
@@ -36,11 +13,6 @@ public class SoundCache {
       this.musicSampleIndex = var2;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II[II)Lch;",
-      garbageValue = "2026666010"
-   )
    RawSound method2472(int var1, int var2, int[] var3) {
       int var4 = var2 ^ (var1 << 4 & 65535 | var1 >>> 12);
       var4 |= var1 << 16;
@@ -65,18 +37,13 @@ public class SoundCache {
          if(var7 == null) {
             return null;
          } else {
-            var8.method3497();
+            var8.unlink();
             this.rawSounds.put(var7, var5);
             return var7;
          }
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I[II)Lch;",
-      garbageValue = "-1432840715"
-   )
    public RawSound method2469(int var1, int[] var2) {
       if(this.musicSampleIndex.method4033() == 1) {
          return this.method2472(0, var1, var2);
@@ -87,11 +54,6 @@ public class SoundCache {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I[II)Lch;",
-      garbageValue = "223393704"
-   )
    public RawSound method2470(int var1, int[] var2) {
       if(this.soundEffectIndex.method4033() == 1) {
          return this.method2484(0, var1, var2);
@@ -102,11 +64,6 @@ public class SoundCache {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(II[II)Lch;",
-      garbageValue = "1393796182"
-   )
    RawSound method2484(int var1, int var2, int[] var3) {
       int var4 = var2 ^ (var1 << 4 & 65535 | var1 >>> 12);
       var4 |= var1 << 16;
@@ -121,7 +78,7 @@ public class SoundCache {
          if(var8 == null) {
             return null;
          } else {
-            var7 = var8.method2086();
+            var7 = var8.toRawAudioNode();
             this.rawSounds.put(var7, var5);
             if(var3 != null) {
                var3[0] -= var7.samples.length;
@@ -132,11 +89,6 @@ public class SoundCache {
       }
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;IZI)I",
-      garbageValue = "2108549296"
-   )
    static int method2476(CharSequence var0, int var1, boolean var2) {
       if(var1 >= 2 && var1 <= 36) {
          boolean var3 = false;

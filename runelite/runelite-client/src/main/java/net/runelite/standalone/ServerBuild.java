@@ -1,37 +1,11 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hs")
 public class ServerBuild {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhs;"
-   )
    static final ServerBuild BUILDLIVE;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lhs;"
-   )
    static final ServerBuild WIP;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lhs;"
-   )
    static final ServerBuild RC;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhs;"
-   )
    static final ServerBuild LIVE;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 1051483467
-   )
    final int field2757;
-   @ObfuscatedName("r")
    public final String name;
 
    static {
@@ -46,11 +20,6 @@ public class ServerBuild {
       this.field2757 = var2;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;II[BII)I",
-      garbageValue = "1213653809"
-   )
    public static int method4164(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
       int var5 = var2 - var1;
 

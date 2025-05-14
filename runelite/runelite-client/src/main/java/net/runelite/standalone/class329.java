@@ -1,33 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("lo")
 public class class329 {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -850597869
-   )
    public static int SpriteBuffer_spriteWidth;
-   @ObfuscatedName("p")
    public static int[] SpriteBuffer_spriteWidths;
-   @ObfuscatedName("u")
    public static int[] SpriteBuffer_xOffsets;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 2036297741
-   )
    static int SpriteBuffer_spriteCount;
-   @ObfuscatedName("m")
    public static int[] SpriteBuffer_spritePalette;
 
-   @ObfuscatedName("fu")
-   @ObfuscatedSignature(
-      signature = "(Lby;II)V",
-      garbageValue = "771292121"
-   )
    static final void method6315(Actor var0, int var1) {
       SequenceDefinition var2;
       int var4;
@@ -388,11 +367,6 @@ public class class329 {
 
    }
 
-   @ObfuscatedName("jc")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-2138137285"
-   )
    static void method6295() {
       for(InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.method6348(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.method6345()) {
          int var1 = var0.group;

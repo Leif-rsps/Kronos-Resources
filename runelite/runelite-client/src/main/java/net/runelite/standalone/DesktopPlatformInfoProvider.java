@@ -1,35 +1,13 @@
 package net.runelite.standalone;
 
 import java.util.Random;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lv")
 public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
-   @ObfuscatedName("bx")
    static String otp;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 271278755
-   )
    int field4028;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1935188169
-   )
    int field4027;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1774295629
-   )
    int field4026;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)V",
-      garbageValue = "-611564637"
-   )
    void method6395(String var1) {
       if(var1.startsWith("1.")) {
          this.method6388(var1);
@@ -39,11 +17,6 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)V",
-      garbageValue = "-775775529"
-   )
    void method6389(String var1) {
       String[] var2 = var1.split("\\.");
 
@@ -57,11 +30,6 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)V",
-      garbageValue = "1764264863"
-   )
    void method6388(String var1) {
       String[] var2 = var1.split("\\.");
 
@@ -76,11 +44,6 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)Llt;",
-      garbageValue = "2006662723"
-   )
    public PlatformInfo vmethod6480() {
       byte var1;
       if(class163.field1987.startsWith("win")) {

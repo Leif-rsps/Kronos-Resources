@@ -1,28 +1,11 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fr")
 public class class170 {
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 764450151
-   )
    static int field2003;
-   @ObfuscatedName("u")
    static int[][] distances;
-   @ObfuscatedName("v")
    static int[][] directions;
-   @ObfuscatedName("y")
    static int[] bufferY;
-   @ObfuscatedName("fu")
-   @ObfuscatedSignature(
-      signature = "Lkn;"
-   )
    static Font fontBold12;
-   @ObfuscatedName("m")
    static int[] bufferX;
 
    static {
@@ -32,11 +15,6 @@ public class class170 {
       bufferY = new int[4096];
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;I)I",
-      garbageValue = "1868348372"
-   )
    public static int method3448(CharSequence var0) {
       int var1 = var0.length();
       int var2 = 0;

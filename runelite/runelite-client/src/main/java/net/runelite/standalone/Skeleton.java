@@ -1,30 +1,10 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSSkeleton;
-
-@ObfuscatedName("ew")
-public class Skeleton extends Node implements RSSkeleton {
-   @ObfuscatedName("bn")
-   @ObfuscatedSignature(
-      signature = "Llp;"
-   )
+public class Skeleton extends Node {
    static IndexedSprite field1821;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -1324463493
-   )
    int count;
-   @ObfuscatedName("u")
    int[][] labels;
-   @ObfuscatedName("v")
    int[] transformTypes;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -1879620261
-   )
    int id;
 
    Skeleton(int var1, byte[] var2) {
@@ -51,15 +31,4 @@ public class Skeleton extends Node implements RSSkeleton {
 
    }
 
-   public int getCount() {
-      return this.count;
-   }
-
-   public int[] getTypes() {
-      return this.transformTypes;
-   }
-
-   public int[][] getList() {
-      return this.labels;
-   }
 }

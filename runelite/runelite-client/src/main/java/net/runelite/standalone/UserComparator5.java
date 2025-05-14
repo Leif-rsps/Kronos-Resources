@@ -1,29 +1,14 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fb")
 public class UserComparator5 extends AbstractUserComparator {
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "[[Lho;"
-   )
    public static Widget[][] Widget_interfaceComponents;
-   @ObfuscatedName("r")
    static Thread ArchiveDiskActionHandler_thread;
-   @ObfuscatedName("z")
    final boolean reversed;
 
    public UserComparator5(boolean var1) {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljl;Ljl;I)I",
-      garbageValue = "-1400201048"
-   )
    int method3370(Buddy var1, Buddy var2) {
       if(var1.world != 0) {
          if(var2.world == 0) {
@@ -40,11 +25,6 @@ public class UserComparator5 extends AbstractUserComparator {
       return this.method3370((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lkl;Llb;I)Llb;",
-      garbageValue = "1757701513"
-   )
    static final IterableNodeHashTable method3374(Buffer var0, IterableNodeHashTable var1) {
       int var2 = var0.readUnsignedByte();
       int var3;
@@ -69,11 +49,6 @@ public class UserComparator5 extends AbstractUserComparator {
       return var1;
    }
 
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;B)I",
-      garbageValue = "103"
-   )
    public static int method3375(String var0) {
       return var0.length() + 2;
    }

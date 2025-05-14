@@ -1,86 +1,23 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("am")
 public class class30 implements WorldMapSection {
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "Llp;"
-   )
    static IndexedSprite options_buttons_2Sprite;
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      signature = "Llm;"
-   )
    public static AbstractRasterProvider rasterProvider;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 1391505979
-   )
    int field223;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -766889275
-   )
    int field236;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1083558581
-   )
    int field228;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1950186217
-   )
    int field226;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -246228093
-   )
    int field227;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 558153755
-   )
    int field224;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = 796855403
-   )
    int field230;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -1607509985
-   )
    int field222;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 301384915
-   )
    int field225;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 1036531637
-   )
    int field229;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IIII)Z",
-      garbageValue = "-327883108"
-   )
    public boolean vmethod5843(int var1, int var2, int var3) {
       return var1 >= this.field222 && var1 < this.field223 + this.field222?var2 >= (this.field224 << 6) + (this.field228 << 3) && var2 <= (this.field224 << 6) + (this.field228 << 3) + 7 && var3 >= (this.field227 << 6) + (this.field229 << 3) && var3 <= (this.field227 << 6) + (this.field229 << 3) + 7:false;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Lkl;B)V",
-      garbageValue = "-99"
-   )
    public void decode(Buffer var1) {
       this.field222 = var1.readUnsignedByte();
       this.field223 = var1.readUnsignedByte();
@@ -95,19 +32,9 @@ public class class30 implements WorldMapSection {
       this.method640();
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1301595386"
-   )
    void method640() {
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(III)Lhb;",
-      garbageValue = "1439979703"
-   )
    public Coord vmethod5846(int var1, int var2) {
       if(!this.vmethod5844(var1, var2)) {
          return null;
@@ -118,11 +45,6 @@ public class class30 implements WorldMapSection {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(IIII)[I",
-      garbageValue = "-1322751923"
-   )
    public int[] vmethod5845(int var1, int var2, int var3) {
       if(!this.vmethod5843(var1, var2, var3)) {
          return null;
@@ -132,20 +54,10 @@ public class class30 implements WorldMapSection {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(III)Z",
-      garbageValue = "828411560"
-   )
    public boolean vmethod5844(int var1, int var2) {
       return var1 >= (this.field226 << 6) + (this.field230 << 3) && var1 <= (this.field226 << 6) + (this.field230 << 3) + 7 && var2 >= (this.field236 << 6) + (this.field225 << 3) && var2 <= (this.field236 << 6) + (this.field225 << 3) + 7;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lac;I)V",
-      garbageValue = "2098672163"
-   )
    public void vmethod5850(WorldMapArea var1) {
       if(var1.regionLowX > this.field226) {
          var1.regionLowX = this.field226;
@@ -165,11 +77,6 @@ public class class30 implements WorldMapSection {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IIII)Lcu;",
-      garbageValue = "-994648590"
-   )
    static Script method637(int var0, int var1, int var2) {
       int var3 = (var1 << 8) + var0;
       Script var5 = WorldMapSection1.method756(var3, var0);
@@ -182,12 +89,7 @@ public class class30 implements WorldMapSection {
       }
    }
 
-   @ObfuscatedName("gp")
-   @ObfuscatedSignature(
-      signature = "(IIIIIB)V",
-      garbageValue = "127"
-   )
-   static final void method649(int var0, int var1, int var2, int var3, int var4) {
+   static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
       long var5 = PacketWriter.scene.method3140(var0, var1, var2);
       int var7;
       int var8;
@@ -331,11 +233,6 @@ public class class30 implements WorldMapSection {
 
    }
 
-   @ObfuscatedName("iq")
-   @ObfuscatedSignature(
-      signature = "(IS)Ljava/lang/String;",
-      garbageValue = "-6160"
-   )
    static final String method661(int var0) {
       String var1 = Integer.toString(var0);
 

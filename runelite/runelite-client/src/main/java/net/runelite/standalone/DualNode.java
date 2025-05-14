@@ -5,7 +5,7 @@ public class DualNode extends Node {
    public DualNode previousDual;
    public long keyDual;
 
-   public void method3491() {
+   public void unlinkDual() {
       if(this.nextDual != null) {
          this.nextDual.previousDual = this.previousDual;
          this.previousDual.nextDual = this.nextDual;
@@ -14,7 +14,4 @@ public class DualNode extends Node {
       }
    }
 
-   public void unlinkDual() {
-      this.method3491();
-   }
 }

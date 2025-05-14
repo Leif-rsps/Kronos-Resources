@@ -1,10 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.rs.api.RSFont;
+import net.runelite.api.FontTypeFace;
 
-@ObfuscatedName("kn")
-public final class Font extends AbstractFont implements RSFont {
+public final class Font extends AbstractFont {
    public Font(byte[] var1, int[] var2, int[] var3, int[] var4, int[] var5, int[] var6, byte[][] var7) {
       super(var1, var2, var3, var4, var5, var6, var7);
    }
@@ -13,7 +11,6 @@ public final class Font extends AbstractFont implements RSFont {
       super(var1);
    }
 
-   @ObfuscatedName("n")
    final void vmethod5739(byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       int var8 = var3 * Rasterizer2D.Rasterizer2D_width + var2;
       int var9 = Rasterizer2D.Rasterizer2D_width - var4;
@@ -54,7 +51,6 @@ public final class Font extends AbstractFont implements RSFont {
       }
    }
 
-   @ObfuscatedName("z")
    final void vmethod5737(byte[] var1, int var2, int var3, int var4, int var5, int var6) {
       int var7 = var3 * Rasterizer2D.Rasterizer2D_width + var2;
       int var8 = Rasterizer2D.Rasterizer2D_width - var4;

@@ -1,16 +1,10 @@
 package net.runelite.standalone;
 
 import java.util.TimeZone;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gz")
 public class Calendar {
-   @ObfuscatedName("n")
    public static final String[] DAYS_OF_THE_WEEK;
-   @ObfuscatedName("v")
    public static java.util.Calendar Calendar_calendar;
-   @ObfuscatedName("z")
    public static final String[][] MONTH_NAMES_ENGLISH_GERMAN;
 
    static {
@@ -20,11 +14,6 @@ public class Calendar {
       Calendar_calendar = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(Lho;I[B[BB)V",
-      garbageValue = "-75"
-   )
    static final void method3880(Widget var0, int var1, byte[] var2, byte[] var3) {
       if(var0.field2585 == null) {
          if(var2 == null) {

@@ -17,279 +17,68 @@ import net.runelite.api.events.LocalPlayerDeath;
 import net.runelite.api.events.OverheadTextChanged;
 import net.runelite.api.events.PlayerDeath;
 import net.runelite.api.events.SpotAnimationChanged;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSActor;
-import net.runelite.rs.api.RSHealthBar;
-import net.runelite.rs.api.RSHealthBarDefinition;
-import net.runelite.rs.api.RSHealthBarUpdate;
-import net.runelite.rs.api.RSIterableNodeDeque;
-import net.runelite.rs.api.RSNPC;
-import net.runelite.rs.api.RSNode;
-import net.runelite.rs.api.RSPlayer;
 
-@ObfuscatedName("by")
-public abstract class Actor extends Entity implements RSActor {
-   @ObfuscatedName("aa")
-   @ObfuscatedGetter(
-      intValue = -1124819045
-   )
+public abstract class Actor extends Entity implements net.runelite.api.Actor {
    int x;
-   @ObfuscatedName("ab")
    boolean isWalking;
-   @ObfuscatedName("ad")
-   @ObfuscatedGetter(
-      intValue = 1564906087
-   )
    int turnRightSequence;
-   @ObfuscatedName("ae")
    String overheadText;
-   @ObfuscatedName("af")
    byte hitSplatCount;
-   @ObfuscatedName("ag")
-   @ObfuscatedGetter(
-      intValue = -1435944093
-   )
    int overheadTextCyclesRemaining;
-   @ObfuscatedName("ah")
    boolean field682;
-   @ObfuscatedName("ai")
-   @ObfuscatedGetter(
-      intValue = 864493635
-   )
    int walkBackSequence;
-   @ObfuscatedName("aj")
-   @ObfuscatedGetter(
-      intValue = 402893763
-   )
    int overheadTextColor;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = 632813703
-   )
    int walkLeftSequence;
-   @ObfuscatedName("al")
-   @ObfuscatedGetter(
-      intValue = 1716804711
-   )
    int turnLeftSequence;
-   @ObfuscatedName("am")
-   @ObfuscatedGetter(
-      intValue = 1501032191
-   )
    int runSequence;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = 1786260681
-   )
    int walkSequence;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = 1344678569
-   )
    int readySequence;
-   @ObfuscatedName("ap")
    int y;
-   @ObfuscatedName("aq")
-   @ObfuscatedGetter(
-      intValue = -67215047
-   )
    int walkRightSequence;
-   @ObfuscatedName("ar")
-   @ObfuscatedGetter(
-      intValue = -1546716831
-   )
    int rotation;
-   @ObfuscatedName("as")
-   @ObfuscatedGetter(
-      intValue = -334562759
-   )
    int playerCycle;
-   @ObfuscatedName("at")
    int[] hitSplatTypes;
-   @ObfuscatedName("av")
    boolean isAutoChatting;
-   @ObfuscatedName("ax")
-   @ObfuscatedGetter(
-      intValue = 1669471931
-   )
    int size;
-   @ObfuscatedName("ay")
-   @ObfuscatedGetter(
-      intValue = 2008647289
-   )
    int overheadTextEffect;
-   @ObfuscatedName("ba")
-   @ObfuscatedGetter(
-      intValue = -1979514767
-   )
    int movementFrameCycle;
-   @ObfuscatedName("bb")
-   @ObfuscatedGetter(
-      intValue = -807055771
-   )
    int field703;
-   @ObfuscatedName("bc")
-   @ObfuscatedGetter(
-      intValue = 592854061
-   )
    int movementSequence;
-   @ObfuscatedName("bd")
    int[] hitSplatTypes2;
-   @ObfuscatedName("be")
-   @ObfuscatedGetter(
-      intValue = -1726927213
-   )
    int sequenceFrame;
-   @ObfuscatedName("bf")
-   @ObfuscatedGetter(
-      intValue = -1218021367
-   )
    int field710;
-   @ObfuscatedName("bg")
-   @ObfuscatedGetter(
-      intValue = -1028826911
-   )
    int field711;
-   @ObfuscatedName("bh")
    int[] hitSplatCycles;
-   @ObfuscatedName("bi")
-   @ObfuscatedGetter(
-      intValue = 1536092043
-   )
    int sequenceDelay;
-   @ObfuscatedName("bj")
-   @ObfuscatedGetter(
-      intValue = -173770189
-   )
    int targetIndex;
-   @ObfuscatedName("bk")
-   @ObfuscatedGetter(
-      intValue = 1334696243
-   )
    int movementFrame;
-   @ObfuscatedName("bl")
-   @ObfuscatedGetter(
-      intValue = 337038295
-   )
    int field709;
-   @ObfuscatedName("bm")
    int[] hitSplatValues2;
-   @ObfuscatedName("bn")
-   @ObfuscatedGetter(
-      intValue = -1879648645
-   )
    int sequence;
-   @ObfuscatedName("bo")
-   @ObfuscatedGetter(
-      intValue = 2083696993
-   )
    int field707;
-   @ObfuscatedName("bp")
-   @ObfuscatedGetter(
-      intValue = 647023113
-   )
    int field686;
-   @ObfuscatedName("bq")
-   @ObfuscatedGetter(
-      intValue = -340493791
-   )
    int spotAnimationFrameCycle;
-   @ObfuscatedName("br")
-   @ObfuscatedGetter(
-      intValue = 2099588065
-   )
    int heightOffset;
-   @ObfuscatedName("bs")
    boolean false0;
-   @ObfuscatedName("bt")
-   @ObfuscatedGetter(
-      intValue = -759724979
-   )
    int spotAnimation;
-   @ObfuscatedName("bu")
-   @ObfuscatedGetter(
-      intValue = 1584241957
-   )
    int sequenceFrameCycle;
-   @ObfuscatedName("bv")
-   @ObfuscatedSignature(
-      signature = "Ljs;"
-   )
    IterableNodeDeque healthBars;
-   @ObfuscatedName("bw")
-   @ObfuscatedGetter(
-      intValue = 682547279
-   )
    int field712;
-   @ObfuscatedName("bx")
    int[] hitSplatValues;
-   @ObfuscatedName("by")
-   @ObfuscatedGetter(
-      intValue = 1088352163
-   )
    int spotAnimationFrame;
-   @ObfuscatedName("bz")
-   @ObfuscatedGetter(
-      intValue = -708767615
-   )
    int field695;
-   @ObfuscatedName("cb")
    byte[] pathTraversed;
-   @ObfuscatedName("cd")
-   @ObfuscatedGetter(
-      intValue = -948674291
-   )
    int pathLength;
-   @ObfuscatedName("cg")
-   @ObfuscatedGetter(
-      intValue = -1988821201
-   )
    int field719;
-   @ObfuscatedName("cj")
    int[] pathY;
-   @ObfuscatedName("ck")
-   @ObfuscatedGetter(
-      intValue = 2050032535
-   )
    int field715;
-   @ObfuscatedName("cn")
-   @ObfuscatedGetter(
-      intValue = -1277282795
-   )
    int field720;
-   @ObfuscatedName("co")
-   @ObfuscatedGetter(
-      intValue = -1864995671
-   )
    int defaultHeight;
-   @ObfuscatedName("cr")
-   @ObfuscatedGetter(
-      intValue = 2121676837
-   )
    int field687;
-   @ObfuscatedName("cs")
-   @ObfuscatedGetter(
-      intValue = -459931913
-   )
    int orientation;
-   @ObfuscatedName("ct")
-   @ObfuscatedGetter(
-      intValue = -207338457
-   )
    int field726;
-   @ObfuscatedName("cv")
-   @ObfuscatedGetter(
-      intValue = 1347834439
-   )
    int npcCycle;
-   @ObfuscatedName("cy")
    int[] pathX;
-   @ObfuscatedName("cz")
-   @ObfuscatedGetter(
-      intValue = -521720929
-   )
    int field714;
 
    Actor() {
@@ -345,30 +134,15 @@ public abstract class Actor extends Entity implements RSActor {
       this.field726 = 0;
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(S)Z",
-      garbageValue = "180"
-   )
    boolean vmethod1611() {
       return false;
    }
 
-   @ObfuscatedName("ag")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "4"
-   )
    final void method1442() {
       this.pathLength = 0;
       this.field726 = 0;
    }
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      signature = "(IIIIIII)V",
-      garbageValue = "341931021"
-   )
    final void method1434(int var1, int var2, int var3, int var4, int var5, int var6) {
       boolean var7 = true;
       boolean var8 = true;
@@ -386,7 +160,7 @@ public abstract class Actor extends Entity implements RSActor {
       int var10 = -1;
       int var11 = 0;
       if(var1 >= 0) {
-         HitSplatDefinition var13 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.method3032((long)var1);
+         HitSplatDefinition var13 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var1);
          HitSplatDefinition var12;
          if(var13 != null) {
             var12 = var13;
@@ -463,13 +237,8 @@ public abstract class Actor extends Entity implements RSActor {
       }
    }
 
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "1895868902"
-   )
    final void method1430(int var1) {
-      HealthBarDefinition var3 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.method3032((long)var1);
+      HealthBarDefinition var3 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.get((long)var1);
       HealthBarDefinition var2;
       if(var3 != null) {
          var2 = var3;
@@ -488,21 +257,16 @@ public abstract class Actor extends Entity implements RSActor {
 
       for(HealthBar var5 = (HealthBar)this.healthBars.method5044(); var5 != null; var5 = (HealthBar)this.healthBars.method5024()) {
          if(var3 == var5.definition) {
-            var5.method3497();
+            var5.unlink();
             return;
          }
       }
 
    }
 
-   @ObfuscatedName("ay")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIB)V",
-      garbageValue = "31"
-   )
    final void method1429(int var1, int var2, int var3, int var4, int var5, int var6) {
       this.setCombatInfo(var1, var2, var3, var4, var5, var6);
-      HealthBarDefinition var8 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.method3032((long)var1);
+      HealthBarDefinition var8 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.get((long)var1);
       HealthBarDefinition var7;
       if(var8 != null) {
          var7 = var8;
@@ -551,7 +315,7 @@ public abstract class Actor extends Entity implements RSActor {
 
          var13.method2246(var2 + var4, var5, var6, var3);
          if(var12 >= 4) {
-            var10.method3497();
+            var10.unlink();
          }
 
       }
@@ -566,17 +330,14 @@ public abstract class Actor extends Entity implements RSActor {
          } else if(this != ViewportMouse.client.getLocalPlayer() && this instanceof net.runelite.api.Player) {
             PlayerDeath var8 = new PlayerDeath((net.runelite.api.Player)this);
             ViewportMouse.client.getCallbacks().post(PlayerDeath.class, var8);
-         } else if(this instanceof RSNPC) {
-            ((RSNPC)this).setDead(true);
+         } else if(this instanceof NPC) {
+            ((NPC)this).setDead(true);
          }
       }
 
    }
 
-   public RSIterableNodeDeque getHealthBars() {
-      return this.healthBars;
-   }
-
+   @Override
    public int getRSInteracting() {
       return this.targetIndex;
    }
@@ -585,11 +346,11 @@ public abstract class Actor extends Entity implements RSActor {
       int var1 = this.getRSInteracting();
       if(var1 != -1 && var1 != 65535) {
          if(var1 < 32768) {
-            RSNPC[] var3 = ViewportMouse.client.getCachedNPCs();
+            NPC[] var3 = ViewportMouse.client.getCachedNPCs();
             return var3[var1];
          } else {
             var1 -= 32768;
-            RSPlayer[] var2 = ViewportMouse.client.getCachedPlayers();
+            Player[] var2 = ViewportMouse.client.getCachedPlayers();
             return var2[var1];
          }
       } else {
@@ -597,66 +358,44 @@ public abstract class Actor extends Entity implements RSActor {
       }
    }
 
+   @Override
    public String getOverheadText() {
       return this.overheadText;
    }
 
-   public int getX() {
-      return this.x;
-   }
-
-   public int[] getPathX() {
-      return this.pathX;
-   }
-
    public WorldPoint getWorldLocation() {
-      return WorldPoint.fromLocal(ViewportMouse.client, this.getPathX()[0] * 128 + 64, this.getPathY()[0] * 128 + 64, ViewportMouse.client.getPlane());
+      return WorldPoint.fromLocal(ViewportMouse.client, this.pathX[0] * 128 + 64, this.pathY[0] * 128 + 64, ViewportMouse.client.getPlane());
    }
 
    public LocalPoint getLocalLocation() {
-      return new LocalPoint(this.getX(), this.getY());
+      return new LocalPoint(this.x, this.y * 682054857);
    }
 
-   public int getY() {
-      return this.y * 682054857;
-   }
-
+   @Override
    public int getAnimation() {
       return this.sequence;
    }
 
+   @Override
    public int getActionFrame() {
       return this.sequenceFrame;
    }
 
-   public int[] getPathY() {
-      return this.pathY;
-   }
-
-   public int getPoseFrame() {
-      return this.movementFrame;
-   }
-
+   @Override
    public int getOrientation() {
       return this.orientation;
    }
 
-   public int getSpotAnimationFrame() {
-      return this.spotAnimationFrame;
-   }
-
+   @Override
    public int getActionFrameCycle() {
       return this.sequenceFrameCycle;
    }
 
+   @Override
    public void setActionFrame(int var1) {
       this.sequenceFrame = var1;
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void animationChanged(int var1) {
       AnimationChanged var2 = new AnimationChanged();
       var2.setActor(this);
@@ -671,26 +410,11 @@ public abstract class Actor extends Entity implements RSActor {
       ViewportMouse.client.getCallbacks().post(HitsplatApplied.class, var8);
    }
 
-   public void setPoseFrame(int var1) {
-      this.movementFrame = var1;
-   }
-
-   public int getPoseFrameCycle() {
-      return this.movementFrameCycle;
-   }
-
+   @Override
    public void setSpotAnimationFrame(int var1) {
       this.spotAnimationFrame = var1;
    }
 
-   public int getSpotAnimationFrameCycle() {
-      return this.spotAnimationFrameCycle;
-   }
-
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void overheadTextChanged(int var1) {
       String var2 = this.getOverheadText();
       if(var2 != null) {
@@ -700,19 +424,11 @@ public abstract class Actor extends Entity implements RSActor {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void interactingChanged(int var1) {
       InteractingChanged var2 = new InteractingChanged(this, this.getInteracting());
       ViewportMouse.client.getCallbacks().post(InteractingChanged.class, var2);
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void spotAnimationChanged(int var1) {
       SpotAnimationChanged var2 = new SpotAnimationChanged();
       var2.setActor(this);
@@ -720,18 +436,18 @@ public abstract class Actor extends Entity implements RSActor {
    }
 
    public int getHealthRatio() {
-      RSIterableNodeDeque var1 = this.getHealthBars();
+      IterableNodeDeque var1 = this.healthBars;
       if(var1 != null) {
-         RSNode var2 = var1.getCurrent();
-         RSNode var3 = var2.getNext();
-         if(var3 instanceof RSHealthBar) {
-            RSHealthBar var4 = (RSHealthBar)var3;
-            RSIterableNodeDeque var5 = var4.getUpdates();
-            RSNode var6 = var5.getCurrent();
-            RSNode var7 = var6.getNext();
-            if(var7 instanceof RSHealthBarUpdate) {
-               RSHealthBarUpdate var8 = (RSHealthBarUpdate)var7;
-               return var8.getHealthRatio();
+         Node var2 = var1.sentinel;
+         Node var3 = var2.getNext();
+         if(var3 instanceof HealthBar) {
+            HealthBar var4 = (HealthBar)var3;
+            IterableNodeDeque var5 = var4.updates;
+            Node var6 = var5.sentinel;
+            Node var7 = var6.getNext();
+            if(var7 instanceof HealthBarUpdate) {
+               HealthBarUpdate var8 = (HealthBarUpdate)var7;
+                return var8.health;
             }
          }
       }
@@ -740,14 +456,14 @@ public abstract class Actor extends Entity implements RSActor {
    }
 
    public int getHealth() {
-      RSIterableNodeDeque var1 = this.getHealthBars();
+      IterableNodeDeque var1 = this.healthBars;
       if(var1 != null) {
-         RSNode var2 = var1.getCurrent();
-         RSNode var3 = var2.getNext();
-         if(var3 instanceof RSHealthBar) {
-            RSHealthBar var4 = (RSHealthBar)var3;
-            RSHealthBarDefinition var5 = var4.getDefinition();
-            return var5.getHealthScale();
+         Node var2 = var1.sentinel;
+         Node var3 = var2.getNext();
+         if(var3 instanceof HealthBar) {
+            HealthBar var4 = (HealthBar)var3;
+             HealthBarDefinition var5 = var4.definition;
+            return var5.width;
          }
       }
 
@@ -790,46 +506,42 @@ public abstract class Actor extends Entity implements RSActor {
       return new WorldArea(this.getWorldLocation(), var1, var1);
    }
 
+   @Override
    public int getCurrentOrientation() {
       return this.rotation;
    }
 
+   @Override
    public void setIdlePoseAnimation(int var1) {
       this.readySequence = var1;
    }
 
+   @Override
    public void setOverheadText(String var1) {
       this.overheadText = var1;
    }
 
-   public int[] getHitsplatTypes() {
-      return this.hitSplatTypes;
-   }
-
-   public int[] getHitsplatValues() {
-      return this.hitSplatValues;
-   }
-
-   public int[] getHitsplatCycles() {
-      return this.hitSplatCycles;
-   }
-
+   @Override
    public void setPoseAnimation(int var1) {
       this.movementSequence = var1;
    }
 
+   @Override
    public void setAnimation(int var1) {
       this.sequence = var1;
    }
 
+   @Override
    public void setSpotAnimation(int var1) {
       this.spotAnimation = var1;
    }
 
+   @Override
    public int getSpotAnimation() {
       return this.spotAnimation;
    }
 
+   @Override
    public int getLogicalHeight() {
       return this.defaultHeight;
    }

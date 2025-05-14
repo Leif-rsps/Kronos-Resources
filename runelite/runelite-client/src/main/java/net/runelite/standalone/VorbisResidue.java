@@ -1,22 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("df")
 public class VorbisResidue {
-   @ObfuscatedName("n")
    int begin;
-   @ObfuscatedName("p")
    int classbook;
-   @ObfuscatedName("q")
    int[] cascade;
-   @ObfuscatedName("r")
    int classifications;
-   @ObfuscatedName("u")
    int partitionSize;
-   @ObfuscatedName("v")
    int end;
-   @ObfuscatedName("z")
    int residueType;
 
    VorbisResidue() {
@@ -48,7 +38,6 @@ public class VorbisResidue {
 
    }
 
-   @ObfuscatedName("z")
    void method2341(float[] var1, int var2, boolean var3) {
       int var4;
       for(var4 = 0; var4 < var2; ++var4) {

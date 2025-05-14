@@ -1,26 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fq")
 public class NanoClock extends Clock {
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      longValue = -5918640064271728259L
-   )
    long lastTimeNano;
 
    NanoClock() {
       this.lastTimeNano = System.nanoTime();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(III)I",
-      garbageValue = "569029249"
-   )
    public int vmethod3511(int var1, int var2) {
       long var3 = (long)var2 * 1000000L;
       long var5 = this.lastTimeNano - System.nanoTime();
@@ -68,11 +54,6 @@ public class NanoClock extends Clock {
       return var13;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-54"
-   )
    public void vmethod3510() {
       this.lastTimeNano = System.nanoTime();
    }

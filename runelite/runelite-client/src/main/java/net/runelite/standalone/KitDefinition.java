@@ -1,44 +1,16 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("iy")
 public class KitDefinition extends DualNode {
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget field3452;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable KitDefinition_cached;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive KitDefinition_archive;
-   @ObfuscatedName("p")
    int[] models2;
-   @ObfuscatedName("q")
    short[] recolorFrom;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1391426239
-   )
    public int bodypartID;
-   @ObfuscatedName("y")
    short[] retextureFrom;
-   @ObfuscatedName("b")
    public boolean nonSelectable;
-   @ObfuscatedName("c")
    int[] models;
-   @ObfuscatedName("i")
    short[] retextureTo;
-   @ObfuscatedName("m")
    short[] recolorTo;
 
    static {
@@ -51,11 +23,6 @@ public class KitDefinition extends DualNode {
       this.nonSelectable = false;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "801046571"
-   )
    void method4707(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
@@ -67,11 +34,6 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-361074735"
-   )
    public boolean method4706() {
       boolean var1 = true;
 
@@ -84,11 +46,6 @@ public class KitDefinition extends DualNode {
       return var1;
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(B)Ldw;",
-      garbageValue = "-26"
-   )
    public ModelData method4708() {
       ModelData[] var1 = new ModelData[5];
       int var2 = 0;
@@ -116,11 +73,6 @@ public class KitDefinition extends DualNode {
       return var5;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(I)Ldw;",
-      garbageValue = "538019624"
-   )
    public ModelData method4695() {
       if(this.models2 == null) {
          return null;
@@ -155,11 +107,6 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-1837700521"
-   )
    public boolean method4710() {
       if(this.models2 == null) {
          return true;
@@ -176,11 +123,6 @@ public class KitDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "1307391521"
-   )
    void method4693(Buffer var1, int var2) {
       if(var2 == 1) {
          this.bodypartID = var1.readUnsignedByte();

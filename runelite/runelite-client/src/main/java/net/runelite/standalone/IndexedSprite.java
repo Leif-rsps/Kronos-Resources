@@ -71,7 +71,7 @@ public final class IndexedSprite extends Rasterizer2D implements net.runelite.ap
       }
    }
 
-   public void method6319(int var1, int var2, int var3) {
+    public void method6319(int var1, int var2, int var3) {
       for(int var4 = 0; var4 < this.palette.length; ++var4) {
          int var5 = this.palette[var4] >> 16 & 255;
          var5 += var1;
@@ -226,66 +226,82 @@ public final class IndexedSprite extends Rasterizer2D implements net.runelite.ap
       }
    }
 
+   @Override
    public void setPixels(byte[] var1) {
       this.pixels = var1;
    }
 
+   @Override
    public byte[] getPixels() {
       return this.pixels;
    }
 
+   @Override
    public void setPalette(int[] var1) {
       this.palette = var1;
    }
 
+   @Override
    public int[] getPalette() {
       return this.palette;
    }
 
+   @Override
    public void setWidth(int var1) {
       this.subWidth = var1;
    }
 
+   @Override
    public int getWidth() {
       return this.subWidth;
    }
 
+   @Override
    public void setHeight(int var1) {
       this.subHeight = var1;
    }
 
+   @Override
    public int getHeight() {
       return this.subHeight;
    }
 
+   @Override
    public void setOffsetX(int var1) {
       this.xOffset = var1;
    }
 
+   @Override
    public int getOffsetX() {
       return this.xOffset;
    }
 
+   @Override
    public void setOffsetY(int var1) {
       this.yOffset = var1;
    }
 
+   @Override
    public int getOffsetY() {
       return this.yOffset;
    }
 
+   @Override
    public void setOriginalWidth(int var1) {
       this.width = var1;
    }
 
+   @Override
    public int getOriginalWidth() {
       return this.width;
    }
 
+   @Override
    public void setOriginalHeight(int var1) {
       this.height = var1;
    }
 
+   @Override
    public int getOriginalHeight() {
       return this.height;
    }

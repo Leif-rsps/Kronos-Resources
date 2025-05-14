@@ -1,83 +1,32 @@
 package net.runelite.standalone;
 
 import java.security.SecureRandom;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cn")
 public enum AttackOption implements Enumerated {
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lcn;"
-   )
    AttackOption_dependsOnCombatLevels(0),
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lcn;"
-   )
    AttackOption_alwaysRightClick(1),
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lcn;"
-   )
    AttackOption_leftClickWhereAvailable(2),
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lcn;"
-   )
    AttackOption_hidden(3);
 
-   @ObfuscatedName("dw")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
    static Archive archive9;
-   @ObfuscatedName("gr")
-   @ObfuscatedSignature(
-      signature = "Llf;"
-   )
    static Sprite compass;
-   @ObfuscatedName("lc")
-   @ObfuscatedGetter(
-      intValue = 629841565
-   )
    static int selectedSpellWidget;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1814915457
-   )
    final int id;
 
    AttackOption(int var3) {
       this.id = var3;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(S)I",
-      garbageValue = "221"
-   )
    public int getId() {
       return this.id;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)Ljava/security/SecureRandom;",
-      garbageValue = "639446581"
-   )
    static SecureRandom method2107() {
       SecureRandom var0 = new SecureRandom();
       var0.nextInt();
       return var0;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lkf;I)V",
-      garbageValue = "-379415067"
-   )
    static final void method2105(PacketBuffer var0) {
       var0.method5293();
       int var1 = Client.localPlayerIndex;
@@ -121,11 +70,6 @@ public enum AttackOption implements Enumerated {
       var0.method5279();
    }
 
-   @ObfuscatedName("ed")
-   @ObfuscatedSignature(
-      signature = "(IZZZI)Lie;",
-      garbageValue = "1568056482"
-   )
    static Archive method2106(int var0, boolean var1, boolean var2, boolean var3) {
       ArchiveDisk var4 = null;
       if(JagexCache.JagexCache_dat2File != null) {
@@ -135,11 +79,6 @@ public enum AttackOption implements Enumerated {
       return new Archive(var4, WorldMapData_0.masterDisk, var0, var1, var2, var3);
    }
 
-   @ObfuscatedName("hj")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;Ljava/lang/String;IIIIZI)V",
-      garbageValue = "844579626"
-   )
    static final void method2104(String var0, String var1, int var2, int var3, int var4, int var5, boolean var6) {
       if(!Client.isMenuOpen) {
          if(Client.menuOptionsCount < 500) {

@@ -1,44 +1,13 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fi")
 public abstract class RouteStrategy {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -1911711911
-   )
    public int approxDestinationY;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 1794388549
-   )
    public int approxDestinationSizeY;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -969700339
-   )
    public int approxDestinationSizeX;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 942047679
-   )
    public int approxDestinationX;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IIILfa;B)Z",
-      garbageValue = "27"
-   )
    protected abstract boolean vmethod3410(int var1, int var2, int var3, CollisionMap var4);
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(IILfi;Lfa;I)Z",
-      garbageValue = "-1798427460"
-   )
    static final boolean method3413(int var0, int var1, RouteStrategy var2, CollisionMap var3) {
       int var4 = var0;
       int var5 = var1;

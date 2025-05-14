@@ -1,23 +1,10 @@
 package net.runelite.standalone;
 
 import java.util.Comparator;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("c")
 final class GrandExchangeOfferUnitPriceComparator implements Comparator {
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = -1987201491
-   )
    static int loginBoxCenter;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lm;Lm;I)I",
-      garbageValue = "1379036847"
-   )
    int method1463(GrandExchangeEvent var1, GrandExchangeEvent var2) {
       return var1.grandExchangeOffer.unitPrice < var2.grandExchangeOffer.unitPrice?-1:(var2.grandExchangeOffer.unitPrice == var1.grandExchangeOffer.unitPrice?0:1);
    }
@@ -30,13 +17,8 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
       return super.equals(var1);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)Lix;",
-      garbageValue = "-991827860"
-   )
    public static SequenceDefinition method1468(int var0) {
-      SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.method3032((long)var0);
+      SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {
@@ -52,11 +34,6 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
       }
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/Object;ZI)[B",
-      garbageValue = "264970062"
-   )
    public static byte[] method1473(Object var0, boolean var1) {
       if(var0 == null) {
          return null;
@@ -78,21 +55,11 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
       }
    }
 
-   @ObfuscatedName("eg")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "35"
-   )
    static final void method1471() {
       Scene.Scene_isLowDetail = false;
       Client.isLowDetail = false;
    }
 
-   @ObfuscatedName("gl")
-   @ObfuscatedSignature(
-      signature = "(Lbi;B)Z",
-      garbageValue = "64"
-   )
    static boolean method1466(Player var0) {
       if(Client.drawPlayerNames == 0) {
          return false;

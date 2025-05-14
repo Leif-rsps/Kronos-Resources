@@ -1,17 +1,9 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ks")
 public class class306 {
-   @ObfuscatedName("n")
    static char[] field3758;
-   @ObfuscatedName("u")
    static int[] field3755;
-   @ObfuscatedName("v")
    static char[] field3757;
-   @ObfuscatedName("z")
    static char[] field3756;
 
    static {
@@ -90,16 +82,11 @@ public class class306 {
       var1[45] = 63;
    }
 
-   @ObfuscatedName("gu")
-   @ObfuscatedSignature(
-      signature = "(IIZI)V",
-      garbageValue = "-1781394642"
-   )
    static final void method5763(int var0, int var1, boolean var2) {
       if(!var2 || var0 != ServerPacket.field2272 || MusicPatchNode.field2216 != var1) {
          ServerPacket.field2272 = var0;
          MusicPatchNode.field2216 = var1;
-         MouseRecorder.method1207(25);
+         MouseRecorder.setGameState(25);
          WorldMapSprite.method784("Loading - please wait.", true);
          int var3 = class215.baseX;
          int var4 = class304.baseY;
@@ -172,11 +159,11 @@ public class class306 {
             }
          }
 
-         for(PendingSpawn var19 = (PendingSpawn)Client.pendingSpawns.method5103(); var19 != null; var19 = (PendingSpawn)Client.pendingSpawns.method5126()) {
+         for(PendingSpawn var19 = (PendingSpawn)Client.pendingSpawns.last(); var19 != null; var19 = (PendingSpawn)Client.pendingSpawns.previous()) {
             var19.x -= var5;
             var19.y -= var6;
             if(var19.x < 0 || var19.y < 0 || var19.x >= 104 || var19.y >= 104) {
-               var19.method3497();
+               var19.unlink();
             }
          }
 

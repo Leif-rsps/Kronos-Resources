@@ -2,156 +2,44 @@ package net.runelite.standalone;
 
 import net.runelite.api.HeadIcon;
 import net.runelite.api.events.NpcActionChanged;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSNPCDefinition;
-import net.runelite.rs.api.RSSprite;
 
-@ObfuscatedName("il")
-public class NPCDefinition extends DualNode implements RSNPCDefinition {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
+public class NPCDefinition extends DualNode implements net.runelite.api.NPCDefinition {
    public static AbstractArchive NpcDefinition_modelArchive;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable NpcDefinition_cachedModels;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable NpcDefinition_cached;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive NpcDefinition_archive;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = 1951589919
-   )
    public int walkingAnimation;
-   @ObfuscatedName("p")
    public String name;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = -441203939
-   )
    public int size;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 795033679
-   )
    public int id;
-   @ObfuscatedName("s")
    public String[] actions;
-   @ObfuscatedName("t")
    short[] colors;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = -2041030831
-   )
    public int walkRightSequence;
-   @ObfuscatedName("x")
    short[] retextureFrom;
-   @ObfuscatedName("y")
    int[] additionalModels;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = 1113665339
-   )
    public int walkBackSequence;
-   @ObfuscatedName("aa")
-   @ObfuscatedGetter(
-      intValue = 950956241
-   )
    public int rotation;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = -313433817
-   )
    int transformVarp;
-   @ObfuscatedName("ac")
-   @ObfuscatedGetter(
-      intValue = 1963706097
-   )
    int ambient;
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      signature = "Llb;"
-   )
    IterableNodeHashTable params;
-   @ObfuscatedName("ao")
    public boolean isFollower;
-   @ObfuscatedName("ap")
    public int[] transforms;
-   @ObfuscatedName("ar")
-   @ObfuscatedGetter(
-      intValue = 1759904707
-   )
    int transformVarbit;
-   @ObfuscatedName("as")
    public boolean isClickable;
-   @ObfuscatedName("aw")
-   @ObfuscatedGetter(
-      intValue = 246799047
-   )
    public int headIconPrayer;
-   @ObfuscatedName("ax")
    public boolean isInteractable;
-   @ObfuscatedName("az")
-   @ObfuscatedGetter(
-      intValue = -1785698549
-   )
    int contrast;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -394985883
-   )
    public int turnRightSequence;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -1669190657
-   )
    public int turnLeftSequence;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = 758770497
-   )
    int widthScale;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = -1204590857
-   )
    public int walkLeftSequence;
-   @ObfuscatedName("f")
    public boolean drawMapDot;
-   @ObfuscatedName("g")
    short[] modifiedColors;
-   @ObfuscatedName("h")
    short[] retextureTo;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = -182220755
-   )
    public int standingAnimation;
-   @ObfuscatedName("j")
-   @ObfuscatedGetter(
-      intValue = 1360683279
-   )
    public int combatLevel;
-   @ObfuscatedName("k")
    public boolean isVisible;
-   @ObfuscatedName("l")
-   @ObfuscatedGetter(
-      intValue = -1757828027
-   )
    int heightScale;
-   @ObfuscatedName("m")
    int[] models;
 
    static {
@@ -187,19 +75,9 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
       this.isFollower = false;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-117"
-   )
    void method4402() {
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(B)Ldw;",
-      garbageValue = "58"
-   )
    public final ModelData method4406() {
       if(this.transforms != null) {
          NPCDefinition var1 = this.method4407();
@@ -249,15 +127,10 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(I)Lil;",
-      garbageValue = "1423511184"
-   )
    public final NPCDefinition method4407() {
       int var1 = -1;
       if(this.transformVarbit != -1) {
-         var1 = WorldMapSprite.method782(this.transformVarbit);
+         var1 = WorldMapSprite.getVarbit(this.transformVarbit);
       } else if(this.transformVarp != -1) {
          var1 = Varps.Varps_main[this.transformVarp];
       }
@@ -272,17 +145,12 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
       return var2 != -1?PacketBufferNode.getNpcDefinition(var2):null;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(Lix;ILix;IS)Ldh;",
-      garbageValue = "-1424"
-   )
    public final Model method4405(SequenceDefinition var1, int var2, SequenceDefinition var3, int var4) {
       if(this.transforms != null) {
          NPCDefinition var12 = this.method4407();
          return var12 == null?null:var12.method4405(var1, var2, var3, var4);
       } else {
-         Model var5 = (Model)NpcDefinition_cachedModels.method3032((long)this.id);
+         Model var5 = (Model)NpcDefinition_cachedModels.get((long)this.id);
          if(var5 == null) {
             boolean var6 = false;
 
@@ -334,7 +202,7 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
          } else if(var3 != null) {
             var10 = var3.method4661(var5, var4, 805280683);
          } else {
-            var10 = var5.method2355(true);
+            var10 = var5.toSharedModel(true);
          }
 
          if(this.widthScale != 128 || this.heightScale != 128) {
@@ -345,11 +213,6 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "-1943278683"
-   )
    void method4424(Buffer var1, int var2) {
       int var3;
       int var4;
@@ -471,11 +334,6 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;B)V",
-      garbageValue = "-41"
-   )
    void method4429(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
@@ -487,17 +345,8 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
       }
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(III)I",
-      garbageValue = "-1804168798"
-   )
    public int method4409(int var1, int var2) {
       return HealthBar.getParam(this.params, var1, var2);
-   }
-
-   public int getRsOverheadIcon() {
-      return this.headIconPrayer;
    }
 
    public void actionsHook(int var1) {
@@ -508,7 +357,7 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
    }
 
    public HeadIcon getOverheadIcon() {
-      switch(this.getRsOverheadIcon()) {
+      switch(this.headIconPrayer) {
       case 0:
          return HeadIcon.MELEE;
       case 1:
@@ -525,71 +374,72 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
       }
    }
 
+   @Override
    public int getId() {
       return this.id;
    }
 
+   @Override
    public String getName() {
       return this.name;
    }
 
+   @Override
    public int getSize() {
       return this.size;
    }
 
+   @Override
    public int[] getModels() {
       return this.models;
    }
 
+   @Override
    public String[] getActions() {
       return this.actions;
    }
 
+   @Override
    public boolean isMinimapVisible() {
       return this.drawMapDot;
    }
 
+   @Override
    public int getCombatLevel() {
       return this.combatLevel;
    }
 
+   @Override
    public boolean isVisible() {
       return this.isVisible;
    }
 
+   @Override
    public int[] getConfigs() {
       return this.transforms;
    }
 
+   @Override
    public boolean isClickable() {
       return this.isClickable;
    }
 
-   public RSNPCDefinition transform() {
+   @Override
+   public NPCDefinition transform() {
       return this.method4407();
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(ILjava/lang/String;I)Ljava/lang/String;",
-      garbageValue = "-1270482233"
-   )
    public String method4410(int var1, String var2) {
       return class94.method2216(this.params, var1, var2);
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(B)Z",
-      garbageValue = "-43"
-   )
    public boolean method4408() {
       if(this.transforms == null) {
          return true;
       } else {
          int var1 = -1;
          if(this.transformVarbit != -1) {
-            var1 = WorldMapSprite.method782(this.transformVarbit);
+            var1 = WorldMapSprite.getVarbit(this.transformVarbit);
          } else if(this.transformVarp != -1) {
             var1 = Varps.Varps_main[this.transformVarp];
          }
@@ -598,20 +448,11 @@ public class NPCDefinition extends DualNode implements RSNPCDefinition {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lhp;III)Llf;"
-   )
    public static Sprite method4417(AbstractArchive var0, int var1, int var2, int var3) {
       net.runelite.api.Sprite var4 = (net.runelite.api.Sprite)Client.spriteOverrides.get(Integer.valueOf(var1));
-      return var4 != null?(Sprite)((RSSprite)var4):(Sprite)Client.copy$SpriteBuffer_getSprite(var0, var1, var2, var3);
+      return var4 != null?(Sprite)((Sprite)var4):(Sprite)Client.copy$SpriteBuffer_getSprite(var0, var1, var2, var3);
    }
 
-   @ObfuscatedName("gr")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIII)V",
-      garbageValue = "474931921"
-   )
    static final void method4403(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
       int var8 = var6 - 334;
       if(var8 < 0) {

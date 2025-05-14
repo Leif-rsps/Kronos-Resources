@@ -5,6 +5,9 @@ public class Node implements net.runelite.api.Node {
    public Node next;
    public Node previous;
 
+   /**
+    * Called when this node is unlinked
+    */
    public void onUnlink() {
    }
 
@@ -12,27 +15,26 @@ public class Node implements net.runelite.api.Node {
       this.onUnlink();
    }
 
+   @Override
    public long getHash() {
       return this.key;
    }
 
+   @Override
    public Node getNext() {
       return this.previous;
    }
 
+   @Override
    public Node getPrevious() {
       return this.next;
-   }
-
-   public void unlink() {
-      this.method3497();
    }
 
    public boolean method3494() {
       return this.next != null;
    }
 
-   public void method3497() {
+   public void unlink() {
       this.rl$unlink();
       if(this.next != null) {
          this.next.previous = this.previous;

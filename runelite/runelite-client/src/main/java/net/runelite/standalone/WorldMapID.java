@@ -5,37 +5,14 @@ import java.awt.Desktop;
 import java.awt.Desktop.Action;
 import java.net.URI;
 import java.net.URL;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+
 import netscape.javascript.JSObject;
 
-@ObfuscatedName("ar")
 public class WorldMapID {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lar;"
-   )
    static final WorldMapID field264;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Llf;"
-   )
    static Sprite leftTitleSprite;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lar;"
-   )
    static final WorldMapID field263;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = -81572617
-   )
    static int clientTickTimeIdx;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1325901065
-   )
    final int value;
 
    static {
@@ -47,11 +24,6 @@ public class WorldMapID {
       this.value = var1;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;ZLjava/lang/String;ZI)V",
-      garbageValue = "-1035717036"
-   )
    static void method685(String var0, boolean var1, String var2, boolean var3) {
       if(var1) {
          if(!var3 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
@@ -83,11 +55,6 @@ public class WorldMapID {
 
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(IIII)V",
-      garbageValue = "-2144797919"
-   )
    static final void method686(int var0, int var1, int var2) {
       int var3;
       for(var3 = 0; var3 < 8; ++var3) {
@@ -118,11 +85,6 @@ public class WorldMapID {
 
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;ILjava/lang/String;I)Z",
-      garbageValue = "-1037909601"
-   )
    static boolean method684(String var0, int var1, String var2) {
       boolean var10000;
       if(var1 == 0) {
@@ -190,11 +152,6 @@ public class WorldMapID {
       }
    }
 
-   @ObfuscatedName("fy")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "95"
-   )
    static final void method687() {
       if(GrandExchangeOfferWorldComparator.pcmPlayer1 != null) {
          GrandExchangeOfferWorldComparator.pcmPlayer1.method2755();

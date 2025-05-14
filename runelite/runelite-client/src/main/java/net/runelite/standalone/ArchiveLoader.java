@@ -1,50 +1,19 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bs")
 public class ArchiveLoader {
-   @ObfuscatedName("bz")
-   @ObfuscatedSignature(
-      signature = "[Llf;"
-   )
    static Sprite[] worldSelectBackSprites;
-   @ObfuscatedName("c")
    static int[] Tiles_saturation;
-   @ObfuscatedName("gi")
    static byte[][] regionMapArchives;
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
    final Archive archive;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 966789861
-   )
    int loadedCount;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1526719037
-   )
    final int groupCount;
 
-   @ObfuscatedSignature(
-      signature = "(Lie;Ljava/lang/String;)V"
-   )
    ArchiveLoader(Archive var1, String var2) {
       this.loadedCount = 0;
       this.archive = var1;
       this.groupCount = var1.method4033();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "1969120013"
-   )
    boolean method1296() {
       this.loadedCount = 0;
 
@@ -57,11 +26,6 @@ public class ArchiveLoader {
       return this.loadedCount >= this.groupCount;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Lbo;Lbo;IZIZB)I",
-      garbageValue = "7"
-   )
    static int method1302(World var0, World var1, int var2, boolean var3, int var4, boolean var5) {
       int var6 = UserComparator7.method2893(var0, var1, var2, var3);
       if(var6 != 0) {
@@ -74,11 +38,6 @@ public class ArchiveLoader {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "([BIIB)Ljava/lang/String;",
-      garbageValue = "-113"
-   )
    public static String method1297(byte[] var0, int var1, int var2) {
       char[] var3 = new char[var2];
       int var4 = 0;
@@ -102,11 +61,6 @@ public class ArchiveLoader {
       return new String(var3, 0, var4);
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "-238840199"
-   )
    public static int method1301(int var0) {
       return class19.method345(ViewportMouse.ViewportMouse_entityTags[var0]);
    }

@@ -1,34 +1,11 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("lg")
 public final class IsaacCipher {
-   @ObfuscatedName("p")
    int[] mm;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 460099205
-   )
    int aa;
-   @ObfuscatedName("r")
    int[] results;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -925707239
-   )
    int valuesRemaining;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = 2097692587
-   )
    int cc;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 883284121
-   )
    int bb;
 
    public IsaacCipher(int[] var1) {
@@ -42,11 +19,6 @@ public final class IsaacCipher {
       this.method6225();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "2039703989"
-   )
    public final int method6223() {
       if(this.valuesRemaining == 0) {
          this.method6224();
@@ -56,11 +28,6 @@ public final class IsaacCipher {
       return this.results[this.valuesRemaining - 1];
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-135595454"
-   )
    final void method6225() {
       int var9 = -1640531527;
       int var8 = -1640531527;
@@ -189,11 +156,6 @@ public final class IsaacCipher {
       this.valuesRemaining = 256;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "522891016"
-   )
    final void method6224() {
       this.bb += ++this.cc;
 
@@ -219,11 +181,6 @@ public final class IsaacCipher {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "2"
-   )
    public final int method6234() {
       if(this.valuesRemaining == 0) {
          this.method6224();

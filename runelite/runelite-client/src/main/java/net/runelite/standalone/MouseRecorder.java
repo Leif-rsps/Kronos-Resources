@@ -1,31 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSMouseRecorder;
-
-@ObfuscatedName("bn")
-public class MouseRecorder implements Runnable, RSMouseRecorder {
-   @ObfuscatedName("qc")
-   @ObfuscatedGetter(
-      intValue = -749855997
-   )
+public class MouseRecorder implements Runnable, net.runelite.api.MouseRecorder {
    static int field543;
-   @ObfuscatedName("n")
    Object lock;
-   @ObfuscatedName("p")
    long[] millis;
-   @ObfuscatedName("r")
    int[] ys;
-   @ObfuscatedName("u")
    int[] xs;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -395886809
-   )
    int index;
-   @ObfuscatedName("z")
    boolean isRunning;
 
    MouseRecorder() {
@@ -66,27 +47,26 @@ public class MouseRecorder implements Runnable, RSMouseRecorder {
 
    }
 
+   @Override
    public int getIndex() {
       return this.index;
    }
 
+   @Override
    public int[] getXs() {
       return this.xs;
    }
 
+   @Override
    public int[] getYs() {
       return this.ys;
    }
 
+   @Override
    public long[] getMillis() {
       return this.millis;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;IZI)Z",
-      garbageValue = "1781175129"
-   )
    static boolean method1204(CharSequence var0, int var1, boolean var2) {
       if(var1 >= 2 && var1 <= 36) {
          boolean var3 = false;
@@ -143,11 +123,6 @@ public class MouseRecorder implements Runnable, RSMouseRecorder {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;Lhp;Lhp;Lhp;I)V",
-      garbageValue = "757656787"
-   )
    public static void method1209(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2, AbstractArchive var3) {
       Widget.Widget_archive = var0;
       TaskHandler.Widget_modelsArchive = var1;
@@ -157,12 +132,7 @@ public class MouseRecorder implements Runnable, RSMouseRecorder {
       ViewportMouse.Widget_loadedInterfaces = new boolean[Widget.Widget_archive.method4033()];
    }
 
-   @ObfuscatedName("ej")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "-1180818017"
-   )
-   static void method1207(int var0) {
+   static void setGameState(int var0) {
       if(var0 != Client.gameState) {
          if(Client.gameState == 0) {
             ViewportMouse.client.method1037();
@@ -231,27 +201,17 @@ public class MouseRecorder implements Runnable, RSMouseRecorder {
       }
    }
 
-   @ObfuscatedName("fb")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "861469651"
-   )
    static final void method1208() {
       if(Client.logoutTimer > 0) {
          DynamicObject.method1570();
       } else {
          Client.timer.method4849();
-         method1207(40);
+         setGameState(40);
          class33.field251 = Client.packetWriter.method1624();
          Client.packetWriter.method1637();
       }
    }
 
-   @ObfuscatedName("jv")
-   @ObfuscatedSignature(
-      signature = "([Lho;II)V",
-      garbageValue = "-1695750792"
-   )
    static final void method1206(Widget[] var0, int var1) {
       for(int var2 = 0; var2 < var0.length; ++var2) {
          Widget var3 = var0[var2];

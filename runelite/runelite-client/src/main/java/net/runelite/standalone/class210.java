@@ -1,15 +1,6 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hd")
 public class class210 {
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)[Lhj;",
-      garbageValue = "133309082"
-   )
    //TODO: Modified Added new ranks to array
    public static PlayerType[] getPlayerTypes() {
       return new PlayerType[]{PlayerType.PlayerType_jagexModerator, PlayerType.PlayerType_normal, PlayerType.PlayerType_playerModerator, PlayerType.PlayerType_ironman,
@@ -19,13 +10,8 @@ public class class210 {
       };
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(II)Lep;",
-      garbageValue = "1928253690"
-   )
-   static Frames method3930(int var0) {
-      Frames var1 = (Frames)SequenceDefinition.SequenceDefinition_cachedFrames.method3032((long)var0);
+   static Frames getFrames(int var0) {
+      Frames var1 = (Frames)SequenceDefinition.SequenceDefinition_cachedFrames.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {

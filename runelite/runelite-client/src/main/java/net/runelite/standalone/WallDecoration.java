@@ -4,79 +4,26 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.geom.Area;
+
+import net.runelite.api.DecorativeObject;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSEntity;
-import net.runelite.rs.api.RSModel;
-import net.runelite.rs.api.RSWallDecoration;
 
-@ObfuscatedName("eg")
-public final class WallDecoration implements RSWallDecoration {
-   @ObfuscatedName("l")
-   @ObfuscatedGetter(
-      intValue = -1573146665
-   )
+public final class WallDecoration implements DecorativeObject {
    public static int canvasHeight;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 1324796191
-   )
    int tileHeight;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 43570649
-   )
    int xOffset;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = -396532533
-   )
    int yOffset;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1549979331
-   )
    int orientation2;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -337099317
-   )
    int y;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 1787906731
-   )
    int x;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    public Entity entity2;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 500861795
-   )
    int orientation;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = 14602599
-   )
    int flags;
    public int decorativeObjectPlane;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      longValue = 463073903231293703L
-   )
    public long tag;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    public Entity entity1;
 
    WallDecoration() {
@@ -89,7 +36,7 @@ public final class WallDecoration implements RSWallDecoration {
    }
 
    public Polygon getConvexHull() {
-      RSModel var1 = this.getModel1();
+      Model var1 = this.getModel1();
       if(var1 == null) {
          return null;
       } else {
@@ -99,7 +46,7 @@ public final class WallDecoration implements RSWallDecoration {
    }
 
    public Polygon getConvexHull2() {
-      RSModel var1 = this.getModel2();
+      Model var1 = this.getModel2();
       if(var1 == null) {
          return null;
       } else {
@@ -108,18 +55,19 @@ public final class WallDecoration implements RSWallDecoration {
       }
    }
 
+   @Override
    public long getHash() {
       return this.tag;
    }
 
-   public RSModel getModel1() {
-      RSEntity var1 = this.getEntity1();
+   public Model getModel1() {
+      Entity var1 = this.getEntity1();
       if(var1 == null) {
          return null;
       } else {
-         RSModel var2;
+         Model var2;
          if(var1 instanceof net.runelite.api.Model) {
-            var2 = (RSModel)var1;
+            var2 = (Model)var1;
          } else {
             var2 = var1.getModel();
          }
@@ -128,14 +76,14 @@ public final class WallDecoration implements RSWallDecoration {
       }
    }
 
-   public RSModel getModel2() {
-      RSEntity var1 = this.getEntity2();
+   public Model getModel2() {
+      Entity var1 = this.getEntity2();
       if(var1 == null) {
          return null;
       } else {
-         RSModel var2;
+         Model var2;
          if(var1 instanceof net.runelite.api.Model) {
-            var2 = (RSModel)var1;
+            var2 = (Model)var1;
          } else {
             var2 = var1.getModel();
          }
@@ -144,14 +92,17 @@ public final class WallDecoration implements RSWallDecoration {
       }
    }
 
-   public RSEntity getEntity1() {
+   @Override
+   public Entity getEntity1() {
       return this.entity1;
    }
 
-   public RSEntity getEntity2() {
+   @Override
+   public Entity getEntity2() {
       return this.entity2;
    }
 
+   @Override
    public int getX() {
       return this.x;
    }
@@ -160,6 +111,7 @@ public final class WallDecoration implements RSWallDecoration {
       return new LocalPoint(this.getX(), this.getY());
    }
 
+   @Override
    public int getY() {
       return this.y;
    }
@@ -168,10 +120,12 @@ public final class WallDecoration implements RSWallDecoration {
       return this.decorativeObjectPlane;
    }
 
+   @Override
    public int getXOffset() {
       return this.xOffset;
    }
 
+   @Override
    public int getYOffset() {
       return this.yOffset;
    }
@@ -213,17 +167,13 @@ public final class WallDecoration implements RSWallDecoration {
       return var3 == null && var4 == null?null:(var3 != null?var3:var4);
    }
 
+   @Override
    public int getOrientation() {
       return this.orientation2;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(II)Lif;",
-      garbageValue = "-746198187"
-   )
    public static ParamDefinition method2913(int var0) {
-      ParamDefinition var1 = (ParamDefinition)ParamDefinition.ParamDefinition_cached.method3032((long)var0);
+      ParamDefinition var1 = (ParamDefinition)ParamDefinition.ParamDefinition_cached.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {
@@ -239,11 +189,6 @@ public final class WallDecoration implements RSWallDecoration {
       }
    }
 
-   @ObfuscatedName("fz")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1910753346"
-   )
    static final void method2914() {
       for(int var0 = 0; var0 < Client.npcCount; ++var0) {
          int var1 = Client.npcIndices[var0];

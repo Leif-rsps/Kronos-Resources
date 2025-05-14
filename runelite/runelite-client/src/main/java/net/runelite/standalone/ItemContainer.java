@@ -1,30 +1,15 @@
 package net.runelite.standalone;
 
 import net.runelite.api.Item;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSItemContainer;
 
 import java.util.Arrays;
 
-@ObfuscatedName("bz")
-public class ItemContainer extends Node implements RSItemContainer {
-   @ObfuscatedName("mu")
-   @ObfuscatedGetter(
-      intValue = -1316536921
-   )
+public class ItemContainer extends Node implements net.runelite.api.ItemContainer {
    static int selectedSpellFlags;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Llq;"
-   )
    static NodeHashTable itemContainers;
    public static int rl$lastCycle;
    public static int rl$lastContainer;
-   @ObfuscatedName("n")
    int[] ids;
-   @ObfuscatedName("v")
    int[] quantities;
    String[][] itemAttributes;
 
@@ -38,22 +23,10 @@ public class ItemContainer extends Node implements RSItemContainer {
       this.itemAttributes = new String[ids.length][3];
    }
 
-   public int[] getItemIds() {
-      return this.ids;
-   }
-
-   public int[] getStackSizes() {
-      return this.quantities;
-   }
-
-   public String[][] getItemAttributes() {
-      return this.itemAttributes;
-   }
-
    public Item[] getItems() {
-      int[] var1 = this.getItemIds();
-      int[] var2 = this.getStackSizes();
-      String[][] var6 = this.getItemAttributes();
+      int[] var1 = this.ids;
+      int[] var2 = this.quantities;
+      String[][] var6 = this.itemAttributes;
       Item[] var3 = new Item[var1.length];
 
       for(int var4 = 0; var4 < var1.length; ++var4) {
@@ -64,11 +37,6 @@ public class ItemContainer extends Node implements RSItemContainer {
       return var3;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)Lfz;",
-      garbageValue = "1488138254"
-   )
    public static Clock method1451() {
       NanoClock var10000;
       try {
@@ -80,11 +48,6 @@ public class ItemContainer extends Node implements RSItemContainer {
       return var10000;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;Lhp;Lhp;I)V",
-      garbageValue = "376678600"
-   )
    public static void method1461(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
       SequenceDefinition.SequenceDefinition_archive = var0;
       SequenceDefinition.SequenceDefinition_animationsArchive = var1;
@@ -120,11 +83,6 @@ public class ItemContainer extends Node implements RSItemContainer {
       container.itemAttributes[slot] = attributes;
    }
 
-   @ObfuscatedName("io")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIIII)V",
-      garbageValue = "-57501603"
-   )
    static final void method1459(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       if(WorldMapData_0.method171(var0)) {
          GrandExchangeOffer.field3107 = null;

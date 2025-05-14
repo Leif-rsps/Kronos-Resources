@@ -11,144 +11,36 @@ import net.runelite.api.SkullIcon;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.model.Triangle;
 import net.runelite.api.model.Vertex;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSModel;
-import net.runelite.rs.api.RSPlayer;
-import net.runelite.rs.api.RSPlayerAppearance;
-import net.runelite.rs.api.RSUsername;
 
-@ObfuscatedName("bi")
-public final class Player extends Actor implements RSPlayer {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhr;"
-   )
+public final class Player extends Actor implements net.runelite.api.Player {
    PlayerAppearance appearance;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = 259205349
-   )
    int tileHeight2;
-   @ObfuscatedName("p")
    String[] actions;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = -1877190243
-   )
    int combatLevel;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = 14620165
-   )
    int team;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      intValue = -650011663
-   )
    int field481;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 1159540227
-   )
    int headIconPrayer;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 1858482709
-   )
    int headIconPk;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 1991225207
-   )
    int field492;
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = -1977928131
-   )
    int field483;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -1771866445
-   )
    int tileHeight;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Ljq;"
-   )
    Username username;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = -115769627
-   )
    int field478;
-   @ObfuscatedName("ac")
    boolean field491;
-   @ObfuscatedName("aw")
-   @ObfuscatedGetter(
-      intValue = -150727859
-   )
    int tileY;
-   @ObfuscatedName("az")
-   @ObfuscatedGetter(
-      intValue = -1966699347
-   )
    int tileX;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -160406725
-   )
    int field476;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -417952037
-   )
    int animationCycleEnd;
    public boolean friended;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = -1078544769
-   )
    int index;
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      signature = "Ldh;"
-   )
    Model model0;
-   @ObfuscatedName("f")
    boolean isHidden;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = 1516041903
-   )
    int field482;
-   @ObfuscatedName("h")
    boolean isUnanimated;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = -635760975
-   )
    int animationCycleStart;
-   @ObfuscatedName("j")
-   @ObfuscatedGetter(
-      intValue = 574179385
-   )
    int plane;
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "Ljm;"
-   )
    TriBool isInClanChat;
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      signature = "Ljm;"
-   )
    TriBool isFriendTriBool;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 637335031
-   )
    int skillLevel;
 
    Player() {
@@ -172,11 +64,6 @@ public final class Player extends Actor implements RSPlayer {
       this.field491 = false;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-2145672884"
-   )
    boolean method1090() {
       if(this.isFriendTriBool == TriBool.TriBool_unknown) {
          this.method1092();
@@ -185,38 +72,18 @@ public final class Player extends Actor implements RSPlayer {
       return this.isFriendTriBool == TriBool.TriBool_true;
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(S)Z",
-      garbageValue = "180"
-   )
    final boolean vmethod1611() {
       return this.appearance != null;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-2050482015"
-   )
    void method1122() {
       this.isInClanChat = TriBool.TriBool_unknown;
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "108"
-   )
    void method1094() {
-      this.isInClanChat = Varps.clanChat != null && Varps.clanChat.method4770(this.username)?TriBool.TriBool_true:TriBool.TriBool_false;
+      this.isInClanChat = Varps.clanChat != null && Varps.clanChat.isMember(this.username)?TriBool.TriBool_true:TriBool.TriBool_false;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-408684042"
-   )
    boolean method1093() {
       if(this.isInClanChat == TriBool.TriBool_unknown) {
          this.method1094();
@@ -225,46 +92,33 @@ public final class Player extends Actor implements RSPlayer {
       return this.isInClanChat == TriBool.TriBool_true;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "79"
-   )
    void method1092() {
       this.isFriendTriBool = Tiles.friendSystem.method903(this.username)?TriBool.TriBool_true:TriBool.TriBool_false;
       this.updateFriended();
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "73"
-   )
    void method1091() {
       this.isFriendTriBool = TriBool.TriBool_unknown;
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    protected final Model vmethod3072(int var1) {
       if(!ViewportMouse.client.isInterpolatePlayerAnimations()) {
          return (Model)this.copy$getModel(var1);
       } else {
          int var2 = this.getActionFrame();
-         int var3 = this.getPoseFrame();
-         int var4 = this.getSpotAnimationFrame();
+         int var3 = this.movementFrame;
+         int var4 = this.spotAnimationFrame;
 
          Model var5;
          try {
             this.setActionFrame(Integer.MIN_VALUE | this.getActionFrameCycle() << 16 | var2);
-            this.setPoseFrame(Integer.MIN_VALUE | this.getPoseFrameCycle() << 16 | var3);
-            this.setSpotAnimationFrame(Integer.MIN_VALUE | this.getSpotAnimationFrameCycle() << 16 | var4);
+            int var11 = Integer.MIN_VALUE | this.movementFrameCycle << 16 | var3;
+            this.movementFrame = var11;
+            this.setSpotAnimationFrame(Integer.MIN_VALUE | this.spotAnimationFrameCycle << 16 | var4);
             var5 = this.copy$getModel(var1);
          } finally {
             this.setActionFrame(var2);
-            this.setPoseFrame(var3);
+            this.movementFrame = var3;
             this.setSpotAnimationFrame(var4);
          }
 
@@ -272,11 +126,6 @@ public final class Player extends Actor implements RSPlayer {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lkl;B)V",
-      garbageValue = "-16"
-   )
    final void method1088(Buffer var1) {
       var1.offset = 0;
       int var2 = var1.readUnsignedByte();
@@ -362,7 +211,7 @@ public final class Player extends Actor implements RSPlayer {
       this.method1091();
       this.method1122();
       if(this == class215.localPlayer) {
-         RunException.localPlayerName = this.username.method5001();
+         RunException.localPlayerName = this.username.getName();
       }
 
       this.combatLevel = var1.readUnsignedByte();
@@ -379,11 +228,6 @@ public final class Player extends Actor implements RSPlayer {
       this.appearance.method4152(var4, var9, var2 == 1, var3);
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(IIBI)V",
-      garbageValue = "-1343044637"
-   )
    final void method1100(int var1, int var2, byte var3) {
       if(super.pathLength < 9) {
          ++super.pathLength;
@@ -400,11 +244,6 @@ public final class Player extends Actor implements RSPlayer {
       super.pathTraversed[0] = var3;
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(IIB)V",
-      garbageValue = "-23"
-   )
    void method1099(int var1, int var2) {
       super.pathLength = 0;
       super.field726 = 0;
@@ -417,29 +256,18 @@ public final class Player extends Actor implements RSPlayer {
    }
 
    public Polygon getConvexHull() {
-      RSModel var1 = this.getModel();
+      Model var1 = this.getModel();
       if(var1 == null) {
          return null;
       } else {
-         int var2 = Perspective.getTileHeight(ViewportMouse.client, new LocalPoint(this.getX(), this.getY()), ViewportMouse.client.getPlane());
-         return var1.getConvexHull(this.getX(), this.getY(), this.getOrientation(), var2);
+         int var2 = Perspective.getTileHeight(ViewportMouse.client, new LocalPoint(this.x, this.y * 682054857), ViewportMouse.client.getPlane());
+         return var1.getConvexHull(this.x, this.y * 682054857, this.getOrientation(), var2);
       }
    }
 
-   public int getRsSkullIcon() {
-      return this.headIconPk;
-   }
-
-   public int getRsOverheadIcon() {
-      return this.headIconPrayer;
-   }
-
+   @Override
    public boolean isFriend() {
       return this.method1090();
-   }
-
-   public RSUsername getRsName() {
-      return this.username;
    }
 
    public String getPrefix() {
@@ -450,9 +278,6 @@ public final class Player extends Actor implements RSPlayer {
       return suffix;
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    public final Model copy$getModel(int var1) {
       if(this.appearance == null) {
          return null;
@@ -485,27 +310,27 @@ public final class Player extends Actor implements RSPlayer {
                   var5 = this.model0;
                   var5.method2423(this.field476 - super.x, this.tileHeight2 - this.tileHeight, this.field478 - super.y * 682054857);
                   if(super.orientation == 512) {
-                     var5.method2366();
-                     var5.method2366();
-                     var5.method2366();
+                     var5.rotateY90Ccw();
+                     var5.rotateY90Ccw();
+                     var5.rotateY90Ccw();
                   } else if(super.orientation == 1024) {
-                     var5.method2366();
-                     var5.method2366();
+                     var5.rotateY90Ccw();
+                     var5.rotateY90Ccw();
                   } else if(super.orientation == 1536) {
-                     var5.method2366();
+                     var5.rotateY90Ccw();
                   }
 
                   var6 = new Model[]{var4, var5};
                   var4 = new Model(var6, 2);
                   if(super.orientation == 512) {
-                     var5.method2366();
+                     var5.rotateY90Ccw();
                   } else if(super.orientation == 1024) {
-                     var5.method2366();
-                     var5.method2366();
+                     var5.rotateY90Ccw();
+                     var5.rotateY90Ccw();
                   } else if(super.orientation == 1536) {
-                     var5.method2366();
-                     var5.method2366();
-                     var5.method2366();
+                     var5.rotateY90Ccw();
+                     var5.rotateY90Ccw();
+                     var5.rotateY90Ccw();
                   }
 
                   var5.method2423(super.x - this.field476, this.tileHeight - this.tileHeight2, super.y * 682054857 - this.field478);
@@ -519,7 +344,7 @@ public final class Player extends Actor implements RSPlayer {
    }
 
    public void updateFriended() {
-      this.friended = ViewportMouse.client.getFriendManager().isFriended(this.getRsName(), false);
+      this.friended = Tiles.friendSystem.isFriended(this.username, false);
    }
 
    public List rotate(List var1, int var2) {
@@ -539,7 +364,7 @@ public final class Player extends Actor implements RSPlayer {
    }
 
    public String getName() {
-      RSUsername var1 = this.getRsName();
+      Username var1 = this.username;
       if(var1 == null) {
          return null;
       } else {
@@ -565,7 +390,7 @@ public final class Player extends Actor implements RSPlayer {
    }
 
    public HeadIcon getOverheadIcon() {
-      switch(this.getRsOverheadIcon()) {
+      switch(this.headIconPrayer) {
       case 0:
          return HeadIcon.MELEE;
       case 1:
@@ -584,7 +409,7 @@ public final class Player extends Actor implements RSPlayer {
    }
 
    public SkullIcon getSkullIcon() {
-      switch(this.getRsSkullIcon()) {
+      switch(this.headIconPk) {
       case 0:
          return SkullIcon.SKULL;
       case 1:
@@ -611,12 +436,12 @@ public final class Player extends Actor implements RSPlayer {
    }
 
    public Polygon[] getPolygons() {
-      RSModel var1 = this.getModel();
+      Model var1 = this.getModel();
       if(var1 == null) {
          return null;
       } else {
-         int var2 = this.getX();
-         int var3 = this.getY();
+         int var2 = this.x;
+         int var3 = this.y * 682054857;
          int var4 = this.getOrientation();
          int var5 = Perspective.getTileHeight(ViewportMouse.client, new LocalPoint(var2, var3), ViewportMouse.client.getPlane());
          List var6 = var1.getTriangles();
@@ -645,35 +470,31 @@ public final class Player extends Actor implements RSPlayer {
       return this.isFriend() || this.friended;
    }
 
-   public RSPlayerAppearance getPlayerAppearance() {
+   @Override
+   public PlayerAppearance getPlayerAppearance() {
       return this.appearance;
    }
 
+   @Override
    public int getCombatLevel() {
       return this.combatLevel;
    }
 
-   public int getTotalLevel() {
-      return this.skillLevel;
-   }
-
+   @Override
    public int getTeam() {
       return this.team;
    }
 
+   @Override
    public int getPlayerId() {
       return this.index;
    }
 
+   @Override
    public boolean isClanMember() {
       return this.method1093();
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(IIBB)V",
-      garbageValue = "37"
-   )
    final void method1111(int var1, int var2, byte var3) {
       if(super.sequence != -1 && GrandExchangeOfferUnitPriceComparator.method1468(super.sequence).field3431 == 1) {
          super.sequence = -1;
@@ -697,11 +518,6 @@ public final class Player extends Actor implements RSPlayer {
 
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "20"
-   )
    int method1089() {
       return this.appearance != null && this.appearance.npcTransformId != -1?PacketBufferNode.getNpcDefinition(this.appearance.npcTransformId).size:1;
    }

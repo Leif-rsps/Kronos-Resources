@@ -1,16 +1,11 @@
 package net.runelite.standalone;
 
 import net.runelite.api.events.WidgetLoaded;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSWidget;
 
-@ObfuscatedName("gg")
 public class class186 {
-   @ObfuscatedName("av")
    static void method3728(int var0, int var1) {
       Client.copy$runWidgetOnLoadListener(var0, var1);
-      RSWidget[][] var2 = ViewportMouse.client.getWidgets();
+       Widget[][] var2 = UserComparator5.Widget_interfaceComponents;
       boolean var3 = var2 != null && var2[var0] != null;
       if(var3) {
          WidgetLoaded var4 = new WidgetLoaded();
@@ -20,11 +15,6 @@ public class class186 {
 
    }
 
-   @ObfuscatedName("ih")
-   @ObfuscatedSignature(
-      signature = "(Lil;IIII)V",
-      garbageValue = "1588588018"
-   )
    static final void method3727(NPCDefinition var0, int var1, int var2, int var3) {
       if(Client.menuOptionsCount < 400) {
          if(var0.transforms != null) {

@@ -1,70 +1,20 @@
 package net.runelite.standalone;
 
 import java.awt.FontMetrics;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ii")
 public class FloorOverlayDefinition extends DualNode {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable FloorOverlayDefinition_cached;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive FloorOverlayDefinition_archive;
-   @ObfuscatedName("ap")
    static FontMetrics loginScreenFontMetrics;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 420813751
-   )
    public int secondaryRgb;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1507689835
-   )
    public int hue;
-   @ObfuscatedName("r")
    public boolean hideUnderlay;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1279665091
-   )
    public int texture;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 1255212273
-   )
    public int primaryRgb;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -298509321
-   )
    public int lightness;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = 1614583675
-   )
    public int secondaryLightness;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = 1584668069
-   )
    public int secondarySaturation;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 171308105
-   )
    public int secondaryHue;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -898918847
-   )
    public int saturation;
 
    static {
@@ -78,11 +28,6 @@ public class FloorOverlayDefinition extends DualNode {
       this.secondaryRgb = -1;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;IB)V",
-      garbageValue = "64"
-   )
    public void method4357(Buffer var1, int var2) {
       while(true) {
          int var3 = var1.readUnsignedByte();
@@ -94,11 +39,6 @@ public class FloorOverlayDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "-1969849655"
-   )
    void method4356(int var1) {
       double var2 = (double)(var1 >> 16 & 255) / 256.0D;
       double var4 = (double)(var1 >> 8 & 255) / 256.0D;
@@ -160,11 +100,6 @@ public class FloorOverlayDefinition extends DualNode {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;III)V",
-      garbageValue = "-973510442"
-   )
    void method4358(Buffer var1, int var2, int var3) {
       if(var2 == 1) {
          this.primaryRgb = var1.method5500();
@@ -180,11 +115,6 @@ public class FloorOverlayDefinition extends DualNode {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "1"
-   )
    public void method4365() {
       if(this.secondaryRgb != -1) {
          this.method4356(this.secondaryRgb);
@@ -196,11 +126,6 @@ public class FloorOverlayDefinition extends DualNode {
       this.method4356(this.primaryRgb);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([Ljava/lang/CharSequence;III)Ljava/lang/String;",
-      garbageValue = "137024567"
-   )
    public static String method4360(CharSequence[] var0, int var1, int var2) {
       if(var2 == 0) {
          return "";

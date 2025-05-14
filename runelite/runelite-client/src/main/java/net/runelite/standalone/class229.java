@@ -1,22 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hw")
 public final class class229 {
-   @ObfuscatedName("ny")
-   @ObfuscatedGetter(
-      intValue = 130681721
-   )
    static int field2782;
 
-   @ObfuscatedName("je")
-   @ObfuscatedSignature(
-      signature = "(Lho;IIS)V",
-      garbageValue = "16256"
-   )
    static final void method4187(Widget var0, int var1, int var2) {
       if(Client.clickedWidget == null && !Client.isMenuOpen) {
          if(var0 != null) {

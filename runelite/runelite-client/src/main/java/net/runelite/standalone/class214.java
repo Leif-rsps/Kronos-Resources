@@ -1,15 +1,6 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hh")
 public class class214 {
-   @ObfuscatedName("gd")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "15"
-   )
    static final int method3937() {
       if(AbstractArchive.clientPreferences.roofsHidden) {
          return WorldMapRectangle.plane;
@@ -19,11 +10,6 @@ public class class214 {
       }
    }
 
-   @ObfuscatedName("hx")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-788128386"
-   )
    static void method3938() {
       if(Client.isSpellSelected) {
          Widget var0 = GrandExchangeOfferWorldComparator.method93(AttackOption.selectedSpellWidget, Client.selectedSpellChildIndex);
@@ -39,11 +25,6 @@ public class class214 {
       }
    }
 
-   @ObfuscatedName("ju")
-   @ObfuscatedSignature(
-      signature = "(IIIILlf;Lhz;I)V",
-      garbageValue = "1204804321"
-   )
    static final void method3936(int var0, int var1, int var2, int var3, Sprite var4, SpriteMask var5) {
       if(var4 != null) {
          int var6 = Client.camAngleY & 2047;

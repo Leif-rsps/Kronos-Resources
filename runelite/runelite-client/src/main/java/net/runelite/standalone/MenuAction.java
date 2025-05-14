@@ -1,46 +1,15 @@
 package net.runelite.standalone;
 
 import java.io.IOException;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSMenuAction;
 
-@ObfuscatedName("cs")
-public class MenuAction implements RSMenuAction {
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = 237272937
-   )
+public class MenuAction {
    public static int PcmPlayer_count;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -950426859
-   )
    int argument1;
-   @ObfuscatedName("r")
    String action;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 1009688897
-   )
    int argument0;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -290789191
-   )
    int argument2;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 1746809863
-   )
    int opcode;
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lky;ZS)V",
-      garbageValue = "-32250"
-   )
    public static void method2160(AbstractSocket var0, boolean var1) {
       if(NetCache.NetCache_socket != null) {
          try {
@@ -102,11 +71,6 @@ public class MenuAction implements RSMenuAction {
       }
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1201643852"
-   )
    public static final void method2159() {
       ViewportMouse.ViewportMouse_isInViewport = false;
       ViewportMouse.ViewportMouse_entityCount = 0;

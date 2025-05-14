@@ -1,47 +1,16 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSVarbitDefinition;
-
-@ObfuscatedName("id")
-public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
+public class VarbitDefinition extends DualNode {
    public static EvictingDualNodeHashTable VarbitDefinition_cached;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive VarbitDefinition_archive;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1338326949
-   )
    public int endBit;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 1319012991
-   )
    public int startBit;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -613999551
-   )
    public int baseVar;
 
    static {
       VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "1106809134"
-   )
    public void method4258(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
@@ -53,11 +22,6 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "1640448389"
-   )
    void method4259(Buffer var1, int var2) {
       if(var2 == 1) {
          this.baseVar = var1.readUnsignedShort();
@@ -67,23 +31,6 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
 
    }
 
-   public int getIndex() {
-      return this.baseVar;
-   }
-
-   public int getLeastSignificantBit() {
-      return this.startBit;
-   }
-
-   public int getMostSignificantBit() {
-      return this.endBit;
-   }
-
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(Lkn;Lkn;Lkn;I)V",
-      garbageValue = "937788655"
-   )
    static void method4260(Font var0, Font var1, Font var2) {
       Login.xPadding = (FloorDecoration.canvasWidth - 765) / 2;
       Login.loginBoxX = Login.xPadding + 202;
@@ -130,15 +77,15 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
             HealthBar.worldSelectRightSprite = WorldMapRectangle.method4765(GrandExchangeOfferAgeComparator.archive8, "rightarrow", "");
          }
 
-         Rasterizer2D.method6469(Login.xPadding, 23, 765, 480, 0);
-         Rasterizer2D.method6419(Login.xPadding, 0, 125, 23, 12425273, 9135624);
-         Rasterizer2D.method6419(Login.xPadding + 125, 0, 640, 23, 5197647, 2697513);
+         Rasterizer2D.fillRectangle(Login.xPadding, 23, 765, 480, 0);
+         Rasterizer2D.fillRectangleGradient(Login.xPadding, 0, 125, 23, 12425273, 9135624);
+         Rasterizer2D.fillRectangleGradient(Login.xPadding + 125, 0, 640, 23, 5197647, 2697513);
          var0.method5332("Select a world", Login.xPadding + 62, 15, 0, -1);
          if(Frames.worldSelectStars != null) {
             Frames.worldSelectStars[1].method6320(Login.xPadding + 140, 1);
-            var1.method5329("Members only world", Login.xPadding + 152, 10, 16777215, -1);
+            var1.drawTextLeftAligned("Members only world", Login.xPadding + 152, 10, 16777215, -1);
             Frames.worldSelectStars[0].method6320(Login.xPadding + 140, 12);
-            var1.method5329("Free world", Login.xPadding + 152, 21, 16777215, -1);
+            var1.drawTextLeftAligned("Free world", Login.xPadding + 152, 21, 16777215, -1);
          }
 
          if(GrandExchangeOfferTotalQuantityComparator.worldSelectArrows != null) {
@@ -155,7 +102,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                GrandExchangeOfferTotalQuantityComparator.worldSelectArrows[1].method6320(var45 + 15, 4);
             }
 
-            var0.method5329("World", var45 + 32, 17, 16777215, -1);
+            var0.drawTextLeftAligned("World", var45 + 32, 17, 16777215, -1);
             var24 = Login.xPadding + 390;
             if(World.World_sortOption1[0] == 1 && World.World_sortOption2[0] == 0) {
                GrandExchangeOfferTotalQuantityComparator.worldSelectArrows[2].method6320(var24, 4);
@@ -169,7 +116,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                GrandExchangeOfferTotalQuantityComparator.worldSelectArrows[1].method6320(var24 + 15, 4);
             }
 
-            var0.method5329("Players", var24 + 32, 17, 16777215, -1);
+            var0.drawTextLeftAligned("Players", var24 + 32, 17, 16777215, -1);
             var39 = Login.xPadding + 500;
             if(World.World_sortOption1[0] == 2 && World.World_sortOption2[0] == 0) {
                GrandExchangeOfferTotalQuantityComparator.worldSelectArrows[2].method6320(var39, 4);
@@ -183,7 +130,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                GrandExchangeOfferTotalQuantityComparator.worldSelectArrows[1].method6320(var39 + 15, 4);
             }
 
-            var0.method5329("Location", var39 + 32, 17, 16777215, -1);
+            var0.drawTextLeftAligned("Location", var39 + 32, 17, 16777215, -1);
             var37 = Login.xPadding + 610;
             if(World.World_sortOption1[0] == 3 && World.World_sortOption2[0] == 0) {
                GrandExchangeOfferTotalQuantityComparator.worldSelectArrows[2].method6320(var37, 4);
@@ -197,10 +144,10 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                GrandExchangeOfferTotalQuantityComparator.worldSelectArrows[1].method6320(var37 + 15, 4);
             }
 
-            var0.method5329("Type", var37 + 32, 17, 16777215, -1);
+            var0.drawTextLeftAligned("Type", var37 + 32, 17, 16777215, -1);
          }
 
-         Rasterizer2D.method6469(Login.xPadding + 708, 4, 50, 16, 0);
+         Rasterizer2D.fillRectangle(Login.xPadding + 708, 4, 50, 16, 0);
          var1.method5332("Cancel", Login.xPadding + 708 + 25, 16, 16777215, -1);
          Login.hoveredWorldIndex = -1;
          if(ArchiveLoader.worldSelectBackSprites != null) {
@@ -325,7 +272,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                   var43 = MouseHandler.MouseHandler_y - 25 - var18;
                }
 
-               Rasterizer2D.method6469(MouseHandler.MouseHandler_x - var17 / 2, var43, var17, var18, 16777120);
+               Rasterizer2D.fillRectangle(MouseHandler.MouseHandler_x - var17 / 2, var43, var17, var18, 16777120);
                Rasterizer2D.drawRectangle(MouseHandler.MouseHandler_x - var17 / 2, var43, var17, var18, 0);
                var1.method5332(World.World_worlds[Login.hoveredWorldIndex].activity, MouseHandler.MouseHandler_x, var43 + var1.ascent + 4, 0, -1);
             }
@@ -343,8 +290,8 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
             var24 = 253 - var23;
             Rasterizer2D.drawRectangle(Login.loginBoxX + 180 - 152, var24, 304, 34, 9179409);
             Rasterizer2D.drawRectangle(Login.loginBoxX + 180 - 151, var24 + 1, 302, 32, 0);
-            Rasterizer2D.method6469(Login.loginBoxX + 180 - 150, var24 + 2, Login.Login_loadingPercent * 3, 30, 9179409);
-            Rasterizer2D.method6469(Login.Login_loadingPercent * 3 + (Login.loginBoxX + 180 - 150), var24 + 2, 300 - Login.Login_loadingPercent * 3, 30, 0);
+            Rasterizer2D.fillRectangle(Login.loginBoxX + 180 - 150, var24 + 2, Login.Login_loadingPercent * 3, 30, 9179409);
+            Rasterizer2D.fillRectangle(Login.Login_loadingPercent * 3 + (Login.loginBoxX + 180 - 150), var24 + 2, 300 - Login.Login_loadingPercent * 3, 30, 0);
             var0.method5332(Login.Login_loadingText, Login.loginBoxX + 180, 276 - var23, 16777215, -1);
          }
 
@@ -368,7 +315,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
             var45 += 15;
             var45 += 7;
             if(Login.loginIndex != 4) {
-               var0.method5329("Login: ", Login.loginBoxX + 180 - 110, var45, 16777215, 0);
+               var0.drawTextLeftAligned("Login: ", Login.loginBoxX + 180 - 110, var45, 16777215, 0);
                var46 = 200;
                if(!AbstractArchive.clientPreferences.hideUsername) {
                   var25 = Login.Login_username;
@@ -389,7 +336,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                   ;
                }
 
-               var0.method5329(AbstractFont.method5328(var25), Login.loginBoxX + 180 - 70, var45, 16777215, 0);
+               var0.drawTextLeftAligned(AbstractFont.method5328(var25), Login.loginBoxX + 180 - 70, var45, 16777215, 0);
                var45 += 15;
                var8 = "Password: ";
                var27 = Login.Login_password;
@@ -401,7 +348,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                }
 
                var40 = new String(var13);
-               var0.method5329(var8 + var40, Login.loginBoxX + 180 - 108, var45, 16777215, 0);
+               var0.drawTextLeftAligned(var8 + var40, Login.loginBoxX + 180 - 108, var45, 16777215, 0);
                var45 += 15;
             }
          }
@@ -445,7 +392,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                var0.method5332(Login.Login_response3, GrandExchangeOfferUnitPriceComparator.loginBoxCenter, var45, 16776960, 0);
                var45 += 15;
                var45 += 7;
-               var0.method5329("Login: ", GrandExchangeOfferUnitPriceComparator.loginBoxCenter - 110, var45, 16777215, 0);
+               var0.drawTextLeftAligned("Login: ", GrandExchangeOfferUnitPriceComparator.loginBoxCenter - 110, var45, 16777215, 0);
                var46 = 200;
                if(!AbstractArchive.clientPreferences.hideUsername) {
                   var25 = Login.Login_username;
@@ -466,7 +413,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                   ;
                }
 
-               var0.method5329(AbstractFont.method5328(var25) + (Login.currentLoginField == 0 & Client.cycle % 40 < 20?World.method1251(16776960) + "|":""), GrandExchangeOfferUnitPriceComparator.loginBoxCenter - 70, var45, 16777215, 0);
+               var0.drawTextLeftAligned(AbstractFont.method5328(var25) + (Login.currentLoginField == 0 & Client.cycle % 40 < 20?World.method1251(16776960) + "|":""), GrandExchangeOfferUnitPriceComparator.loginBoxCenter - 70, var45, 16777215, 0);
                var45 += 15;
                var8 = "Password: ";
                var27 = Login.Login_password;
@@ -478,19 +425,19 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                }
 
                var40 = new String(var13);
-               var0.method5329(var8 + var40 + (Login.currentLoginField == 1 & Client.cycle % 40 < 20?World.method1251(16776960) + "|":""), GrandExchangeOfferUnitPriceComparator.loginBoxCenter - 108, var45, 16777215, 0);
+               var0.drawTextLeftAligned(var8 + var40 + (Login.currentLoginField == 1 & Client.cycle % 40 < 20?World.method1251(16776960) + "|":""), GrandExchangeOfferUnitPriceComparator.loginBoxCenter - 108, var45, 16777215, 0);
                var45 += 15;
                var44 = 277;
                var31 = GrandExchangeOfferUnitPriceComparator.loginBoxCenter + -117;
                IndexedSprite var34 = ClientPacket.method3876(Client.Login_isUsernameRemembered, Login.field771);
                var34.method6320(var31, var44);
                var31 = var31 + var34.subWidth + 5;
-               var1.method5329("Remember username", var31, var44 + 13, 16776960, 0);
+               var1.drawTextLeftAligned("Remember username", var31, var44 + 13, 16776960, 0);
                var31 = GrandExchangeOfferUnitPriceComparator.loginBoxCenter + 24;
                var34 = ClientPacket.method3876(AbstractArchive.clientPreferences.hideUsername, Login.field787);
                var34.method6320(var31, var44);
                var31 = var31 + var34.subWidth + 5;
-               var1.method5329("Hide username", var31, var44 + 13, 16776960, 0);
+               var1.drawTextLeftAligned("Hide username", var31, var44 + 13, 16776960, 0);
                var45 = var44 + 15;
                var32 = GrandExchangeOfferUnitPriceComparator.loginBoxCenter - 80;
                short var42 = 321;
@@ -548,11 +495,11 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                   }
 
                   var8 = new String(var47);
-                  var0.method5329(var26 + var8 + (Client.cycle % 40 < 20?World.method1251(16776960) + "|":""), Login.loginBoxX + 180 - 108, var45, 16777215, 0);
+                  var0.drawTextLeftAligned(var26 + var8 + (Client.cycle % 40 < 20?World.method1251(16776960) + "|":""), Login.loginBoxX + 180 - 108, var45, 16777215, 0);
                   var45 -= 8;
-                  var0.method5329("Trust this computer", Login.loginBoxX + 180 - 9, var45, 16776960, 0);
+                  var0.drawTextLeftAligned("Trust this computer", Login.loginBoxX + 180 - 9, var45, 16776960, 0);
                   var45 += 15;
-                  var0.method5329("for 30 days: ", Login.loginBoxX + 180 - 9, var45, 16776960, 0);
+                  var0.drawTextLeftAligned("for 30 days: ", Login.loginBoxX + 180 - 9, var45, 16776960, 0);
                   var29 = Login.loginBoxX + 180 - 9 + var0.method5324("for 30 days: ") + 15;
                   var30 = var45 - var0.ascent;
                   IndexedSprite var48;
@@ -584,7 +531,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                      var2.method5332(Login.Login_response3, Login.loginBoxX + 180, var45, 16776960, 0);
                      var45 += 15;
                      var45 += 14;
-                     var0.method5329("Username/email: ", Login.loginBoxX + 180 - 145, var45, 16777215, 0);
+                     var0.drawTextLeftAligned("Username/email: ", Login.loginBoxX + 180 - 145, var45, 16777215, 0);
                      var46 = 174;
                      if(!AbstractArchive.clientPreferences.hideUsername) {
                         var25 = Login.Login_username;
@@ -605,7 +552,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                         ;
                      }
 
-                     var0.method5329(AbstractFont.method5328(var25) + (Client.cycle % 40 < 20?World.method1251(16776960) + "|":""), Login.loginBoxX + 180 - 34, var45, 16777215, 0);
+                     var0.drawTextLeftAligned(AbstractFont.method5328(var25) + (Client.cycle % 40 < 20?World.method1251(16776960) + "|":""), Login.loginBoxX + 180 - 34, var45, 16777215, 0);
                      var45 += 15;
                      var28 = Login.loginBoxX + 180 - 80;
                      var49 = 321;
@@ -675,7 +622,7 @@ public class VarbitDefinition extends DualNode implements RSVarbitDefinition {
                         var25 = "";
                         break;
                      default:
-                        TilePaint.method2911(false);
+                        TilePaint.promptCredentials(false);
                      }
 
                      var0.method5332(var4, Login.loginBoxX + 180, var44, 16776960, 0);

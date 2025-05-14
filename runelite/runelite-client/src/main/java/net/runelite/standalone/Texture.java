@@ -1,39 +1,20 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSTexture;
-
-@ObfuscatedName("dg")
-public class Texture extends Node implements RSTexture {
-   @ObfuscatedName("e")
+public class Texture extends Node implements net.runelite.api.Texture {
    static int[] Texture_animatedPixels;
-   @ObfuscatedName("o")
    int[] pixels;
-   @ObfuscatedName("p")
    boolean field1363;
-   @ObfuscatedName("q")
    int[] fileIds;
-   @ObfuscatedName("r")
    int averageRGB;
-   @ObfuscatedName("y")
    int[] field1361;
-   @ObfuscatedName("a")
    boolean isLoaded;
-   @ObfuscatedName("b")
    int animationSpeed;
-   @ObfuscatedName("c")
    int animationDirection;
    public float rl$u;
    public float rl$v;
-   @ObfuscatedName("i")
    int[] field1367;
-   @ObfuscatedName("m")
    int[] field1365;
 
-   @ObfuscatedSignature(
-      signature = "(Lkl;)V"
-   )
    Texture(Buffer var1) {
       this.isLoaded = false;
       this.averageRGB = var1.readUnsignedShort();
@@ -77,12 +58,10 @@ public class Texture extends Node implements RSTexture {
       }
    }
 
-   @ObfuscatedName("n")
    void method2347() {
       this.pixels = null;
    }
 
-   @ObfuscatedName("v")
    void method2345(int var1) {
       if(!ViewportMouse.client.isGpu()) {
          this.copy$animate(var1);
@@ -91,10 +70,6 @@ public class Texture extends Node implements RSTexture {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(DILhp;)Z"
-   )
    boolean method2346(double brightness, int var3, AbstractArchive var4) {
       int var5;
       for(var5 = 0; var5 < this.fileIds.length; ++var5) {
@@ -113,7 +88,7 @@ public class Texture extends Node implements RSTexture {
          if(var10 == null) {
             var9 = false;
          } else {
-            Tiles.method1200(var10);
+            Tiles.decodeSprite(var10);
             var9 = true;
          }
 
@@ -301,18 +276,22 @@ public class Texture extends Node implements RSTexture {
       this.rl$v = var1;
    }
 
+   @Override
    public int getAnimationDirection() {
       return this.animationDirection;
    }
 
+   @Override
    public int getAnimationSpeed() {
       return this.animationSpeed;
    }
 
+   @Override
    public int[] getPixels() {
       return this.pixels;
    }
 
+   @Override
    public boolean isLoaded() {
       return this.isLoaded;
    }

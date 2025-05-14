@@ -1,42 +1,20 @@
 package net.runelite.standalone;
 
 import java.awt.Component;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ae")
 public final class class22 {
-   @ObfuscatedName("dq")
-   @ObfuscatedSignature(
-      signature = "Lky;"
-   )
    static AbstractSocket js5Socket;
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(II)Ljava/lang/String;",
-      garbageValue = "1930428495"
-   )
    static final String method456(int var0) {
       return var0 < 100000?"<col=ffff00>" + var0 + "</col>":(var0 < 10000000?"<col=ffffff>" + var0 / 1000 + "K" + "</col>":"<col=00ff80>" + var0 / 1000000 + "M" + "</col>");
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/awt/Component;I)V",
-      garbageValue = "-416045608"
-   )
    static void method455(Component var0) {
       var0.addMouseListener(MouseHandler.MouseHandler_instance);
       var0.addMouseMotionListener(MouseHandler.MouseHandler_instance);
       var0.addFocusListener(MouseHandler.MouseHandler_instance);
    }
 
-   @ObfuscatedName("jw")
-   @ObfuscatedSignature(
-      signature = "(Lho;I)Z",
-      garbageValue = "-1205677722"
-   )
    static final boolean method457(Widget var0) {
       int var1 = var0.contentType;
       if(var1 == 205) {

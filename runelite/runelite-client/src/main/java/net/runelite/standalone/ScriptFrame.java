@@ -1,27 +1,17 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bv")
 public class ScriptFrame {
     public static String[] field1761;
    public static int[] field649;
    public Script field638;
    public int[] field640;
    public String[] field641;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 173320539
-   )
    int pc;
 
    ScriptFrame() {
       this.pc = -1;
    }
 
-   @ObfuscatedName("z")
    public static final int method1310(double var0, double var2, double var4) {
       double var6 = var4;
       double var8 = var4;
@@ -83,11 +73,6 @@ public class ScriptFrame {
       return var15;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;Lhp;I)V",
-      garbageValue = "-1912847764"
-   )
    public static void method1309(AbstractArchive var0, AbstractArchive var1) {
       HealthBarDefinition.HealthBarDefinition_archive = var0;
       HealthBarDefinition.HitSplatDefinition_spritesArchive = var1;

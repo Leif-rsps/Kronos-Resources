@@ -1,35 +1,13 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("gk")
 public class MusicPatch extends Node {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "[Lch;"
-   )
    RawSound[] rawSounds;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "[Lgf;"
-   )
    MusicPatchNode2[] field2140;
-   @ObfuscatedName("q")
    byte[] field2138;
-   @ObfuscatedName("r")
    byte[] field2134;
-   @ObfuscatedName("u")
    byte[] field2137;
-   @ObfuscatedName("v")
    short[] field2135;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -779735103
-   )
    int field2136;
-   @ObfuscatedName("m")
    int[] field2141;
 
    MusicPatch(byte[] var1) {
@@ -477,11 +455,6 @@ public class MusicPatch extends Node {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ldq;[B[IB)Z",
-      garbageValue = "43"
-   )
    boolean method3749(SoundCache var1, byte[] var2, int[] var3) {
       boolean var4 = true;
       int var5 = 0;
@@ -515,29 +488,14 @@ public class MusicPatch extends Node {
       return var4;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-38"
-   )
    void method3760() {
       this.field2141 = null;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "10"
-   )
    public static void method3761() {
-      VarpDefinition.VarpDefinition_cached.method3035();
+      VarpDefinition.VarpDefinition_cached.clear();
    }
 
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      signature = "([BI)[B",
-      garbageValue = "-2143377471"
-   )
    static final byte[] method3750(byte[] var0) {
       Buffer var1 = new Buffer(var0);
       int var2 = var1.readUnsignedByte();

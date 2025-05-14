@@ -1,53 +1,24 @@
 package net.runelite.standalone;
 
+import net.runelite.api.ChatLineBuffer;
 import net.runelite.api.MessageNode;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSChatChannel;
-import net.runelite.rs.api.RSDualNode;
-import net.runelite.rs.api.RSMessage;
 
-@ObfuscatedName("cc")
-public class ChatChannel implements RSChatChannel {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "[Lbe;"
-   )
+public class ChatChannel implements ChatLineBuffer {
    Message[] messages;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -864101903
-   )
    int count;
 
    ChatChannel() {
       this.messages = new Message[100];
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)Lbe;",
-      garbageValue = "601749225"
-   )
    Message method1531(int var1) {
       return var1 >= 0 && var1 < this.count?this.messages[var1]:null;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-135495526"
-   )
    int method1525() {
       return this.count;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lbe;",
-      garbageValue = "56"
-   )
    Message method1523(int var1, String var2, String var3, String var4) {
       Message var5 = this.messages[99];
 
@@ -60,8 +31,8 @@ public class ChatChannel implements RSChatChannel {
       if(var5 == null) {
          var5 = new Message(var1, var2, var4, var3);
       } else {
-         var5.method3497();
-         var5.method3491();
+         var5.unlink();
+         var5.unlinkDual();
          var5.method861(var1, var2, var4, var3);
       }
 
@@ -73,20 +44,18 @@ public class ChatChannel implements RSChatChannel {
       return var5;
    }
 
-   public RSMessage[] getLines() {
+   @Override
+   public Message[] getLines() {
       return this.messages;
    }
 
+   @Override
    public int getLength() {
       return this.count;
    }
 
-   public void setLength(int var1) {
-      this.count = var1;
-   }
-
    public void removeMessageNode(MessageNode var1) {
-      RSMessage[] var2 = this.getLines();
+      Message[] var2 = this.getLines();
       int var3 = this.getLength();
       int var4 = -1;
 
@@ -104,18 +73,13 @@ public class ChatChannel implements RSChatChannel {
          }
 
          var2[var3 - 1] = null;
-         this.setLength(var3 - 1);
-         RSDualNode var6 = (RSDualNode)var1;
+         this.count = var3 - 1;
+         DualNode var6 = (DualNode)var1;
          var6.unlink();
          var6.unlinkDual();
       }
    }
 
-   @ObfuscatedName("ft")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "247037730"
-   )
    static final void method1532() {
       int var0 = class212.field2499 * 128 + 64;
       int var1 = Clock.field2041 * 128 + 64;
@@ -231,11 +195,6 @@ public class ChatChannel implements RSChatChannel {
 
    }
 
-   @ObfuscatedName("ja")
-   @ObfuscatedSignature(
-      signature = "([Lho;II)V",
-      garbageValue = "559815398"
-   )
    static final void method1533(Widget[] var0, int var1) {
       for(int var2 = 0; var2 < var0.length; ++var2) {
          Widget var3 = var0[var2];
@@ -300,11 +259,6 @@ public class ChatChannel implements RSChatChannel {
 
    }
 
-   @ObfuscatedName("jx")
-   @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "73"
-   )
    static void method1524(int var0) {
       ParamDefinition.tempMenuAction = new MenuAction();
       Client.onTempMenuActionChanged(-1);

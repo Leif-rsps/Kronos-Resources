@@ -1,38 +1,21 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSInterfaceParent;
+import net.runelite.api.WidgetNode;
 
-@ObfuscatedName("bk")
-public class InterfaceParent extends Node implements RSInterfaceParent {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -1707637965
-   )
+public class InterfaceParent extends Node implements WidgetNode {
    int type;
-   @ObfuscatedName("v")
    boolean field499;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -2031871231
-   )
    int group;
 
    InterfaceParent() {
       this.field499 = false;
    }
 
+   @Override
    public int getId() {
       return this.group;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "4"
-   )
    public static void method1137(int var0) {
       if(var0 != -1) {
          if(ViewportMouse.Widget_loadedInterfaces[var0]) {
@@ -60,11 +43,6 @@ public class InterfaceParent extends Node implements RSInterfaceParent {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1288717828"
-   )
    static void method1142() {
       if(Login.Login_username == null || Login.Login_username.length() <= 0) {
          if(AbstractArchive.clientPreferences.rememberedUsername != null) {
@@ -78,13 +56,8 @@ public class InterfaceParent extends Node implements RSInterfaceParent {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(II)Lik;",
-      garbageValue = "2057171029"
-   )
    public static SpotAnimationDefinition method1139(int var0) {
-      SpotAnimationDefinition var1 = (SpotAnimationDefinition)SpotAnimationDefinition.SpotAnimationDefinition_cached.method3032((long)var0);
+      SpotAnimationDefinition var1 = (SpotAnimationDefinition)SpotAnimationDefinition.SpotAnimationDefinition_cached.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {
@@ -100,11 +73,6 @@ public class InterfaceParent extends Node implements RSInterfaceParent {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lgy;Llg;I)Lgn;",
-      garbageValue = "1636799714"
-   )
    public static PacketBufferNode method1140(ClientPacket var0, IsaacCipher var1) {
       PacketBufferNode var2;
       if(PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) {
@@ -133,22 +101,12 @@ public class InterfaceParent extends Node implements RSInterfaceParent {
       return var2;
    }
 
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "2103044150"
-   )
    public static void method1138() {
-      ItemDefinition.ItemDefinition_cached.method3035();
-      ItemDefinition.ItemDefinition_cachedModels.method3035();
-      ItemDefinition.ItemDefinition_cachedSprites.method3035();
+      ItemDefinition.ItemDefinition_cached.clear();
+      ItemDefinition.ItemDefinition_cachedModels.clear();
+      ItemDefinition.ItemDefinition_cachedSprites.clear();
    }
 
-   @ObfuscatedName("hk")
-   @ObfuscatedSignature(
-      signature = "(ZLkf;B)V",
-      garbageValue = "-96"
-   )
    static final void method1141(boolean var0, PacketBuffer var1) {
       Client.updateNpcs(var0, var1);
       Client.field848 = 0;

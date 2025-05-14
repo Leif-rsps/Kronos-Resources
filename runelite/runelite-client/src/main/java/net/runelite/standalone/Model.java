@@ -9,154 +9,77 @@ import net.runelite.api.Point;
 import net.runelite.api.model.Jarvis;
 import net.runelite.api.model.Triangle;
 import net.runelite.api.model.Vertex;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSAnimation;
-import net.runelite.rs.api.RSFrames;
-import net.runelite.rs.api.RSModel;
-import net.runelite.rs.api.RSSkeleton;
 
-@ObfuscatedName("dh")
-public class Model extends Entity implements RSModel {
-   @ObfuscatedName("n")
+public class Model extends Entity implements net.runelite.api.Model {
    static byte[] Model_sharedSequenceModelFaceAlphas;
-   @ObfuscatedName("u")
    static byte[] Model_sharedSpotAnimationModelFaceAlphas;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Ldh;"
-   )
    static Model Model_sharedSpotAnimationModel;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Ldh;"
-   )
    static Model Model_sharedSequenceModel;
-   @ObfuscatedName("ae")
    static int[] field1396;
-   @ObfuscatedName("af")
    static int[] field1423;
-   @ObfuscatedName("ag")
    static int[] field1419;
-   @ObfuscatedName("ah")
    static int[] field1392;
-   @ObfuscatedName("ai")
    static boolean[] field1412;
-   @ObfuscatedName("ak")
    static boolean[] field1413;
-   @ObfuscatedName("am")
    static int[] modelViewportYs;
-   @ObfuscatedName("aq")
    static int[] modelViewportXs;
-   @ObfuscatedName("at")
    static int[][] field1385;
-   @ObfuscatedName("au")
    static int[][] field1422;
-   @ObfuscatedName("av")
    static int[] field1417;
-   @ObfuscatedName("ay")
    static int[] field1421;
-   @ObfuscatedName("bb")
    static int[] field1440;
-   @ObfuscatedName("bc")
    static int Model_transformTempZ;
-   @ObfuscatedName("bd")
    static int[] field1427;
-   @ObfuscatedName("be")
    static int[] Model_sine;
-   @ObfuscatedName("bh")
    static int[] field1398;
-   @ObfuscatedName("bi")
    static int[] field1439;
-   @ObfuscatedName("bj")
    static int[] field1430;
-   @ObfuscatedName("bk")
    static boolean field1434;
-   @ObfuscatedName("bm")
    static int[] field1428;
-   @ObfuscatedName("bs")
    static int Model_transformTempX;
-   @ObfuscatedName("bu")
    static int[] Model_cosine;
-   @ObfuscatedName("bv")
    static int[] field1416;
-   @ObfuscatedName("bx")
    static int[] field1437;
-   @ObfuscatedName("bz")
    static int Model_transformTempY;
    public static boolean $assertionsDisabled;
-   @ObfuscatedName("o")
    int[] faceColors1;
-   @ObfuscatedName("p")
    int[] verticesX;
-   @ObfuscatedName("q")
    int[] verticesY;
-   @ObfuscatedName("r")
    int verticesCount;
-   @ObfuscatedName("s")
    int field1425;
-   @ObfuscatedName("t")
    byte[] faceAlphas;
-   @ObfuscatedName("w")
    byte[] faceRenderPriorities;
-   @ObfuscatedName("x")
    short[] faceTextures;
-   @ObfuscatedName("y")
    int indicesCount;
-   @ObfuscatedName("a")
    int[] faceColors2;
-   @ObfuscatedName("aa")
    int xzRadius;
-   @ObfuscatedName("ab")
    int xMid;
-   @ObfuscatedName("ac")
    public boolean isSingleTile;
-   @ObfuscatedName("ad")
    int zMidOffset;
-   @ObfuscatedName("al")
    int yMidOffset;
-   @ObfuscatedName("ao")
    int xMidOffset;
-   @ObfuscatedName("ap")
    int diameter;
-   @ObfuscatedName("ar")
    int radius;
-   @ObfuscatedName("as")
    int zMid;
-   @ObfuscatedName("aw")
    int bottomY;
-   @ObfuscatedName("ax")
    int yMid;
-   @ObfuscatedName("az")
    int boundsType;
-   @ObfuscatedName("b")
    int[] indices3;
-   @ObfuscatedName("c")
    int[] indices2;
    public int rl$sceneId;
    public int rl$bufferOffset;
    public int rl$uvBufferOffset;
    public float[][] rl$faceTextureUCoordinates;
    public float[][] rl$faceTextureVCoordinates;
-   @ObfuscatedName("d")
    int[] field1393;
-   @ObfuscatedName("e")
    int[] faceColors3;
-   @ObfuscatedName("f")
    int[] field1394;
-   @ObfuscatedName("g")
    byte[] field1379;
-   @ObfuscatedName("h")
    byte field1374;
-   @ObfuscatedName("i")
    int[] indices1;
-   @ObfuscatedName("j")
    int[] field1395;
-   @ObfuscatedName("k")
    int[][] faceLabelsAlpha;
-   @ObfuscatedName("l")
    int[][] vertexLabels;
-   @ObfuscatedName("m")
    int[] verticesZ;
 
    static {
@@ -201,9 +124,6 @@ public class Model extends Entity implements RSModel {
       this.zMidOffset = -1;
    }
 
-   @ObfuscatedSignature(
-      signature = "([Ldh;I)V"
-   )
    public Model(Model[] var1, int var2) {
       this.verticesCount = 0;
       this.indicesCount = 0;
@@ -344,11 +264,7 @@ public class Model extends Entity implements RSModel {
       this.rl$init(var1, var2);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Z)Ldh;"
-   )
-   public Model method2355(boolean var1) {
+   public Model toSharedModel(boolean var1) {
       if(!var1 && Model_sharedSequenceModelFaceAlphas.length < this.indicesCount) {
          Model_sharedSequenceModelFaceAlphas = new byte[this.indicesCount + 100];
       }
@@ -356,8 +272,7 @@ public class Model extends Entity implements RSModel {
       return this.method2357(var1, Model_sharedSequenceModel, Model_sharedSequenceModelFaceAlphas);
    }
 
-   @ObfuscatedName("o")
-   void method2365(int var1, int[] var2, int var3, int var4, int var5) {
+   void animate(int var1, int[] var2, int var3, int var4, int var5) {
       int var6 = var2.length;
       int var7;
       int var8;
@@ -507,7 +422,6 @@ public class Model extends Entity implements RSModel {
       }
    }
 
-   @ObfuscatedName("p")
    public void method2359() {
       if(this.boundsType != 1) {
          this.boundsType = 1;
@@ -539,7 +453,6 @@ public class Model extends Entity implements RSModel {
       }
    }
 
-   @ObfuscatedName("q")
    void method2360() {
       if(this.boundsType != 2) {
          this.boundsType = 2;
@@ -561,7 +474,6 @@ public class Model extends Entity implements RSModel {
       }
    }
 
-   @ObfuscatedName("r")
    void method2356(int var1) {
       if(this.xMidOffset == -1) {
          int var2 = 0;
@@ -624,7 +536,6 @@ public class Model extends Entity implements RSModel {
       }
    }
 
-   @ObfuscatedName("s")
    public void method2423(int var1, int var2, int var3) {
       for(int var4 = 0; var4 < this.verticesCount; ++var4) {
          this.verticesX[var4] += var1;
@@ -635,10 +546,6 @@ public class Model extends Entity implements RSModel {
       this.method2397();
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(ZLdh;[B)Ldh;"
-   )
    Model method2357(boolean var1, Model var2, byte[] var3) {
       this.rl$buildSharedModel(var1, var2, var3);
       var2.verticesCount = this.verticesCount;
@@ -692,11 +599,7 @@ public class Model extends Entity implements RSModel {
       return var2;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Z)Ldh;"
-   )
-   public Model method2362(boolean var1) {
+   public Model toSharedSpotAnimModel(boolean var1) {
       if(!var1 && Model_sharedSpotAnimationModelFaceAlphas.length < this.indicesCount) {
          Model_sharedSpotAnimationModelFaceAlphas = new byte[this.indicesCount + 100];
       }
@@ -704,8 +607,7 @@ public class Model extends Entity implements RSModel {
       return this.method2357(var1, Model_sharedSpotAnimationModel, Model_sharedSpotAnimationModelFaceAlphas);
    }
 
-   @ObfuscatedName("x")
-   public void method2368() {
+   public void rotateY270Ccw() {
       for(int var1 = 0; var1 < this.verticesCount; ++var1) {
          int var2 = this.verticesZ[var1];
          this.verticesZ[var1] = this.verticesX[var1];
@@ -715,14 +617,10 @@ public class Model extends Entity implements RSModel {
       this.method2397();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([[IIIIZI)Ldh;"
-   )
    public Model method2354(int[][] var1, int var2, int var3, int var4, boolean var5, int var6) {
       Model var7 = this.copy$contourGround(var1, var2, var3, var4, var5, var6);
       if(var7 != null && var7 != this) {
-         RSModel var8 = (RSModel)var7;
+         Model var8 = (Model)var7;
          var8.setFaceTextureUCoordinates(this.rl$faceTextureUCoordinates);
          var8.setFaceTextureVCoordinates(this.rl$faceTextureVCoordinates);
       }
@@ -730,8 +628,7 @@ public class Model extends Entity implements RSModel {
       return var7;
    }
 
-   @ObfuscatedName("a")
-   public void method2366() {
+   public void rotateY90Ccw() {
       for(int var1 = 0; var1 < this.verticesCount; ++var1) {
          int var2 = this.verticesX[var1];
          this.verticesX[var1] = this.verticesZ[var1];
@@ -741,7 +638,6 @@ public class Model extends Entity implements RSModel {
       this.method2397();
    }
 
-   @ObfuscatedName("ac")
    final void method2377(int var1) {
       int var2 = Rasterizer3D.Rasterizer3D_clipMidX;
       int var3 = Rasterizer3D.Rasterizer3D_clipMidY;
@@ -908,10 +804,6 @@ public class Model extends Entity implements RSModel {
 
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(Lep;ILep;I[I)V"
-   )
    public void method2419(Frames var1, int var2, Frames var3, int var4, int[] var5) {
       if(var2 != -1) {
          if(var5 != null && var4 != -1) {
@@ -933,7 +825,7 @@ public class Model extends Entity implements RSModel {
                }
 
                if(var12 != var10 || var8.transformTypes[var12] == 0) {
-                  this.method2365(var8.transformTypes[var12], var8.labels[var12], var6.transformXs[var11], var6.transformYs[var11], var6.transformZs[var11]);
+                  this.animate(var8.transformTypes[var12], var8.labels[var12], var6.transformXs[var11], var6.transformYs[var11], var6.transformZs[var11]);
                }
             }
 
@@ -950,7 +842,7 @@ public class Model extends Entity implements RSModel {
                }
 
                if(var12 == var10 || var8.transformTypes[var12] == 0) {
-                  this.method2365(var8.transformTypes[var12], var8.labels[var12], var7.transformXs[var11], var7.transformYs[var11], var7.transformZs[var11]);
+                  this.animate(var8.transformTypes[var12], var8.labels[var12], var7.transformXs[var11], var7.transformYs[var11], var7.transformZs[var11]);
                }
             }
 
@@ -961,10 +853,6 @@ public class Model extends Entity implements RSModel {
       }
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(Lep;I)V"
-   )
    public void method2363(Frames var1, int var2) {
       if(this.vertexLabels != null) {
          if(var2 != -1) {
@@ -976,7 +864,7 @@ public class Model extends Entity implements RSModel {
 
             for(int var5 = 0; var5 < var3.transformCount; ++var5) {
                int var6 = var3.transformSkeletonLabels[var5];
-               this.method2365(var4.transformTypes[var6], var4.labels[var6], var3.transformXs[var5], var3.transformYs[var5], var3.transformZs[var5]);
+               this.animate(var4.transformTypes[var6], var4.labels[var6], var3.transformXs[var5], var3.transformYs[var5], var3.transformZs[var5]);
             }
 
             this.method2397();
@@ -984,7 +872,6 @@ public class Model extends Entity implements RSModel {
       }
    }
 
-   @ObfuscatedName("cb")
    void vmethod3071(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, long var9) {
       field1421[0] = -1;
       if(this.boundsType != 1) {
@@ -1124,23 +1011,17 @@ public class Model extends Entity implements RSModel {
       }
    }
 
+   @Override
    public int[] getTrianglesX() {
       return this.indices1;
    }
 
-   public int[][] getVertexGroups() {
-      return this.vertexLabels;
-   }
-
    public void rl$buildSharedModel(boolean var1, net.runelite.api.Model var2, byte[] var3) {
-      RSModel var4 = (RSModel)var2;
+      Model var4 = (Model)var2;
       var4.setFaceTextureUCoordinates(this.rl$faceTextureUCoordinates);
       var4.setFaceTextureVCoordinates(this.rl$faceTextureVCoordinates);
    }
 
-   @ObfuscatedSignature(
-      signature = "([[IIIIZI)Ldh;"
-   )
    public Model copy$contourGround(int[][] var1, int var2, int var3, int var4, boolean var5, int var6) {
       this.method2359();
       int var7 = var2 - this.xzRadius;
@@ -1234,10 +1115,12 @@ public class Model extends Entity implements RSModel {
       }
    }
 
+   @Override
    public int[] getVerticesX() {
       return this.verticesX;
    }
 
+   @Override
    public int[] getTrianglesY() {
       return this.indices2;
    }
@@ -1260,10 +1143,12 @@ public class Model extends Entity implements RSModel {
       return var4;
    }
 
+   @Override
    public int[] getVerticesY() {
       return this.verticesY;
    }
 
+   @Override
    public int[] getTrianglesZ() {
       return this.indices3;
    }
@@ -1272,39 +1157,46 @@ public class Model extends Entity implements RSModel {
       this.rl$faceTextureVCoordinates = var1;
    }
 
+   @Override
    public int[] getVerticesZ() {
       return this.verticesZ;
    }
 
+   @Override
    public int getVerticesCount() {
       return this.verticesCount;
    }
 
+   @Override
    public int getTrianglesCount() {
       return this.indicesCount;
    }
 
-   public void interpolateFrames(RSSkeleton var1, RSAnimation var2, RSAnimation var3, int var4, int var5) {
+   public void interpolateFrames(Skeleton var1, Animation var2, Animation var3, int var4, int var5) {
       int var6;
       int var7;
       if(var3 != null && var4 != 0) {
          var6 = 0;
          var7 = 0;
 
-         for(int var8 = 0; var8 < var1.getCount(); ++var8) {
+         for(int var8 = 0; var8 < var1.count; ++var8) {
             boolean var9 = false;
-            if(var6 < var2.getTransformCount() && var2.getTransformTypes()[var6] == var8) {
-               var9 = true;
+            if(var6 < var2.transformCount) {
+                if (var2.transformSkeletonLabels[var6] == var8) {
+                    var9 = true;
+                }
             }
 
             boolean var10 = false;
-            if(var7 < var3.getTransformCount() && var3.getTransformTypes()[var7] == var8) {
-               var10 = true;
+            if(var7 < var3.transformCount) {
+                if (var3.transformSkeletonLabels[var7] == var8) {
+                    var10 = true;
+                }
             }
 
             if(var9 || var10) {
                short var11 = 0;
-               int var12 = var1.getTypes()[var8];
+               int var12 = var1.transformTypes[var8];
                if(var12 == 3 || var12 == 10) {
                   var11 = 128;
                }
@@ -1313,9 +1205,9 @@ public class Model extends Entity implements RSModel {
                int var14 = var11;
                int var15 = var11;
                if(var9) {
-                  var13 = var2.getTranslatorX()[var6];
-                  var14 = var2.getTranslatorY()[var6];
-                  var15 = var2.getTranslatorZ()[var6];
+                  var13 = var2.transformXs[var6];
+                  var14 = var2.transformYs[var6];
+                  var15 = var2.transformZs[var6];
                   ++var6;
                }
 
@@ -1323,9 +1215,9 @@ public class Model extends Entity implements RSModel {
                int var17 = var11;
                int var18 = var11;
                if(var10) {
-                  var16 = var3.getTranslatorX()[var7];
-                  var17 = var3.getTranslatorY()[var7];
-                  var18 = var3.getTranslatorZ()[var7];
+                  var16 = var3.transformXs[var7];
+                  var17 = var3.transformYs[var7];
+                  var18 = var3.transformZs[var7];
                   ++var7;
                }
 
@@ -1361,31 +1253,23 @@ public class Model extends Entity implements RSModel {
                   var21 = var15 + (var18 - var15) * var4 / var5;
                }
 
-               this.animate(var12, var1.getList()[var8], var19, var20, var21);
+                this.animate(var12, var1.labels[var8], var19, var20, var21);
             }
          }
       } else {
-         for(var6 = 0; var6 < var2.getTransformCount(); ++var6) {
-            var7 = var2.getTransformTypes()[var6];
-            this.animate(var1.getTypes()[var7], var1.getList()[var7], var2.getTranslatorX()[var6], var2.getTranslatorY()[var6], var2.getTranslatorZ()[var6]);
+         for(var6 = 0; var6 < var2.transformCount; ++var6) {
+             var7 = var2.transformSkeletonLabels[var6];
+            this.animate(var1.transformTypes[var7], var1.labels[var7], var2.transformXs[var6], var2.transformYs[var6], var2.transformZs[var6]);
          }
       }
 
    }
 
-   public void resetBounds() {
-      this.method2397();
-   }
-
-   public void animate(int var1, int[] var2, int var3, int var4, int var5) {
-      this.method2365(var1, var2, var3, var4, var5);
-   }
-
-   public void rl$init(RSModel[] var1, int var2) {
+   public void rl$init(Model[] var1, int var2) {
       int var3 = 0;
 
       for(int var4 = 0; var4 < var2; ++var4) {
-         RSModel var5 = var1[var4];
+         Model var5 = var1[var4];
          if(var5 != null) {
             var3 += var5.getTrianglesCount();
          }
@@ -1396,7 +1280,7 @@ public class Model extends Entity implements RSModel {
       int var6 = 0;
 
       for(int var7 = 0; var7 < var2; ++var7) {
-         RSModel var8 = var1[var7];
+         Model var8 = var1[var7];
          if(var8 != null) {
             float[][] var9 = var8.getFaceTextureUCoordinates();
             float[][] var10 = var8.getFaceTextureVCoordinates();
@@ -1434,23 +1318,23 @@ public class Model extends Entity implements RSModel {
       return var5;
    }
 
-   public void interpolateFrames(RSFrames var1, int var2, RSFrames var3, int var4, int var5, int var6) {
-      if(this.getVertexGroups() != null && var2 != -1) {
-         RSAnimation var7 = var1.getFrames()[var2];
-         RSSkeleton var8 = var7.getSkin();
-         RSAnimation var9 = null;
+   public void interpolateFrames(Frames var1, int var2, Frames var3, int var4, int var5, int var6) {
+      if(this.vertexLabels != null && var2 != -1) {
+         Animation var7 = var1.frames[var2];
+         Skeleton var8 = var7.skeleton;
+         Animation var9 = null;
          if(var3 != null) {
-            var9 = var3.getFrames()[var4];
-            if(var9.getSkin() != var8) {
+            var9 = var3.frames[var4];
+            if(var9.skeleton != var8) {
                var9 = null;
             }
          }
 
-         ViewportMouse.client.setAnimOffsetX(0);
-         ViewportMouse.client.setAnimOffsetY(0);
-         ViewportMouse.client.setAnimOffsetZ(0);
+         Model_transformTempX = 0;
+         Model_transformTempY = 0;
+         Model_transformTempZ = 0;
          this.interpolateFrames(var8, var7, var9, var5, var6);
-         this.resetBounds();
+         this.method2397();
       }
 
    }
@@ -1527,95 +1411,91 @@ public class Model extends Entity implements RSModel {
       return this.rl$faceTextureVCoordinates;
    }
 
+   @Override
    public int[] getFaceColors1() {
       return this.faceColors1;
    }
 
+   @Override
    public int[] getFaceColors2() {
       return this.faceColors2;
    }
 
+   @Override
    public int[] getFaceColors3() {
       return this.faceColors3;
    }
 
+   @Override
    public byte[] getFaceRenderPriorities() {
       return this.faceRenderPriorities;
    }
 
+   @Override
    public byte[] getTriangleTransparencies() {
       return this.faceAlphas;
    }
 
+   @Override
    public short[] getFaceTextures() {
       return this.faceTextures;
    }
 
+   @Override
    public boolean isClickable() {
       return this.isSingleTile;
    }
 
+   @Override
    public int getXYZMag() {
       return this.xzRadius;
    }
 
+   @Override
    public int getRadius() {
       return this.radius;
    }
 
+   @Override
    public int getCenterX() {
       return this.xMid;
    }
 
+   @Override
    public int getCenterY() {
       return this.yMid;
    }
 
+   @Override
    public int getCenterZ() {
       return this.zMid;
    }
 
+   @Override
    public int getExtremeX() {
       return this.xMidOffset;
    }
 
+   @Override
    public int getExtremeY() {
       return this.yMidOffset;
    }
 
+   @Override
    public int getExtremeZ() {
       return this.zMidOffset;
    }
 
-   public RSModel toSharedModel(boolean var1) {
-      return this.method2355(var1);
-   }
-
-   public RSModel toSharedSpotAnimModel(boolean var1) {
-      return this.method2362(var1);
-   }
-
+   @Override
    public void calculateExtreme(int var1) {
       this.method2356(var1);
    }
 
+   @Override
    public void calculateBoundsCylinder() {
       this.method2359();
    }
 
-   public void rotateY90Ccw() {
-      this.method2366();
-   }
-
-   public void rotateY180Ccw() {
-      this.method2367();
-   }
-
-   public void rotateY270Ccw() {
-      this.method2368();
-   }
-
-   @ObfuscatedName("d")
    public final void method2373(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       field1421[0] = -1;
       if(this.boundsType != 2 && this.boundsType != 1) {
@@ -1680,8 +1560,7 @@ public class Model extends Entity implements RSModel {
 
    }
 
-   @ObfuscatedName("e")
-   public void method2367() {
+   public void rotateY180Ccw() {
       for(int var1 = 0; var1 < this.verticesCount; ++var1) {
          this.verticesX[var1] = -this.verticesX[var1];
          this.verticesZ[var1] = -this.verticesZ[var1];
@@ -1690,7 +1569,6 @@ public class Model extends Entity implements RSModel {
       this.method2397();
    }
 
-   @ObfuscatedName("f")
    public void method2402(int var1, int var2, int var3) {
       for(int var4 = 0; var4 < this.verticesCount; ++var4) {
          this.verticesX[var4] = this.verticesX[var4] * var1 / 128;
@@ -1701,7 +1579,6 @@ public class Model extends Entity implements RSModel {
       this.method2397();
    }
 
-   @ObfuscatedName("h")
    public void method2369(int var1) {
       int var2 = Model_sine[var1];
       int var3 = Model_cosine[var1];
@@ -1715,13 +1592,11 @@ public class Model extends Entity implements RSModel {
       this.method2397();
    }
 
-   @ObfuscatedName("i")
    void method2397() {
       this.boundsType = 0;
       this.xMidOffset = -1;
    }
 
-   @ObfuscatedName("j")
    public final void method2372(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       field1421[0] = -1;
       if(this.boundsType != 2 && this.boundsType != 1) {
@@ -1786,7 +1661,6 @@ public class Model extends Entity implements RSModel {
 
    }
 
-   @ObfuscatedName("k")
    final void method2376(int var1) {
       if(field1413[var1]) {
          this.method2377(var1);
@@ -1830,7 +1704,6 @@ public class Model extends Entity implements RSModel {
       }
    }
 
-   @ObfuscatedName("l")
    final void method2375(boolean var1, boolean var2, boolean var3, long var4) {
       if(this.diameter < 1600) {
          int var6;
@@ -2082,7 +1955,6 @@ public class Model extends Entity implements RSModel {
       }
    }
 
-   @ObfuscatedName("m")
    public int method2361() {
       this.method2359();
       return this.xzRadius;

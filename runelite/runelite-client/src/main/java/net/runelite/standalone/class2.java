@@ -1,12 +1,7 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("mp")
 public class class2 {
-   @ObfuscatedName("u")
    static final char[] field17;
-   @ObfuscatedName("v")
    static final char[] field16;
 
    static {

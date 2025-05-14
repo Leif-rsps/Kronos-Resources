@@ -1,33 +1,18 @@
 package net.runelite.standalone;
 
 import java.util.Iterator;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSEntity;
-import net.runelite.rs.api.RSModel;
 
-@ObfuscatedName("er")
-public abstract class Entity extends DualNode implements RSEntity {
-   @ObfuscatedName("ci")
-   @ObfuscatedGetter(
-      intValue = -2145101269
-   )
+public abstract class Entity extends DualNode implements net.runelite.api.Entity {
    public int height;
 
    protected Entity() {
       this.height = 1000;
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    protected Model vmethod3072(int var1) {
       return null;
    }
 
-   @ObfuscatedName("cb")
    void vmethod3071(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, long var9) {
       Model var11 = this.vmethod3072(-693706908);
       if(var11 != null) {
@@ -37,27 +22,26 @@ public abstract class Entity extends DualNode implements RSEntity {
 
    }
 
-   public RSModel getModel() {
+   @Override
+   public Model getModel() {
       return this.vmethod3072(-62237472);
    }
 
+   @Override
    public void setModelHeight(int var1) {
       this.height = var1;
    }
 
+   @Override
    public int getModelHeight() {
       return this.height;
    }
 
+   @Override
    public void draw(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, long var9) {
       this.vmethod3071(var1, var2, var3, var4, var5, var6, var7, var8, var9);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(CB)B",
-      garbageValue = "41"
-   )
    public static byte method3074(char var0) {
       byte var1;
       if(var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
@@ -123,11 +107,6 @@ public abstract class Entity extends DualNode implements RSEntity {
       return var1;
    }
 
-   @ObfuscatedName("aq")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "160012965"
-   )
    static int method3070(int var0, Script var1, boolean var2) {
       if(var0 == 6200) {
          Interpreter.Interpreter_intStackSize -= 2;
@@ -218,11 +197,6 @@ public abstract class Entity extends DualNode implements RSEntity {
       }
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(I)Ljava/lang/String;",
-      garbageValue = "67381036"
-   )
    static String method3079() {
       String var0 = "";
 

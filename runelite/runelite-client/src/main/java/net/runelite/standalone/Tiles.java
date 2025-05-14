@@ -1,70 +1,26 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bm")
 public final class Tiles {
-   @ObfuscatedName("rv")
-   @ObfuscatedSignature(
-      signature = "Lbf;"
-   )
    public static FriendSystem friendSystem;
-   @ObfuscatedName("sv")
-   @ObfuscatedSignature(
-      signature = "Lla;"
-   )
    static WorldMap worldMap;
-   @ObfuscatedName("n")
    static byte[][][] Tiles_renderFlags;
-   @ObfuscatedName("r")
    static byte[][][] field522;
-   @ObfuscatedName("s")
    static final int[] field530;
-   @ObfuscatedName("u")
    static byte[][][] field540;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 380288965
-   )
    static int Tiles_minPlane;
-   @ObfuscatedName("x")
    static final int[] field528;
-   @ObfuscatedName("z")
    static int[][][] Tiles_heights;
-   @ObfuscatedName("a")
    static int[] field526;
-   @ObfuscatedName("b")
    static int[] Tiles_lightness;
-   @ObfuscatedName("d")
    static final int[] field533;
-   @ObfuscatedName("e")
    static int[][][] field527;
-   @ObfuscatedName("f")
    static final int[] field531;
-   @ObfuscatedName("fy")
-   @ObfuscatedGetter(
-      longValue = 5157755524987291675L
-   )
    static long field534;
-   @ObfuscatedName("h")
    static final int[] field532;
-   @ObfuscatedName("i")
    static int[] Tiles_hue;
-   @ObfuscatedName("j")
    static final int[] field523;
-   @ObfuscatedName("k")
-   @ObfuscatedGetter(
-      intValue = 1017991539
-   )
    static int field535;
-   @ObfuscatedName("l")
-   @ObfuscatedGetter(
-      intValue = 832386391
-   )
    static int field521;
-   @ObfuscatedName("m")
    static byte[][][] field525;
 
    static {
@@ -81,11 +37,6 @@ public final class Tiles {
       field535 = (int)(Math.random() * 33.0D) - 16;
    }
 
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZB)I",
-      garbageValue = "59"
-   )
    static int method1201(int var0, Script var1, boolean var2) {
       if(var0 == 5000) {
          Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.publicChatMode;
@@ -346,7 +297,7 @@ public final class Tiles {
                }
             } else {
                if(class215.localPlayer != null && class215.localPlayer.username != null) {
-                  var3 = class215.localPlayer.username.method5001();
+                  var3 = class215.localPlayer.username.getName();
                } else {
                   var3 = "";
                }
@@ -358,11 +309,6 @@ public final class Tiles {
       }
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZB)I",
-      garbageValue = "-18"
-   )
    static int method1155(int var0, Script var1, boolean var2) {
       Widget var3;
       if(var0 >= 2000) {
@@ -470,12 +416,7 @@ public final class Tiles {
       return 1;
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "([BB)V",
-      garbageValue = "36"
-   )
-   public static void method1200(byte[] var0) {
+   public static void decodeSprite(byte[] var0) {
       Buffer var1 = new Buffer(var0);
       var1.offset = var0.length - 2;
       class329.SpriteBuffer_spriteCount = var1.readUnsignedShort();

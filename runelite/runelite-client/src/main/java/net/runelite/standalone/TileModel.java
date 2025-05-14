@@ -1,56 +1,30 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.rs.api.RSTileModel;
-
-@ObfuscatedName("dd")
-public final class TileModel implements RSTileModel {
-   @ObfuscatedName("s")
+public final class TileModel implements net.runelite.api.TileModel {
    static final int[][] field1330;
-   @ObfuscatedName("t")
    static int[] field1344;
-   @ObfuscatedName("w")
    static int[] field1328;
-   @ObfuscatedName("x")
    static int[] field1346;
-   @ObfuscatedName("f")
    static final int[][] field1334;
-   @ObfuscatedName("g")
    static int[] field1345;
-   @ObfuscatedName("h")
    static int[] field1348;
-   @ObfuscatedName("n")
    int[] vertexY;
-   @ObfuscatedName("o")
    int rotation;
-   @ObfuscatedName("p")
    int[] triangleColorC;
-   @ObfuscatedName("q")
    int[] faceX;
-   @ObfuscatedName("r")
    int[] triangleColorB;
-   @ObfuscatedName("u")
    int[] triangleColorA;
-   @ObfuscatedName("v")
    int[] vertexZ;
-   @ObfuscatedName("y")
    int[] faceZ;
-   @ObfuscatedName("z")
    int[] vertexX;
-   @ObfuscatedName("a")
    int underlayRgb;
-   @ObfuscatedName("b")
    int shape;
-   @ObfuscatedName("c")
    boolean isFlat;
    public int rl$modelBufferOffset;
    public int rl$modelUvBufferOffset;
    public int rl$modelBufferLen;
-   @ObfuscatedName("e")
    int overlayRgb;
-   @ObfuscatedName("i")
    int[] triangleTextureId;
-   @ObfuscatedName("m")
    int[] faceY;
 
    static {
@@ -318,58 +292,72 @@ public final class TileModel implements RSTileModel {
       this.rl$modelBufferLen = var1;
    }
 
+   @Override
    public int[] getVertexX() {
       return this.vertexX;
    }
 
+   @Override
    public int[] getVertexY() {
       return this.vertexY;
    }
 
+   @Override
    public int[] getVertexZ() {
       return this.vertexZ;
    }
 
+   @Override
    public int[] getTriangleColorA() {
       return this.triangleColorA;
    }
 
+   @Override
    public int[] getTriangleColorB() {
       return this.triangleColorB;
    }
 
+   @Override
    public int[] getTriangleColorC() {
       return this.triangleColorC;
    }
 
+   @Override
    public int[] getFaceX() {
       return this.faceX;
    }
 
+   @Override
    public int[] getFaceY() {
       return this.faceY;
    }
 
+   @Override
    public int[] getFaceZ() {
       return this.faceZ;
    }
 
+   @Override
    public int[] getTriangleTextureId() {
       return this.triangleTextureId;
    }
 
+   @Override
    public int getShape() {
       return this.shape;
    }
 
+   @Override
    public int getRotation() {
       return this.rotation;
    }
 
+   @Override
    public int getModelUnderlay() {
       return this.underlayRgb;
    }
 
+   @Override
    public int getModelOverlay() {
       return this.overlayRgb;
    }

@@ -1,50 +1,13 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ge")
 public class LoginPacket implements class168 {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lge;"
-   )
    static final LoginPacket field2103;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "[Lge;"
-   )
    static final LoginPacket[] LoginPacket_indexedValues;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lge;"
-   )
    static final LoginPacket field2106;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lge;"
-   )
    public static final LoginPacket requestWorldReconnect;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lge;"
-   )
    public static final LoginPacket requestWorldLogin;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lge;"
-   )
    public static final LoginPacket handshake;
-   @ObfuscatedName("ff")
-   @ObfuscatedSignature(
-      signature = "Lfv;"
-   )
    static Task socketTask;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -1737377539
-   )
    public final int id;
 
    static {
@@ -62,19 +25,10 @@ public class LoginPacket implements class168 {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "0"
-   )
    LoginPacket(int var1, int var2) {
       this.id = var1;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Lbh;S)V",
-      garbageValue = "21228"
-   )
    static void method3724(GameShell var0) {
       int var4;
       if(Login.worldSelectOpen) {
@@ -304,7 +258,7 @@ public class LoginPacket implements class168 {
                            Login.currentLoginField = 0;
                         }
                      } else {
-                        TilePaint.method2911(false);
+                        TilePaint.promptCredentials(false);
                      }
                   }
                } else {
@@ -359,7 +313,7 @@ public class LoginPacket implements class168 {
 
                            PlayerType.method3939("", "Connecting to server...", "");
                            PlayerType.method3947(false);
-                           MouseRecorder.method1207(20);
+                           MouseRecorder.setGameState(20);
                            return;
                         }
 
@@ -461,7 +415,7 @@ public class LoginPacket implements class168 {
 
                                     PlayerType.method3939("", "Connecting to server...", "");
                                     PlayerType.method3947(false);
-                                    MouseRecorder.method1207(20);
+                                    MouseRecorder.setGameState(20);
                                     return;
                                  }
 
@@ -477,7 +431,7 @@ public class LoginPacket implements class168 {
                         var20 = Login.loginBoxX + 180;
                         var22 = 276;
                         if(var4 == 1 && var25 >= var20 - 75 && var25 <= var20 + 75 && var18 >= var22 - 20 && var18 <= var22 + 20) {
-                           TilePaint.method2911(false);
+                           TilePaint.promptCredentials(false);
                         }
 
                         var20 = Login.loginBoxX + 180;
@@ -503,7 +457,7 @@ public class LoginPacket implements class168 {
                               DesktopPlatformInfoProvider.otp = "";
                               PlayerType.method3947(true);
                               PlayerType.method3939("", "Connecting to server...", "");
-                              MouseRecorder.method1207(20);
+                              MouseRecorder.setGameState(20);
                               return;
                            }
 
@@ -558,7 +512,7 @@ public class LoginPacket implements class168 {
                                     DesktopPlatformInfoProvider.otp = "";
                                     PlayerType.method3947(true);
                                     PlayerType.method3939("", "Connecting to server...", "");
-                                    MouseRecorder.method1207(20);
+                                    MouseRecorder.setGameState(20);
                                     return;
                                  }
 
@@ -577,7 +531,7 @@ public class LoginPacket implements class168 {
 
                            var20 = Login.loginBoxX + 180 + 80;
                            if(var4 == 1 && var25 >= var20 - 75 && var25 <= var20 + 75 && var18 >= var22 - 20 && var18 <= var22 + 20) {
-                              TilePaint.method2911(true);
+                              TilePaint.promptCredentials(true);
                            }
 
                            var9 = 361;
@@ -599,7 +553,7 @@ public class LoginPacket implements class168 {
                               }
 
                               if(SecureRandomFuture.field748 == 13) {
-                                 TilePaint.method2911(true);
+                                 TilePaint.promptCredentials(true);
                               } else {
                                  if(SecureRandomFuture.field748 == 85 && Login.Login_username.length() > 0) {
                                     Login.Login_username = Login.Login_username.substring(0, Login.Login_username.length() - 1);
@@ -623,14 +577,14 @@ public class LoginPacket implements class168 {
                                  if(!DynamicObject.method1568()) {
                                     var21 = 321;
                                     if(var4 == 1 && var18 >= var21 - 20 && var18 <= var21 + 20) {
-                                       TilePaint.method2911(true);
+                                       TilePaint.promptCredentials(true);
                                     }
 
                                     return;
                                  }
                               } while(SecureRandomFuture.field748 != 84 && SecureRandomFuture.field748 != 13);
 
-                              TilePaint.method2911(true);
+                              TilePaint.promptCredentials(true);
                            }
                         } else if(Login.loginIndex == 7) {
                            var20 = Login.loginBoxX + 180 - 80;
@@ -644,7 +598,7 @@ public class LoginPacket implements class168 {
 
                            var20 = Login.loginBoxX + 180 + 80;
                            if(var4 == 1 && var25 >= var20 - 75 && var25 <= var20 + 75 && var18 >= var22 - 20 && var18 <= var22 + 20) {
-                              TilePaint.method2911(true);
+                              TilePaint.promptCredentials(true);
                            }
                         } else if(Login.loginIndex == 8) {
                            var20 = Login.loginBoxX + 180 - 80;
@@ -658,7 +612,7 @@ public class LoginPacket implements class168 {
 
                            var20 = Login.loginBoxX + 180 + 80;
                            if(var4 == 1 && var25 >= var20 - 75 && var25 <= var20 + 75 && var18 >= var22 - 20 && var18 <= var22 + 20) {
-                              TilePaint.method2911(true);
+                              TilePaint.promptCredentials(true);
                            }
                         } else if(Login.loginIndex == 12) {
                            String var16 = "";
@@ -670,7 +624,7 @@ public class LoginPacket implements class168 {
                               var16 = "https://support.kronos.rip/hc/en-gb/articles/206103939-My-account-is-locked";
                               break;
                            default:
-                              TilePaint.method2911(false);
+                              TilePaint.promptCredentials(false);
                            }
 
                            var8 = Login.loginBoxX + 180;
@@ -685,20 +639,20 @@ public class LoginPacket implements class168 {
                            var8 = Login.loginBoxX + 180;
                            var9 = 326;
                            if(var4 == 1 && var25 >= var8 - 75 && var25 <= var8 + 75 && var18 >= var9 - 20 && var18 <= var9 + 20) {
-                              TilePaint.method2911(false);
+                              TilePaint.promptCredentials(false);
                            }
                         } else if(Login.loginIndex == 24) {
                            var20 = Login.loginBoxX + 180;
                            var22 = 301;
                            if(var4 == 1 && var25 >= var20 - 75 && var25 <= var20 + 75 && var18 >= var22 - 20 && var18 <= var22 + 20) {
-                              TilePaint.method2911(false);
+                              TilePaint.promptCredentials(false);
                            }
                         }
                      }
                   } else {
                      while(DynamicObject.method1568()) {
                         if(SecureRandomFuture.field748 == 84) {
-                           TilePaint.method2911(false);
+                           TilePaint.promptCredentials(false);
                         } else if(SecureRandomFuture.field748 == 13) {
                            Login.loginIndex = 0;
                         }
@@ -707,7 +661,7 @@ public class LoginPacket implements class168 {
                      var20 = GrandExchangeOfferUnitPriceComparator.loginBoxCenter - 80;
                      var22 = 321;
                      if(var4 == 1 && var25 >= var20 - 75 && var25 <= var20 + 75 && var18 >= var22 - 20 && var18 <= var22 + 20) {
-                        TilePaint.method2911(false);
+                        TilePaint.promptCredentials(false);
                      }
 
                      var20 = GrandExchangeOfferUnitPriceComparator.loginBoxCenter + 80;
@@ -722,13 +676,8 @@ public class LoginPacket implements class168 {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(II)Lcu;",
-      garbageValue = "-1747084073"
-   )
    static Script method3723(int var0) {
-      Script var1 = (Script) Script.Script_cached.method3032((long)var0);
+      Script var1 = (Script) Script.Script_cached.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {
@@ -743,11 +692,6 @@ public class LoginPacket implements class168 {
       }
    }
 
-   @ObfuscatedName("fi")
-   @ObfuscatedSignature(
-      signature = "(Lbi;III)V",
-      garbageValue = "1912035221"
-   )
    static void method3722(Player var0, int var1, int var2) {
       if(var0.sequence == var1 && var1 != -1) {
          int var3 = GrandExchangeOfferUnitPriceComparator.method1468(var1).field3438;

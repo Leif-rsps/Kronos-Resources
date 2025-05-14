@@ -1,13 +1,7 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ke")
 public final class class292 {
-   @ObfuscatedName("n")
    static long[] field3643;
-   @ObfuscatedName("z")
    public static final char[] base37Table;
 
    static {
@@ -20,11 +14,6 @@ public final class class292 {
 
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;I)I",
-      garbageValue = "757556043"
-   )
    public static int method5270(CharSequence var0) {
       int var1 = var0.length();
       int var2 = 0;

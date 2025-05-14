@@ -5,23 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.io.SyncFailedException;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mh")
 public final class AccessFile {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      longValue = 4557235660739599375L
-   )
    final long maxSize;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      longValue = 2697348286360897637L
-   )
    long offset;
-   @ObfuscatedName("z")
    RandomAccessFile file;
 
    public AccessFile(File var1, String var2, long var3) throws IOException {
@@ -45,11 +32,6 @@ public final class AccessFile {
       this.file.seek(0L);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "([BIII)V",
-      garbageValue = "988503907"
-   )
    public final void method14(byte[] var1, int var2, int var3) throws IOException {
       if((long)var3 + this.offset > this.maxSize) {
          this.file.seek(this.maxSize);
@@ -61,11 +43,6 @@ public final class AccessFile {
       }
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "([BIII)I",
-      garbageValue = "-26512267"
-   )
    public final int method6(byte[] var1, int var2, int var3) throws IOException {
       int var4 = this.file.read(var1, var2, var3);
       if(var4 > 0) {
@@ -75,20 +52,10 @@ public final class AccessFile {
       return var4;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(I)J",
-      garbageValue = "773958711"
-   )
    public final long method5() throws IOException {
       return this.file.length();
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(ZI)V",
-      garbageValue = "1331216421"
-   )
    public final void method0(boolean var1) throws IOException {
       if(this.file != null) {
          if(var1) {
@@ -105,16 +72,10 @@ public final class AccessFile {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "546615303"
-   )
    public final void method18() throws IOException {
       this.method0(false);
    }
 
-   @ObfuscatedName("z")
    final void method2(long var1) throws IOException {
       this.file.seek(var1);
       this.offset = var1;

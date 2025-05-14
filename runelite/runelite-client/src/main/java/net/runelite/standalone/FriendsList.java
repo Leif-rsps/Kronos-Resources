@@ -1,32 +1,10 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSFriend;
-import net.runelite.rs.api.RSFriendsList;
-
-@ObfuscatedName("jz")
-public class FriendsList extends UserList<RSFriend> implements RSFriendsList {
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
+public class FriendsList extends UserList<Friend> {
    final LoginType loginType;
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "Lje;"
-   )
    public LinkDeque friendLoginUpdates;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 348884647
-   )
    int field3618;
 
-   @ObfuscatedSignature(
-      signature = "(Lli;)V"
-   )
    public FriendsList(LoginType var1) {
       super(400);
       this.field3618 = 1;
@@ -34,39 +12,19 @@ public class FriendsList extends UserList<RSFriend> implements RSFriendsList {
       this.loginType = var1;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)[Ljh;",
-      garbageValue = "951526901"
-   )
    User[] vmethod5186(int var1) {
       return new Friend[var1];
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Ljq;ZB)Z",
-      garbageValue = "-80"
-   )
    public boolean method5184(Username var1, boolean var2) {
-      Friend var3 = (Friend)this.method4771(var1);
+      Friend var3 = (Friend)this.findByName(var1);
       return var3 == null?false:!var2 || var3.world != 0;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)Ljh;",
-      garbageValue = "2"
-   )
    User vmethod5179() {
       return new Friend();
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "-1601651584"
-   )
    public void method5182(Buffer var1, int var2) {
       while(true) {
          if(var1.offset < var2) {
@@ -120,7 +78,7 @@ public class FriendsList extends UserList<RSFriend> implements RSFriendsList {
                      }
                   }
                } else {
-                  if(this.method4800() >= 400) {
+                  if(this.getCount() >= 400) {
                      continue;
                   }
 

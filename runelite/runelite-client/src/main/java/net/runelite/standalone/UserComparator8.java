@@ -2,23 +2,14 @@ package net.runelite.standalone;
 
 import java.io.File;
 import java.io.RandomAccessFile;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
 public class UserComparator8 extends AbstractUserComparator {
-   @ObfuscatedName("z")
    final boolean reversed;
 
    public UserComparator8(boolean var1) {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljl;Ljl;I)I",
-      garbageValue = "-2001610603"
-   )
    int method2879(Buddy var1, Buddy var2) {
       if(Client.worldId == var1.world) {
          if(var2.world != Client.worldId) {
@@ -35,11 +26,6 @@ public class UserComparator8 extends AbstractUserComparator {
       return this.method2879((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)Ljava/io/File;",
-      garbageValue = "-1561719392"
-   )
    public static File method2885(String var0) {
       if(!FileSystem.FileSystem_hasPermissions) {
          throw new RuntimeException("");
@@ -84,11 +70,6 @@ public class UserComparator8 extends AbstractUserComparator {
       }
    }
 
-   @ObfuscatedName("fn")
-   @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "11"
-   )
    static void method2878(int var0) {
       Client.field962 = 0L;
       if(var0 >= 2) {

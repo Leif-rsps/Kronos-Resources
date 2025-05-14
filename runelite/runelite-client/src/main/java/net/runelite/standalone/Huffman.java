@@ -1,15 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ht")
 public class Huffman {
-   @ObfuscatedName("n")
    byte[] bits;
-   @ObfuscatedName("v")
    int[] keys;
-   @ObfuscatedName("z")
    int[] masks;
 
    public Huffman(byte[] var1) {
@@ -95,11 +88,6 @@ public class Huffman {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "([BI[BIII)I",
-      garbageValue = "98933619"
-   )
    int method4167(byte[] var1, int var2, byte[] var3, int var4, int var5) {
       if(var5 == 0) {
          return 0;
@@ -238,11 +226,6 @@ public class Huffman {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([BII[BII)I",
-      garbageValue = "2067037926"
-   )
    int method4171(byte[] var1, int var2, int var3, byte[] var4, int var5) {
       int var6 = 0;
       int var7 = var5 << 3;

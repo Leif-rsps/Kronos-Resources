@@ -1,51 +1,18 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("cr")
 public class Players {
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = 301065307
-   )
    static int Players_pendingUpdateCount;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 842790617
-   )
    static int Players_count;
-   @ObfuscatedName("q")
    static int[] Players_indices;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "[Lkl;"
-   )
    static Buffer[] field1192;
-   @ObfuscatedName("u")
    static byte[] field1191;
-   @ObfuscatedName("v")
    static byte[] field1200;
-   @ObfuscatedName("y")
    static int[] Players_emptyIndices;
-   @ObfuscatedName("a")
    static int[] Players_pendingUpdateIndices;
-   @ObfuscatedName("b")
    static int[] Players_targetIndices;
-   @ObfuscatedName("c")
    static int[] Players_orientations;
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      signature = "Lkl;"
-   )
    static Buffer field1202;
-   @ObfuscatedName("i")
    static int[] Players_regions;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -662435465
-   )
    static int Players_emptyIdxCount;
 
    static {
@@ -64,11 +31,6 @@ public class Players {
       field1202 = new Buffer(new byte[5000]);
    }
 
-   @ObfuscatedName("gw")
-   @ObfuscatedSignature(
-      signature = "(Lbi;ZI)V",
-      garbageValue = "-1924716638"
-   )
    static void method2146(Player var0, boolean var1) {
       if(var0 != null && var0.vmethod1611() && !var0.isHidden) {
          var0.isUnanimated = false;

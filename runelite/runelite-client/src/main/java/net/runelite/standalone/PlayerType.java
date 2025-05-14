@@ -1,9 +1,5 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hj")
 public enum PlayerType implements Enumerated {
 
     PlayerType_normal(0, -1, false, true),
@@ -38,20 +34,10 @@ public enum PlayerType implements Enumerated {
         this.isUser = isUser;
     }
 
-    @ObfuscatedName("v")
-    @ObfuscatedSignature(
-            signature = "(S)I",
-            garbageValue = "221"
-    )
     public int getId() {
         return this.id;
     }
 
-    @ObfuscatedName("fe")
-    @ObfuscatedSignature(
-            signature = "(ZI)V",
-            garbageValue = "433120035"
-    )
     static final void method3947(boolean var0) {
         if(var0) {
             Client.loginType = Login.field778?class158.field1950:class158.field1951;
@@ -61,11 +47,6 @@ public enum PlayerType implements Enumerated {
 
     }
 
-    @ObfuscatedName("gb")
-    @ObfuscatedSignature(
-            signature = "(ZLkf;I)V",
-            garbageValue = "-100712701"
-    )
     static final void method3945(boolean var0, PacketBuffer var1) {
         Client.isInInstance = var0;
         int var2;
@@ -187,11 +168,6 @@ public enum PlayerType implements Enumerated {
 
     }
 
-    @ObfuscatedName("m")
-    @ObfuscatedSignature(
-            signature = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-            garbageValue = "1116997511"
-    )
     static void method3939(String var0, String var1, String var2) {
         Login.Login_response1 = var0;
         Login.Login_response2 = var1;

@@ -438,14 +438,6 @@ public class Buffer extends Node {
       this.writeBytes(var8, 0, var8.length);
    }
 
-   public byte[] getPayload() {
-      return this.array;
-   }
-
-   public int getOffset() {
-      return this.offset;
-   }
-
    public int method5558() {
       this.offset += 2;
       int var1 = (this.array[this.offset - 1] - 128 & 255) + ((this.array[this.offset - 2] & 255) << 8);

@@ -1,55 +1,14 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("g")
 public class WorldMapLabelSize {
-   @ObfuscatedName("qv")
-   @ObfuscatedSignature(
-      signature = "Lca;"
-   )
    static PcmStreamMixer pcmStreamMixer;
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lg;"
-   )
    public static final WorldMapLabelSize WorldMapLabelSize_medium;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lg;"
-   )
    public static final WorldMapLabelSize WorldMapLabelSize_large;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lg;"
-   )
    public static final WorldMapLabelSize WorldMapLabelSize_small;
-   @ObfuscatedName("bc")
-   @ObfuscatedSignature(
-      signature = "Lgt;"
-   )
    static Language clientLanguage;
-   @ObfuscatedName("du")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
    static Archive archive1;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 1652176271
-   )
    final int field2047;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1129278847
-   )
    final int field2046;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1343624191
-   )
    final int field2045;
 
    static {
@@ -64,38 +23,18 @@ public class WorldMapLabelSize {
       this.field2047 = var3;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(FI)Z",
-      garbageValue = "-1695259698"
-   )
    boolean method3523(float var1) {
       return var1 >= (float)this.field2047;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(S)I",
-      garbageValue = "255"
-   )
    public static int method3522() {
       return ++MouseHandler.MouseHandler_idleCycles - 1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)[Lg;",
-      garbageValue = "1124237372"
-   )
    static WorldMapLabelSize[] method3521() {
       return new WorldMapLabelSize[]{WorldMapLabelSize_large, WorldMapLabelSize_small, WorldMapLabelSize_medium};
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(IIII)I",
-      garbageValue = "-962048478"
-   )
    static final int method3527(int var0, int var1, int var2) {
       int var3 = var0 / var2;
       int var4 = var0 & var2 - 1;
@@ -114,11 +53,6 @@ public class WorldMapLabelSize {
       return var15;
    }
 
-   @ObfuscatedName("hu")
-   @ObfuscatedSignature(
-      signature = "(ILjava/lang/String;I)V",
-      garbageValue = "-1330882873"
-   )
    static void method3526(int var0, String var1) {
       int var2 = Players.Players_count;
       int[] var3 = Players.Players_indices;

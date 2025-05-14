@@ -1,43 +1,17 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("jj")
 public class FriendLoginUpdate extends Link {
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "Ldq;"
-   )
    public static SoundCache soundCache;
-   @ObfuscatedName("r")
    public short world;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Ljq;"
-   )
    public Username username;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1649732045
-   )
    public int field3559;
 
-   @ObfuscatedSignature(
-      signature = "(Ljq;I)V"
-   )
    FriendLoginUpdate(Username var1, int var2) {
       this.field3559 = (int)(class33.method680() / 1000L);
       this.username = var1;
       this.world = (short)var2;
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZS)I",
-      garbageValue = "-14883"
-   )
    static int method4922(int var0, Script var1, boolean var2) {
       Widget var3;
       if(var0 >= 2000) {

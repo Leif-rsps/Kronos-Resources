@@ -8,89 +8,22 @@ import net.runelite.api.Point;
 import net.runelite.api.coords.Angle;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSEntity;
-import net.runelite.rs.api.RSGameObject;
-import net.runelite.rs.api.RSModel;
 
-@ObfuscatedName("ej")
-public final class GameObject implements RSGameObject {
-   @ObfuscatedName("gh")
-   @ObfuscatedSignature(
-      signature = "[Llf;"
-   )
+public final class GameObject implements net.runelite.api.GameObject {
    static Sprite[] mapMarkerSprites;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 23072497
-   )
    int plane;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      longValue = 2276908467403178719L
-   )
    public long tag;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 1901316909
-   )
    int orientation;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = -714921437
-   )
    int startX;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -921514335
-   )
    int centerY;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 1096373851
-   )
    int centerX;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 1467218039
-   )
    int height;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -1244242871
-   )
    int startY;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    public Entity entity;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = 8294449
-   )
    int flags;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = 505349389
-   )
    int lastDrawn;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -1933245697
-   )
    int field1718;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 1759509999
-   )
    int endY;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -1336647537
-   )
    int endX;
 
    GameObject() {
@@ -103,7 +36,7 @@ public final class GameObject implements RSGameObject {
    }
 
    public Polygon getConvexHull() {
-      RSModel var1 = this.getModel();
+      Model var1 = this.getModel();
       if(var1 == null) {
          return null;
       } else {
@@ -112,31 +45,27 @@ public final class GameObject implements RSGameObject {
       }
    }
 
-   public int getRelativeX() {
-      return this.startX;
-   }
-
-   public int getOffsetX() {
-      return this.endX;
-   }
-
+   @Override
    public long getHash() {
       return this.tag;
    }
 
-   public RSModel getModel() {
-      RSEntity var1 = this.getEntity();
-      return var1 == null?null:(var1 instanceof RSModel?(RSModel)var1:var1.getModel());
+   public Model getModel() {
+      Entity var1 = this.getEntity();
+      return var1 == null?null:(var1 instanceof Model ?(Model)var1:var1.getModel());
    }
 
-   public RSEntity getEntity() {
+   @Override
+   public Entity getEntity() {
       return this.entity;
    }
 
+   @Override
    public int getRsOrientation() {
       return this.orientation;
    }
 
+   @Override
    public int getX() {
       return this.centerX;
    }
@@ -145,22 +74,12 @@ public final class GameObject implements RSGameObject {
       return new LocalPoint(this.getX(), this.getY());
    }
 
-   public int getRelativeY() {
-      return this.startY;
-   }
-
-   public int getOffsetY() {
-      return this.endY;
-   }
-
-   public int getFlags() {
-      return this.flags;
-   }
-
+   @Override
    public int getY() {
       return this.centerY;
    }
 
+   @Override
    public int getPlane() {
       return this.plane;
    }
@@ -191,11 +110,11 @@ public final class GameObject implements RSGameObject {
    }
 
    public Point getSceneMinLocation() {
-      return new Point(this.getRelativeX(), this.getRelativeY());
+      return new Point(this.startX, this.startY);
    }
 
    public Point getSceneMaxLocation() {
-      return new Point(this.getOffsetX(), this.getOffsetY());
+      return new Point(this.endX, this.endY);
    }
 
    public Shape getClickbox() {
@@ -204,11 +123,8 @@ public final class GameObject implements RSGameObject {
 
    public Angle getOrientation() {
       int var1 = this.getRsOrientation();
-      int var2 = this.getFlags() >> 6 & 3;
+      int var2 = this.flags >> 6 & 3;
       return new Angle(var1 + var2 * 512);
    }
 
-   public int getHeight() {
-      return this.height;
-   }
 }

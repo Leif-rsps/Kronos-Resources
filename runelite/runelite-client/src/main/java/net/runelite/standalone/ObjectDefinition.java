@@ -1,212 +1,56 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSObjectDefinition;
-
-@ObfuscatedName("iz")
-public class ObjectDefinition extends DualNode implements RSObjectDefinition {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
+public class ObjectDefinition extends DualNode implements net.runelite.api.ObjectDefinition {
    public static AbstractArchive ObjectDefinition_archive;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable ObjectDefinition_cachedEntities;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable ObjectDefinition_cachedModels;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable ObjectDefinition_cachedModelData;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    public static EvictingDualNodeHashTable ObjectDefinition_cached;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive ObjectDefinition_modelsArchive;
-   @ObfuscatedName("z")
    public static boolean ObjectDefinition_isLowDetail;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "[Ldw;"
-   )
    static ModelData[] field3461;
-   @ObfuscatedName("o")
    short[] recolorFrom;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = 2069443219
-   )
    public int int1;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      intValue = -1768434003
-   )
    public int sizeX;
-   @ObfuscatedName("w")
    short[] retextureTo;
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = 887491837
-   )
    public int interactType;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -10424721
-   )
    public int id;
-   @ObfuscatedName("a")
    short[] recolorTo;
-   @ObfuscatedName("aa")
-   @ObfuscatedGetter(
-      intValue = 2127089139
-   )
    public int mapIconId;
-   @ObfuscatedName("ab")
    public boolean clipped;
-   @ObfuscatedName("ac")
-   @ObfuscatedGetter(
-      intValue = -1443717983
-   )
    int ambient;
-   @ObfuscatedName("ad")
-   @ObfuscatedGetter(
-      intValue = 1528184415
-   )
    int offsetHeight;
-   @ObfuscatedName("ae")
-   @ObfuscatedGetter(
-      intValue = -702042991
-   )
    int transformVarbit;
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      signature = "Llb;"
-   )
    IterableNodeHashTable params;
-   @ObfuscatedName("ag")
-   @ObfuscatedGetter(
-      intValue = -423945127
-   )
    public int int4;
-   @ObfuscatedName("ah")
-   @ObfuscatedGetter(
-      intValue = -214798847
-   )
    public int ambientSoundId;
-   @ObfuscatedName("ai")
    public boolean boolean2;
-   @ObfuscatedName("aj")
-   @ObfuscatedGetter(
-      intValue = -1044165733
-   )
    public int int5;
-   @ObfuscatedName("ak")
    boolean isSolid;
-   @ObfuscatedName("al")
-   @ObfuscatedGetter(
-      intValue = 771948197
-   )
    int offsetX;
-   @ObfuscatedName("am")
    public int[] transforms;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = 1216184101
-   )
    int offsetY;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = 1741322051
-   )
    int modelSizeY;
-   @ObfuscatedName("ap")
-   @ObfuscatedGetter(
-      intValue = 468378425
-   )
    public int mapSceneId;
-   @ObfuscatedName("aq")
-   @ObfuscatedGetter(
-      intValue = 1194600097
-   )
    public int int3;
-   @ObfuscatedName("ar")
    boolean isRotated;
-   @ObfuscatedName("as")
-   @ObfuscatedGetter(
-      intValue = -570144093
-   )
    int modelHeight;
-   @ObfuscatedName("au")
    public int[] soundEffectIds;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = 884373055
-   )
    int transformVarp;
-   @ObfuscatedName("aw")
    public String[] actions;
-   @ObfuscatedName("ax")
-   @ObfuscatedGetter(
-      intValue = -1167602213
-   )
    int modelSizeX;
-   @ObfuscatedName("ay")
-   @ObfuscatedGetter(
-      intValue = -1994867697
-   )
    public int int6;
-   @ObfuscatedName("az")
-   @ObfuscatedGetter(
-      intValue = -308737111
-   )
    int contrast;
-   @ObfuscatedName("b")
    public String name;
-   @ObfuscatedName("c")
    int[] models;
-   @ObfuscatedName("d")
    public boolean modelClipped;
-   @ObfuscatedName("e")
    short[] retextureFrom;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = 1385916293
-   )
    int clipType;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = -1471425107
-   )
    public int sizeY;
-   @ObfuscatedName("h")
    public boolean boolean1;
-   @ObfuscatedName("i")
    int[] modelIds;
-   @ObfuscatedName("j")
    boolean nonFlatShading;
-   @ObfuscatedName("k")
-   @ObfuscatedGetter(
-      intValue = 1255987799
-   )
    public int int2;
-   @ObfuscatedName("l")
-   @ObfuscatedGetter(
-      intValue = -1077296785
-   )
    public int animationId;
 
    static {
@@ -254,11 +98,6 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       this.int6 = 0;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "52"
-   )
    void method4728() {
       if(this.int1 == -1) {
          this.int1 = 0;
@@ -279,20 +118,10 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
 
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(ILjava/lang/String;B)Ljava/lang/String;",
-      garbageValue = "-65"
-   )
    public String method4748(int var1, String var2) {
       return class94.method2216(this.params, var1, var2);
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "1580173918"
-   )
    public final boolean method4721() {
       if(this.modelIds == null) {
          return true;
@@ -307,11 +136,6 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(II[[IIIIB)Ler;",
-      garbageValue = "-50"
-   )
    public final Entity method4755(int var1, int var2, int[][] var3, int var4, int var5, int var6) {
       long var7;
       if(this.models == null) {
@@ -320,7 +144,7 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
          var7 = (long)(var2 + (var1 << 3) + (this.id << 10));
       }
 
-      Object var9 = (Entity)ObjectDefinition_cachedEntities.method3032(var7);
+      Object var9 = (Entity)ObjectDefinition_cachedEntities.get(var7);
       if(var9 == null) {
          ModelData var10 = this.method4719(var1, var2);
          if(var10 == null) {
@@ -354,11 +178,6 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       return (Entity)var9;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(II)Z",
-      garbageValue = "1830976839"
-   )
    public final boolean method4738(int var1) {
       if(this.models != null) {
          for(int var4 = 0; var4 < this.models.length; ++var4) {
@@ -383,11 +202,6 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "-912301650"
-   )
    void method4716(Buffer var1, int var2) {
       int var3;
       int var4;
@@ -556,11 +370,6 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;B)V",
-      garbageValue = "76"
-   )
    void method4717(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
@@ -572,11 +381,6 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       }
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(II[[IIIILix;II)Ldh;",
-      garbageValue = "680709040"
-   )
    public final Model method4723(int var1, int var2, int[][] var3, int var4, int var5, int var6, SequenceDefinition var7, int var8) {
       long var9;
       if(this.models == null) {
@@ -585,7 +389,7 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
          var9 = (long)(var2 + (var1 << 3) + (this.id << 10));
       }
 
-      Model var11 = (Model)ObjectDefinition_cachedModels.method3032(var9);
+      Model var11 = (Model)ObjectDefinition_cachedModels.get(var9);
       if(var11 == null) {
          ModelData var12 = this.method4719(var1, var2);
          if(var12 == null) {
@@ -602,7 +406,7 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
          if(var7 != null) {
             var11 = var7.method4662(var11, var8, var2, (byte)2);
          } else {
-            var11 = var11.method2355(true);
+            var11 = var11.toSharedModel(true);
          }
 
          if(this.clipType >= 0) {
@@ -613,11 +417,6 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       }
    }
 
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "1401395643"
-   )
    public boolean method4727() {
       if(this.transforms == null) {
          return this.ambientSoundId != -1 || this.soundEffectIds != null;
@@ -635,24 +434,14 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       }
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(IIB)I",
-      garbageValue = "79"
-   )
    public int method4725(int var1, int var2) {
       return HealthBar.getParam(this.params, var1, var2);
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(B)Liz;",
-      garbageValue = "16"
-   )
    public final ObjectDefinition method4733() {
       int var1 = -1;
       if(this.transformVarbit != -1) {
-         var1 = WorldMapSprite.method782(this.transformVarbit);
+         var1 = WorldMapSprite.getVarbit(this.transformVarbit);
       } else if(this.transformVarp != -1) {
          var1 = Varps.Varps_main[this.transformVarp];
       }
@@ -667,39 +456,41 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       return var2 != -1?GrandExchangeOfferOwnWorldComparator.getObjectDefinition(var2):null;
    }
 
+   @Override
    public int getId() {
       return this.id;
    }
 
+   @Override
    public String getName() {
       return this.name;
    }
 
+   @Override
    public String[] getActions() {
       return this.actions;
    }
 
+   @Override
    public int getMapIconId() {
       return this.mapIconId;
    }
 
+   @Override
    public int getMapSceneId() {
       return this.mapSceneId;
    }
 
+   @Override
    public int[] getImpostorIds() {
       return this.transforms;
    }
 
-   public RSObjectDefinition getImpostor() {
+   @Override
+   public ObjectDefinition getImpostor() {
       return this.method4733();
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(III)Ldw;",
-      garbageValue = "-819701179"
-   )
    final ModelData method4719(int var1, int var2) {
       ModelData var3 = null;
       boolean var4;
@@ -727,7 +518,7 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
                var7 += 65536;
             }
 
-            var3 = (ModelData)ObjectDefinition_cachedModelData.method3032((long)var7);
+            var3 = (ModelData)ObjectDefinition_cachedModelData.get((long)var7);
             if(var3 == null) {
                var3 = ModelData.method2823(ObjectDefinition_modelsArchive, var7 & 65535, 0);
                if(var3 == null) {
@@ -769,7 +560,7 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
             var5 += 65536;
          }
 
-         var3 = (ModelData)ObjectDefinition_cachedModelData.method3032((long)var5);
+         var3 = (ModelData)ObjectDefinition_cachedModelData.get((long)var5);
          if(var3 == null) {
             var3 = ModelData.method2823(ObjectDefinition_modelsArchive, var5 & 65535, 0);
             if(var3 == null) {
@@ -835,11 +626,6 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
       return var8;
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(II[[IIIII)Ldh;",
-      garbageValue = "-2129252392"
-   )
    public final Model method4722(int var1, int var2, int[][] var3, int var4, int var5, int var6) {
       long var7;
       if(this.models == null) {
@@ -848,7 +634,7 @@ public class ObjectDefinition extends DualNode implements RSObjectDefinition {
          var7 = (long)(var2 + (var1 << 3) + (this.id << 10));
       }
 
-      Model var9 = (Model)ObjectDefinition_cachedModels.method3032(var7);
+      Model var9 = (Model)ObjectDefinition_cachedModels.get(var7);
       if(var9 == null) {
          ModelData var10 = this.method4719(var1, var2);
          if(var10 == null) {

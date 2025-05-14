@@ -2,11 +2,7 @@ package net.runelite.standalone;
 
 import java.util.HashSet;
 import java.util.Set;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gs")
 public enum class198 implements Enumerated {
    field2191("", 0, new class191[]{class191.field2145}),
    field2180("", 1, new class191[]{class191.field2144, class191.field2145}),
@@ -22,17 +18,9 @@ public enum class198 implements Enumerated {
    field2184("", 12, new class191[]{class191.field2144, class191.field2145}),
    field2187("", 13, new class191[]{class191.field2144});
 
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = 1983326673
-   )
    final int id;
-   @ObfuscatedName("e")
    final Set field2193;
 
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I[Lgl;)V"
-   )
    class198(String var3, int var4, class191[] var5) {
       this.field2193 = new HashSet();
       this.id = var4;
@@ -50,20 +38,10 @@ public enum class198 implements Enumerated {
       this.id = var4;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(S)I",
-      garbageValue = "221"
-   )
    public int getId() {
       return this.id;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IILfi;Lfa;I)Z",
-      garbageValue = "-1742878989"
-   )
    static final boolean method3810(int var0, int var1, RouteStrategy var2, CollisionMap var3) {
       int var4 = var0;
       int var5 = var1;
@@ -166,11 +144,6 @@ public enum class198 implements Enumerated {
       return false;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "1437512124"
-   )
    static void method3814(int var0, int var1) {
       int[] var2 = new int[4];
       int[] var3 = new int[4];
@@ -191,20 +164,10 @@ public enum class198 implements Enumerated {
       WorldMapData_0.method170(World.World_worlds, 0, World.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)[Lge;",
-      garbageValue = "-311102379"
-   )
    static LoginPacket[] method3818() {
       return new LoginPacket[]{LoginPacket.requestWorldLogin, LoginPacket.field2103, LoginPacket.field2106, LoginPacket.requestWorldReconnect, LoginPacket.handshake};
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IIILfi;Lfa;Z[I[IB)I",
-      garbageValue = "-91"
-   )
    public static int method3815(int var0, int var1, int var2, RouteStrategy var3, CollisionMap var4, boolean var5, int[] var6, int[] var7) {
       int var9;
       for(int var8 = 0; var8 < 128; ++var8) {
@@ -317,11 +280,6 @@ public enum class198 implements Enumerated {
       }
    }
 
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "(IIS)I",
-      garbageValue = "5004"
-   )
    static final int method3817(int var0, int var1) {
       if(var0 == -1) {
          return 12345678;

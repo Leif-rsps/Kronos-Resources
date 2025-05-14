@@ -7,22 +7,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.LinkedList;
 import java.util.Queue;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("en")
 public class UrlRequester implements Runnable {
-   @ObfuscatedName("kx")
-   @ObfuscatedGetter(
-      intValue = 1912035221
-   )
    static int menuX;
-   @ObfuscatedName("n")
    volatile boolean isClosed;
-   @ObfuscatedName("v")
    Queue requests;
-   @ObfuscatedName("z")
    final Thread thread;
 
    public UrlRequester() {
@@ -32,11 +21,6 @@ public class UrlRequester implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1861698120"
-   )
    public void method3051() {
       this.isClosed = true;
 
@@ -52,11 +36,6 @@ public class UrlRequester implements Runnable {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/net/URL;I)Leh;",
-      garbageValue = "1658949504"
-   )
    public UrlRequest method3050(URL var1) {
       UrlRequest var2 = new UrlRequest(var1);
       synchronized(this) {
@@ -120,11 +99,6 @@ public class UrlRequester implements Runnable {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(CI)C",
-      garbageValue = "1748894504"
-   )
    static char method3053(char var0) {
       return var0 != 181 && var0 != 402?Character.toTitleCase(var0):var0;
    }

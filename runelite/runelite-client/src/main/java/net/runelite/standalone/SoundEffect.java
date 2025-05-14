@@ -1,25 +1,10 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSRawSound;
-import net.runelite.rs.api.RSSoundEffect;
-
-@ObfuscatedName("cm")
-public class SoundEffect implements RSSoundEffect {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "[Ldk;"
-   )
+public class SoundEffect {
    Instrument[] instruments;
-   @ObfuscatedName("u")
    int end;
-   @ObfuscatedName("v")
    int start;
 
-   @ObfuscatedSignature(
-      signature = "(Lkl;)V"
-   )
    SoundEffect(Buffer var1) {
       this.instruments = new Instrument[10];
 
@@ -36,16 +21,11 @@ public class SoundEffect implements RSSoundEffect {
       this.end = var1.readUnsignedShort();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "()Lch;"
-   )
-   public RawSound method2086() {
+   public RawSound toRawAudioNode() {
       byte[] var1 = this.method2090();
       return new RawSound(22050, var1, this.start * 22050 / 1000, this.end * 22050 / 1000);
    }
 
-   @ObfuscatedName("u")
    final byte[] method2090() {
       int var1 = 0;
 
@@ -83,7 +63,6 @@ public class SoundEffect implements RSSoundEffect {
       }
    }
 
-   @ObfuscatedName("v")
    public final int method2095() {
       int var1 = 9999999;
 
@@ -116,14 +95,6 @@ public class SoundEffect implements RSSoundEffect {
       }
    }
 
-   public RSRawSound toRawAudioNode() {
-      return this.method2086();
-   }
-
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;II)Lcm;"
-   )
    public static SoundEffect method2092(AbstractArchive var0, int var1, int var2) {
       byte[] var3 = var0.method4020(var1, var2, (short)3018);
       return var3 == null?null:new SoundEffect(new Buffer(var3));

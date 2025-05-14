@@ -5,39 +5,17 @@ import java.awt.image.PixelGrabber;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ak")
 public class class28 {
-   @ObfuscatedName("em")
-   @ObfuscatedGetter(
-      intValue = 1914345139
-   )
    static int field202;
-   @ObfuscatedName("ga")
-   @ObfuscatedGetter(
-      intValue = -1478059255
-   )
    static int field199;
-   @ObfuscatedName("n")
    byte[][][] tileTemplates;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 1827111681
-   )
    int pixelsPerTile;
 
    class28(int var1) {
       this.pixelsPerTile = var1;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IIB)I",
-      garbageValue = "-28"
-   )
    int method544(int var1, int var2) {
       if(var2 == 9) {
          var1 = var1 + 1 & 3;
@@ -54,11 +32,6 @@ public class class28 {
       return var1;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1748591927"
-   )
    void method548() {
       byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
       int var2 = 0;
@@ -124,11 +97,6 @@ public class class28 {
       this.tileTemplates[1][3] = var1;
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-997969960"
-   )
    void method549() {
       byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
       int var2 = 0;
@@ -190,11 +158,6 @@ public class class28 {
       this.tileTemplates[2][3] = var1;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "27"
-   )
    void method547() {
       byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
       int var2 = 0;
@@ -256,11 +219,6 @@ public class class28 {
       this.tileTemplates[0][3] = var1;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(S)V",
-      garbageValue = "-1981"
-   )
    void method556() {
       if(this.tileTemplates == null) {
          this.tileTemplates = new byte[8][4][];
@@ -275,20 +233,10 @@ public class class28 {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(IB)I",
-      garbageValue = "-61"
-   )
    int method545(int var1) {
       return var1 != 9 && var1 != 10?(var1 == 11?8:var1):1;
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "2142999758"
-   )
    void method551() {
       byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
       int var2 = 0;
@@ -350,11 +298,6 @@ public class class28 {
       this.tileTemplates[4][3] = var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIIII)V",
-      garbageValue = "-1205626261"
-   )
    void method543(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       if(var7 != 0 && this.pixelsPerTile != 0 && this.tileTemplates != null) {
          var8 = this.method544(var8, var7);
@@ -363,11 +306,6 @@ public class class28 {
       }
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1722985499"
-   )
    void method568() {
       byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
       boolean var2 = false;
@@ -431,11 +369,6 @@ public class class28 {
       this.tileTemplates[7][3] = var1;
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-920906914"
-   )
    void method564() {
       byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
       boolean var2 = false;
@@ -499,11 +432,6 @@ public class class28 {
       this.tileTemplates[6][3] = var1;
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "582087203"
-   )
    void method552() {
       byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
       boolean var2 = false;
@@ -567,11 +495,6 @@ public class class28 {
       this.tileTemplates[5][3] = var1;
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "26"
-   )
    void method550() {
       byte[] var1 = new byte[this.pixelsPerTile * this.pixelsPerTile];
       int var2 = 0;
@@ -633,11 +556,6 @@ public class class28 {
       this.tileTemplates[3][3] = var1;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "([BIIII[Lfa;I)V",
-      garbageValue = "1638905500"
-   )
    static final void method579(byte[] var0, int var1, int var2, int var3, int var4, CollisionMap[] var5) {
       int var7;
       int var8;
@@ -663,11 +581,6 @@ public class class28 {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([BB)Llf;",
-      garbageValue = "14"
-   )
    public static final Sprite method577(byte[] var0) {
       BufferedImage var1 = null;
 
@@ -689,31 +602,16 @@ public class class28 {
       return new Sprite(0, 0);
    }
 
-   @ObfuscatedName("hc")
-   @ObfuscatedSignature(
-      signature = "(II)Ljava/lang/String;",
-      garbageValue = "-2141234347"
-   )
    static String method591(int var0) {
       return var0 < 0?"":(Client.menuTargets[var0].length() > 0?Client.menuActions[var0] + " " + Client.menuTargets[var0]:Client.menuActions[var0]);
    }
 
-   @ObfuscatedName("js")
-   @ObfuscatedSignature(
-      signature = "(IIB)V",
-      garbageValue = "0"
-   )
    static final void method588(int var0, int var1) {
       if(WorldMapData_0.method171(var0)) {
          MouseRecorder.method1206(UserComparator5.Widget_interfaceComponents[var0], var1);
       }
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "123699852"
-   )
    static int method589(int var0, Script var1, boolean var2) {
       boolean var3 = true;
       Widget var4;

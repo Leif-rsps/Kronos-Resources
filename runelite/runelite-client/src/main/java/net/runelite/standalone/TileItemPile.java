@@ -2,60 +2,21 @@ package net.runelite.standalone;
 
 import java.awt.Graphics2D;
 import java.awt.Polygon;
-import java.awt.Shape;
 import java.awt.geom.Area;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSEntity;
-import net.runelite.rs.api.RSTileItemPile;
 
-@ObfuscatedName("do")
-public final class TileItemPile implements RSTileItemPile {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -149113077
-   )
+public final class TileItemPile implements net.runelite.api.TileItemPile {
    int tileHeight;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    Entity third;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      longValue = 3581588196263566823L
-   )
    long tag;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    Entity second;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1956463223
-   )
    int y;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 905063527
-   )
    int x;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    Entity first;
    public int itemLayerPlane;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 814116925
-   )
    int height;
 
    public Point getCanvasLocation(int var1) {
@@ -66,22 +27,27 @@ public final class TileItemPile implements RSTileItemPile {
       throw new UnsupportedOperationException();
    }
 
-   public RSEntity getBottom() {
+   @Override
+   public Entity getBottom() {
       return this.first;
    }
 
-   public RSEntity getMiddle() {
+   @Override
+   public Entity getMiddle() {
       return this.second;
    }
 
-   public RSEntity getTop() {
+   @Override
+   public Entity getTop() {
       return this.third;
    }
 
+   @Override
    public long getHash() {
       return this.tag;
    }
 
+   @Override
    public int getX() {
       return this.x;
    }
@@ -90,6 +56,7 @@ public final class TileItemPile implements RSTileItemPile {
       return new LocalPoint(this.getX(), this.getY());
    }
 
+   @Override
    public int getY() {
       return this.y;
    }
@@ -128,20 +95,21 @@ public final class TileItemPile implements RSTileItemPile {
    }
 
    public net.runelite.api.Model getModelBottom() {
-      RSEntity var1 = this.getBottom();
+      Entity var1 = this.getBottom();
       return var1 == null?null:(var1 instanceof net.runelite.api.Model?(net.runelite.api.Model)var1:var1.getModel());
    }
 
    public net.runelite.api.Model getModelMiddle() {
-      RSEntity var1 = this.getMiddle();
+      Entity var1 = this.getMiddle();
       return var1 == null?null:(var1 instanceof net.runelite.api.Model?(net.runelite.api.Model)var1:var1.getModel());
    }
 
    public net.runelite.api.Model getModelTop() {
-      RSEntity var1 = this.getTop();
+      Entity var1 = this.getTop();
       return var1 == null?null:(var1 instanceof net.runelite.api.Model?(net.runelite.api.Model)var1:var1.getModel());
    }
 
+   @Override
    public int getHeight() {
       return this.height;
    }

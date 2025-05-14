@@ -1,43 +1,15 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("dp")
 public class VertexNormal {
-   @ObfuscatedName("bd")
-   @ObfuscatedSignature(
-      signature = "Lhs;"
-   )
    static ServerBuild field1530;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 162355823
-   )
    int x;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1691554905
-   )
    int z;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 669484941
-   )
    int y;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 511779629
-   )
    int magnitude;
 
    VertexNormal() {
    }
 
-   @ObfuscatedSignature(
-      signature = "(Ldp;)V"
-   )
    VertexNormal(VertexNormal var1) {
       this.x = var1.x;
       this.y = var1.y;
@@ -45,11 +17,6 @@ public class VertexNormal {
       this.magnitude = var1.magnitude;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
-      garbageValue = "-1499927610"
-   )
    public static String method2467(CharSequence var0) {
       long var3 = 0L;
       int var5 = var0.length();
@@ -82,11 +49,6 @@ public class VertexNormal {
       return var8;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "11"
-   )
    public static void method2465() {
       MouseHandler var0 = MouseHandler.MouseHandler_instance;
       synchronized(MouseHandler.MouseHandler_instance) {
@@ -103,28 +65,18 @@ public class VertexNormal {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1962771059"
-   )
    public static void method2466() {
       class38.midiPcmStream.method3628();
       class197.field2173 = 1;
       class197.musicTrackArchive = null;
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(Lhp;IIS)Z",
-      garbageValue = "18259"
-   )
    static boolean method2468(AbstractArchive var0, int var1, int var2) {
       byte[] var3 = var0.method4020(var1, var2, (short)-2259);
       if(var3 == null) {
          return false;
       } else {
-         Tiles.method1200(var3);
+         Tiles.decodeSprite(var3);
          return true;
       }
    }

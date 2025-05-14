@@ -1,48 +1,14 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ko")
 public class FontName {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lko;"
-   )
    public static final FontName FontName_plain12;
-   @ObfuscatedName("o")
    static int[] Tiles_hueMultiplier;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Lko;"
-   )
    public static final FontName FontName_verdana15;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lko;"
-   )
    public static final FontName FontName_verdana13;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lko;"
-   )
    public static final FontName FontName_verdana11;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lko;"
-   )
    public static final FontName FontName_bold12;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "Llp;"
-   )
    static IndexedSprite logoSprite;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lko;"
-   )
    public static final FontName FontName_plain11;
-   @ObfuscatedName("q")
    String name;
 
    static {
@@ -58,11 +24,6 @@ public class FontName {
       this.name = var1;
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-1537038267"
-   )
    static int method5749(int var0, Script var1, boolean var2) {
       Widget var3 = var2?GrandExchangeOfferAgeComparator.field26:KitDefinition.field3452;
       if(var0 == 1500) {
@@ -88,40 +49,25 @@ public class FontName {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "14"
-   )
    static void method5744() {
       ItemContainer.itemContainers = new NodeHashTable(32);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)[Lko;",
-      garbageValue = "-88"
-   )
    public static FontName[] method5750() {
       return new FontName[]{FontName_verdana13, FontName_bold12, FontName_verdana11, FontName_plain12, FontName_verdana15, FontName_plain11};
    }
 
-   @ObfuscatedName("jr")
-   @ObfuscatedSignature(
-      signature = "(Lbk;ZI)V",
-      garbageValue = "2027801614"
-   )
    static final void method5748(InterfaceParent var0, boolean var1) {
       int var2 = var0.group;
       int var3 = (int)var0.key;
-      var0.method3497();
+      var0.unlink();
       if(var1 && CustomInterfaceEdits.allowUnload(var2)) {
          InterfaceParent.method1137(var2);
       }
 
       for(IntegerNode var4 = (IntegerNode)Client.widgetClickMasks.method6348(); var4 != null; var4 = (IntegerNode)Client.widgetClickMasks.method6345()) {
          if((long)var2 == (var4.key >> 48 & 65535L)) {
-            var4.method3497();
+            var4.unlink();
          }
       }
 

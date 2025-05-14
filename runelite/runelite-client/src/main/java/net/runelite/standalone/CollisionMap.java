@@ -1,34 +1,14 @@
 package net.runelite.standalone;
 
 import java.awt.Component;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSCollisionMap;
 
-@ObfuscatedName("fa")
-public class CollisionMap implements RSCollisionMap {
-   @ObfuscatedName("ad")
+import net.runelite.api.CollisionData;
+
+public class CollisionMap implements CollisionData {
    public int[][] flags;
-   @ObfuscatedName("al")
-   @ObfuscatedGetter(
-      intValue = -888202655
-   )
    int ySize;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = 1308792903
-   )
    int xSize;
-   @ObfuscatedName("as")
-   @ObfuscatedGetter(
-      intValue = -518382829
-   )
    int yInset;
-   @ObfuscatedName("ax")
-   @ObfuscatedGetter(
-      intValue = 2078354851
-   )
    int xInset;
 
    public CollisionMap(int var1, int var2) {
@@ -40,11 +20,6 @@ public class CollisionMap implements RSCollisionMap {
       this.method3352();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IIIIZI)V",
-      garbageValue = "1400659630"
-   )
    public void method3332(int var1, int var2, int var3, int var4, boolean var5) {
       var1 -= this.xInset;
       var2 -= this.yInset;
@@ -192,20 +167,10 @@ public class CollisionMap implements RSCollisionMap {
 
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(IIIB)V",
-      garbageValue = "-3"
-   )
    void method3369(int var1, int var2, int var3) {
       this.flags[var1][var2] |= var3;
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(IIIIZI)V",
-      garbageValue = "1060838313"
-   )
    public void method3338(int var1, int var2, int var3, int var4, boolean var5) {
       var1 -= this.xInset;
       var2 -= this.yInset;
@@ -353,33 +318,18 @@ public class CollisionMap implements RSCollisionMap {
 
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "-119630021"
-   )
    public void method3346(int var1, int var2) {
       var1 -= this.xInset;
       var2 -= this.yInset;
       this.flags[var1][var2] |= 262144;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "-691975667"
-   )
    public void method3335(int var1, int var2) {
       var1 -= this.xInset;
       var2 -= this.yInset;
       this.flags[var1][var2] |= 2097152;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(IIIIZI)V",
-      garbageValue = "1277713715"
-   )
    public void method3334(int var1, int var2, int var3, int var4, boolean var5) {
       int var6 = 256;
       if(var5) {
@@ -401,20 +351,10 @@ public class CollisionMap implements RSCollisionMap {
 
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(IIIB)V",
-      garbageValue = "6"
-   )
    void method3344(int var1, int var2, int var3) {
       this.flags[var1][var2] &= ~var3;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-51"
-   )
    public void method3352() {
       for(int var1 = 0; var1 < this.xSize; ++var1) {
          for(int var2 = 0; var2 < this.ySize; ++var2) {
@@ -428,26 +368,17 @@ public class CollisionMap implements RSCollisionMap {
 
    }
 
+   @Override
    public int[][] getFlags() {
       return this.flags;
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(IIS)V",
-      garbageValue = "-6856"
-   )
    public void method3341(int var1, int var2) {
       var1 -= this.xInset;
       var2 -= this.yInset;
       this.flags[var1][var2] &= -262145;
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(IIIIIZI)V",
-      garbageValue = "-476929644"
-   )
    public void method3339(int var1, int var2, int var3, int var4, int var5, boolean var6) {
       int var7 = 256;
       if(var6) {
@@ -475,11 +406,6 @@ public class CollisionMap implements RSCollisionMap {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ljava/awt/Component;I)V",
-      garbageValue = "-1662439433"
-   )
    static void method3368(Component var0) {
       var0.removeMouseListener(MouseHandler.MouseHandler_instance);
       var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
@@ -487,11 +413,6 @@ public class CollisionMap implements RSCollisionMap {
       MouseHandler.MouseHandler_currentButtonVolatile = 0;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I[BLkg;I)V",
-      garbageValue = "1190241493"
-   )
    static void method3360(int var0, byte[] var1, ArchiveDisk var2) {
       ArchiveDiskAction var3 = new ArchiveDiskAction();
       var3.type = 0;
@@ -500,7 +421,7 @@ public class CollisionMap implements RSCollisionMap {
       var3.archiveDisk = var2;
       NodeDeque var4 = ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue;
       synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-         ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.method5105(var3);
+         ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
       }
 
       Object var9 = ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock;

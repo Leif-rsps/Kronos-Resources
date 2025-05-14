@@ -1,73 +1,34 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSBuddy;
+import net.runelite.api.ChatPlayer;
 
-@ObfuscatedName("jl")
-public class Buddy extends User implements RSBuddy {
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -1761858423
-   )
+public class Buddy extends User implements ChatPlayer {
    public int int2;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1627143829
-   )
    public int rank;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1753766973
-   )
    public int world;
 
    Buddy() {
       this.world = -1;
    }
 
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "-736416010"
-   )
    void method4957(int var1, int var2) {
       this.world = var1;
       this.int2 = var2;
    }
 
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      signature = "(B)Z",
-      garbageValue = "0"
-   )
    public boolean method4959() {
       return this.world > 0;
    }
 
-   @ObfuscatedName("aq")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-516703486"
-   )
    public int method4958() {
       return this.world;
    }
 
-   public int getRSRank() {
-      return this.rank;
-   }
-
+   @Override
    public int getWorld() {
       return this.method4958();
    }
 
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "1426462552"
-   )
    static int method4961(int var0, Script var1, boolean var2) {
       if(var0 == 3600) {
          if(Tiles.friendSystem.field406 == 0) {
@@ -75,7 +36,7 @@ public class Buddy extends User implements RSBuddy {
          } else if(Tiles.friendSystem.field406 == 1) {
             Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
          } else {
-            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Tiles.friendSystem.friendsList.method4800();
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Tiles.friendSystem.friendsList.getCount();
          }
 
          return 1;
@@ -83,7 +44,7 @@ public class Buddy extends User implements RSBuddy {
          int var3;
          if(var0 == 3601) {
             var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-            if(Tiles.friendSystem.method891() && var3 >= 0 && var3 < Tiles.friendSystem.friendsList.method4800()) {
+            if(Tiles.friendSystem.method891() && var3 >= 0 && var3 < Tiles.friendSystem.friendsList.getCount()) {
                Friend var8 = (Friend)Tiles.friendSystem.friendsList.method4778(var3);
                Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var8.method4880();
                Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var8.method4878();
@@ -95,7 +56,7 @@ public class Buddy extends User implements RSBuddy {
             return 1;
          } else if(var0 == 3602) {
             var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-            if(Tiles.friendSystem.method891() && var3 >= 0 && var3 < Tiles.friendSystem.friendsList.method4800()) {
+            if(Tiles.friendSystem.method891() && var3 >= 0 && var3 < Tiles.friendSystem.friendsList.getCount()) {
                Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = ((Buddy)Tiles.friendSystem.friendsList.method4778(var3)).world;
             } else {
                Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -104,7 +65,7 @@ public class Buddy extends User implements RSBuddy {
             return 1;
          } else if(var0 == 3603) {
             var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-            if(Tiles.friendSystem.method891() && var3 >= 0 && var3 < Tiles.friendSystem.friendsList.method4800()) {
+            if(Tiles.friendSystem.method891() && var3 >= 0 && var3 < Tiles.friendSystem.friendsList.getCount()) {
                Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = ((Buddy)Tiles.friendSystem.friendsList.method4778(var3)).rank;
             } else {
                Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -120,11 +81,11 @@ public class Buddy extends User implements RSBuddy {
                return 1;
             } else if(var0 == 3605) {
                var5 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
-               Tiles.friendSystem.method898(var5);
+               Tiles.friendSystem.addFriend(var5);
                return 1;
             } else if(var0 == 3606) {
                var5 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
-               Tiles.friendSystem.method942(var5);
+               Tiles.friendSystem.removeFriend(var5);
                return 1;
             } else if(var0 == 3607) {
                var5 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
@@ -137,7 +98,7 @@ public class Buddy extends User implements RSBuddy {
             } else if(var0 == 3609) {
                var5 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
                var5 = WorldMapSectionType.method113(var5);
-               Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Tiles.friendSystem.method896(new Username(var5, WorldMapSection1.loginType), false)?1:0;
+               Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Tiles.friendSystem.isFriended(new Username(var5, WorldMapSection1.loginType), false)?1:0;
                return 1;
             } else if(var0 == 3611) {
                if(Varps.clanChat != null) {
@@ -149,7 +110,7 @@ public class Buddy extends User implements RSBuddy {
                return 1;
             } else if(var0 == 3612) {
                if(Varps.clanChat != null) {
-                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Varps.clanChat.method4800();
+                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Varps.clanChat.getCount();
                } else {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
                }
@@ -157,8 +118,8 @@ public class Buddy extends User implements RSBuddy {
                return 1;
             } else if(var0 == 3613) {
                var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-               if(Varps.clanChat != null && var3 < Varps.clanChat.method4800()) {
-                  Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = Varps.clanChat.method4778(var3).method4879().method5001();
+               if(Varps.clanChat != null && var3 < Varps.clanChat.getCount()) {
+                  Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = Varps.clanChat.method4778(var3).method4879().getName();
                } else {
                   Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
                }
@@ -166,7 +127,7 @@ public class Buddy extends User implements RSBuddy {
                return 1;
             } else if(var0 == 3614) {
                var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-               if(Varps.clanChat != null && var3 < Varps.clanChat.method4800()) {
+               if(Varps.clanChat != null && var3 < Varps.clanChat.getCount()) {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = ((Buddy)Varps.clanChat.method4778(var3)).method4958();
                } else {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -175,7 +136,7 @@ public class Buddy extends User implements RSBuddy {
                return 1;
             } else if(var0 == 3615) {
                var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-               if(Varps.clanChat != null && var3 < Varps.clanChat.method4800()) {
+               if(Varps.clanChat != null && var3 < Varps.clanChat.getCount()) {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = ((Buddy)Varps.clanChat.method4778(var3)).rank;
                } else {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -203,13 +164,13 @@ public class Buddy extends User implements RSBuddy {
                if(!Tiles.friendSystem.method891()) {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                } else {
-                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Tiles.friendSystem.ignoreList.method4800();
+                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Tiles.friendSystem.ignoreList.getCount();
                }
 
                return 1;
             } else if(var0 == 3622) {
                var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-               if(Tiles.friendSystem.method891() && var3 >= 0 && var3 < Tiles.friendSystem.ignoreList.method4800()) {
+               if(Tiles.friendSystem.method891() && var3 >= 0 && var3 < Tiles.friendSystem.ignoreList.getCount()) {
                   Ignored var4 = (Ignored)Tiles.friendSystem.ignoreList.method4778(var3);
                   Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.method4880();
                   Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.method4878();
@@ -226,7 +187,7 @@ public class Buddy extends User implements RSBuddy {
                return 1;
             } else if(var0 == 3624) {
                var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-               if(Varps.clanChat != null && var3 < Varps.clanChat.method4800() && Varps.clanChat.method4778(var3).method4879().equals(class215.localPlayer.username)) {
+               if(Varps.clanChat != null && var3 < Varps.clanChat.getCount() && Varps.clanChat.method4778(var3).method4879().equals(class215.localPlayer.username)) {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 1;
                } else {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -243,7 +204,7 @@ public class Buddy extends User implements RSBuddy {
                return 1;
             } else if(var0 == 3626) {
                var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-               if(Varps.clanChat != null && var3 < Varps.clanChat.method4800() && ((ClanMate)Varps.clanChat.method4778(var3)).method4982()) {
+               if(Varps.clanChat != null && var3 < Varps.clanChat.getCount() && ((ClanMate)Varps.clanChat.method4778(var3)).method4982()) {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 1;
                } else {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -412,7 +373,7 @@ public class Buddy extends User implements RSBuddy {
                }
             } else {
                var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-               if(Varps.clanChat != null && var3 < Varps.clanChat.method4800() && ((ClanMate)Varps.clanChat.method4778(var3)).method4976()) {
+               if(Varps.clanChat != null && var3 < Varps.clanChat.getCount() && ((ClanMate)Varps.clanChat.method4778(var3)).method4976()) {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 1;
                } else {
                   Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;

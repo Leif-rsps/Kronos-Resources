@@ -1,52 +1,18 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ag")
 public class DevicePcmPlayerProvider implements PcmPlayerProvider {
-   @ObfuscatedName("sg")
-   @ObfuscatedGetter(
-      intValue = 408059263
-   )
    static int foundItemIdCount;
-   @ObfuscatedName("p")
    static byte[][][] field156;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1430118873
-   )
    public static int KitDefinition_fileCount;
-   @ObfuscatedName("y")
    static int[][] field149;
-   @ObfuscatedName("i")
    public static short[][] field153;
-   @ObfuscatedName("ja")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget field154;
-   @ObfuscatedName("lk")
-   @ObfuscatedGetter(
-      intValue = -783171563
-   )
    static int selectedItemSlot;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)Ldv;",
-      garbageValue = "-79742550"
-   )
    public PcmPlayer vmethod1574() {
       return new DevicePcmPlayer();
    }
 
-   @ObfuscatedName("im")
-   @ObfuscatedSignature(
-      signature = "(IIIIIII)V",
-      garbageValue = "405770761"
-   )
    static final void method480(int var0, int var1, int var2, int var3, int var4, int var5) {
       int var6 = var2 - var0;
       int var7 = var3 - var1;

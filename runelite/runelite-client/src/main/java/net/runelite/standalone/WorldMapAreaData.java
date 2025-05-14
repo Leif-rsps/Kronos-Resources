@@ -3,23 +3,12 @@ package net.runelite.standalone;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("an")
 public class WorldMapAreaData extends WorldMapArea {
-   @ObfuscatedName("o")
    HashSet worldMapData0Set;
-   @ObfuscatedName("a")
    HashSet worldMapData1Set;
-   @ObfuscatedName("e")
    List iconList;
 
-   @ObfuscatedName("cg")
-   @ObfuscatedSignature(
-      signature = "(Lkl;ZI)V",
-      garbageValue = "-317910906"
-   )
    void method665(Buffer var1, boolean var2) {
       this.iconList = new LinkedList();
       int var3 = var1.readUnsignedShort();
@@ -35,11 +24,6 @@ public class WorldMapAreaData extends WorldMapArea {
 
    }
 
-   @ObfuscatedName("cs")
-   @ObfuscatedSignature(
-      signature = "(Lkl;Lkl;IZI)V",
-      garbageValue = "608966722"
-   )
    void method666(Buffer var1, Buffer var2, int var3, boolean var4) {
       this.decode(var1, var3);
       int var5 = var2.readUnsignedShort();
@@ -76,23 +60,13 @@ public class WorldMapAreaData extends WorldMapArea {
       this.method665(var2, var4);
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "-2123139883"
-   )
    static void method670(int var0) {
       ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.method6346((long)var0);
       if(var1 != null) {
-         var1.method3497();
+         var1.unlink();
       }
    }
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-442086498"
-   )
    static int method669(int var0, Script var1, boolean var2) {
       int var3;
       int var4;
@@ -232,22 +206,12 @@ public class WorldMapAreaData extends WorldMapArea {
       }
    }
 
-   @ObfuscatedName("ev")
-   @ObfuscatedSignature(
-      signature = "(Lie;Ljava/lang/String;I)V",
-      garbageValue = "-1244242871"
-   )
    static void method671(Archive var0, String var1) {
       ArchiveLoader var2 = new ArchiveLoader(var0, var1);
       Client.archiveLoaders.add(var2);
       Client.field1116 += var2.groupCount;
    }
 
-   @ObfuscatedName("id")
-   @ObfuscatedSignature(
-      signature = "(Lho;IIIIIII)V",
-      garbageValue = "-1006882337"
-   )
    static final void method672(Widget var0, int var1, int var2, int var3, int var4, int var5, int var6) {
       if(Client.field911) {
          Client.alternativeScrollbarWidth = 32;

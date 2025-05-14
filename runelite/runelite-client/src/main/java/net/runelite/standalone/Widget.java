@@ -10,6 +10,7 @@ import net.runelite.api.events.WidgetHiddenChanged;
 import net.runelite.api.events.WidgetPositioned;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
+
 public class Widget extends Node implements net.runelite.api.widgets.Widget {
 
    public static EvictingDualNodeHashTable Widget_cachedSprites;
@@ -63,321 +64,111 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
    public int field2700;
    public int spriteAngle;
    int modelType2;
-   @ObfuscatedName("bo")
-   @ObfuscatedGetter(
-      intValue = 1532699993
-   )
    public int modelAngleZ;
-   @ObfuscatedName("bp")
-   @ObfuscatedGetter(
-      intValue = 1908099759
-   )
    public int itemQuantityMode;
-   @ObfuscatedName("bq")
-   @ObfuscatedGetter(
-      intValue = 744470751
-   )
    public int modelAngleY;
-   @ObfuscatedName("br")
-   @ObfuscatedGetter(
-      intValue = -1859343581
-   )
    public int modelZoom;
-   @ObfuscatedName("bs")
-   @ObfuscatedGetter(
-      intValue = 235051931
-   )
    public int spriteShadow;
-   @ObfuscatedName("bt")
-   @ObfuscatedGetter(
-      intValue = 263647227
-   )
    public int modelOffsetY;
-   @ObfuscatedName("bu")
-   @ObfuscatedGetter(
-      intValue = -1921357951
-   )
    public int sequenceId;
-   @ObfuscatedName("bv")
    public boolean spriteTiling;
-   @ObfuscatedName("bw")
    public boolean modelTransparency;
-   @ObfuscatedName("bx")
    public boolean field2612;
-   @ObfuscatedName("by")
-   @ObfuscatedGetter(
-      intValue = -899088195
-   )
    public int modelAngleX;
-   @ObfuscatedName("bz")
    public boolean spriteFlipV;
-   @ObfuscatedName("ca")
    public int[] field2619;
-   @ObfuscatedName("cb")
    public int[] inventoryYOffsets;
-   @ObfuscatedName("cc")
    public byte[][] field2654;
-   @ObfuscatedName("cd")
-   @ObfuscatedGetter(
-      intValue = 488082575
-   )
    public int paddingX;
-   @ObfuscatedName("ce")
    public byte[][] field2585;
-   @ObfuscatedName("cf")
    public int[] field2581;
-   @ObfuscatedName("cg")
-   @ObfuscatedGetter(
-      intValue = -2027130901
-   )
    public int textYAlignment;
-   @ObfuscatedName("ci")
-   @ObfuscatedGetter(
-      intValue = -349261461
-   )
    public int clickMask;
-   @ObfuscatedName("cj")
    public int[] inventoryXOffsets;
-   @ObfuscatedName("ck")
    public String text;
    public int rl$x;
    public int rl$y;
    public int rl$parentId;
-   @ObfuscatedName("cn")
    public boolean textShadowed;
-   @ObfuscatedName("co")
-   @ObfuscatedGetter(
-      intValue = -1471970549
-   )
    public int textLineHeight;
-   @ObfuscatedName("cr")
    public int[] inventorySprites;
-   @ObfuscatedName("cs")
-   @ObfuscatedGetter(
-      intValue = 275090821
-   )
    public int textXAlignment;
-   @ObfuscatedName("ct")
    public String[] itemActions;
-   @ObfuscatedName("cu")
    public boolean field2652;
-   @ObfuscatedName("cv")
    public String text2;
-   @ObfuscatedName("cy")
-   @ObfuscatedGetter(
-      intValue = 1814601209
-   )
    public int paddingY;
-   @ObfuscatedName("cz")
-   @ObfuscatedGetter(
-      intValue = 8724653
-   )
    public int fontId;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = -785941721
-   )
    public int xAlignment;
-   @ObfuscatedName("da")
    public int[] varTransmitTriggers;
-   @ObfuscatedName("db")
    public Object[] onStatTransmit;
-   @ObfuscatedName("dc")
    public Object[] onRelease;
-   @ObfuscatedName("dd")
    public Object[] onTargetEnter;
-   @ObfuscatedName("de")
    public String spellActionName;
-   @ObfuscatedName("df")
    public boolean hasListener;
-   @ObfuscatedName("dg")
    public Object[] onVarTransmit;
-   @ObfuscatedName("dh")
    public int[] invTransmitTriggers;
-   @ObfuscatedName("di")
    public Object[] onHold;
-   @ObfuscatedName("dj")
    public Object[] onTargetLeave;
-   @ObfuscatedName("dk")
    public Object[] onMouseOver;
-   @ObfuscatedName("dl")
    public Object[] onInvTransmit;
-   @ObfuscatedName("dm")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    public Widget parent;
-   @ObfuscatedName("dn")
-   @ObfuscatedGetter(
-      intValue = 613508017
-   )
    public int dragZoneSize;
-   @ObfuscatedName("do")
    public Object[] onDrag;
-   @ObfuscatedName("dp")
    public int[] statTransmitTriggers;
-   @ObfuscatedName("dq")
-   @ObfuscatedGetter(
-      intValue = -1263499789
-   )
    public int dragThreshold;
-   @ObfuscatedName("dr")
    public Object[] onLoad;
-   @ObfuscatedName("ds")
    public Object[] onClickRepeat;
-   @ObfuscatedName("dt")
    public String dataText;
-   @ObfuscatedName("du")
    public Object[] onClick;
-   @ObfuscatedName("dv")
    public String[] actions;
-   @ObfuscatedName("dw")
    public Object[] onDragComplete;
-   @ObfuscatedName("dx")
    public Object[] onMouseRepeat;
-   @ObfuscatedName("dy")
    public boolean isScrollBar;
-   @ObfuscatedName("dz")
    public Object[] onMouseLeave;
-   @ObfuscatedName("ea")
-   @ObfuscatedGetter(
-      intValue = 758841865
-   )
    public int modelFrame;
-   @ObfuscatedName("eb")
-   @ObfuscatedSignature(
-      signature = "[Lho;"
-   )
    public Widget[] children;
-   @ObfuscatedName("ec")
    public String buttonText;
-   @ObfuscatedName("ed")
    public int[] itemQuantities;
    public String[][] itemAttributes;
-   @ObfuscatedName("ee")
    public Object[] onMiscTransmit;
-   @ObfuscatedName("ef")
    public Object[] onOp;
-   @ObfuscatedName("eg")
    public Object[] onStockTransmit;
-   @ObfuscatedName("eh")
    public int[] cs1Comparisons;
-   @ObfuscatedName("ei")
    public Object[] onSubChange;
-   @ObfuscatedName("ej")
    public Object[] field2695;
-   @ObfuscatedName("ek")
    public Object[] onTimer;
-   @ObfuscatedName("el")
-   @ObfuscatedGetter(
-      intValue = 878258425
-   )
    public int itemQuantity;
-   @ObfuscatedName("em")
    public int[] cs1ComparisonValues;
-   @ObfuscatedName("en")
    public int[][] cs1Instructions;
-   @ObfuscatedName("eo")
    public Object[] onClanTransmit;
-   @ObfuscatedName("ep")
    public Object[] onDialogAbort;
-   @ObfuscatedName("eq")
    public Object[] onKey;
-   @ObfuscatedName("er")
    public Object[] onFriendTransmit;
-   @ObfuscatedName("es")
    public Object[] onResize;
-   @ObfuscatedName("et")
-   @ObfuscatedGetter(
-      intValue = 2093634115
-   )
    public int modelFrameCycle;
-   @ObfuscatedName("eu")
    public int[] itemIds;
-   @ObfuscatedName("ev")
-   @ObfuscatedGetter(
-      intValue = 1603621761
-   )
    public int mouseOverRedirect;
-   @ObfuscatedName("ew")
    public Object[] onScroll;
-   @ObfuscatedName("ex")
    public Object[] onChatTransmit;
-   @ObfuscatedName("ey")
-   @ObfuscatedGetter(
-      intValue = -1532577883
-   )
    public int itemId;
-   @ObfuscatedName("ez")
    public String spellName;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = -356920675
-   )
    public int buttonType;
-   @ObfuscatedName("fb")
    public boolean containsMouse;
-   @ObfuscatedName("fc")
    public int[] field2717;
-   @ObfuscatedName("fd")
-   @ObfuscatedGetter(
-      intValue = 1204314605
-   )
    public int field2591;
-   @ObfuscatedName("fe")
    public boolean isClicked;
-   @ObfuscatedName("ff")
-   @ObfuscatedGetter(
-      intValue = 976944717
-   )
    public int field2713;
-   @ObfuscatedName("fh")
    public boolean field2720;
-   @ObfuscatedName("fk")
-   @ObfuscatedGetter(
-      intValue = -27098335
-   )
    public int rootIndex;
-   @ObfuscatedName("fm")
    public boolean noScrollThrough;
-   @ObfuscatedName("fo")
-   @ObfuscatedGetter(
-      intValue = 1042446467
-   )
    public int field2714;
-   @ObfuscatedName("fq")
-   @ObfuscatedGetter(
-      intValue = -433990399
-   )
    public int cycle;
-   @ObfuscatedName("fv")
    public boolean noClickThrough;
-   @ObfuscatedName("fy")
-   @ObfuscatedGetter(
-      intValue = -162526605
-   )
    public int field2653;
-   @ObfuscatedName("g")
    public boolean isIf3;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = 970038855
-   )
    public int childIndex;
-   @ObfuscatedName("j")
-   @ObfuscatedGetter(
-      intValue = -645037763
-   )
    public int contentType;
-   @ObfuscatedName("k")
-   @ObfuscatedGetter(
-      intValue = -1296359215
-   )
    public int widthAlignment;
-   @ObfuscatedName("l")
-   @ObfuscatedGetter(
-      intValue = 2044954067
-   )
    public int yAlignment;
 
    static {
@@ -489,19 +280,14 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       this.rl$$init();
    }
 
-    @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(II)Llf;",
-      garbageValue = "378738987"
-   )
-   public Sprite method3973(int var1) {
+    public Sprite method3973(int var1) {
       field2576 = false;
       if(var1 >= 0 && var1 < this.inventorySprites.length) {
          int var2 = this.inventorySprites[var1];
          if(var2 == -1) {
             return null;
          } else {
-            Sprite var3 = (Sprite)Widget_cachedSprites.method3032((long)var2);
+            Sprite var3 = (Sprite)Widget_cachedSprites.get((long)var2);
             if(var3 != null) {
                return var3;
             } else {
@@ -520,11 +306,6 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Lkl;S)V",
-      garbageValue = "15127"
-   )
    void method3966(Buffer var1) {
       this.isIf3 = false;
       this.type = var1.readUnsignedByte();
@@ -779,11 +560,6 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
 
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "-508997564"
-   )
    void method4001(Buffer var1) {
       var1.readUnsignedByte();
       this.isIf3 = true;
@@ -921,11 +697,6 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       this.statTransmitTriggers = this.method3969(var1);
    }
 
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "(ILjava/lang/String;S)V",
-      garbageValue = "-24772"
-   )
    public void method3976(int var1, String var2) {
       if(this.actions == null || this.actions.length <= var1) {
          String[] var3 = new String[var1 + 1];
@@ -941,11 +712,6 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       this.actions[var1] = var2;
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)[I",
-      garbageValue = "-132337395"
-   )
    int[] method3969(Buffer var1) {
       int var2 = var1.readUnsignedByte();
       if(var2 == 0) {
@@ -961,29 +727,20 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "(Lix;IZLhr;I)Ldh;"
-   )
    public Model method3974(SequenceDefinition var1, int var2, boolean var3, PlayerAppearance var4, int var5) {
       if(var2 != -1 && ViewportMouse.client.isInterpolateWidgetAnimations()) {
-         var2 = var2 | this.getModelFrameCycle() << 16 | Integer.MIN_VALUE;
+         var2 = var2 | this.modelFrameCycle << 16 | Integer.MIN_VALUE;
       }
 
       return (Model)this.copy$getModel(var1, var2, var3, var4, var5);
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(I)Lkn;",
-      garbageValue = "2078221283"
-   )
    public Font method3972() {
       field2576 = false;
       if(this.fontId == -1) {
          return null;
       } else {
-         Font var1 = (Font)Widget_cachedFonts.method3032((long)this.fontId);
+         Font var1 = (Font)Widget_cachedFonts.get((long)this.fontId);
          if(var1 != null) {
             return var1;
          } else {
@@ -999,15 +756,11 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(ZB)Llf;"
-   )
    public Sprite method3971(boolean var1, byte var2) {
       if(this.getSpriteId() != -1) {
          net.runelite.api.Sprite var3 = (net.runelite.api.Sprite)Client.widgetSpriteOverrides.get(Integer.valueOf(this.getId()));
          if(var3 != null) {
-            return (Sprite)((RSSprite)var3);
+            return (Sprite)((Sprite)var3);
          }
       }
 
@@ -1019,18 +772,6 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       return new Rectangle(var1.getX(), var1.getY(), this.getWidth(), this.getHeight());
    }
 
-   public String getRSText() {
-      return this.text;
-   }
-
-   public String getRSName() {
-      return this.dataText;
-   }
-
-   public RSSprite getSprite(boolean var1) {
-      return this.method3971(var1, (byte)13);
-   }
-
    public Point getCanvasLocation() {
       return new Point(this.rl$x, this.rl$y);
    }
@@ -1039,17 +780,17 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       if(!$assertionsDisabled && !ViewportMouse.client.isClientThread()) {
          throw new AssertionError();
       } else {
-         int var1 = this.getRSParentId();
+         int var1 = this.parentId;
          if(var1 != -1) {
             return var1;
          } else {
             int var2 = this.getId();
-            if(WidgetInfo.TO_GROUP(var2) == ViewportMouse.client.getWidgetRoot()) {
+            if(WidgetInfo.TO_GROUP(var2) == Client.rootInterface) {
                return -1;
             } else {
                int var3 = this.rl$parentId;
                if(var3 != -1) {
-                  RSNodeHashTable var4 = ViewportMouse.client.getComponentTable();
+                  NodeHashTable var4 = ViewportMouse.client.getComponentTable();
                   WidgetNode var5 = (WidgetNode)var4.get((long)var3);
                   if(var5 != null && var5.getId() == WidgetInfo.TO_GROUP(var2)) {
                      return var3;
@@ -1059,13 +800,13 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
                }
 
                int var13 = WidgetInfo.TO_GROUP(this.getId());
-               RSNodeHashTable var14 = ViewportMouse.client.getComponentTable();
-               RSNode[] var6 = var14.getBuckets();
-               RSNode[] var7 = var6;
+               NodeHashTable var14 = ViewportMouse.client.getComponentTable();
+               Node[] var6 = var14.buckets;
+               Node[] var7 = var6;
                int var8 = var6.length;
 
                for(int var9 = 0; var9 < var8; ++var9) {
-                  RSNode var10 = var7[var9];
+                  Node var10 = var7[var9];
 
                   for(Object var11 = var10.getNext(); var11 != var10; var11 = ((net.runelite.api.Node)var11).getNext()) {
                      WidgetNode var12 = (WidgetNode)var11;
@@ -1081,33 +822,21 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   public int[] getItemIds() {
-      return this.itemIds;
-   }
-
+   @Override
    public int getSpriteId() {
       return this.spriteId2;
    }
 
-   public RSWidget[] getChildren() {
+   @Override
+   public Widget[] getChildren() {
       return this.children;
    }
 
-   public int getRSParentId() {
-      return this.parentId;
-   }
-
+   @Override
    public int getId() {
       return this.id;
    }
 
-   public void setRSName(String var1) {
-      this.dataText = var1;
-   }
-
-   @ObfuscatedSignature(
-      signature = "(Lix;IZLhr;I)Ldh;"
-   )
    public Model copy$getModel(SequenceDefinition var1, int var2, boolean var3, PlayerAppearance var4, int var5) {
       field2576 = false;
       int var6;
@@ -1125,7 +854,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       } else if(var6 == 1 && var7 == -1) {
          return null;
       } else {
-         Model var8 = (Model)Widget_cachedModels.method3032((long)(var7 + (var6 << 16)));
+         Model var8 = (Model)Widget_cachedModels.get((long)(var7 + (var6 << 16)));
          if(var8 == null) {
             ModelData var9;
             if(var6 == 1) {
@@ -1184,10 +913,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   public int[] getItemQuantities() {
-      return this.itemQuantities;
-   }
-
+   @Override
    public boolean isSelfHidden() {
       return this.isHidden;
    }
@@ -1197,9 +923,6 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       return var1 == -1?null:ViewportMouse.client.getWidget(WidgetInfo.TO_GROUP(var1), WidgetInfo.TO_CHILD(var1));
    }
 
-   @ObfuscatedSignature(
-      signature = "(ZB)Llf;"
-   )
    public Sprite copy$getSprite(boolean var1, byte var2) {
       field2576 = false;
       int var3;
@@ -1213,7 +936,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
          return null;
       } else {
          long var4 = ((long)this.spriteShadow << 40) + ((this.spriteFlipH?1L:0L) << 39) + (long)var3 + ((long)this.outline << 36) + ((this.spriteFlipV?1L:0L) << 38);
-         Sprite var6 = (Sprite)Widget_cachedSprites.method3032(var4);
+         Sprite var6 = (Sprite)Widget_cachedSprites.get(var4);
          if(var6 != null) {
             return var6;
          } else {
@@ -1253,26 +976,24 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   public int getModelFrameCycle() {
-      return this.modelFrameCycle;
-   }
-
+   @Override
    public int getWidth() {
       return this.width;
    }
 
+   @Override
    public int getHeight() {
       return this.height;
    }
 
    public WidgetItem getWidgetItem(int var1) {
-      int[] var2 = this.getItemIds();
-      int[] var3 = this.getItemQuantities();
+      int[] var2 = this.itemIds;
+      int[] var3 = this.itemQuantities;
       String[][] attributes = this.getItemAttributes();
       if(var2 != null && var3 != null) {
          int var4 = this.getWidth();
-         int var5 = this.getXPitch();
-         int var6 = this.getYPitch();
+         int var5 = this.paddingX;
+         int var6 = this.paddingY;
          int var7 = var2[var1];
          int var8 = var3[var1];
          if(var4 <= 0) {
@@ -1290,30 +1011,28 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   public int getXPitch() {
-      return this.paddingX;
-   }
-
    public net.runelite.api.widgets.Widget[] getNestedChildren() {
       if(!$assertionsDisabled && !ViewportMouse.client.isClientThread()) {
          throw new AssertionError();
-      } else if(this.getRSParentId() == this.getId()) {
+      } else if(this.parentId == this.getId()) {
          return new net.runelite.api.widgets.Widget[0];
       } else {
-         RSNodeHashTable var1 = ViewportMouse.client.getComponentTable();
+         NodeHashTable var1 = ViewportMouse.client.getComponentTable();
          WidgetNode var2 = (WidgetNode)var1.get((long)this.getId());
          if(var2 == null) {
             return new Widget[0];
          } else {
             int var3 = var2.getId();
             ArrayList var4 = new ArrayList();
-            RSWidget[] var5 = ViewportMouse.client.getGroup(var3);
+            Widget[] var5 = ViewportMouse.client.getGroup(var3);
             int var6 = var5.length;
 
             for(int var7 = 0; var7 < var6; ++var7) {
-               RSWidget var8 = var5[var7];
-               if(var8 != null && var8.getRSParentId() == -1) {
-                  var4.add(var8);
+               Widget var8 = var5[var7];
+               if(var8 != null) {
+                  if (var8.parentId == -1) {
+                     var4.add(var8);
+                  }
                }
             }
 
@@ -1322,23 +1041,19 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   public int getYPitch() {
-      return this.paddingY;
-   }
-
    public void broadcastHidden(boolean var1) {
       WidgetHiddenChanged var2 = new WidgetHiddenChanged();
       var2.setWidget(this);
       var2.setHidden(var1);
       ViewportMouse.client.getCallbacks().post(WidgetHiddenChanged.class, var2);
-      RSWidget[] var3 = this.getChildren();
+      Widget[] var3 = this.getChildren();
       int var6;
       if(var3 != null) {
-         RSWidget[] var4 = var3;
+         Widget[] var4 = var3;
          int var5 = var3.length;
 
          for(var6 = 0; var6 < var5; ++var6) {
-            RSWidget var7 = var4[var6];
+            Widget var7 = var4[var6];
             if(var7 != null && !var7.isSelfHidden()) {
                var7.broadcastHidden(var1);
             }
@@ -1352,20 +1067,17 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       for(int var10 = 0; var10 < var6; ++var10) {
          net.runelite.api.widgets.Widget var8 = var9[var10];
          if(var8 != null && !var8.isSelfHidden()) {
-            ((RSWidget)var8).broadcastHidden(var1);
+            ((Widget)var8).broadcastHidden(var1);
          }
       }
 
    }
 
+   @Override
    public void setChildren(net.runelite.api.widgets.Widget[] var1) {
       this.children = (Widget[])var1;
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void onPositionChanged(int var1) {
       int var2 = this.getId();
       if(var2 != -1) {
@@ -1379,10 +1091,6 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void onHiddenChanged(int var1) {
       int var2 = this.getId();
       if(var2 != -1) {
@@ -1391,7 +1099,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
             if(var3.isHidden()) {
                return;
             }
-         } else if(WidgetInfo.TO_GROUP(var2) != ViewportMouse.client.getWidgetRoot()) {
+         } else if(WidgetInfo.TO_GROUP(var2) != Client.rootInterface) {
             return;
          }
 
@@ -1406,7 +1114,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
    }
 
    public net.runelite.api.Sprite getSprite() {
-      return this.getSprite(false);
+      return this.method3971(false, (byte)13);
    }
 
    public void setRenderParentId(int var1) {
@@ -1422,15 +1130,15 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
    }
 
    public String getText() {
-      return this.getRSText().replace(' ', ' ');
+      return this.text.replace(' ', ' ');
    }
 
    public String getName() {
-      return this.getRSName().replace(' ', ' ');
+      return this.dataText.replace(' ', ' ');
    }
 
    public void setName(String var1) {
-      this.setRSName(var1.replace(' ', ' '));
+      this.dataText = var1.replace(' ', ' ');
    }
 
    public boolean isHidden() {
@@ -1441,7 +1149,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       } else {
          net.runelite.api.widgets.Widget var1 = this.getParent();
          if(var1 == null) {
-            if(WidgetInfo.TO_GROUP(this.getId()) != ViewportMouse.client.getWidgetRoot()) {
+            if(WidgetInfo.TO_GROUP(this.getId()) != Client.rootInterface) {
                return true;
             }
          } else if(var1.isHidden()) {
@@ -1453,7 +1161,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
    }
 
    public Collection getWidgetItems() {
-      int[] var1 = this.getItemIds();
+      int[] var1 = this.itemIds;
       if(var1 == null) {
          return null;
       } else {
@@ -1473,23 +1181,25 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
    }
 
    public net.runelite.api.widgets.Widget getChild(int var1) {
-      RSWidget[] var2 = this.getChildren();
+      Widget[] var2 = this.getChildren();
       return var2 != null && var2[var1] != null?var2[var1]:null;
    }
 
    public net.runelite.api.widgets.Widget[] getDynamicChildren() {
-      RSWidget[] var1 = this.getChildren();
+      Widget[] var1 = this.getChildren();
       if(var1 == null) {
          return new net.runelite.api.widgets.Widget[0];
       } else {
          ArrayList var2 = new ArrayList();
-         RSWidget[] var3 = var1;
+         Widget[] var3 = var1;
          int var4 = var1.length;
 
          for(int var5 = 0; var5 < var4; ++var5) {
-            RSWidget var6 = var3[var5];
-            if(var6 != null && var6.getRSParentId() == this.getId()) {
-               var2.add(var6);
+            Widget var6 = var3[var5];
+            if(var6 != null) {
+               if (var6.parentId == this.getId()) {
+                  var2.add(var6);
+               }
             }
          }
 
@@ -1498,17 +1208,19 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
    }
 
    public net.runelite.api.widgets.Widget[] getStaticChildren() {
-      if(this.getRSParentId() == this.getId()) {
+      if(this.parentId == this.getId()) {
          return new net.runelite.api.widgets.Widget[0];
       } else {
          ArrayList var1 = new ArrayList();
-         RSWidget[] var2 = ViewportMouse.client.getGroup(WidgetInfo.TO_GROUP(this.getId()));
+         Widget[] var2 = ViewportMouse.client.getGroup(WidgetInfo.TO_GROUP(this.getId()));
          int var3 = var2.length;
 
          for(int var4 = 0; var4 < var3; ++var4) {
-            RSWidget var5 = var2[var4];
-            if(var5 != null && var5.getRSParentId() == this.getId()) {
-               var1.add(var5);
+            Widget var5 = var2[var4];
+            if(var5 != null) {
+               if (var5.parentId == this.getId()) {
+                  var1.add(var5);
+               }
             }
          }
 
@@ -1525,7 +1237,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       if(!$assertionsDisabled && !ViewportMouse.client.isClientThread()) {
          throw new AssertionError();
       } else {
-         RSWidget var3 = ViewportMouse.client.createWidget();
+         Widget var3 = ViewportMouse.client.createWidget();
          var3.setType(var2);
          var3.setParentId(this.getId());
          var3.setId(this.getId());
@@ -1575,7 +1287,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
          throw new AssertionError();
       } else {
          ViewportMouse.client.revalidateWidget(this);
-         ViewportMouse.client.revalidateWidgetScroll(ViewportMouse.client.getWidgets()[WidgetInfo.TO_GROUP(this.getId())], this, false);
+         ViewportMouse.client.revalidateWidgetScroll(UserComparator5.Widget_interfaceComponents[WidgetInfo.TO_GROUP(this.getId())], this, false);
       }
    }
 
@@ -1586,362 +1298,447 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
 
    }
 
+   @Override
    public void setIsIf3(boolean var1) {
       this.isIf3 = var1;
    }
 
+   @Override
    public boolean isIf3() {
       return this.isIf3;
    }
 
+   @Override
    public void setId(int var1) {
       this.id = var1;
    }
 
+   @Override
    public void setIndex(int var1) {
       this.childIndex = var1;
    }
 
+   @Override
    public int getIndex() {
       return this.childIndex;
    }
 
+   @Override
    public void setType(int var1) {
       this.type = var1;
    }
 
+   @Override
    public int getType() {
       return this.type;
    }
 
+   @Override
    public void setContentType(int var1) {
       this.contentType = var1;
    }
 
+   @Override
    public int getContentType() {
       return this.contentType;
    }
 
+   @Override
    public void setXPositionMode(int var1) {
       this.xAlignment = var1;
    }
 
+   @Override
    public int getXPositionMode() {
       return this.xAlignment;
    }
 
+   @Override
    public void setYPositionMode(int var1) {
       this.yAlignment = var1;
    }
 
+   @Override
    public int getYPositionMode() {
       return this.yAlignment;
    }
 
+   @Override
    public void setWidthMode(int var1) {
       this.widthAlignment = var1;
    }
 
+   @Override
    public int getWidthMode() {
       return this.widthAlignment;
    }
 
+   @Override
    public void setHeightMode(int var1) {
       this.heightAlignment = var1;
    }
 
+   @Override
    public int getHeightMode() {
       return this.heightAlignment;
    }
 
+   @Override
    public void setOriginalX(int var1) {
       this.rawX = var1;
    }
 
+   @Override
    public int getOriginalX() {
       return this.rawX;
    }
 
+   @Override
    public void setOriginalY(int var1) {
       this.rawY = var1;
    }
 
+   @Override
    public int getOriginalY() {
       return this.rawY;
    }
 
+   @Override
    public void setOriginalWidth(int var1) {
       this.rawWidth = var1;
    }
 
+   @Override
    public int getOriginalWidth() {
       return this.rawWidth;
    }
 
+   @Override
    public void setOriginalHeight(int var1) {
       this.rawHeight = var1;
    }
 
+   @Override
    public int getOriginalHeight() {
       return this.rawHeight;
    }
 
+   @Override
    public void setRelativeX(int var1) {
       this.x = var1;
    }
 
+   @Override
    public int getRelativeX() {
       return this.x;
    }
 
+   @Override
    public void setRelativeY(int var1) {
       this.y = var1;
    }
 
+   @Override
    public int getRelativeY() {
       return this.y;
    }
 
+   @Override
    public void setWidth(int var1) {
       this.width = var1;
    }
 
+   @Override
    public void setHeight(int var1) {
       this.height = var1;
    }
 
+   @Override
    public void setParentId(int var1) {
       this.parentId = var1;
    }
 
+   @Override
    public void setHidden(boolean var1) {
       this.isHidden = var1;
    }
 
+   @Override
    public void setScrollX(int var1) {
       this.scrollX = var1;
    }
 
+   @Override
    public int getScrollX() {
       return this.scrollX;
    }
 
+   @Override
    public void setScrollY(int var1) {
       this.scrollY = var1;
    }
 
+   @Override
    public int getScrollY() {
       return this.scrollY;
    }
 
+   @Override
    public void setScrollWidth(int var1) {
       this.scrollWidth = var1;
    }
 
+   @Override
    public int getScrollWidth() {
       return this.scrollWidth;
    }
 
+   @Override
    public void setScrollHeight(int var1) {
       this.scrollHeight = var1;
    }
 
+   @Override
    public int getScrollHeight() {
       return this.scrollHeight;
    }
 
+   @Override
    public void setTextColor(int var1) {
       this.color = var1;
    }
 
+   @Override
    public int getTextColor() {
       return this.color;
    }
 
+   @Override
    public void setFilled(boolean var1) {
       this.fill = var1;
    }
 
+   @Override
    public boolean isFilled() {
       return this.fill;
    }
 
+   @Override
    public void setOpacity(int var1) {
       this.transparencyTop = var1;
    }
 
+   @Override
    public int getOpacity() {
       return this.transparencyTop;
    }
 
+   @Override
    public void setSpriteId(int var1) {
       this.spriteId2 = var1;
    }
 
+   @Override
    public void setBorderType(int var1) {
       this.outline = var1;
    }
 
+   @Override
    public int getBorderType() {
       return this.outline;
    }
 
-   public int getModelType() {
-      return this.modelType;
-   }
-
+   @Override
    public int getModelId() {
       return this.modelId;
    }
 
+   @Override
    public void setItemQuantityMode(int var1) {
       this.itemQuantityMode = var1;
    }
 
+   @Override
    public int getItemQuantityMode() {
       return this.itemQuantityMode;
    }
 
+   @Override
    public void setFontId(int var1) {
       this.fontId = var1;
    }
 
+   @Override
    public int getFontId() {
       return this.fontId;
    }
 
+   @Override
    public void setText(String var1) {
       this.text = var1;
    }
 
+   @Override
    public void setXTextAlignment(int var1) {
       this.textXAlignment = var1;
    }
 
+   @Override
    public int getXTextAlignment() {
       return this.textXAlignment;
    }
 
+   @Override
    public void setYTextAlignment(int var1) {
       this.textYAlignment = var1;
    }
 
+   @Override
    public int getYTextAlignment() {
       return this.textYAlignment;
    }
 
+   @Override
    public void setTextShadowed(boolean var1) {
       this.textShadowed = var1;
    }
 
+   @Override
    public boolean getTextShadowed() {
       return this.textShadowed;
    }
 
+   @Override
    public void setClickMask(int var1) {
       this.clickMask = var1;
    }
 
+   @Override
    public int getClickMask() {
       return this.clickMask;
    }
 
+   @Override
    public String[] getActions() {
       return this.actions;
    }
 
+   @Override
    public void setDragDeadZone(int var1) {
       this.dragZoneSize = var1;
    }
 
+   @Override
    public int getDragDeadZone() {
       return this.dragZoneSize;
    }
 
+   @Override
    public void setDragDeadTime(int var1) {
       this.dragThreshold = var1;
    }
 
+   @Override
    public int getDragDeadTime() {
       return this.dragThreshold;
    }
 
+   @Override
    public void setTargetVerb(String var1) {
       this.spellActionName = var1;
    }
 
+   @Override
    public String getTargetVerb() {
       return this.spellActionName;
    }
 
+   @Override
    public void setHasListener(boolean var1) {
       this.hasListener = var1;
    }
 
+   @Override
    public boolean hasListener() {
       return this.hasListener;
    }
 
+   @Override
    public Object[] getOnLoadListener() {
       return this.onLoad;
    }
 
+   @Override
    public void setOnMouseOverListener(Object[] var1) {
       this.onMouseOver = var1;
    }
 
+   @Override
    public void setOnMouseRepeatListener(Object[] var1) {
       this.onMouseRepeat = var1;
    }
 
+   @Override
    public void setOnMouseLeaveListener(Object[] var1) {
       this.onMouseLeave = var1;
    }
 
+   @Override
    public void setOnTargetEnterListener(Object[] var1) {
       this.onTargetEnter = var1;
    }
 
+   @Override
    public void setOnTargetLeaveListener(Object[] var1) {
       this.onTargetLeave = var1;
    }
 
+   @Override
    public Object[] getOnInvTransmit() {
       return this.onInvTransmit;
    }
 
+   @Override
    public void setOnTimerListener(Object[] var1) {
       this.onTimer = var1;
    }
 
+   @Override
    public void setOnOpListener(Object[] var1) {
       this.onOp = var1;
    }
 
+   @Override
    public Object[] getOnOp() {
       return this.onOp;
    }
 
+   @Override
    public void setOnKeyListener(Object[] var1) {
       this.onKey = var1;
    }
 
+   @Override
    public Object[] getOnKeyListener() {
       return this.onKey;
    }
 
+   @Override
    public void setOnDialogAbortListener(Object[] var1) {
       this.onDialogAbort = var1;
    }
 
+   @Override
    public void setItemId(int var1) {
       this.itemId = var1;
    }
 
+   @Override
    public int getItemId() {
       return this.itemId;
    }
 
+   @Override
    public void setItemQuantity(int var1) {
       this.itemQuantity = var1;
    }
@@ -1950,38 +1747,42 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
       return this.itemAttributes;
    }
 
+   @Override
    public int getItemQuantity() {
       return this.itemQuantity;
    }
 
-   public int getModelFrame() {
-      return this.modelFrame;
-   }
-
+   @Override
    public boolean containsMouse() {
       return this.containsMouse;
    }
 
+   @Override
    public void setNoClickThrough(boolean var1) {
       this.noClickThrough = var1;
    }
 
+   @Override
    public boolean getNoClickThrough() {
       return this.noClickThrough;
    }
 
+   @Override
    public void setNoScrollThrough(boolean var1) {
       this.noScrollThrough = var1;
    }
 
+   @Override
    public boolean getNoScrollThrough() {
       return this.noScrollThrough;
    }
 
-   public RSAbstractFont getFont() {
+   @Override
+   public AbstractFont getFont() {
       return this.method3972();
    }
 
+   @Override
    public void setAction(int var1, String var2) {
       this.method3976(var1, var2);
    }
@@ -1996,7 +1797,7 @@ public class Widget extends Node implements net.runelite.api.widgets.Widget {
          return null;
       } else {
          long var3 = ((this.spriteFlipV?1L:0L) << 38) + (long)var2 + ((long)this.outline << 36) + ((this.spriteFlipH?1L:0L) << 39) + ((long)this.spriteShadow << 40);
-         SpriteMask var5 = (SpriteMask)Widget_cachedSpriteMasks.method3032(var3);
+         SpriteMask var5 = (SpriteMask)Widget_cachedSpriteMasks.get(var3);
          if(var5 != null) {
             return var5;
          } else {

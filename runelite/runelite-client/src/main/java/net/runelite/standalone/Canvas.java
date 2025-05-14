@@ -3,14 +3,9 @@ package net.runelite.standalone;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.event.FocusListener;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSCanvas;
 
-@ObfuscatedName("ay")
-public final class Canvas extends java.awt.Canvas implements RSCanvas {
+public final class Canvas extends java.awt.Canvas {
    public static boolean shouldNotHaveFocus;
-   @ObfuscatedName("z")
    Component component;
 
    Canvas(Component var1) {
@@ -60,11 +55,6 @@ public final class Canvas extends java.awt.Canvas implements RSCanvas {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)Lho;",
-      garbageValue = "313560965"
-   )
    public static Widget getWidget(int hash) {
       int parent = hash >> 16;
       int child = hash & 0xffff;
@@ -78,20 +68,10 @@ public final class Canvas extends java.awt.Canvas implements RSCanvas {
       return UserComparator5.Widget_interfaceComponents[parent][child];
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lhp;III)[Llf;",
-      garbageValue = "-2024454786"
-   )
    public static Sprite[] method781(AbstractArchive var0, int var1, int var2) {
       return !VertexNormal.method2468(var0, var1, var2)?null:AbstractWorldMapIcon.method720();
    }
 
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "952621968"
-   )
    static int method780(int var0, Script var1, boolean var2) {
       if(var0 == 5306) {
          Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class256.method4656();
@@ -127,11 +107,6 @@ public final class Canvas extends java.awt.Canvas implements RSCanvas {
       }
    }
 
-   @ObfuscatedName("kn")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;ZI)V",
-      garbageValue = "328041460"
-   )
    static void method778(String var0, boolean var1) {
       var0 = var0.toLowerCase();
       short[] var2 = new short[16];

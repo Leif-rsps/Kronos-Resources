@@ -5,104 +5,26 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSMouseHandler;
 
-@ObfuscatedName("bd")
-public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, RSMouseHandler {
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = 97221829
-   )
+public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener {
    public static int MouseHandler_y;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -528827615
-   )
    static volatile int MouseHandler_currentButtonVolatile;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 965678779
-   )
    static volatile int MouseHandler_xVolatile;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1294175143
-   )
    public static volatile int MouseHandler_idleCycles;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      longValue = -6248133867474392459L
-   )
    public static long MouseHandler_lastPressedTimeMillis;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      longValue = -1390704279211599925L
-   )
    static volatile long MouseHandler_lastPressedTimeMillisVolatile;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lbd;"
-   )
    static MouseHandler MouseHandler_instance;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 955503415
-   )
    static volatile int MouseHandler_lastPressedYVolatile;
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = 371149673
-   )
    public static int MouseHandler_lastPressedX;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      longValue = -6736454451996007549L
-   )
    public static long MouseHandler_millis;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = -1906360683
-   )
    static volatile int MouseHandler_lastButtonVolatile;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -180428827
-   )
    public static int MouseHandler_x;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -1174248655
-   )
    public static int MouseHandler_currentButton;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = -1404319225
-   )
    static volatile int MouseHandler_lastPressedXVolatile;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = 1367970229
-   )
    public static int MouseHandler_lastButton;
-   @ObfuscatedName("ge")
    static int[] regions;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = -1499115361
-   )
    public static int MouseHandler_lastPressedY;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      longValue = -1086707197767215489L
-   )
    static volatile long MouseHandler_lastMovedVolatile;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 1390089149
-   )
    static volatile int MouseHandler_yVolatile;
    public int isInEvent;
 
@@ -127,11 +49,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
       MouseHandler_lastPressedTimeMillis = 0L;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Ljava/awt/event/MouseEvent;I)I",
-      garbageValue = "1818791609"
-   )
    final int method833(MouseEvent var1) {
       int var2 = var1.getButton();
       return !var1.isAltDown() && var2 != 2?(!var1.isMetaDown() && var2 != 3?1:2):4;

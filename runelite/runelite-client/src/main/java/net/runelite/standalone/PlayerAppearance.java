@@ -2,44 +2,17 @@ package net.runelite.standalone;
 
 import java.io.IOException;
 import net.runelite.api.kit.KitType;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSPlayerAppearance;
 
-@ObfuscatedName("hr")
-public class PlayerAppearance implements RSPlayerAppearance {
-   @ObfuscatedName("y")
+public class PlayerAppearance implements net.runelite.api.PlayerAppearance {
    public static short[] field2748;
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    static EvictingDualNodeHashTable PlayerAppearance_cachedModels;
-   @ObfuscatedName("c")
    static final int[] equipmentIndices;
-   @ObfuscatedName("m")
    public static short[][] field2742;
-   @ObfuscatedName("n")
    int[] bodyColors;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      longValue = -4457276035074261541L
-   )
    long field2745;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      longValue = 720398240330286877L
-   )
    long equipmentHash;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 297413953
-   )
    public int npcTransformId;
-   @ObfuscatedName("v")
    public boolean isFemale;
-   @ObfuscatedName("z")
    int[] equipment;
 
    static {
@@ -47,11 +20,6 @@ public class PlayerAppearance implements RSPlayerAppearance {
       PlayerAppearance_cachedModels = new EvictingDualNodeHashTable(260);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IZI)V",
-      garbageValue = "-317022193"
-   )
    public void method4160(int var1, boolean var2) {
       if(var1 != 1 || !this.isFemale) {
          int var3 = this.equipment[equipmentIndices[var1]];
@@ -81,11 +49,6 @@ public class PlayerAppearance implements RSPlayerAppearance {
       }
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1673165778"
-   )
    void method4131() {
       long hash = this.equipmentHash;
       int var3 = this.equipment[5];
@@ -120,16 +83,11 @@ public class PlayerAppearance implements RSPlayerAppearance {
       this.equipment[5] = var3;
       this.equipment[9] = var4;
       if(hash != 0L && this.equipmentHash != hash) {
-         PlayerAppearance_cachedModels.method3033(hash);
+         PlayerAppearance_cachedModels.remove(hash);
       }
 
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(Lix;ILix;IB)Ldh;",
-      garbageValue = "2"
-   )
    public Model method4156(SequenceDefinition primarySeq, int var2, SequenceDefinition var3, int var4) {
       if(this.npcTransformId != -1) {
          return PacketBufferNode.getNpcDefinition(this.npcTransformId).method4405(primarySeq, var2, var3, var4);
@@ -154,7 +112,7 @@ public class PlayerAppearance implements RSPlayerAppearance {
             }
          }
 
-         Model var8 = (Model)PlayerAppearance_cachedModels.method3032(hash);
+         Model var8 = (Model)PlayerAppearance_cachedModels.get(hash);
          if(var8 == null) {
             boolean var9 = false;
 
@@ -172,7 +130,7 @@ public class PlayerAppearance implements RSPlayerAppearance {
 
             if(var9) {
                if(-1L != this.field2745) {
-                  var8 = (Model)PlayerAppearance_cachedModels.method3032(this.field2745);
+                  var8 = (Model)PlayerAppearance_cachedModels.get(this.field2745);
                }
 
                if(var8 == null) {
@@ -238,11 +196,6 @@ public class PlayerAppearance implements RSPlayerAppearance {
       }
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "-1319583567"
-   )
    public void method4130(Buffer var1) {
       var1.writeByte(this.isFemale?1:0);
 
@@ -262,22 +215,12 @@ public class PlayerAppearance implements RSPlayerAppearance {
 
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(ZI)V",
-      garbageValue = "-1564425789"
-   )
    public void method4129(boolean var1) {
       if(this.isFemale != var1) {
          this.method4152((int[])null, this.bodyColors, var1, -1);
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(IZI)V",
-      garbageValue = "-278552632"
-   )
    public void method4126(int var1, boolean var2) {
       int var3 = this.bodyColors[var1];
       if(!var2) {
@@ -300,20 +243,10 @@ public class PlayerAppearance implements RSPlayerAppearance {
       this.method4131();
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-2006080013"
-   )
    public int method4134() {
       return this.npcTransformId == -1?(this.equipment[0] << 15) + this.equipment[1] + (this.equipment[11] << 5) + (this.equipment[8] << 10) + (this.bodyColors[0] << 25) + (this.bodyColors[4] << 20):305419896 + PacketBufferNode.getNpcDefinition(this.npcTransformId).id;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([I[IZII)V",
-      garbageValue = "16711680"
-   )
    public void method4152(int[] var1, int[] var2, boolean var3, int var4) {
       if(var1 == null) {
          var1 = new int[12];
@@ -336,6 +269,7 @@ public class PlayerAppearance implements RSPlayerAppearance {
       this.method4131();
    }
 
+   @Override
    public int[] getEquipmentIds() {
       return this.equipment;
    }
@@ -350,27 +284,16 @@ public class PlayerAppearance implements RSPlayerAppearance {
       return var2 >= 256 && var2 < 512?var2 - 256:-1;
    }
 
-   public int[] getBodyPartColours() {
-      return this.bodyColors;
-   }
-
-   public boolean isFemale() {
-      return this.isFemale;
-   }
-
+   @Override
    public void setTransformedNpcId(int var1) {
       this.npcTransformId = var1;
    }
 
+   @Override
    public void setHash() {
       this.method4131();
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(B)Ldw;",
-      garbageValue = "65"
-   )
    ModelData method4133() {
       if(this.npcTransformId != -1) {
          return PacketBufferNode.getNpcDefinition(this.npcTransformId).method4406();
@@ -431,11 +354,6 @@ public class PlayerAppearance implements RSPlayerAppearance {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-1021250910"
-   )
    public static boolean method4159() {
       long var0 = class33.method680();
       int var2 = (int)(var0 - NetCache.field3273);
@@ -475,7 +393,7 @@ public class PlayerAppearance implements RSPlayerAppearance {
                var4.writeByte(0);
                var4.write24BitInteger((int)var3.key);
                NetCache.NetCache_socket.vmethod5817(var4.array, 0, 4);
-               var3.method3491();
+               var3.unlinkDual();
                NetCache.NetCache_pendingResponses.put(var3, var3.key);
                --NetCache.NetCache_pendingWritesCount;
                ++NetCache.NetCache_pendingResponsesCount;
@@ -616,7 +534,7 @@ public class PlayerAppearance implements RSPlayerAppearance {
                         WorldMapEvent.NetCache_currentResponse.archive.method4297((int)(WorldMapEvent.NetCache_currentResponse.key & 65535L), FaceNormal.NetCache_responseArchiveBuffer.array, (WorldMapEvent.NetCache_currentResponse.key & 16711680L) == 16711680L, UserComparator10.field1809);
                      }
 
-                     WorldMapEvent.NetCache_currentResponse.method3497();
+                     WorldMapEvent.NetCache_currentResponse.unlink();
                      if(UserComparator10.field1809) {
                         --NetCache.NetCache_pendingPriorityResponsesCount;
                      } else {
@@ -647,29 +565,14 @@ public class PlayerAppearance implements RSPlayerAppearance {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)[Lin;",
-      garbageValue = "101"
-   )
    static HorizontalAlignment[] method4161() {
       return new HorizontalAlignment[]{HorizontalAlignment.field3265, HorizontalAlignment.field3267, HorizontalAlignment.HorizontalAlignment_centered};
    }
 
-   @ObfuscatedName("ai")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "1781991052"
-   )
    static int method4127(int var0) {
       return (int)Math.pow(2.0D, (double)(7.0F + (float)var0 / 256.0F));
    }
 
-   @ObfuscatedName("go")
-   @ObfuscatedSignature(
-      signature = "(IIII)V",
-      garbageValue = "2144754891"
-   )
    static final void method4162(int var0, int var1, int var2) {
       if(var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
          int var3 = MusicPatchPcmStream.method3798(var0, var1, WorldMapRectangle.plane) - var2;

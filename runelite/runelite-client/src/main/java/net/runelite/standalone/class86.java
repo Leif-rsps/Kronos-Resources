@@ -1,27 +1,12 @@
 package net.runelite.standalone;
 
 import java.awt.Image;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("co")
 public class class86 {
-   @ObfuscatedName("sp")
-   @ObfuscatedGetter(
-      longValue = -8179620885535776663L
-   )
    static long field1141;
-   @ObfuscatedName("y")
    public static byte[][][] ByteArrayPool_arrays;
-   @ObfuscatedName("as")
    static Image field1133;
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZB)I",
-      garbageValue = "116"
-   )
    static int method2112(int var0, Script var1, boolean var2) {
       int var4 = -1;
       Widget var3;
@@ -161,7 +146,7 @@ public class class86 {
             CustomShopInterface.open(var3);
             WorldMapSectionType.method116(var3);
             if(var4 != -1 && var3.type == 0) {
-               GameShell.method1005(UserComparator5.Widget_interfaceComponents[var4 >> 16], var3, false);
+               GameShell.revalidateWidgetScroll(UserComparator5.Widget_interfaceComponents[var4 >> 16], var3, false);
             }
 
             return 1;
@@ -208,16 +193,10 @@ public class class86 {
       }
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "550144839"
-   )
    public static int method2113(int var0) {
       return Client.method2043(ViewportMouse.ViewportMouse_entityTags[var0]);
    }
 
-   @ObfuscatedName("m")
    public static int method2114(long var0) {
       return (int)(var0 >>> 17 & 4294967295L);
    }

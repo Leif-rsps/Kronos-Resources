@@ -1,32 +1,12 @@
 package net.runelite.standalone;
 
 import java.util.Date;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("w")
 public class WorldMapData_0 extends AbstractWorldMapData {
-   @ObfuscatedName("sz")
-   @ObfuscatedSignature(
-      signature = "Lkg;"
-   )
    static ArchiveDisk masterDisk;
-   @ObfuscatedName("ex")
-   @ObfuscatedSignature(
-      signature = "Lkw;"
-   )
    static GraphicsDefaults spriteIds;
-   @ObfuscatedName("gz")
-   @ObfuscatedSignature(
-      signature = "[Llp;"
-   )
    static IndexedSprite[] modIconSprites;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "1549979331"
-   )
    void vmethod3304(Buffer var1) {
       super.planes = Math.min(super.planes, 4);
       super.floorUnderlayIds = new short[1][64][64];
@@ -53,11 +33,6 @@ public class WorldMapData_0 extends AbstractWorldMapData {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "-443857335"
-   )
    void method157(Buffer var1) {
       int var2 = var1.readUnsignedByte();
       if(var2 != WorldMapID.field263.value) {
@@ -87,11 +62,6 @@ public class WorldMapData_0 extends AbstractWorldMapData {
       return super.regionX | super.regionY << 8;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(II)Z",
-      garbageValue = "387088123"
-   )
    public static boolean method171(int var0) {
       if(ViewportMouse.Widget_loadedInterfaces[var0]) {
          return true;
@@ -131,11 +101,6 @@ public class WorldMapData_0 extends AbstractWorldMapData {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(ILhp;Ljava/lang/String;Ljava/lang/String;IZS)V",
-      garbageValue = "6590"
-   )
    public static void method173(int var0, AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
       int var6 = var1.method4059(var2);
       int var7 = var1.method4039(var6, var3);
@@ -148,11 +113,6 @@ public class WorldMapData_0 extends AbstractWorldMapData {
       MusicPatchNode2.field2119 = var0;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "([Lbo;II[I[IB)V",
-      garbageValue = "80"
-   )
    static void method170(World[] var0, int var1, int var2, int[] var3, int[] var4) {
       if(var1 < var2) {
          int var5 = var1 - 1;
@@ -259,11 +219,6 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 
    }
 
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-1153827827"
-   )
    static int method156(int var0, Script var1, boolean var2) {
       String var3;
       int var4;
@@ -438,11 +393,6 @@ public class WorldMapData_0 extends AbstractWorldMapData {
       }
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;B)I",
-      garbageValue = "86"
-   )
    public static int method172(CharSequence var0) {
       int var1 = var0.length();
       int var2 = 0;

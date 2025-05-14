@@ -1,86 +1,23 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("l")
 public class WorldMapSection2 implements WorldMapSection {
-   @ObfuscatedName("go")
-   @ObfuscatedGetter(
-      intValue = -963712193
-   )
    static int field3815;
-   @ObfuscatedName("hn")
-   @ObfuscatedGetter(
-      intValue = -4402151
-   )
    static int cameraYaw;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -208083253
-   )
    int planes;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 1241448217
-   )
    int regionEndY;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1756578177
-   )
    int field3811;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1112500481
-   )
    int regionEndX;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1613337015
-   )
    int regionStartY;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -940491027
-   )
    int regionStartX;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -783213001
-   )
    int field3813;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -879876937
-   )
    int minPlane;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 634589909
-   )
    int field3816;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -1979201453
-   )
    int field3812;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IIII)Z",
-      garbageValue = "-327883108"
-   )
    public boolean vmethod5843(int var1, int var2, int var3) {
       return var1 >= this.minPlane && var1 < this.planes + this.minPlane?var2 >> 6 >= this.regionStartX && var2 >> 6 <= this.regionEndX && var3 >> 6 >= this.regionStartY && var3 >> 6 <= this.regionEndY:false;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Lkl;B)V",
-      garbageValue = "-99"
-   )
    public void decode(Buffer var1) {
       this.minPlane = var1.readUnsignedByte();
       this.planes = var1.readUnsignedByte();
@@ -95,19 +32,9 @@ public class WorldMapSection2 implements WorldMapSection {
       this.method5865();
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-3"
-   )
    void method5865() {
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(III)Lhb;",
-      garbageValue = "1439979703"
-   )
    public Coord vmethod5846(int var1, int var2) {
       if(!this.vmethod5844(var1, var2)) {
          return null;
@@ -118,11 +45,6 @@ public class WorldMapSection2 implements WorldMapSection {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(IIII)[I",
-      garbageValue = "-1322751923"
-   )
    public int[] vmethod5845(int var1, int var2, int var3) {
       if(!this.vmethod5843(var1, var2, var3)) {
          return null;
@@ -132,20 +54,10 @@ public class WorldMapSection2 implements WorldMapSection {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(III)Z",
-      garbageValue = "828411560"
-   )
    public boolean vmethod5844(int var1, int var2) {
       return var1 >> 6 >= this.field3811 && var1 >> 6 <= this.field3813 && var2 >> 6 >= this.field3812 && var2 >> 6 <= this.field3816;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lac;I)V",
-      garbageValue = "2098672163"
-   )
    public void vmethod5850(WorldMapArea var1) {
       if(var1.regionLowX > this.field3811) {
          var1.regionLowX = this.field3811;
@@ -165,11 +77,6 @@ public class WorldMapSection2 implements WorldMapSection {
 
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-1894474277"
-   )
    static int method5868(int var0, Script var1, boolean var2) {
       int var3;
       int var4;

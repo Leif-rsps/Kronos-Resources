@@ -9,31 +9,14 @@ import java.io.StreamCorruptedException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gi")
 public class class188 {
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      signature = "[Lmm;"
-   )
    public static BufferedFile[] JagexCache_idxFiles;
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(IIIS)I",
-      garbageValue = "22050"
-   )
    static int method3736(int var0, int var1, int var2) {
       return (Tiles.Tiles_renderFlags[var0][var1][var2] & 8) != 0?0:(var0 > 0 && (Tiles.Tiles_renderFlags[1][var1][var2] & 2) != 0?var0 - 1:var0);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lkf;I)V",
-      garbageValue = "-1032758603"
-   )
    public static void method3740(PacketBuffer var0) {
       ReflectionCheck var1 = (ReflectionCheck)class94.reflectionChecks.method5044();
       if(var1 != null) {
@@ -49,16 +32,16 @@ public class class188 {
                   Field var5;
                   int var6;
                   if(var4 == 0) {
-                     var5 = var1.field1186[var3];
+                     var5 = var1.fields[var3];
                      var6 = var5.getInt((Object)null);
                      var0.writeByte(0);
                      var0.writeInt(var6);
                   } else if(var4 == 1) {
-                     var5 = var1.field1186[var3];
+                     var5 = var1.fields[var3];
                      var5.setInt((Object)null, var1.intReplaceValues[var3]);
                      var0.writeByte(0);
                   } else if(var4 == 2) {
-                     var5 = var1.field1186[var3];
+                     var5 = var1.fields[var3];
                      var6 = var5.getModifiers();
                      var0.writeByte(0);
                      var0.writeInt(var6);
@@ -124,24 +107,14 @@ public class class188 {
          }
 
          var0.method5482(var2);
-         var1.method3497();
+         var1.unlink();
       }
    }
 
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "-1300861116"
-   )
    public static int method3739(int var0) {
       return var0 > 0?1:(var0 < 0?-1:0);
    }
 
-   @ObfuscatedName("eu")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-615502292"
-   )
    static void method3738() {
       int var0;
       if(Client.titleLoadingStage == 0) {
@@ -337,7 +310,7 @@ public class class188 {
                } else {
                   Login.Login_loadingText = "Loaded title screen";
                   Login.Login_loadingPercent = 50;
-                  MouseRecorder.method1207(5);
+                  MouseRecorder.setGameState(5);
                   Client.titleLoadingStage = 70;
                }
             } else if(Client.titleLoadingStage == 70) {
@@ -571,7 +544,7 @@ public class class188 {
                   Client.titleLoadingStage = 150;
                }
             } else if(Client.titleLoadingStage == 150) {
-               MouseRecorder.method1207(10);
+               MouseRecorder.setGameState(10);
             }
          }
       }

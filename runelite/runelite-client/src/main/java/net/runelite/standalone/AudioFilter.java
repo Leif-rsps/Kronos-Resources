@@ -1,25 +1,13 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ds")
 public class AudioFilter {
-   @ObfuscatedName("p")
    static float[][] field1548;
-   @ObfuscatedName("q")
    static int[][] coefficients;
-   @ObfuscatedName("y")
    static int forwardMultiplier;
-   @ObfuscatedName("m")
    static float field1550;
-   @ObfuscatedName("r")
    int[] field1547;
-   @ObfuscatedName("u")
    int[][][] field1546;
-   @ObfuscatedName("v")
    int[][][] field1552;
-   @ObfuscatedName("z")
    int[] pairs;
 
    static {
@@ -34,10 +22,6 @@ public class AudioFilter {
       this.field1547 = new int[2];
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(Lkl;Ldm;)V"
-   )
    final void method2504(Buffer var1, SoundEnvelope var2) {
       int var3 = var1.readUnsignedByte();
       this.pairs[0] = var3 >> 4;
@@ -79,7 +63,6 @@ public class AudioFilter {
 
    }
 
-   @ObfuscatedName("u")
    int method2503(int var1, float var2) {
       float var3;
       if(var1 == 0) {
@@ -126,21 +109,18 @@ public class AudioFilter {
       }
    }
 
-   @ObfuscatedName("v")
    float method2502(int var1, int var2, float var3) {
       float var4 = (float)this.field1552[var1][0][var2] + var3 * (float)(this.field1552[var1][1][var2] - this.field1552[var1][0][var2]);
       var4 *= 1.2207031E-4F;
       return method2509(var4);
    }
 
-   @ObfuscatedName("z")
    float method2500(int var1, int var2, float var3) {
       float var4 = (float)this.field1546[var1][0][var2] + var3 * (float)(this.field1546[var1][1][var2] - this.field1546[var1][0][var2]);
       var4 *= 0.0015258789F;
       return 1.0F - (float)Math.pow(10.0D, (double)(-var4 / 20.0F));
    }
 
-   @ObfuscatedName("n")
    static float method2509(float var0) {
       float var1 = 32.703197F * (float)Math.pow(2.0D, (double)var0);
       return var1 * 3.1415927F / 11025.0F;

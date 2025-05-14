@@ -1,10 +1,10 @@
 package net.runelite.standalone;
 
-import net.runelite.api.Preferences;
-
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
+
+import net.runelite.api.Preferences;
 
 public class ClientPreferences implements Preferences {
    static int ClientPreferences_optionCount;
@@ -98,10 +98,12 @@ public class ClientPreferences implements Preferences {
    void method1144(boolean var1) {
    }
 
+   @Override
    public void setRememberedUsername(String var1) {
       this.rememberedUsername = var1;
    }
 
+   @Override
    public String getRememberedUsername() {
       return this.rememberedUsername;
    }
@@ -223,7 +225,7 @@ public class ClientPreferences implements Preferences {
             }
 
             if(!class215.localPlayer.isHidden) {
-               Rasterizer2D.method6469(var4.width / 2 + var1 - 1, var4.height / 2 + var2 - 1, 3, 3, 16777215);
+               Rasterizer2D.fillRectangle(var4.width / 2 + var1 - 1, var4.height / 2 + var2 - 1, 3, 3, 16777215);
             }
          } else {
             Rasterizer2D.method6430(var1, var2, 0, var4.xStarts, var4.xWidths);

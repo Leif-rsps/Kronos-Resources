@@ -1,15 +1,6 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("kz")
 public class class313 {
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;IIB)[Llp;",
-      garbageValue = "0"
-   )
    public static IndexedSprite[] method5840(AbstractArchive var0, int var1, int var2) {
       if(!VertexNormal.method2468(var0, var1, var2)) {
          return null;

@@ -1,33 +1,10 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSHealthBarUpdate;
-
-@ObfuscatedName("bq")
-public class HealthBarUpdate extends Node implements RSHealthBarUpdate {
-   @ObfuscatedName("f")
+public class HealthBarUpdate extends Node {
    public static String field589;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -670451385
-   )
    int health;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -809927427
-   )
    int cycleOffset;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -326291957
-   )
    int health2;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 2051178983
-   )
    int cycle;
 
    HealthBarUpdate(int var1, int var2, int var3, int var4) {
@@ -37,11 +14,6 @@ public class HealthBarUpdate extends Node implements RSHealthBarUpdate {
       this.cycleOffset = var4;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IIIII)V",
-      garbageValue = "1094969728"
-   )
    void method1259(int var1, int var2, int var3, int var4) {
       this.cycle = var1;
       this.health = var2;
@@ -49,29 +21,11 @@ public class HealthBarUpdate extends Node implements RSHealthBarUpdate {
       this.cycleOffset = var4;
    }
 
-   public int getHealthRatio() {
-      return this.health;
-   }
-
-   public int getHealth() {
-      return this.health2;
-   }
-
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(III)Lbe;",
-      garbageValue = "776889337"
-   )
    static Message method1263(int var0, int var1) {
       ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(Integer.valueOf(var0));
       return var2.method1531(var1);
    }
 
-   @ObfuscatedName("ff")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "146894465"
-   )
    static final void method1258() {
       for(int var0 = 0; var0 < Client.soundEffectCount; ++var0) {
          --Client.queuedSoundEffectDelays[var0];
@@ -120,10 +74,10 @@ public class HealthBarUpdate extends Node implements RSHealthBarUpdate {
                }
 
                if(var2 > 0) {
-                  RawSound var10 = var9.method2086().method1579(Interpreter.decimator);
-                  RawPcmStream var11 = RawPcmStream.method2601(var10, 100, var2);
-                  var11.method2547(Client.queuedSoundEffectLoops[var0] - 1);
-                  WorldMapLabelSize.pcmStreamMixer.method1475(var11);
+                  RawSound var10 = var9.toRawAudioNode().applyResampler(Interpreter.decimator);
+                  RawPcmStream var11 = RawPcmStream.createRawPcmStream(var10, 100, var2);
+                  var11.setNumLoops(Client.queuedSoundEffectLoops[var0] - 1);
+                  WorldMapLabelSize.pcmStreamMixer.addSubStream(var11);
                }
 
                Client.queuedSoundEffectDelays[var0] = -100;

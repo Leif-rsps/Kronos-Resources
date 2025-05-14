@@ -1,28 +1,13 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fe")
 public class UserComparator3 extends AbstractUserComparator {
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -2030399033
-   )
    static int field1948;
-   @ObfuscatedName("z")
    final boolean reversed;
 
    public UserComparator3(boolean var1) {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljl;Ljl;I)I",
-      garbageValue = "-1163251881"
-   )
    int method3388(Buddy var1, Buddy var2) {
       return var2.world != var1.world?(this.reversed?var1.world - var2.world:var2.world - var1.world):this.method5015(var1, var2);
    }
@@ -31,11 +16,6 @@ public class UserComparator3 extends AbstractUserComparator {
       return this.method3388((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;I)[B",
-      garbageValue = "-772174627"
-   )
    public static byte[] method3393(CharSequence var0) {
       int var1 = var0.length();
       byte[] var2 = new byte[var1];

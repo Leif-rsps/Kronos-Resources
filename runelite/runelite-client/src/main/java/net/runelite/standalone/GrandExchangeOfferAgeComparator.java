@@ -7,34 +7,13 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Comparator;
 import java.util.Random;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("o")
 final class GrandExchangeOfferAgeComparator implements Comparator {
-   @ObfuscatedName("pq")
    static boolean ClanChat_inClanChat;
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget field26;
-   @ObfuscatedName("di")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
    static Archive archive4;
-   @ObfuscatedName("do")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
    static Archive archive8;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lm;Lm;B)I",
-      garbageValue = "24"
-   )
    int method70(GrandExchangeEvent var1, GrandExchangeEvent var2) {
       return var1.age < var2.age?-1:(var1.age == var2.age?0:1);
    }
@@ -47,11 +26,6 @@ final class GrandExchangeOfferAgeComparator implements Comparator {
       return this.method70((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-72081221"
-   )
    static void method82() {
       Login.Login_username = Login.Login_username.trim();
       Client.onUsernameChanged(-1);
@@ -321,11 +295,6 @@ final class GrandExchangeOfferAgeComparator implements Comparator {
       }
    }
 
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "(IIII)I",
-      garbageValue = "1521796882"
-   )
    static final int method71(int var0, int var1, int var2) {
       if(var2 > 179) {
          var1 /= 2;
@@ -347,11 +316,6 @@ final class GrandExchangeOfferAgeComparator implements Comparator {
       return var3;
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(IIIIIILex;Lfa;I)V",
-      garbageValue = "2071227561"
-   )
    static final void method80(int var0, int var1, int var2, int var3, int var4, int var5, Scene var6, CollisionMap var7) {
       if(!Client.isLowDetail || (Tiles.Tiles_renderFlags[0][var1][var2] & 2) != 0 || (Tiles.Tiles_renderFlags[var0][var1][var2] & 16) == 0) {
          if(var0 < Tiles.Tiles_minPlane) {
@@ -425,7 +389,7 @@ final class GrandExchangeOfferAgeComparator implements Comparator {
                var22.method949();
             }
 
-            ObjectSound.objectSounds.method5105(var22);
+            ObjectSound.objectSounds.addFirst(var22);
             if(var22.soundEffectIds != null) {
                var22.field421 = var22.field418 + (int)(Math.random() * (double)(var22.field424 - var22.field418));
             }

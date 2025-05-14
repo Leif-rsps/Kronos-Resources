@@ -5,84 +5,26 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSWorldMapManager;
 
-@ObfuscatedName("al")
-public final class WorldMapManager implements RSWorldMapManager {
-   @ObfuscatedName("ai")
+public final class WorldMapManager implements net.runelite.api.WorldMapManager {
    protected static String null_string;
-   @ObfuscatedName("n")
    boolean loadStarted;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = 16562041
-   )
    int tileY;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "[[Laa;"
-   )
    WorldMapRegion[][] regions;
-   @ObfuscatedName("q")
    HashMap field214;
-   @ObfuscatedName("r")
    HashMap icons;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Llf;"
-   )
    Sprite compositeTextureSprite;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lan;"
-   )
    WorldMapAreaData mapAreaData;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 1390818345
-   )
    public int pixelsPerTile;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    final AbstractArchive geographyArchive;
-   @ObfuscatedName("z")
    boolean loaded;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = -2004318801
-   )
    int tileWidth;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -753174201
-   )
    int tileX;
-   @ObfuscatedName("c")
    final HashMap fonts;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = 52515237
-   )
    int tileHeight;
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    final AbstractArchive groundArchive;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "[Llp;"
-   )
    IndexedSprite[] mapSceneSprites;
 
-   @ObfuscatedSignature(
-      signature = "([Llp;Ljava/util/HashMap;Lhp;Lhp;)V"
-   )
    public WorldMapManager(IndexedSprite[] var1, HashMap var2, AbstractArchive var3, AbstractArchive var4) {
       this.loaded = false;
       this.loadStarted = false;
@@ -94,27 +36,17 @@ public final class WorldMapManager implements RSWorldMapManager {
       this.groundArchive = var4;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1715469054"
-   )
    public final void method594() {
       this.icons = null;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIIIIII)Ljava/util/List;",
-      garbageValue = "642627718"
-   )
    public List method611(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
       LinkedList var11 = new LinkedList();
       if(!this.loaded) {
          return var11;
       } else {
          WorldMapRectangle var12 = this.method605(var1, var2, var3, var4);
-         float var13 = this.method603(var7, var3 - var1);
+         float var13 = this.getPixelsPerTile(var7, var3 - var1);
          int var14 = (int)(var13 * 64.0F);
          int var15 = this.tileX + var1;
          int var16 = var2 + this.tileY;
@@ -132,11 +64,6 @@ public final class WorldMapManager implements RSWorldMapManager {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(IIIII)Lj;",
-      garbageValue = "1969728750"
-   )
    WorldMapRectangle method605(int var1, int var2, int var3, int var4) {
       WorldMapRectangle var5 = new WorldMapRectangle(this);
       int var6 = this.tileX + var1;
@@ -174,11 +101,6 @@ public final class WorldMapManager implements RSWorldMapManager {
       return var5;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(IIIILjava/util/HashSet;IIB)V",
-      garbageValue = "-113"
-   )
    public void method597(int var1, int var2, int var3, int var4, HashSet var5, int var6, int var7) {
       if(this.compositeTextureSprite != null) {
          this.compositeTextureSprite.method6110(var1, var2, var3, var4);
@@ -213,14 +135,9 @@ public final class WorldMapManager implements RSWorldMapManager {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIIILjava/util/HashSet;Ljava/util/HashSet;IIZI)V",
-      garbageValue = "-1410717760"
-   )
    public final void method599(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, HashSet var9, HashSet var10, int var11, int var12, boolean var13) {
       WorldMapRectangle var14 = this.method605(var1, var2, var3, var4);
-      float var15 = this.method603(var7 - var5, var3 - var1);
+      float var15 = this.getPixelsPerTile(var7 - var5, var3 - var1);
       int var16 = (int)(64.0F * var15);
       int var17 = this.tileX + var1;
       int var18 = var2 + this.tileY;
@@ -247,11 +164,6 @@ public final class WorldMapManager implements RSWorldMapManager {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIIII)V",
-      garbageValue = "-99829048"
-   )
    public final void method595(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       int[] var9 = Rasterizer2D.Rasterizer2D_pixels;
       int var10 = Rasterizer2D.Rasterizer2D_width;
@@ -259,7 +171,7 @@ public final class WorldMapManager implements RSWorldMapManager {
       int[] var12 = new int[4];
       Rasterizer2D.method6412(var12);
       WorldMapRectangle var13 = this.method605(var1, var2, var3, var4);
-      float var14 = this.method603(var7 - var5, var3 - var1);
+      float var14 = this.getPixelsPerTile(var7 - var5, var3 - var1);
       int var15 = (int)Math.ceil((double)var14);
       this.pixelsPerTile = var15;
       if(!this.field214.containsKey(Integer.valueOf(var15))) {
@@ -293,21 +205,11 @@ public final class WorldMapManager implements RSWorldMapManager {
 
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)Ljava/util/HashMap;",
-      garbageValue = "1690655537"
-   )
    public HashMap method601() {
       this.method622();
       return this.icons;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;Ljava/lang/String;ZS)V",
-      garbageValue = "8475"
-   )
    public void method593(AbstractArchive var1, String var2, boolean var3) {
       if(!this.loadStarted) {
          this.loaded = false;
@@ -376,36 +278,10 @@ public final class WorldMapManager implements RSWorldMapManager {
       }
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(III)F",
-      garbageValue = "-1120188290"
-   )
-   float method603(int var1, int var2) {
+   float getPixelsPerTile(int var1, int var2) {
       return ViewportMouse.client.getRenderOverview().getWorldMapZoom();
    }
 
-   public int getSurfaceOffsetX() {
-      return this.tileX;
-   }
-
-   public int getSurfaceOffsetY() {
-      return this.tileY;
-   }
-
-   public boolean isLoaded() {
-      return this.method600();
-   }
-
-   public float getPixelsPerTile(int var1, int var2) {
-      return this.method603(var1, var2);
-   }
-
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "442760180"
-   )
    void method622() {
       if(this.icons == null) {
          this.icons = new HashMap();
@@ -437,20 +313,11 @@ public final class WorldMapManager implements RSWorldMapManager {
 
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-1274702917"
-   )
-   public boolean method600() {
+   @Override
+   public boolean isLoaded() {
       return this.loaded;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkf;IB)V",
-      garbageValue = "74"
-   )
    static final void method630(PacketBuffer var0, int var1) {
       int var2 = var0.offset;
       Players.Players_pendingUpdateCount = 0;
@@ -653,9 +520,9 @@ public final class WorldMapManager implements RSWorldMapManager {
                         if(var16.overheadText.charAt(0) == '~') {
                            var16.overheadText = var16.overheadText.substring(1);
                            var16.overheadTextChanged(-1);
-                           class217.sendGameMessage(2, var16.username.method5001(), var16.overheadText);
+                           class217.sendGameMessage(2, var16.username.getName(), var16.overheadText);
                         } else if(var16 == class215.localPlayer) {
-                           class217.sendGameMessage(2, var16.username.method5001(), var16.overheadText);
+                           class217.sendGameMessage(2, var16.username.getName(), var16.overheadText);
                         }
 
                         var16.isAutoChatting = false;
@@ -708,9 +575,9 @@ public final class WorldMapManager implements RSWorldMapManager {
                               }
 
                               if(playerType.modIcon != -1) {
-                                 class217.sendGameMessage(var15, class256.method4655(playerType.modIcon) + var16.username.method5001(), var14);
+                                 class217.sendGameMessage(var15, class256.method4655(playerType.modIcon) + var16.username.getName(), var14);
                               } else {
-                                 class217.sendGameMessage(var15, var16.username.method5001(), var14);
+                                 class217.sendGameMessage(var15, var16.username.getName(), var14);
                               }
                            }
                         }
@@ -847,11 +714,6 @@ public final class WorldMapManager implements RSWorldMapManager {
       }
    }
 
-   @ObfuscatedName("jg")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "938839327"
-   )
    static final void method631(int var0) {
       if(WorldMapData_0.method171(var0)) {
          Widget[] var1 = UserComparator5.Widget_interfaceComponents[var0];
@@ -867,11 +729,6 @@ public final class WorldMapManager implements RSWorldMapManager {
       }
    }
 
-   @ObfuscatedName("jh")
-   @ObfuscatedSignature(
-      signature = "(IIII)Lbk;",
-      garbageValue = "1688623868"
-   )
    static final InterfaceParent method626(int var0, int var1, int var2) {
       InterfaceParent var3 = new InterfaceParent();
       var3.group = var1;
@@ -886,7 +743,7 @@ public final class WorldMapManager implements RSWorldMapManager {
       }
 
       SecureRandomFuture.method1521();
-      GameShell.method1005(UserComparator5.Widget_interfaceComponents[var0 >> 16], var4, false);
+      GameShell.revalidateWidgetScroll(UserComparator5.Widget_interfaceComponents[var0 >> 16], var4, false);
       class186.method3728(var1, 544838520);
       if(Client.rootInterface != -1) {
          class28.method588(Client.rootInterface, 1);

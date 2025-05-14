@@ -1,16 +1,9 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("he")
 public class class211 {
-   @ObfuscatedName("n")
    public static final short[][] field2493;
-   @ObfuscatedName("u")
    public static final short[][] field2492;
-   @ObfuscatedName("v")
    public static final short[] field2495;
-   @ObfuscatedName("z")
    public static final short[] field2494;
 
    static {

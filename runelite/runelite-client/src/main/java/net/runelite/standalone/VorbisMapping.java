@@ -1,16 +1,9 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("di")
 public class VorbisMapping {
-   @ObfuscatedName("n")
    int mappingMux;
-   @ObfuscatedName("u")
    int[] submapResidue;
-   @ObfuscatedName("v")
    int[] submapFloor;
-   @ObfuscatedName("z")
    int submaps;
 
    VorbisMapping() {

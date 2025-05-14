@@ -4,66 +4,18 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gw")
 public class class202 {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2330;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2326;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2331;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2325;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2327;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2328;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2333;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2329;
-   @ObfuscatedName("at")
-   @ObfuscatedGetter(
-      intValue = 1987889023
-   )
    static int field2335;
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2334;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Lgw;"
-   )
    public static final class202 field2332;
 
    static {
@@ -79,18 +31,9 @@ public class class202 {
       field2334 = new class202(3);
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "4"
-   )
    class202(int var1) {
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;Ljava/lang/String;ZS)Lmh;",
-      garbageValue = "3503"
-   )
    public static AccessFile method3853(String var0, String var1, boolean var2) {
       File var3 = new File(GrandExchangeOfferOwnWorldComparator.cacheDir, "preferences" + var0 + ".dat");
       AccessFile var10000;
@@ -139,18 +82,13 @@ public class class202 {
       return var10000;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "65280"
-   )
    public static void method3855(Buffer var0, int var1) {
       ReflectionCheck var2 = new ReflectionCheck();
       var2.size = var0.readUnsignedByte();
       var2.id = var0.readInt();
       var2.operations = new int[var2.size];
       var2.creationErrors = new int[var2.size];
-      var2.field1186 = new Field[var2.size];
+      var2.fields = new Field[var2.size];
       var2.intReplaceValues = new int[var2.size];
       var2.methods = new Method[var2.size];
       var2.arguments = new byte[var2.size][][];
@@ -235,7 +173,7 @@ public class class202 {
                   throw new SecurityException();
                }
 
-               var2.field1186[var3] = TextureProvider.method2867(var5).getDeclaredField(var6);
+               var2.fields[var3] = TextureProvider.method2867(var5).getDeclaredField(var6);
             }
          } catch (ClassNotFoundException var24) {
             var2.creationErrors[var3] = -1;
@@ -253,11 +191,6 @@ public class class202 {
       class94.reflectionChecks.method5019(var2);
    }
 
-   @ObfuscatedName("jy")
-   @ObfuscatedSignature(
-      signature = "(S)V",
-      garbageValue = "16256"
-   )
    static final void method3854() {
       Client.field1038 = Client.cycleCntr;
       GrandExchangeOfferAgeComparator.ClanChat_inClanChat = true;

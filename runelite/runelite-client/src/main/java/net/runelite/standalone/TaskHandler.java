@@ -4,35 +4,15 @@ import java.io.DataInputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fm")
 public class TaskHandler implements Runnable {
-   @ObfuscatedName("n")
    public static String javaVersion;
-   @ObfuscatedName("z")
    public static String javaVendor;
-   @ObfuscatedName("ah")
    protected static boolean hasFocus;
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    static AbstractArchive Widget_modelsArchive;
-   @ObfuscatedName("p")
    boolean isClosed;
-   @ObfuscatedName("r")
    Thread thread;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lfv;"
-   )
    Task task;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lfv;"
-   )
    Task current;
 
    public TaskHandler() {
@@ -56,11 +36,6 @@ public class TaskHandler implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IIILjava/lang/Object;S)Lfv;",
-      garbageValue = "255"
-   )
    final Task method3417(int var1, int var2, int var3, Object var4) {
       Task var5 = new Task();
       var5.type = var1;
@@ -80,29 +55,14 @@ public class TaskHandler implements Runnable {
       return var5;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/Runnable;II)Lfv;",
-      garbageValue = "-1627707278"
-   )
    public final Task method3427(Runnable var1, int var2) {
       return this.method3417(2, var2, 0, var1);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;II)Lfv;",
-      garbageValue = "2091612218"
-   )
    public final Task method3418(String var1, int var2) {
       return this.method3417(1, var2, 0, var1);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1673059069"
-   )
    public final void method3416() {
       synchronized(this) {
          this.isClosed = true;
@@ -166,7 +126,6 @@ public class TaskHandler implements Runnable {
       }
    }
 
-   @ObfuscatedName("z")
    static double method3415(double var0, double var2, double var4) {
       double var8 = (var0 - var2) / var4;
       double var6 = Math.exp(-var8 * var8 / 2.0D) / Math.sqrt(6.283185307179586D);

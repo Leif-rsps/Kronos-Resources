@@ -1,24 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("km")
 public final class BZip2Decompressor {
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Lkj;"
-   )
    static BZip2State BZip2Decompressor_state;
 
    static {
       BZip2Decompressor_state = new BZip2State();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkj;)V"
-   )
    static void method5716(BZip2State var0) {
       byte var2 = var0.out_char;
       int var3 = var0.su_rNToGo;
@@ -142,10 +130,6 @@ public final class BZip2Decompressor {
       var0.outputLength = var10;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(ILkj;)I"
-   )
    static int method5720(int var0, BZip2State var1) {
       while(var1.bsLive < var0) {
          var1.bsBuff = var1.bsBuff << 8 | var1.inputArray[var1.nextByte] & 255;
@@ -162,10 +146,6 @@ public final class BZip2Decompressor {
       return var2;
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(Lkj;)V"
-   )
    static void method5732(BZip2State var0) {
       var0.nInUse = 0;
 
@@ -178,26 +158,14 @@ public final class BZip2Decompressor {
 
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(Lkj;)B"
-   )
    static byte method5721(BZip2State var0) {
       return (byte)method5720(1, var0);
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Lkj;)B"
-   )
    static byte method5718(BZip2State var0) {
       return (byte)method5720(8, var0);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkj;)V"
-   )
    static void method5717(BZip2State var0) {
       boolean var4 = false;
       boolean var5 = false;
@@ -566,7 +534,6 @@ public final class BZip2Decompressor {
       }
    }
 
-   @ObfuscatedName("z")
    public static int method5715(byte[] var0, int var1, byte[] var2, int var3, int var4) {
       BZip2State var5 = BZip2Decompressor_state;
       int var10000;
@@ -590,7 +557,6 @@ public final class BZip2Decompressor {
       return var10000;
    }
 
-   @ObfuscatedName("m")
    static void method5722(int[] var0, int[] var1, int[] var2, byte[] var3, int var4, int var5, int var6) {
       int var7 = 0;
 

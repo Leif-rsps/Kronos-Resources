@@ -1,32 +1,17 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("dt")
 public class VorbisFloor {
-   @ObfuscatedName("n")
    static final float[] VorbisFloor_decibelStatics;
-   @ObfuscatedName("z")
    static final int[] field1556;
-   @ObfuscatedName("b")
    static boolean[] field1566;
-   @ObfuscatedName("c")
    static int[] field1565;
-   @ObfuscatedName("i")
    static int[] field1564;
-   @ObfuscatedName("p")
    int[] classDimensions;
-   @ObfuscatedName("q")
    int[] classSubClasses;
-   @ObfuscatedName("r")
    int[] partitionClassList;
-   @ObfuscatedName("u")
    int multiplier;
-   @ObfuscatedName("v")
    int[] field1561;
-   @ObfuscatedName("y")
    int[][] subclassBooks;
-   @ObfuscatedName("m")
    int[] classMasterbooks;
 
    static {
@@ -106,7 +91,6 @@ public class VorbisFloor {
       }
    }
 
-   @ObfuscatedName("p")
    boolean method2522() {
       boolean var1 = VorbisSample.method2126() != 0;
       if(!var1) {
@@ -146,7 +130,6 @@ public class VorbisFloor {
       }
    }
 
-   @ObfuscatedName("q")
    void method2523(float[] var1, int var2) {
       int var3 = this.field1561.length;
       int var4 = field1556[this.multiplier - 1];
@@ -208,7 +191,6 @@ public class VorbisFloor {
 
    }
 
-   @ObfuscatedName("r")
    void method2520(int var1, int var2) {
       if(var1 < var2) {
          int var3 = var1;
@@ -237,7 +219,6 @@ public class VorbisFloor {
       }
    }
 
-   @ObfuscatedName("u")
    void method2530(int var1, int var2, int var3, int var4, float[] var5, int var6) {
       int var7 = var4 - var2;
       int var8 = var3 - var1;
@@ -266,7 +247,6 @@ public class VorbisFloor {
 
    }
 
-   @ObfuscatedName("v")
    int method2526(int var1, int var2, int var3, int var4, int var5) {
       int var6 = var4 - var2;
       int var7 = var3 - var1;
@@ -276,7 +256,6 @@ public class VorbisFloor {
       return var6 < 0?var2 - var10:var10 + var2;
    }
 
-   @ObfuscatedName("n")
    static int method2517(int[] var0, int var1) {
       int var2 = var0[var1];
       int var3 = -1;
@@ -293,7 +272,6 @@ public class VorbisFloor {
       return var3;
    }
 
-   @ObfuscatedName("z")
    static int method2529(int[] var0, int var1) {
       int var2 = var0[var1];
       int var3 = -1;

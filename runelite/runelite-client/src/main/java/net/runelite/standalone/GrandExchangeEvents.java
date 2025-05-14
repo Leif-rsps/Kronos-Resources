@@ -4,20 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("q")
 public class GrandExchangeEvents {
-   @ObfuscatedName("n")
    public static Comparator GrandExchangeEvents_ageComparator;
-   @ObfuscatedName("r")
    public static Comparator GrandExchangeEvents_quantityComparator;
-   @ObfuscatedName("u")
    public static Comparator GrandExchangeEvents_nameComparator;
-   @ObfuscatedName("v")
    public static Comparator GrandExchangeEvents_priceComparator;
-   @ObfuscatedName("z")
    public final List events;
 
    static {
@@ -28,10 +20,6 @@ public class GrandExchangeEvents {
       GrandExchangeEvents_quantityComparator = new GrandExchangeOfferTotalQuantityComparator();
    }
 
-   @ObfuscatedSignature(
-      signature = "(Lkl;Z)V",
-      garbageValue = "1"
-   )
    public GrandExchangeEvents(Buffer var1, boolean var2) {
       int var3 = var1.readUnsignedShort();
       boolean var4 = var1.readUnsignedByte() == 1;
@@ -51,11 +39,6 @@ public class GrandExchangeEvents {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/util/Comparator;ZI)V",
-      garbageValue = "663869471"
-   )
    public void method100(Comparator var1, boolean var2) {
       if(var2) {
          Collections.sort(this.events, var1);
@@ -65,11 +48,6 @@ public class GrandExchangeEvents {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([BZB)Ljava/lang/Object;",
-      garbageValue = "-1"
-   )
    public static Object method94(byte[] var0, boolean var1) {
       if(var0 == null) {
          return null;
@@ -82,11 +60,6 @@ public class GrandExchangeEvents {
       }
    }
 
-   @ObfuscatedName("ke")
-   @ObfuscatedSignature(
-      signature = "(Lho;B)Lho;",
-      garbageValue = "5"
-   )
    static Widget method99(Widget var0) {
       int var1 = UserComparator9.method3030(class12.method148(var0));
       if(var1 == 0) {

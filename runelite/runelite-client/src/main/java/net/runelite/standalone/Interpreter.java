@@ -1,58 +1,20 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bw")
 public class Interpreter {
-   @ObfuscatedName("qg")
-   @ObfuscatedSignature(
-      signature = "Ldr;"
-   )
    static Decimator decimator;
-   @ObfuscatedName("p")
    static int[][] Interpreter_arrays;
-   @ObfuscatedName("q")
    static int[] Interpreter_intStack;
-   @ObfuscatedName("r")
    static int[] Interpreter_arrayLengths;
-   @ObfuscatedName("w")
    static final String[] Interpreter_MONTHS;
-   @ObfuscatedName("x")
    static boolean field646;
-   @ObfuscatedName("y")
    static String[] Interpreter_stringStack;
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "[Lbv;"
-   )
    static ScriptFrame[] Interpreter_frames;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = 1889538287
-   )
    static int Interpreter_frameDepth;
-   @ObfuscatedName("d")
    static final double field648;
-   @ObfuscatedName("e")
    static java.util.Calendar Interpreter_calendar;
-   @ObfuscatedName("g")
    static boolean field645;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = -1964719699
-   )
    static int field660;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = -133806221
-   )
    static int Interpreter_stringStackSize;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 313560965
-   )
    static int Interpreter_intStackSize;
 
    static {
@@ -70,20 +32,10 @@ public class Interpreter {
       field648 = Math.log(2.0D);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;IB)Z",
-      garbageValue = "106"
-   )
    static boolean method1410(String var0, int var1) {
       return WorldMapID.method684(var0, var1, "openjs");
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Lgt;I)I",
-      garbageValue = "-1997764542"
-   )
    public static int method1409(CharSequence var0, CharSequence var1, Language var2) {
       int var3 = var0.length();
       int var4 = var1.length();

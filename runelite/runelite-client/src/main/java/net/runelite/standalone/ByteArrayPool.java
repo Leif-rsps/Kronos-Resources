@@ -1,35 +1,13 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("kt")
 public class ByteArrayPool {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -745592959
-   )
    static int ByteArrayPool_mediumCount;
-   @ObfuscatedName("p")
    static byte[][] ByteArrayPool_large;
-   @ObfuscatedName("q")
    public static int[] ByteArrayPool_alternativeSizes;
-   @ObfuscatedName("r")
    static byte[][] ByteArrayPool_medium;
-   @ObfuscatedName("u")
    static byte[][] ByteArrayPool_small;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 1171490501
-   )
    static int ByteArrayPool_largeCount;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 1085109787
-   )
    static int ByteArrayPool_smallCount;
-   @ObfuscatedName("m")
    public static int[] ByteArrayPool_altSizeArrayCounts;
 
    static {
@@ -41,11 +19,6 @@ public class ByteArrayPool {
       ByteArrayPool_large = new byte[50][];
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IZB)[B",
-      garbageValue = "-44"
-   )
    static synchronized byte[] method5765(int var0, boolean var1) {
       byte[] var2;
       if(var0 != 100) {

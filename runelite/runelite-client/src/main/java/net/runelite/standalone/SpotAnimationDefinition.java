@@ -1,73 +1,20 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ik")
 public class SpotAnimationDefinition extends DualNode {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive SpotAnimationDefinition_modelArchive;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    static EvictingDualNodeHashTable SpotAnimationDefinition_cachedModels;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    static EvictingDualNodeHashTable SpotAnimationDefinition_cached;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = -1112009759
-   )
    int heightScale;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 388295053
-   )
    int archive;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = -2139310385
-   )
    public int sequence;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1118528649
-   )
    int id;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 1122835039
-   )
    int contrast;
-   @ObfuscatedName("y")
    short[] recolorTo;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = -1178653603
-   )
    int orientation;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -1021828075
-   )
    int widthScale;
-   @ObfuscatedName("c")
    short[] retextureTo;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = -1363981799
-   )
    int ambient;
-   @ObfuscatedName("i")
    short[] retextureFrom;
-   @ObfuscatedName("m")
    short[] recolorFrom;
 
    static {
@@ -84,11 +31,6 @@ public class SpotAnimationDefinition extends DualNode {
       this.contrast = 0;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "1457139461"
-   )
    void method4390(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
@@ -100,13 +42,8 @@ public class SpotAnimationDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(II)Ldh;",
-      garbageValue = "-1528746671"
-   )
    public final Model method4392(int var1) {
-      Model var2 = (Model)SpotAnimationDefinition_cachedModels.method3032((long)this.id);
+      Model var2 = (Model)SpotAnimationDefinition_cachedModels.get((long)this.id);
       if(var2 == null) {
          ModelData var3 = ModelData.method2823(SpotAnimationDefinition_modelArchive, this.archive, 0);
          if(var3 == null) {
@@ -134,7 +71,7 @@ public class SpotAnimationDefinition extends DualNode {
       if(this.sequence != -1 && var1 != -1) {
          var5 = GrandExchangeOfferUnitPriceComparator.method1468(this.sequence).method4663(var2, var1, -1452846924);
       } else {
-         var5 = var2.method2362(true);
+         var5 = var2.toSharedSpotAnimModel(true);
       }
 
       if(this.widthScale != 128 || this.heightScale != 128) {
@@ -143,29 +80,24 @@ public class SpotAnimationDefinition extends DualNode {
 
       if(this.orientation != 0) {
          if(this.orientation == 90) {
-            var5.method2366();
+            var5.rotateY90Ccw();
          }
 
          if(this.orientation == 180) {
-            var5.method2366();
-            var5.method2366();
+            var5.rotateY90Ccw();
+            var5.rotateY90Ccw();
          }
 
          if(this.orientation == 270) {
-            var5.method2366();
-            var5.method2366();
-            var5.method2366();
+            var5.rotateY90Ccw();
+            var5.rotateY90Ccw();
+            var5.rotateY90Ccw();
          }
       }
 
       return var5;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;IB)V",
-      garbageValue = "25"
-   )
    void method4396(Buffer var1, int var2) {
       if(var2 == 1) {
          this.archive = var1.readUnsignedShort();

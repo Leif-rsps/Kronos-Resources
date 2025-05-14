@@ -1,94 +1,26 @@
 package net.runelite.standalone;
 
 import java.util.concurrent.ScheduledExecutorService;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dv")
 public class PcmPlayer {
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "Lcf;"
-   )
    static PcmPlayerProvider pcmPlayerProvider;
-   @ObfuscatedName("p")
    public static boolean PcmPlayer_stereo;
-   @ObfuscatedName("m")
    static ScheduledExecutorService soundSystemExecutor;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      longValue = 2578589966919390689L
-   )
    long field1593;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      longValue = -9085441602565192727L
-   )
    long timeMs;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 529397433
-   )
    int field1588;
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = -1375539879
-   )
    int field1591;
-   @ObfuscatedName("a")
    protected int[] samples;
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      signature = "[Ldc;"
-   )
    PcmStream[] field1600;
-   @ObfuscatedName("ar")
-   @ObfuscatedGetter(
-      intValue = 1371288149
-   )
    int field1599;
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      signature = "[Ldc;"
-   )
    PcmStream[] field1601;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = -236130375
-   )
    int field1596;
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      signature = "Ldc;"
-   )
    PcmStream stream;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = -709133773
-   )
    int field1583;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = 937182747
-   )
    int capacity;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = -383494247
-   )
    int field1592;
-   @ObfuscatedName("j")
-   @ObfuscatedGetter(
-      intValue = 1808057975
-   )
    int field1597;
-   @ObfuscatedName("k")
    boolean field1594;
-   @ObfuscatedName("l")
-   @ObfuscatedGetter(
-      longValue = -2782522933298206297L
-   )
    long field1582;
 
    protected PcmPlayer() {
@@ -105,56 +37,25 @@ public class PcmPlayer {
       this.field1601 = new PcmStream[8];
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IS)V",
-      garbageValue = "2148"
-   )
    protected void vmethod2712(int var1) throws Exception {
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1875138754"
-   )
    protected void vmethod2715() throws Exception {
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "90832052"
-   )
    protected void vmethod2725() {
    }
 
-   @ObfuscatedName("u")
    protected void vmethod2704() throws Exception {
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "1"
-   )
    protected int vmethod2735() throws Exception {
       return this.capacity;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "8"
-   )
    protected void vmethod2711() throws Exception {
    }
 
-   @ObfuscatedName("aa")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "17"
-   )
    public final synchronized void method2755() {
       if(this.samples != null) {
          long var1 = class33.method680();
@@ -242,11 +143,6 @@ public class PcmPlayer {
       }
    }
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1026437845"
-   )
    public final synchronized void method2707() {
       if(RunException.soundSystem != null) {
          boolean var1 = true;
@@ -272,20 +168,10 @@ public class PcmPlayer {
       this.samples = null;
    }
 
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      signature = "(Ldc;I)V",
-      garbageValue = "1280132594"
-   )
    public final synchronized void method2703(PcmStream var1) {
       this.stream = var1;
    }
 
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      signature = "(Ldc;II)V",
-      garbageValue = "1373941757"
-   )
    final void method2710(PcmStream var1, int var2) {
       int var3 = var2 >> 5;
       PcmStream var4 = this.field1601[var3];
@@ -299,20 +185,10 @@ public class PcmPlayer {
       var1.field1325 = var2;
    }
 
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "580966872"
-   )
    public final void method2705() {
       this.field1594 = true;
    }
 
-   @ObfuscatedName("ar")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-601426802"
-   )
    public final synchronized void method2708() {
       this.field1594 = true;
 
@@ -325,7 +201,6 @@ public class PcmPlayer {
 
    }
 
-   @ObfuscatedName("as")
    final void method2744(int[] var1, int var2) {
       int var3 = var2;
       if(PcmPlayer_stereo) {
@@ -438,11 +313,6 @@ public class PcmPlayer {
       this.timeMs = class33.method680();
    }
 
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "629535464"
-   )
    final void method2739(int var1) {
       this.field1599 -= var1;
       if(this.field1599 < 0) {

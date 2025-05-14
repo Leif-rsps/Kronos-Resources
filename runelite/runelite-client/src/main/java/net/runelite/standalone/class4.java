@@ -1,59 +1,26 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("n")
 final class class4 implements class16 {
-   @ObfuscatedName("dr")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
    static Archive archive0;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;B)Ljava/lang/Object;",
-      garbageValue = "-93"
-   )
    public Object vmethod210(Buffer var1) {
       return Integer.valueOf(var1.readInt());
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/Integer;Lkl;I)V",
-      garbageValue = "-1770008879"
-   )
    void method64(Integer var1, Buffer var2) {
       var2.writeInt(var1.intValue());
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/Object;Lkl;B)V",
-      garbageValue = "0"
-   )
    public void vmethod213(Object var1, Buffer var2) {
       this.method64((Integer)var1, var2);
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(ZZI)I",
-      garbageValue = "1419553069"
-   )
    public static int method56(boolean var0, boolean var1) {
       byte var2 = 0;
       int var3 = var2 + NetCache.NetCache_pendingPriorityWritesCount + NetCache.NetCache_pendingPriorityResponsesCount;
       return var3;
    }
 
-   @ObfuscatedName("hh")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIII)V",
-      garbageValue = "557524614"
-   )
    static final void method68(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
       if(var2 >= 1 && var3 >= 1 && var2 <= 102 && var3 <= 102) {
          if(Client.isLowDetail && var0 != WorldMapRectangle.plane) {
@@ -132,11 +99,6 @@ final class class4 implements class16 {
 
    }
 
-   @ObfuscatedName("hl")
-   @ObfuscatedSignature(
-      signature = "(Lbi;IIBI)V",
-      garbageValue = "916902326"
-   )
    static final void method65(Player var0, int var1, int var2, byte var3) {
       int var4 = var0.pathX[0];
       int var5 = var0.pathY[0];
@@ -160,11 +122,6 @@ final class class4 implements class16 {
       }
    }
 
-   @ObfuscatedName("kt")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "2"
-   )
    static void method66() {
       if(Client.field1087 && class215.localPlayer != null) {
          int var0 = class215.localPlayer.pathX[0];
@@ -185,11 +142,6 @@ final class class4 implements class16 {
 
    }
 
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      signature = "(ZB)V",
-      garbageValue = "16"
-   )
    public static void method67(boolean var0) {
       if(var0 != class163.ItemDefinition_inMembersWorld) {
          InterfaceParent.method1138();

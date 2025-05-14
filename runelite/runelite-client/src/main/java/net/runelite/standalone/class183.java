@@ -1,22 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("gd")
 public class class183 {
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 823451467
-   )
    public static int musicTrackGroupId;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    static AbstractArchive SequenceDefinition_skeletonsArchive;
-   @ObfuscatedName("z")
    static int[] field2097;
 
    static {

@@ -1,20 +1,11 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-
-@ObfuscatedName("cx")
 public class VorbisCodebook {
-   @ObfuscatedName("n")
    int entries;
-   @ObfuscatedName("p")
    int[] keys;
-   @ObfuscatedName("r")
    float[][] field1249;
-   @ObfuscatedName("u")
    int[] field1246;
-   @ObfuscatedName("v")
    int[] lengthMap;
-   @ObfuscatedName("z")
    int dimensions;
 
    VorbisCodebook() {
@@ -109,7 +100,6 @@ public class VorbisCodebook {
 
    }
 
-   @ObfuscatedName("n")
    void method2226() {
       int[] var1 = new int[this.entries];
       int[] var2 = new int[33];
@@ -203,12 +193,10 @@ public class VorbisCodebook {
 
    }
 
-   @ObfuscatedName("u")
    float[] method2228() {
       return this.field1249[this.method2227()];
    }
 
-   @ObfuscatedName("v")
    int method2227() {
       int var1;
       for(var1 = 0; this.keys[var1] >= 0; var1 = VorbisSample.method2126() != 0?this.keys[var1]:var1 + 1) {
@@ -218,7 +206,6 @@ public class VorbisCodebook {
       return ~this.keys[var1];
    }
 
-   @ObfuscatedName("z")
    static int method2225(int var0, int var1) {
       int var2;
       for(var2 = (int)Math.pow((double)var0, 1.0D / (double)var1) + 1; class33.method677(var2, var1) > var0; --var2) {

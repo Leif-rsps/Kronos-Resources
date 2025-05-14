@@ -1,127 +1,29 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("gu")
 public class MusicPatchNode extends Node {
-   @ObfuscatedName("fs")
-   @ObfuscatedGetter(
-      intValue = 327716875
-   )
    static int field2216;
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lgk;"
-   )
    MusicPatch patch;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = -641551353
-   )
    int field2225;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 1854182163
-   )
    int field2218;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1256664635
-   )
    int field2219;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1862096009
-   )
    int field2217;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      intValue = 1726198003
-   )
    int field2233;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lgf;"
-   )
    MusicPatchNode2 field2229;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lch;"
-   )
    RawSound rawSound;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 641640947
-   )
    int field2228;
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "Ldu;"
-   )
    RawPcmStream stream;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -24850439
-   )
    int field2221;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -517286067
-   )
    int field2214;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = -1163841633
-   )
    int field2226;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -2120695939
-   )
    int field2222;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = 625260661
-   )
    int field2223;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = -1406869545
-   )
    int field2227;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = 1840443907
-   )
    int field2213;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = -417116593
-   )
    int field2230;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = 41547951
-   )
    int field2232;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = -1793031461
-   )
    int field2235;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 137135897
-   )
    int field2220;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "2"
-   )
    void method3838() {
       this.patch = null;
       this.rawSound = null;
@@ -129,11 +31,6 @@ public class MusicPatchNode extends Node {
       this.stream = null;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(CLgt;I)I",
-      garbageValue = "888672970"
-   )
    static int method3843(char var0, Language var1) {
       int var2 = var0 << 4;
       if(Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
@@ -148,11 +45,6 @@ public class MusicPatchNode extends Node {
       return var2;
    }
 
-   @ObfuscatedName("ix")
-   @ObfuscatedSignature(
-      signature = "([Lho;IIIIIIIB)V",
-      garbageValue = "-61"
-   )
    static final void method3844(Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       for(int var8 = 0; var8 < var0.length; ++var8) {
          Widget var9 = var0[var8];
@@ -242,9 +134,9 @@ public class MusicPatchNode extends Node {
                   ScriptEvent var26;
                   if(var9.noClickThrough) {
                      if(MouseHandler.MouseHandler_x >= var12 && MouseHandler.MouseHandler_y >= var13 && MouseHandler.MouseHandler_x < var14 && MouseHandler.MouseHandler_y < var15) {
-                        for(var26 = (ScriptEvent)Client.scriptEvents.method5103(); var26 != null; var26 = (ScriptEvent)Client.scriptEvents.method5126()) {
+                        for(var26 = (ScriptEvent)Client.scriptEvents.last(); var26 != null; var26 = (ScriptEvent)Client.scriptEvents.previous()) {
                            if(var26.isMouseInputEvent) {
-                              var26.method3497();
+                              var26.unlink();
                               var26.widget.containsMouse = false;
                            }
                         }
@@ -259,9 +151,9 @@ public class MusicPatchNode extends Node {
                         }
                      }
                   } else if(var9.noScrollThrough && MouseHandler.MouseHandler_x >= var12 && MouseHandler.MouseHandler_y >= var13 && MouseHandler.MouseHandler_x < var14 && MouseHandler.MouseHandler_y < var15) {
-                     for(var26 = (ScriptEvent)Client.scriptEvents.method5103(); var26 != null; var26 = (ScriptEvent)Client.scriptEvents.method5126()) {
+                     for(var26 = (ScriptEvent)Client.scriptEvents.last(); var26 != null; var26 = (ScriptEvent)Client.scriptEvents.previous()) {
                         if(var26.isMouseInputEvent && var26.widget.onScroll == var26.args) {
-                           var26.method3497();
+                           var26.unlink();
                         }
                      }
                   }
@@ -405,7 +297,7 @@ public class MusicPatchNode extends Node {
                            var27.widget = var9;
                            var27.mouseY = Client.mouseWheelRotation;
                            var27.args = var9.onScroll;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(Client.clickedWidget != null || Frames.dragInventoryWidget != null || Client.isMenuOpen) {
@@ -423,7 +315,7 @@ public class MusicPatchNode extends Node {
                               var27.mouseX = MouseHandler.MouseHandler_lastPressedX - var10;
                               var27.mouseY = MouseHandler.MouseHandler_lastPressedY - var11;
                               var27.args = var9.onClick;
-                              Client.scriptEvents.method5105(var27);
+                              Client.scriptEvents.addFirst(var27);
                            }
                         }
 
@@ -434,7 +326,7 @@ public class MusicPatchNode extends Node {
                            var27.mouseX = MouseHandler.MouseHandler_x - var10;
                            var27.mouseY = MouseHandler.MouseHandler_y - var11;
                            var27.args = var9.onClickRepeat;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(var9.isClicked && !var34) {
@@ -446,7 +338,7 @@ public class MusicPatchNode extends Node {
                               var27.mouseX = MouseHandler.MouseHandler_x - var10;
                               var27.mouseY = MouseHandler.MouseHandler_y - var11;
                               var27.args = var9.onRelease;
-                              Client.field971.method5105(var27);
+                              Client.field971.addFirst(var27);
                            }
                         }
 
@@ -457,7 +349,7 @@ public class MusicPatchNode extends Node {
                            var27.mouseX = MouseHandler.MouseHandler_x - var10;
                            var27.mouseY = MouseHandler.MouseHandler_y - var11;
                            var27.args = var9.onHold;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(!var9.containsMouse && var33) {
@@ -469,7 +361,7 @@ public class MusicPatchNode extends Node {
                               var27.mouseX = MouseHandler.MouseHandler_x - var10;
                               var27.mouseY = MouseHandler.MouseHandler_y - var11;
                               var27.args = var9.onMouseOver;
-                              Client.scriptEvents.method5105(var27);
+                              Client.scriptEvents.addFirst(var27);
                            }
                         }
 
@@ -480,7 +372,7 @@ public class MusicPatchNode extends Node {
                            var27.mouseX = MouseHandler.MouseHandler_x - var10;
                            var27.mouseY = MouseHandler.MouseHandler_y - var11;
                            var27.args = var9.onMouseRepeat;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(var9.containsMouse && !var33) {
@@ -492,7 +384,7 @@ public class MusicPatchNode extends Node {
                               var27.mouseX = MouseHandler.MouseHandler_x - var10;
                               var27.mouseY = MouseHandler.MouseHandler_y - var11;
                               var27.args = var9.onMouseLeave;
-                              Client.field971.method5105(var27);
+                              Client.field971.addFirst(var27);
                            }
                         }
 
@@ -500,7 +392,7 @@ public class MusicPatchNode extends Node {
                            var27 = new ScriptEvent();
                            var27.widget = var9;
                            var27.args = var9.onTimer;
-                           Client.field1044.method5105(var27);
+                           Client.field1044.addFirst(var27);
                         }
 
                         ScriptEvent var28;
@@ -517,7 +409,7 @@ public class MusicPatchNode extends Node {
                                        var28 = new ScriptEvent();
                                        var28.widget = var9;
                                        var28.args = var9.onVarTransmit;
-                                       Client.scriptEvents.method5105(var28);
+                                       Client.scriptEvents.addFirst(var28);
                                        break label876;
                                     }
                                  }
@@ -526,7 +418,7 @@ public class MusicPatchNode extends Node {
                               var27 = new ScriptEvent();
                               var27.widget = var9;
                               var27.args = var9.onVarTransmit;
-                              Client.scriptEvents.method5105(var27);
+                              Client.scriptEvents.addFirst(var27);
                            }
 
                            var9.field2653 = Client.field1031;
@@ -543,7 +435,7 @@ public class MusicPatchNode extends Node {
                                        var28 = new ScriptEvent();
                                        var28.widget = var9;
                                        var28.args = var9.onInvTransmit;
-                                       Client.scriptEvents.method5105(var28);
+                                       Client.scriptEvents.addFirst(var28);
                                        break label852;
                                     }
                                  }
@@ -552,7 +444,7 @@ public class MusicPatchNode extends Node {
                               var27 = new ScriptEvent();
                               var27.widget = var9;
                               var27.args = var9.onInvTransmit;
-                              Client.scriptEvents.method5105(var27);
+                              Client.scriptEvents.addFirst(var27);
                            }
 
                            var9.field2713 = Client.field1033;
@@ -569,7 +461,7 @@ public class MusicPatchNode extends Node {
                                        var28 = new ScriptEvent();
                                        var28.widget = var9;
                                        var28.args = var9.onStatTransmit;
-                                       Client.scriptEvents.method5105(var28);
+                                       Client.scriptEvents.addFirst(var28);
                                        break label828;
                                     }
                                  }
@@ -578,7 +470,7 @@ public class MusicPatchNode extends Node {
                               var27 = new ScriptEvent();
                               var27.widget = var9;
                               var27.args = var9.onStatTransmit;
-                              Client.scriptEvents.method5105(var27);
+                              Client.scriptEvents.addFirst(var27);
                            }
 
                            var9.field2714 = Client.changedSkillsCount;
@@ -588,42 +480,42 @@ public class MusicPatchNode extends Node {
                            var27 = new ScriptEvent();
                            var27.widget = var9;
                            var27.args = var9.onChatTransmit;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(Client.field952 > var9.field2591 && var9.onFriendTransmit != null) {
                            var27 = new ScriptEvent();
                            var27.widget = var9;
                            var27.args = var9.onFriendTransmit;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(Client.field1038 > var9.field2591 && var9.onClanTransmit != null) {
                            var27 = new ScriptEvent();
                            var27.widget = var9;
                            var27.args = var9.onClanTransmit;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(Client.field1039 > var9.field2591 && var9.onStockTransmit != null) {
                            var27 = new ScriptEvent();
                            var27.widget = var9;
                            var27.args = var9.onStockTransmit;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(Client.field1040 > var9.field2591 && var9.field2695 != null) {
                            var27 = new ScriptEvent();
                            var27.widget = var9;
                            var27.args = var9.field2695;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         if(Client.field1041 > var9.field2591 && var9.onMiscTransmit != null) {
                            var27 = new ScriptEvent();
                            var27.widget = var9;
                            var27.args = var9.onMiscTransmit;
-                           Client.scriptEvents.method5105(var27);
+                           Client.scriptEvents.addFirst(var27);
                         }
 
                         var9.field2591 = Client.cycleCntr;
@@ -634,7 +526,7 @@ public class MusicPatchNode extends Node {
                               var29.keyTyped = Client.field1067[var35];
                               var29.keyPressed = Client.field1066[var35];
                               var29.args = var9.onKey;
-                              Client.scriptEvents.method5105(var29);
+                              Client.scriptEvents.addFirst(var29);
                            }
                         }
                      }
@@ -671,9 +563,9 @@ public class MusicPatchNode extends Node {
                      InterfaceParent var30 = (InterfaceParent)Client.interfaceParents.method6346((long)var9.id);
                      if(var30 != null) {
                         if(var30.type == 0 && MouseHandler.MouseHandler_x >= var12 && MouseHandler.MouseHandler_y >= var13 && MouseHandler.MouseHandler_x < var14 && MouseHandler.MouseHandler_y < var15 && !Client.isMenuOpen) {
-                           for(ScriptEvent var31 = (ScriptEvent)Client.scriptEvents.method5103(); var31 != null; var31 = (ScriptEvent)Client.scriptEvents.method5126()) {
+                           for(ScriptEvent var31 = (ScriptEvent)Client.scriptEvents.last(); var31 != null; var31 = (ScriptEvent)Client.scriptEvents.previous()) {
                               if(var31.isMouseInputEvent) {
-                                 var31.method3497();
+                                 var31.unlink();
                                  var31.widget.containsMouse = false;
                               }
                            }
@@ -698,11 +590,6 @@ public class MusicPatchNode extends Node {
 
    }
 
-   @ObfuscatedName("iz")
-   @ObfuscatedSignature(
-      signature = "(Lho;III)V",
-      garbageValue = "1345950027"
-   )
    static final void method3842(Widget var0, int var1, int var2) {
       if(var0.buttonType == 1) {
          WorldMapData_1.method519(var0.buttonText, "", 24, 0, 0, var0.id);

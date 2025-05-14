@@ -5,67 +5,21 @@ import java.awt.Polygon;
 import java.awt.Shape;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
+import net.runelite.api.WallObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSBoundaryObject;
-import net.runelite.rs.api.RSEntity;
-import net.runelite.rs.api.RSModel;
 
-@ObfuscatedName("eo")
-public final class BoundaryObject implements RSBoundaryObject {
-   @ObfuscatedName("dc")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
+public final class BoundaryObject implements WallObject {
    static Archive archive3;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 614934347
-   )
    int tileHeight;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    public Entity entity1;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    public Entity entity2;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1916194803
-   )
    int orientationB;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1866626591
-   )
    int y;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -602196191
-   )
    int x;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -461421073
-   )
    int flags;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -21907105
-   )
    int orientationA;
    public int wallPlane;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      longValue = 7018407287880452951L
-   )
    public long tag;
 
    BoundaryObject() {
@@ -78,7 +32,7 @@ public final class BoundaryObject implements RSBoundaryObject {
    }
 
    public Polygon getConvexHull() {
-      RSModel var1 = this.getModelA();
+      Model var1 = this.getModelA();
       if(var1 == null) {
          return null;
       } else {
@@ -87,28 +41,32 @@ public final class BoundaryObject implements RSBoundaryObject {
       }
    }
 
+   @Override
    public long getHash() {
       return this.tag;
    }
 
-   public RSModel getModelB() {
-      RSEntity var1 = this.getEntity2();
-      return var1 == null?null:(var1 instanceof net.runelite.api.Model?(RSModel)var1:var1.getModel());
+   public Model getModelB() {
+      Entity var1 = this.getEntity2();
+      return var1 == null?null:(var1 instanceof net.runelite.api.Model?(Model)var1:var1.getModel());
    }
 
-   public RSEntity getEntity2() {
+   @Override
+   public Entity getEntity2() {
       return this.entity2;
    }
 
-   public RSModel getModelA() {
-      RSEntity var1 = this.getEntity1();
-      return var1 == null?null:(var1 instanceof net.runelite.api.Model?(RSModel)var1:var1.getModel());
+   public Model getModelA() {
+      Entity var1 = this.getEntity1();
+      return var1 == null?null:(var1 instanceof net.runelite.api.Model?(Model)var1:var1.getModel());
    }
 
-   public RSEntity getEntity1() {
+   @Override
+   public Entity getEntity1() {
       return this.entity1;
    }
 
+   @Override
    public int getX() {
       return this.x;
    }
@@ -117,6 +75,7 @@ public final class BoundaryObject implements RSBoundaryObject {
       return new LocalPoint(this.getX(), this.getY());
    }
 
+   @Override
    public int getY() {
       return this.y;
    }
@@ -160,23 +119,21 @@ public final class BoundaryObject implements RSBoundaryObject {
       return var1 == null && var2 == null?null:(var1 != null?var1:var2);
    }
 
+   @Override
    public int getOrientationA() {
       return this.orientationA;
    }
 
+   @Override
    public int getOrientationB() {
       return this.orientationB;
    }
 
+   @Override
    public int getConfig() {
       return this.flags;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(CB)Z",
-      garbageValue = "31"
-   )
    static final boolean method3062(char var0) {
       return var0 == 160 || var0 == ' ' || var0 == '_' || var0 == '-';
    }

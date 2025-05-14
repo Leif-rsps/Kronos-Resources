@@ -1,23 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSDecimator;
-
-@ObfuscatedName("dr")
-public class Decimator implements RSDecimator {
-   @ObfuscatedName("p")
+public class Decimator {
    int[][] table;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 747601715
-   )
    int outputRate;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -222965331
-   )
    int inputRate;
 
    public Decimator(int var1, int var2) {
@@ -69,11 +54,6 @@ public class Decimator implements RSDecimator {
       }
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "1984702959"
-   )
    int method2487(int var1) {
       if(this.table != null) {
          var1 = (int)((long)var1 * (long)this.outputRate / (long)this.inputRate);
@@ -82,11 +62,6 @@ public class Decimator implements RSDecimator {
       return var1;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "-1527580857"
-   )
    int method2496(int var1) {
       if(this.table != null) {
          var1 = (int)((long)var1 * (long)this.outputRate / (long)this.inputRate) + 6;
@@ -95,11 +70,6 @@ public class Decimator implements RSDecimator {
       return var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([BI)[B",
-      garbageValue = "906746870"
-   )
    byte[] method2497(byte[] var1) {
       if(this.table != null) {
          int var2 = (int)((long)var1.length * (long)this.outputRate / (long)this.inputRate) + 14;
@@ -140,29 +110,14 @@ public class Decimator implements RSDecimator {
       return var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(II)Lij;",
-      garbageValue = "-442453016"
-   )
    public static WorldMapElement method2498(int var0) {
       return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null?WorldMapElement.WorldMapElement_cached[var0]:new WorldMapElement(var0);
    }
 
-   @ObfuscatedName("ei")
-   @ObfuscatedSignature(
-      signature = "(I)Lla;",
-      garbageValue = "-695758013"
-   )
-   static WorldMap method2485() {
+   static WorldMap getRenderOverview() {
       return Tiles.worldMap;
    }
 
-   @ObfuscatedName("hz")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "851552801"
-   )
    static final void method2488() {
       PacketBuffer var0 = Client.packetWriter.packetBuffer;
       var0.method5293();

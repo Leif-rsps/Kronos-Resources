@@ -5,13 +5,13 @@ import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
 import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
-import net.runelite.api.IndexDataBase;
-import net.runelite.api.overlay.OverlayIndex;
-import org.slf4j.Logger;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import net.runelite.api.IndexDataBase;
+import net.runelite.api.overlay.OverlayIndex;
+import org.slf4j.Logger;
 
 public abstract class AbstractArchive implements IndexDataBase {
    static ClientPreferences clientPreferences;
@@ -383,10 +383,6 @@ public abstract class AbstractArchive implements IndexDataBase {
 
    public boolean isOverlayOutdated() {
       return this.overlayOutdated;
-   }
-
-   public byte[] getConfigData(int var1, int var2) {
-      return this.method4020(var1, var2, (short)3526);
    }
 
    public int method4059(String var1) {

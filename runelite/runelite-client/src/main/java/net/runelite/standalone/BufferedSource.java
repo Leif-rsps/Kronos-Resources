@@ -3,34 +3,14 @@ package net.runelite.standalone;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kx")
 public class BufferedSource implements Runnable {
-   @ObfuscatedName("n")
    InputStream inputStream;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -589477741
-   )
    int limit;
-   @ObfuscatedName("q")
    IOException exception;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 496960127
-   )
    int position;
-   @ObfuscatedName("u")
    byte[] buffer;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1837703949
-   )
    int capacity;
-   @ObfuscatedName("z")
    Thread thread;
 
    BufferedSource(InputStream var1, int var2) {
@@ -44,11 +24,6 @@ public class BufferedSource implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "-99"
-   )
    int method5810() throws IOException {
       int var10000;
       synchronized(this) {
@@ -70,11 +45,6 @@ public class BufferedSource implements Runnable {
       return var10000;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "2069219110"
-   )
    void method5801() {
       synchronized(this) {
          if(this.exception == null) {
@@ -92,11 +62,6 @@ public class BufferedSource implements Runnable {
 
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "([BIII)I",
-      garbageValue = "2103598010"
-   )
    int method5800(byte[] var1, int var2, int var3) throws IOException {
       if(var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) {
          int var10000;
@@ -135,11 +100,6 @@ public class BufferedSource implements Runnable {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "1540455812"
-   )
    int method5799() throws IOException {
       int var10000;
       synchronized(this) {
@@ -161,11 +121,6 @@ public class BufferedSource implements Runnable {
       return var10000;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IB)Z",
-      garbageValue = "-42"
-   )
    boolean method5797(int var1) throws IOException {
       if(var1 == 0) {
          return true;

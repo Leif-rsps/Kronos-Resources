@@ -2,65 +2,20 @@ package net.runelite.standalone;
 
 import java.io.EOFException;
 import java.io.IOException;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mm")
 public class BufferedFile {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lmh;"
-   )
    AccessFile accessFile;
-   @ObfuscatedName("p")
    byte[] writeBuffer;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      longValue = -8408813098273597985L
-   )
    long writeBufferOffset;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1845108509
-   )
    int readBufferLength;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      longValue = -7294963934648719297L
-   )
    long readBufferOffset;
-   @ObfuscatedName("v")
    byte[] readBuffer;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      longValue = -7862153769092129291L
-   )
    long offset;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      longValue = 3243026924650541047L
-   )
    long fileOffset;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      longValue = 8830743471394433983L
-   )
    long length;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      longValue = 3070804450108675653L
-   )
    long fileLength;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 1704738159
-   )
    int writeBufferLength;
 
-   @ObfuscatedSignature(
-      signature = "(Lmh;II)V"
-   )
    public BufferedFile(AccessFile var1, int var2, int var3) throws IOException {
       this.readBufferOffset = -1L;
       this.writeBufferOffset = -1L;
@@ -72,7 +27,6 @@ public class BufferedFile {
       this.offset = 0L;
    }
 
-   @ObfuscatedName("n")
    public void method22(long var1) throws IOException {
       if(var1 < 0L) {
          throw new IOException("");
@@ -81,11 +35,6 @@ public class BufferedFile {
       }
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "77"
-   )
    void method28() throws IOException {
       this.readBufferLength = 0;
       if(this.offset != this.fileOffset) {
@@ -110,11 +59,6 @@ public class BufferedFile {
 
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "([BIII)V",
-      garbageValue = "2016597591"
-   )
    public void method29(byte[] var1, int var2, int var3) throws IOException {
       try {
          if((long)var3 + this.offset > this.length) {
@@ -190,11 +134,6 @@ public class BufferedFile {
 
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "([BIIB)V",
-      garbageValue = "-41"
-   )
    public void method38(byte[] var1, int var2, int var3) throws IOException {
       label142: {
          try {
@@ -301,39 +240,19 @@ public class BufferedFile {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "([BI)V",
-      garbageValue = "588547682"
-   )
    public void method31(byte[] var1) throws IOException {
       this.method38(var1, 0, var1.length);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(S)J",
-      garbageValue = "15865"
-   )
    public long method25() {
       return this.length;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-55"
-   )
    public void method23() throws IOException {
       this.method30();
       this.accessFile.method18();
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "928727943"
-   )
    void method30() throws IOException {
       if(-1L != this.writeBufferOffset) {
          if(this.fileOffset != this.writeBufferOffset) {

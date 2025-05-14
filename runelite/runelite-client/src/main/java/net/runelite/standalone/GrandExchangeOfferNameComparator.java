@@ -3,22 +3,10 @@ package net.runelite.standalone;
 import java.util.Comparator;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("b")
 final class GrandExchangeOfferNameComparator implements Comparator {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    static AbstractArchive field321;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lm;Lm;I)I",
-      garbageValue = "1692871938"
-   )
    int method790(GrandExchangeEvent var1, GrandExchangeEvent var2) {
       return var1.method6490().compareTo(var2.method6490());
    }
@@ -31,11 +19,6 @@ final class GrandExchangeOfferNameComparator implements Comparator {
       return super.equals(var1);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([Ljava/lang/String;[SIIB)V",
-      garbageValue = "-18"
-   )
    public static void method799(String[] var0, short[] var1, int var2, int var3) {
       if(var2 < var3) {
          int var4 = (var3 + var2) / 2;
@@ -68,20 +51,10 @@ final class GrandExchangeOfferNameComparator implements Comparator {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;I)V",
-      garbageValue = "1206640259"
-   )
    public static void method800(AbstractArchive var0) {
       VarbitDefinition.VarbitDefinition_archive = var0;
    }
 
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "(Lfm;III)Ldv;",
-      garbageValue = "-1644992820"
-   )
    public static final PcmPlayer method798(TaskHandler var0, int var1, int var2) {
       if(UrlRequest.PcmPlayer_sampleRate == 0) {
          throw new IllegalStateException();

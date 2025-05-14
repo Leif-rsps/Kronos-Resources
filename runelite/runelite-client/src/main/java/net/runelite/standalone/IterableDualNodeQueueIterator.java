@@ -1,30 +1,12 @@
 package net.runelite.standalone;
 
 import java.util.Iterator;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jt")
 public class IterableDualNodeQueueIterator implements Iterator {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lfw;"
-   )
    DualNode head;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lfw;"
-   )
    DualNode last;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lji;"
-   )
    IterableDualNodeQueue queue;
 
-   @ObfuscatedSignature(
-      signature = "(Lji;)V"
-   )
    IterableDualNodeQueueIterator(IterableDualNodeQueue var1) {
       this.last = null;
       this.queue = var1;
@@ -36,7 +18,7 @@ public class IterableDualNodeQueueIterator implements Iterator {
       if(this.last == null) {
          throw new IllegalStateException();
       } else {
-         this.last.method3491();
+         this.last.unlinkDual();
          this.last = null;
       }
    }

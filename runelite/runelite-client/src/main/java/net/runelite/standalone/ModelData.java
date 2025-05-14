@@ -1,102 +1,47 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSModel;
-import net.runelite.rs.api.RSModelData;
-
-@ObfuscatedName("dw")
-public class ModelData extends Entity implements RSModelData {
-   @ObfuscatedName("ad")
+public class ModelData extends Entity {
    static int field1641;
-   @ObfuscatedName("ai")
    static int[] ModelData_cosine;
-   @ObfuscatedName("al")
    static int[] field1640;
-   @ObfuscatedName("an")
    static int[] ModelData_sine;
-   @ObfuscatedName("ao")
    static int[] field1639;
-   @ObfuscatedName("n")
    int[] verticesX;
-   @ObfuscatedName("o")
    short[] faceColors;
-   @ObfuscatedName("p")
    int[] indices1;
-   @ObfuscatedName("q")
    int[] indices2;
-   @ObfuscatedName("r")
    int faceCount;
-   @ObfuscatedName("s")
    int[] vertexSkins;
-   @ObfuscatedName("t")
    byte[] textureRenderTypes;
-   @ObfuscatedName("u")
    int[] verticesZ;
-   @ObfuscatedName("v")
    int[] verticesY;
-   @ObfuscatedName("w")
    int textureTriangleCount;
-   @ObfuscatedName("x")
    short[] texTriangleY;
-   @ObfuscatedName("y")
    byte[] faceRenderTypes;
-   @ObfuscatedName("z")
    int verticesCount;
-   @ObfuscatedName("a")
    short[] faceTextures;
-   @ObfuscatedName("aa")
    boolean isBoundsCalculated;
-   @ObfuscatedName("ab")
    int field1604;
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      signature = "[Ldp;"
-   )
    VertexNormal[] field1636;
-   @ObfuscatedName("ap")
    int field1634;
-   @ObfuscatedName("ar")
    int field1635;
-   @ObfuscatedName("as")
    int field1642;
-   @ObfuscatedName("aw")
    public short contrast;
-   @ObfuscatedName("ax")
    int field1637;
-   @ObfuscatedName("az")
    public short ambient;
-   @ObfuscatedName("b")
    byte[] textureCoords;
-   @ObfuscatedName("c")
    byte[] faceAlphas;
    public float[][] faceTextureUCoordinates;
    public float[][] faceTextureVCoordinates;
-   @ObfuscatedName("d")
    int[][] faceLabelsAlpha;
-   @ObfuscatedName("e")
    byte priority;
-   @ObfuscatedName("f")
    int[] faceSkins;
-   @ObfuscatedName("g")
    short[] texTriangleX;
-   @ObfuscatedName("h")
    short[] texTriangleZ;
-   @ObfuscatedName("i")
    byte[] faceRenderPriorities;
-   @ObfuscatedName("j")
    int[][] vertexLabels;
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "[Ldp;"
-   )
    VertexNormal[] vertexNormals;
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      signature = "[Lee;"
-   )
    FaceNormal[] faceNormals;
-   @ObfuscatedName("m")
    int[] indices3;
 
    static {
@@ -114,9 +59,6 @@ public class ModelData extends Entity implements RSModelData {
       this.isBoundsCalculated = false;
    }
 
-   @ObfuscatedSignature(
-      signature = "([Ldw;I)V"
-   )
    public ModelData(ModelData[] var1, int var2) {
       this.verticesCount = 0;
       this.faceCount = 0;
@@ -280,10 +222,6 @@ public class ModelData extends Entity implements RSModelData {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(Ldw;ZZZZ)V",
-      garbageValue = "1"
-   )
    public ModelData(ModelData var1, boolean var2, boolean var3, boolean var4, boolean var5) {
       this.verticesCount = 0;
       this.faceCount = 0;
@@ -352,7 +290,6 @@ public class ModelData extends Entity implements RSModelData {
       this.contrast = var1.contrast;
    }
 
-   @ObfuscatedName("n")
    void method2818(byte[] var1) {
       Buffer var2 = new Buffer(var1);
       Buffer var3 = new Buffer(var1);
@@ -658,7 +595,6 @@ public class ModelData extends Entity implements RSModelData {
 
    }
 
-   @ObfuscatedName("o")
    public void method2784(int var1, int var2, int var3) {
       for(int var4 = 0; var4 < this.verticesCount; ++var4) {
          this.verticesX[var4] += var1;
@@ -669,10 +605,6 @@ public class ModelData extends Entity implements RSModelData {
       this.method2775();
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "([[IIIIZI)Ldw;"
-   )
    public ModelData method2763(int[][] var1, int var2, int var3, int var4, boolean var5, int var6) {
       this.method2776();
       int var7 = var2 + this.field1635;
@@ -763,7 +695,6 @@ public class ModelData extends Entity implements RSModelData {
       }
    }
 
-   @ObfuscatedName("q")
    void method2764() {
       int[] var1;
       int var2;
@@ -823,10 +754,6 @@ public class ModelData extends Entity implements RSModelData {
 
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "()Ldw;"
-   )
    public ModelData method2762() {
       ModelData var1 = new ModelData();
       if(this.faceRenderTypes != null) {
@@ -867,7 +794,6 @@ public class ModelData extends Entity implements RSModelData {
       return var1;
    }
 
-   @ObfuscatedName("s")
    public void method2774() {
       if(this.vertexNormals == null) {
          this.vertexNormals = new VertexNormal[this.verticesCount];
@@ -942,10 +868,6 @@ public class ModelData extends Entity implements RSModelData {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Ldw;I)I"
-   )
    final int method2761(ModelData var1, int var2) {
       int var3 = -1;
       int var4 = var1.verticesX[var2];
@@ -973,7 +895,6 @@ public class ModelData extends Entity implements RSModelData {
       return var3;
    }
 
-   @ObfuscatedName("v")
    void method2760(byte[] var1) {
       boolean var2 = false;
       boolean var3 = false;
@@ -1250,7 +1171,6 @@ public class ModelData extends Entity implements RSModelData {
 
    }
 
-   @ObfuscatedName("x")
    public void method2772() {
       int var1;
       for(var1 = 0; var1 < this.verticesCount; ++var1) {
@@ -1266,7 +1186,6 @@ public class ModelData extends Entity implements RSModelData {
       this.method2775();
    }
 
-   @ObfuscatedName("a")
    public void method2770(short var1, short var2) {
       for(int var3 = 0; var3 < this.faceCount; ++var3) {
          if(this.faceColors[var3] == var1) {
@@ -1276,7 +1195,6 @@ public class ModelData extends Entity implements RSModelData {
 
    }
 
-   @ObfuscatedName("b")
    public void method2765(int var1) {
       int var2 = ModelData_sine[var1];
       int var3 = ModelData_cosine[var1];
@@ -1290,7 +1208,6 @@ public class ModelData extends Entity implements RSModelData {
       this.method2775();
    }
 
-   @ObfuscatedName("c")
    public void method2798() {
       for(int var1 = 0; var1 < this.verticesCount; ++var1) {
          int var2 = this.verticesZ[var1];
@@ -1301,17 +1218,6 @@ public class ModelData extends Entity implements RSModelData {
       this.method2775();
    }
 
-   public short[] getFaceTextures() {
-      return this.faceTextures;
-   }
-
-   public int[] getVertexX() {
-      return this.verticesX;
-   }
-
-   @ObfuscatedSignature(
-      signature = "(IIIII)Ldh;"
-   )
    public final Model copy$toModel(int var1, int var2, int var3, int var4, int var5) {
       this.method2774();
       int var6 = (int)Math.sqrt((double)(var5 * var5 + var3 * var3 + var4 * var4));
@@ -1494,29 +1400,21 @@ public class ModelData extends Entity implements RSModelData {
       return var8;
    }
 
-   public int[] getVertexY() {
-      return this.verticesY;
-   }
-
-   public int[] getVertexZ() {
-      return this.verticesZ;
-   }
-
    public void computeTextureUVCoordinates() {
-      short[] var1 = this.getFaceTextures();
+      short[] var1 = this.faceTextures;
       if(var1 != null) {
-         int[] var2 = this.getVertexX();
-         int[] var3 = this.getVertexY();
-         int[] var4 = this.getVertexZ();
-         int[] var5 = this.getTrianglePointsX();
-         int[] var6 = this.getTrianglePointsY();
-         int[] var7 = this.getTrianglePointsZ();
-         short[] var8 = this.getTexTriangleX();
-         short[] var9 = this.getTexTriangleY();
-         short[] var10 = this.getTexTriangleZ();
-         byte[] var11 = this.getTextureCoords();
-         byte[] var12 = this.getTextureRenderTypes();
-         int var13 = this.getTriangleFaceCount();
+         int[] var2 = this.verticesX;
+         int[] var3 = this.verticesY;
+         int[] var4 = this.verticesZ;
+         int[] var5 = this.indices1;
+         int[] var6 = this.indices2;
+         int[] var7 = this.indices3;
+         short[] var8 = this.texTriangleX;
+         short[] var9 = this.texTriangleY;
+         short[] var10 = this.texTriangleZ;
+         byte[] var11 = this.textureCoords;
+         byte[] var12 = this.textureRenderTypes;
+         int var13 = this.faceCount;
          this.faceTextureUCoordinates = new float[var13][];
          this.faceTextureVCoordinates = new float[var13][];
 
@@ -1599,43 +1497,6 @@ public class ModelData extends Entity implements RSModelData {
       }
    }
 
-   public int[] getTrianglePointsX() {
-      return this.indices1;
-   }
-
-   public int[] getTrianglePointsY() {
-      return this.indices2;
-   }
-
-   public int[] getTrianglePointsZ() {
-      return this.indices3;
-   }
-
-   public short[] getTexTriangleX() {
-      return this.texTriangleX;
-   }
-
-   public short[] getTexTriangleY() {
-      return this.texTriangleY;
-   }
-
-   public short[] getTexTriangleZ() {
-      return this.texTriangleZ;
-   }
-
-   public byte[] getTextureCoords() {
-      return this.textureCoords;
-   }
-
-   public byte[] getTextureRenderTypes() {
-      return this.textureRenderTypes;
-   }
-
-   public int getTriangleFaceCount() {
-      return this.faceCount;
-   }
-
-   @ObfuscatedName("e")
    public void method2831(short var1, short var2) {
       if(this.faceTextures != null) {
          for(int var3 = 0; var3 < this.faceCount; ++var3) {
@@ -1647,7 +1508,6 @@ public class ModelData extends Entity implements RSModelData {
       }
    }
 
-   @ObfuscatedName("f")
    void method2775() {
       this.vertexNormals = null;
       this.field1636 = null;
@@ -1655,7 +1515,6 @@ public class ModelData extends Entity implements RSModelData {
       this.isBoundsCalculated = false;
    }
 
-   @ObfuscatedName("h")
    public void method2773(int var1, int var2, int var3) {
       for(int var4 = 0; var4 < this.verticesCount; ++var4) {
          this.verticesX[var4] = this.verticesX[var4] * var1 / 128;
@@ -1666,7 +1525,6 @@ public class ModelData extends Entity implements RSModelData {
       this.method2775();
    }
 
-   @ObfuscatedName("i")
    public void method2759() {
       for(int var1 = 0; var1 < this.verticesCount; ++var1) {
          this.verticesX[var1] = -this.verticesX[var1];
@@ -1676,7 +1534,6 @@ public class ModelData extends Entity implements RSModelData {
       this.method2775();
    }
 
-   @ObfuscatedName("j")
    void method2776() {
       if(!this.isBoundsCalculated) {
          super.height = 0;
@@ -1719,10 +1576,6 @@ public class ModelData extends Entity implements RSModelData {
       }
    }
 
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      signature = "(IIIII)Ldh;"
-   )
    public final Model method2778(int var1, int var2, int var3, int var4, int var5) {
       ViewportMouse.client.getLogger().trace("Lighting model {}", this);
       Model var6 = this.copy$toModel(var1, var2, var3, var4, var5);
@@ -1733,14 +1586,13 @@ public class ModelData extends Entity implements RSModelData {
             this.computeTextureUVCoordinates();
          }
 
-         RSModel var7 = (RSModel)var6;
+         Model var7 = (Model)var6;
          var7.setFaceTextureUCoordinates(this.faceTextureUCoordinates);
          var7.setFaceTextureVCoordinates(this.faceTextureVCoordinates);
          return var6;
       }
    }
 
-   @ObfuscatedName("m")
    public void method2833() {
       for(int var1 = 0; var1 < this.verticesCount; ++var1) {
          int var2 = this.verticesX[var1];
@@ -1751,16 +1603,11 @@ public class ModelData extends Entity implements RSModelData {
       this.method2775();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;II)Ldw;"
-   )
    public static ModelData method2823(AbstractArchive var0, int var1, int var2) {
       byte[] var3 = var0.method4020(var1, var2, (short)-9228);
       return var3 == null?null:new ModelData(var3);
    }
 
-   @ObfuscatedName("ac")
    static final int method2769(int var0) {
       if(var0 < 2) {
          var0 = 2;
@@ -1771,10 +1618,6 @@ public class ModelData extends Entity implements RSModelData {
       return var0;
    }
 
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      signature = "(Ldw;Ldw;IIIZ)V"
-   )
    static void method2777(ModelData var0, ModelData var1, int var2, int var3, int var4, boolean var5) {
       var0.method2776();
       var0.method2774();
@@ -1859,7 +1702,6 @@ public class ModelData extends Entity implements RSModelData {
       }
    }
 
-   @ObfuscatedName("k")
    static final int method2779(int var0, int var1) {
       var1 = (var0 & 127) * var1 >> 7;
       if(var1 < 2) {

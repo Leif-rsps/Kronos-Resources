@@ -1,78 +1,25 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("as")
 public abstract class AbstractWorldMapIcon {
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      signature = "Lkl;"
-   )
    static Buffer NetCache_reference;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Lhb;"
-   )
    public final Coord coord2;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -744946711
-   )
    int screenX;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 1215104535
-   )
    int screenY;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Lhb;"
-   )
    public final Coord coord1;
 
-   @ObfuscatedSignature(
-      signature = "(Lhb;Lhb;)V"
-   )
    AbstractWorldMapIcon(Coord var1, Coord var2) {
       this.coord1 = var1;
       this.coord2 = var2;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)Law;",
-      garbageValue = "13348956"
-   )
    abstract WorldMapLabel vmethod2273();
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "806304417"
-   )
    abstract int vmethod2257();
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-175699296"
-   )
    abstract int vmethod2269();
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "-79"
-   )
    public abstract int vmethod2277();
 
-   @ObfuscatedName("aa")
-   @ObfuscatedSignature(
-      signature = "(III)Z",
-      garbageValue = "-2112119378"
-   )
    boolean method695(int var1, int var2) {
       if(!this.method694()) {
          return false;
@@ -120,39 +67,19 @@ public abstract class AbstractWorldMapIcon {
       }
    }
 
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      signature = "(B)Z",
-      garbageValue = "69"
-   )
    boolean method694() {
       return this.vmethod2277() >= 0;
    }
 
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      signature = "(IIB)Z",
-      garbageValue = "122"
-   )
    boolean method696(int var1, int var2) {
       WorldMapLabel var3 = this.vmethod2273();
       return var3 == null?false:(var1 >= this.screenX - var3.width / 2 && var1 <= var3.width / 2 + this.screenX?var2 >= this.screenY && var2 <= this.screenY + var3.height:false);
    }
 
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "(III)Z",
-      garbageValue = "1521252994"
-   )
    boolean method689(int var1, int var2) {
       return this.method695(var1, var2)?true:this.method696(var1, var2);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "([BILjava/lang/CharSequence;I)I",
-      garbageValue = "1746697865"
-   )
    public static int method718(byte[] var0, int var1, CharSequence var2) {
       int var3 = var2.length();
       int var4 = var1;
@@ -174,11 +101,6 @@ public abstract class AbstractWorldMapIcon {
       return var4 - var1;
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(I)[Llf;",
-      garbageValue = "-1750401163"
-   )
    static Sprite[] method720() {
       Sprite[] var0 = new Sprite[class329.SpriteBuffer_spriteCount];
 
@@ -208,11 +130,6 @@ public abstract class AbstractWorldMapIcon {
       return var0;
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(CI)Z",
-      garbageValue = "431385014"
-   )
    public static boolean method710(char var0) {
       return var0 >= '0' && var0 <= '9';
    }

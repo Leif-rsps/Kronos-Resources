@@ -1,34 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("m")
 public class GrandExchangeEvent {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      longValue = 5655370423736122045L
-   )
    public final long age;
-   @ObfuscatedName("r")
    String previousOfferName;
-   @ObfuscatedName("u")
    String offerName;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Li;"
-   )
    public final GrandExchangeOffer grandExchangeOffer;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 1358084805
-   )
    public final int world;
 
-   @ObfuscatedSignature(
-      signature = "(Lkl;BI)V"
-   )
    GrandExchangeEvent(Buffer var1, byte var2, int var3) {
       this.offerName = var1.readString();
       this.previousOfferName = var1.readString();
@@ -46,40 +24,20 @@ public class GrandExchangeEvent {
       this.grandExchangeOffer.id = var3;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)Ljava/lang/String;",
-      garbageValue = "1720570985"
-   )
    public String method6489() {
       return this.previousOfferName;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)Ljava/lang/String;",
-      garbageValue = "963027705"
-   )
    public String method6490() {
       return this.offerName;
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "33"
-   )
    public static void method6483() {
-      HitSplatDefinition.HitSplatDefinition_cached.method3035();
-      HitSplatDefinition.HitSplatDefinition_cachedSprites.method3035();
-      HitSplatDefinition.HitSplatDefinition_cachedFonts.method3035();
+      HitSplatDefinition.HitSplatDefinition_cached.clear();
+      HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
+      HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
    }
 
-   @ObfuscatedName("gj")
-   @ObfuscatedSignature(
-      signature = "(Lbt;B)V",
-      garbageValue = "76"
-   )
    static final void method6488(PendingSpawn var0) {
       long var1 = 0L;
       int var3 = -1;
@@ -113,11 +71,6 @@ public class GrandExchangeEvent {
       var0.field632 = var5;
    }
 
-   @ObfuscatedName("ie")
-   @ObfuscatedSignature(
-      signature = "(Lbi;IIII)V",
-      garbageValue = "1547441010"
-   )
    static final void method6487(Player var0, int var1, int var2, int var3) {
       if(class215.localPlayer != var0) {
          if(Client.menuOptionsCount < 400) {

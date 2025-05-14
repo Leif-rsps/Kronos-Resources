@@ -6,159 +6,67 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.util.Text;
 import net.runelite.client.callback.Hooks;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSBoundaryObject;
-import net.runelite.rs.api.RSEntity;
-import net.runelite.rs.api.RSFloorDecoration;
-import net.runelite.rs.api.RSGameObject;
-import net.runelite.rs.api.RSNPC;
-import net.runelite.rs.api.RSNodeDeque;
-import net.runelite.rs.api.RSPlayer;
-import net.runelite.rs.api.RSProjectile;
-import net.runelite.rs.api.RSScene;
-import net.runelite.rs.api.RSTile;
-import net.runelite.rs.api.RSTileItem;
-import net.runelite.rs.api.RSTileItemPile;
-import net.runelite.rs.api.RSTileModel;
-import net.runelite.rs.api.RSWallDecoration;
 
-@ObfuscatedName("ex")
-public class Scene implements RSScene {
-   @ObfuscatedName("s")
+public class Scene implements net.runelite.api.Scene {
    static int Scene_cameraYTileMax;
-   @ObfuscatedName("t")
    static int Scene_drawnCount;
-   @ObfuscatedName("w")
    static int Scene_plane;
-   @ObfuscatedName("x")
    static int Scene_cameraXTileMax;
-   @ObfuscatedName("z")
    public static boolean Scene_isLowDetail;
-   @ObfuscatedName("aa")
    static int Scene_cameraYawCosine;
-   @ObfuscatedName("ab")
    static int Scene_selectedPlane;
-   @ObfuscatedName("ac")
    static int Scene_cameraPitchSine;
-   @ObfuscatedName("ad")
    static boolean viewportWalking;
-   @ObfuscatedName("ae")
    static int Scene_currentOccludersCount;
-   @ObfuscatedName("af")
    static final int[] field1869;
-   @ObfuscatedName("ag")
    static final int[] field1887;
-   @ObfuscatedName("ah")
-   @ObfuscatedSignature(
-      signature = "Ljv;"
-   )
    static NodeDeque Scene_tilesDeque;
-   @ObfuscatedName("aj")
    static final int[] field1870;
-   @ObfuscatedName("ak")
    static int Scene_planesCount;
-   @ObfuscatedName("al")
    public static int Scene_selectedY;
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      signature = "[[Les;"
-   )
    static Occluder[][] Scene_planeOccluders;
-   @ObfuscatedName("ao")
    public static int Scene_selectedX;
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      signature = "[Lej;"
-   )
    static GameObject[] gameObjects;
-   @ObfuscatedName("aq")
    static int[] Scene_planeOccluderCounts;
-   @ObfuscatedName("ar")
    static boolean checkClick;
-   @ObfuscatedName("as")
    static int Scene_selectedScreenY;
-   @ObfuscatedName("at")
    static final int[] field1868;
-   @ObfuscatedName("au")
    static final int[] field1872;
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      signature = "[Les;"
-   )
    static Occluder[] Scene_currentOccluders;
-   @ObfuscatedName("aw")
    static int Scene_cameraYawSine;
-   @ObfuscatedName("ax")
    static int Scene_selectedScreenX;
-   @ObfuscatedName("ay")
    static final int[] field1823;
-   @ObfuscatedName("az")
    static int Scene_cameraPitchCosine;
-   @ObfuscatedName("ba")
    static int Scene_viewportYCenter;
-   @ObfuscatedName("bc")
    static boolean[][] visibleTiles;
-   @ObfuscatedName("be")
    static int Scene_viewportYMin;
-   @ObfuscatedName("bi")
    static int Scene_viewportYMax;
-   @ObfuscatedName("bk")
    static int Scene_viewportXCenter;
-   @ObfuscatedName("bn")
    static int Scene_viewportXMin;
-   @ObfuscatedName("bu")
    static int Scene_viewportXMax;
-   @ObfuscatedName("bx")
    static final int[] field1875;
-   @ObfuscatedName("bz")
    static boolean[][][][] visibilityMap;
    public static int rl$drawDistance;
    public static int[] tmpX;
    public static int[] tmpY;
-   @ObfuscatedName("d")
    static int Scene_cameraX;
-   @ObfuscatedName("e")
    static int tileUpdateCount;
-   @ObfuscatedName("f")
    static int Scene_cameraXTile;
-   @ObfuscatedName("g")
    static int Scene_cameraXTileMin;
-   @ObfuscatedName("h")
    static int Scene_cameraYTileMin;
-   @ObfuscatedName("j")
    static int Scene_cameraYTile;
-   @ObfuscatedName("k")
    static int Scene_cameraZ;
-   @ObfuscatedName("l")
    static int Scene_cameraY;
-   @ObfuscatedName("n")
    int planes;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "[[[Ldl;"
-   )
    Tile[][][] tiles;
-   @ObfuscatedName("q")
    int minPlane;
-   @ObfuscatedName("r")
    int[][][] tileHeights;
-   @ObfuscatedName("u")
    int ySize;
-   @ObfuscatedName("v")
    int xSize;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "[Lej;"
-   )
    GameObject[] tempGameObjects;
-   @ObfuscatedName("bj")
    int[][] tileShape2D;
-   @ObfuscatedName("bs")
    int[][] tileRotation2D;
-   @ObfuscatedName("i")
    int[][][] field1832;
-   @ObfuscatedName("m")
    int tempGameObjectsCount;
 
    static {
@@ -205,7 +113,6 @@ public class Scene implements RSScene {
       this.method3141();
    }
 
-   @ObfuscatedName("n")
    public void method3115(int var1) {
       this.minPlane = var1;
 
@@ -219,15 +126,10 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(IIIIILer;IJIIII)Z"
-   )
    public boolean method3126(int var1, int var2, int var3, int var4, int var5, Entity var6, int var7, long var8, int var10, int var11, int var12, int var13) {
       return var6 == null?true:this.method3127(var1, var10, var11, var12 - var10 + 1, var13 - var11 + 1, var2, var3, var4, var6, var7, true, var8, 0);
    }
 
-   @ObfuscatedName("p")
    public void method3156(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20) {
       TilePaint var21;
       int var22;
@@ -264,15 +166,11 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(IIIILer;JI)V"
-   )
    public void method3235(int var1, int var2, int var3, int var4, Entity var5, long var6, int var8) {
       this.copy$newFloorDecoration(var1, var2, var3, var4, var5, var6, var8);
-      RSTile var9 = this.getTiles()[var1][var2][var3];
+      Tile var9 = this.getTiles()[var1][var2][var3];
       if(var9 != null) {
-         RSFloorDecoration var10 = (RSFloorDecoration)var9.getGroundObject();
+         FloorDecoration var10 = (FloorDecoration)var9.getGroundObject();
          if(var10 != null) {
             var10.setPlane(var1);
          }
@@ -280,7 +178,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("r")
    public void method3198(int var1, int var2, int var3, int var4) {
       Tile var5 = this.tiles[var1][var2][var3];
       if(var5 != null) {
@@ -288,7 +185,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("s")
    public void method3114(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       if(var4 != null) {
@@ -297,7 +193,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("v")
    public void method3220(int var1, int var2) {
       Tile var3 = this.tiles[0][var1][var2];
 
@@ -323,10 +218,6 @@ public class Scene implements RSScene {
       this.tiles[3][var1][var2] = null;
    }
 
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "(Lej;)V"
-   )
    void method3225(GameObject var1) {
       for(int var2 = var1.startX; var2 <= var1.endX; ++var2) {
          for(int var3 = var1.startY; var3 <= var1.endY; ++var3) {
@@ -360,15 +251,11 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(IIIILer;Ler;IIJI)V"
-   )
    public void method3116(int var1, int var2, int var3, int var4, Entity var5, Entity var6, int var7, int var8, long var9, int var11) {
       this.copy$newBoundaryObject(var1, var2, var3, var4, var5, var6, var7, var8, var9, var11);
-      RSTile var12 = this.getTiles()[var1][var2][var3];
+      Tile var12 = this.getTiles()[var1][var2][var3];
       if(var12 != null) {
-         RSBoundaryObject var13 = (RSBoundaryObject)var12.getWallObject();
+         BoundaryObject var13 = (BoundaryObject)var12.getWallObject();
          if(var13 != null) {
             var13.setPlane(var1);
          }
@@ -376,7 +263,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("z")
    public void method3141() {
       int var1;
       int var2;
@@ -408,25 +294,17 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "(IIIIIIIILer;IZJI)Z"
-   )
    boolean method3127(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, Entity var9, int var10, boolean var11, long var12, int var14) {
       boolean var15 = shouldDraw(var9, false);
       if(!var15) {
          int var16 = var6 >> 7;
          int var17 = var7 >> 7;
-         ViewportMouse.client.getOccupiedTilesTick()[var16][var17] = -1;
+          Client.tileLastDrawnActor[var16][var17] = -1;
       }
 
       return var15 && this.copy$newGameObject(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var14);
    }
 
-   @ObfuscatedName("aa")
-   @ObfuscatedSignature(
-      signature = "(III)Lej;"
-   )
    public GameObject method3138(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       if(var4 == null) {
@@ -443,25 +321,16 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("ab")
    public long method3265(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       return var4 != null && var4.wallDecoration != null?var4.wallDecoration.tag:0L;
    }
 
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      signature = "(III)Leg;"
-   )
    public WallDecoration method3137(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       return var4 == null?null:var4.wallDecoration;
    }
 
-   @ObfuscatedName("ad")
-   @ObfuscatedSignature(
-      signature = "(Ldw;III)V"
-   )
    void method3146(ModelData var1, int var2, int var3, int var4) {
       Tile var5;
       ModelData var6;
@@ -499,12 +368,10 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("ae")
    public void method3152() {
       viewportWalking = true;
    }
 
-   @ObfuscatedName("ag")
    public void method3155(int var1, int var2, int var3, int var4, int var5, int var6) {
       DrawCallbacks var7 = ViewportMouse.client.getDrawCallbacks();
       if(var7 != null) {
@@ -512,26 +379,26 @@ public class Scene implements RSScene {
       }
 
       boolean var8 = ViewportMouse.client.isGpu();
-      boolean var9 = ViewportMouse.client.isCheckClick();
+      boolean var9 = checkClick;
       int var10;
       int var11;
       if(!ViewportMouse.client.isMenuOpen()) {
-         ViewportMouse.client.setCheckClick(true);
-         var10 = ViewportMouse.client.getMouseX();
-         var11 = ViewportMouse.client.getMouseY();
-         ViewportMouse.client.setMouseCanvasHoverPositionX(var10 - ViewportMouse.client.getViewportXOffset());
-         ViewportMouse.client.setMouseCanvasHoverPositionY(var11 - ViewportMouse.client.getViewportYOffset());
+         checkClick = true;
+         var10 = MouseHandler.MouseHandler_xVolatile;
+          var11 = MouseHandler.MouseHandler_yVolatile;
+         Scene_selectedScreenX = var10 - ViewportMouse.client.getViewportXOffset();
+         Scene_selectedScreenY = var11 - ViewportMouse.client.getViewportYOffset();
       }
 
       if(!var8 && Client.skyboxColor != 0) {
-         ViewportMouse.client.rasterizerFillRectangle(ViewportMouse.client.getViewportXOffset(), ViewportMouse.client.getViewportYOffset(), ViewportMouse.client.getViewportWidth(), ViewportMouse.client.getViewportHeight(), Client.skyboxColor);
+         Rasterizer2D.fillRectangle(ViewportMouse.client.getViewportXOffset(), ViewportMouse.client.getViewportYOffset(), ViewportMouse.client.getViewportWidth(), ViewportMouse.client.getViewportHeight(), Client.skyboxColor);
       }
 
-      var10 = this.getMaxX();
-      var11 = this.getMaxY();
-      int var12 = this.getMaxZ();
-      int var13 = this.getMinLevel();
-      RSTile[][][] var14 = this.getTiles();
+      var10 = this.xSize;
+      var11 = this.planes;
+      int var12 = this.ySize;
+      int var13 = this.minPlane;
+      Tile[][][] var14 = this.getTiles();
       int var15 = var8?rl$drawDistance:25;
       if(var1 < 0) {
          var1 = 0;
@@ -556,22 +423,22 @@ public class Scene implements RSScene {
          var16 = var4;
       }
 
-      ViewportMouse.client.setCycle(ViewportMouse.client.getCycle() + 1);
-      ViewportMouse.client.setPitchSin(Perspective.SINE[var16]);
-      ViewportMouse.client.setPitchCos(Perspective.COSINE[var16]);
-      ViewportMouse.client.setYawSin(Perspective.SINE[var5]);
-      ViewportMouse.client.setYawCos(Perspective.COSINE[var5]);
+      Scene_drawnCount = Scene_drawnCount + 1;
+      Scene_cameraPitchSine = Perspective.SINE[var16];
+      Scene_cameraPitchCosine = Perspective.COSINE[var16];
+      Scene_cameraYawSine = Perspective.SINE[var5];
+      Scene_cameraYawCosine = Perspective.COSINE[var5];
       int[][][] var17 = ViewportMouse.client.getTileHeights();
-      boolean[][] var18 = ViewportMouse.client.getVisibilityMaps()[(var4 - 128) / 32][var5 / 64];
+      boolean[][] var18 = visibilityMap[(var4 - 128) / 32][var5 / 64];
       ViewportMouse.client.setRenderArea(var18);
-      ViewportMouse.client.setCameraX2(var1);
-      ViewportMouse.client.setCameraY2(var2);
-      ViewportMouse.client.setCameraZ2(var3);
+      Scene_cameraX = var1;
+      Scene_cameraY = var2;
+      Scene_cameraZ = var3;
       int var19 = var1 / 128;
       int var20 = var3 / 128;
-      ViewportMouse.client.setScreenCenterX(var19);
-      ViewportMouse.client.setScreenCenterZ(var20);
-      ViewportMouse.client.setScenePlane(var6);
+      Scene_cameraXTile = var19;
+      Scene_cameraYTile = var20;
+      Scene_plane = var6;
       int var21 = var19 - var15;
       if(var21 < 0) {
          var21 = 0;
@@ -592,15 +459,15 @@ public class Scene implements RSScene {
          var24 = var12;
       }
 
-      ViewportMouse.client.setMinTileX(var21);
-      ViewportMouse.client.setMinTileZ(var22);
-      ViewportMouse.client.setMaxTileX(var23);
-      ViewportMouse.client.setMaxTileZ(var24);
+      Scene_cameraXTileMin = var21;
+      Scene_cameraYTileMin = var22;
+      Scene_cameraXTileMax = var23;
+      Scene_cameraYTileMax = var24;
       this.updateOccluders();
-      ViewportMouse.client.setTileUpdateCount(0);
+      tileUpdateCount = 0;
 
       int var25;
-      RSTile[][] var26;
+      Tile[][] var26;
       int var27;
       int var28;
       for(var25 = var13; var25 < var11; ++var25) {
@@ -608,17 +475,17 @@ public class Scene implements RSScene {
 
          for(var27 = var21; var27 < var23; ++var27) {
             for(var28 = var22; var28 < var24; ++var28) {
-               RSTile var29 = var26[var27][var28];
+               Tile var29 = var26[var27][var28];
                if(var29 != null) {
-                  if(var29.getPhysicalLevel() <= var6 && (var8 || var18[var27 - var19 + 25][var28 - var20 + 25] || var17[var25][var27][var28] - var2 >= 2000)) {
-                     var29.setDraw(true);
-                     var29.setVisible(true);
-                     var29.setDrawEntities(true);
-                     ViewportMouse.client.setTileUpdateCount(ViewportMouse.client.getTileUpdateCount() + 1);
+                  if(var29.minPlane <= var6 && (var8 || var18[var27 - var19 + 25][var28 - var20 + 25] || var17[var25][var27][var28] - var2 >= 2000)) {
+                     var29.drawPrimary = true;
+                     var29.drawSecondary = true;
+                     var29.drawGameObjects = true;
+                     tileUpdateCount = tileUpdateCount + 1;
                   } else {
-                     var29.setDraw(false);
-                     var29.setVisible(false);
-                     var29.setWallCullDirection(0);
+                     var29.drawPrimary = false;
+                     var29.drawSecondary = false;
+                     var29.drawGameObjectEdges = 0;
                   }
                }
             }
@@ -628,7 +495,7 @@ public class Scene implements RSScene {
       int var30;
       int var31;
       int var32;
-      RSTile var33;
+      Tile var33;
       int var34;
       for(var25 = var13; var25 < var11; ++var25) {
          var26 = var14[var25];
@@ -643,15 +510,19 @@ public class Scene implements RSScene {
                   if(var28 >= var21) {
                      if(var31 >= var22) {
                         var33 = var26[var28][var31];
-                        if(var33 != null && var33.isDraw()) {
-                           this.draw(var33, true);
+                        if(var33 != null) {
+                           if (var33.drawPrimary) {
+                              this.draw(var33, true);
+                           }
                         }
                      }
 
                      if(var32 < var24) {
                         var33 = var26[var28][var32];
-                        if(var33 != null && var33.isDraw()) {
-                           this.draw(var33, true);
+                        if(var33 != null) {
+                           if (var33.drawPrimary) {
+                              this.draw(var33, true);
+                           }
                         }
                      }
                   }
@@ -659,23 +530,27 @@ public class Scene implements RSScene {
                   if(var34 < var23) {
                      if(var31 >= var22) {
                         var33 = var26[var34][var31];
-                        if(var33 != null && var33.isDraw()) {
-                           this.draw(var33, true);
+                        if(var33 != null) {
+                           if (var33.drawPrimary) {
+                              this.draw(var33, true);
+                           }
                         }
                      }
 
                      if(var32 < var24) {
                         var33 = var26[var34][var32];
-                        if(var33 != null && var33.isDraw()) {
-                           this.draw(var33, true);
+                        if(var33 != null) {
+                           if (var33.drawPrimary) {
+                              this.draw(var33, true);
+                           }
                         }
                      }
                   }
 
-                  if(ViewportMouse.client.getTileUpdateCount() == 0) {
-                     ViewportMouse.client.setCheckClick(false);
+                  if(tileUpdateCount == 0) {
+                     checkClick = false;
                      if(!var9) {
-                        ViewportMouse.client.setViewportWalking(false);
+                        viewportWalking = false;
                      }
 
                      ViewportMouse.client.getCallbacks().drawScene();
@@ -699,15 +574,19 @@ public class Scene implements RSScene {
                   if(var28 >= var21) {
                      if(var31 >= var22) {
                         var33 = var26[var28][var31];
-                        if(var33 != null && var33.isDraw()) {
-                           this.draw(var33, false);
+                        if(var33 != null) {
+                           if (var33.drawPrimary) {
+                              this.draw(var33, false);
+                           }
                         }
                      }
 
                      if(var32 < var24) {
                         var33 = var26[var28][var32];
-                        if(var33 != null && var33.isDraw()) {
-                           this.draw(var33, false);
+                        if(var33 != null) {
+                           if (var33.drawPrimary) {
+                              this.draw(var33, false);
+                           }
                         }
                      }
                   }
@@ -715,23 +594,27 @@ public class Scene implements RSScene {
                   if(var34 < var23) {
                      if(var31 >= var22) {
                         var33 = var26[var34][var31];
-                        if(var33 != null && var33.isDraw()) {
-                           this.draw(var33, false);
+                        if(var33 != null) {
+                           if (var33.drawPrimary) {
+                              this.draw(var33, false);
+                           }
                         }
                      }
 
                      if(var32 < var24) {
                         var33 = var26[var34][var32];
-                        if(var33 != null && var33.isDraw()) {
-                           this.draw(var33, false);
+                        if(var33 != null) {
+                           if (var33.drawPrimary) {
+                              this.draw(var33, false);
+                           }
                         }
                      }
                   }
 
-                  if(ViewportMouse.client.getTileUpdateCount() == 0) {
-                     ViewportMouse.client.setCheckClick(false);
+                  if(tileUpdateCount == 0) {
+                     checkClick = false;
                      if(!var9) {
-                        ViewportMouse.client.setViewportWalking(false);
+                        viewportWalking = false;
                      }
 
                      ViewportMouse.client.getCallbacks().drawScene();
@@ -742,16 +625,15 @@ public class Scene implements RSScene {
          }
       }
 
-      ViewportMouse.client.setCheckClick(false);
+      checkClick = false;
       if(!var9) {
-         ViewportMouse.client.setViewportWalking(false);
+         viewportWalking = false;
       }
 
       ViewportMouse.client.getCallbacks().drawScene();
    }
 
-   @ObfuscatedName("ai")
-   public void method3148(int[] var1, int var2, int var3, int var4, int var5, int var6) {
+   public void drawTile(int[] var1, int var2, int var3, int var4, int var5, int var6) {
       Tile var7 = this.tiles[var4][var5][var6];
       if(var7 != null) {
          TilePaint var8 = var7.paint;
@@ -814,12 +696,8 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      signature = "(Ldl;Z)V"
-   )
-   void method3221(Tile var1, boolean var2) {
-      Scene_tilesDeque.method5105(var1);
+   void draw(Tile var1, boolean var2) {
+      Scene_tilesDeque.addFirst(var1);
 
       while(true) {
          Tile var3;
@@ -1051,28 +929,28 @@ public class Scene implements RSScene {
                                     if(var4 < Scene_cameraXTile && (var14 & 4) != 0) {
                                        var36 = var8[var4 + 1][var5];
                                        if(var36 != null && var36.drawSecondary) {
-                                          Scene_tilesDeque.method5105(var36);
+                                          Scene_tilesDeque.addFirst(var36);
                                        }
                                     }
 
                                     if(var5 < Scene_cameraYTile && (var14 & 2) != 0) {
                                        var36 = var8[var4][var5 + 1];
                                        if(var36 != null && var36.drawSecondary) {
-                                          Scene_tilesDeque.method5105(var36);
+                                          Scene_tilesDeque.addFirst(var36);
                                        }
                                     }
 
                                     if(var4 > Scene_cameraXTile && (var14 & 1) != 0) {
                                        var36 = var8[var4 - 1][var5];
                                        if(var36 != null && var36.drawSecondary) {
-                                          Scene_tilesDeque.method5105(var36);
+                                          Scene_tilesDeque.addFirst(var36);
                                        }
                                     }
 
                                     if(var5 > Scene_cameraYTile && (var14 & 8) != 0) {
                                        var36 = var8[var4][var5 - 1];
                                        if(var36 != null && var36.drawSecondary) {
-                                          Scene_tilesDeque.method5105(var36);
+                                          Scene_tilesDeque.addFirst(var36);
                                        }
                                     }
                                  }
@@ -1199,9 +1077,9 @@ public class Scene implements RSScene {
                                        for(var15 = var33.startY; var15 <= var33.endY; ++var15) {
                                           Tile var26 = var8[var14][var15];
                                           if(var26.drawGameObjectEdges != 0) {
-                                             Scene_tilesDeque.method5105(var26);
+                                             Scene_tilesDeque.addFirst(var26);
                                           } else if((var14 != var4 || var15 != var5) && var26.drawSecondary) {
-                                             Scene_tilesDeque.method5105(var26);
+                                             Scene_tilesDeque.addFirst(var26);
                                           }
                                        }
                                     }
@@ -1309,41 +1187,40 @@ public class Scene implements RSScene {
          if(var6 < this.planes - 1) {
             var30 = this.tiles[var6 + 1][var4][var5];
             if(var30 != null && var30.drawSecondary) {
-               Scene_tilesDeque.method5105(var30);
+               Scene_tilesDeque.addFirst(var30);
             }
          }
 
          if(var4 < Scene_cameraXTile) {
             var30 = var8[var4 + 1][var5];
             if(var30 != null && var30.drawSecondary) {
-               Scene_tilesDeque.method5105(var30);
+               Scene_tilesDeque.addFirst(var30);
             }
          }
 
          if(var5 < Scene_cameraYTile) {
             var30 = var8[var4][var5 + 1];
             if(var30 != null && var30.drawSecondary) {
-               Scene_tilesDeque.method5105(var30);
+               Scene_tilesDeque.addFirst(var30);
             }
          }
 
          if(var4 > Scene_cameraXTile) {
             var30 = var8[var4 - 1][var5];
             if(var30 != null && var30.drawSecondary) {
-               Scene_tilesDeque.method5105(var30);
+               Scene_tilesDeque.addFirst(var30);
             }
          }
 
          if(var5 > Scene_cameraYTile) {
             var30 = var8[var4][var5 - 1];
             if(var30 != null && var30.drawSecondary) {
-               Scene_tilesDeque.method5105(var30);
+               Scene_tilesDeque.addFirst(var30);
             }
          }
       }
    }
 
-   @ObfuscatedName("al")
    public void method3139(int var1, int var2, int var3) {
       for(int var4 = 0; var4 < this.planes; ++var4) {
          for(int var5 = 0; var5 < this.xSize; ++var5) {
@@ -1387,7 +1264,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("am")
    public void method3151(int var1, int var2, int var3, boolean var4) {
       if(!method3153() || var4) {
          checkClick = true;
@@ -1400,10 +1276,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      signature = "(Ldw;IIIII)V"
-   )
    void method3180(ModelData var1, int var2, int var3, int var4, int var5, int var6) {
       boolean var7 = true;
       int var8 = var3;
@@ -1456,7 +1328,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("ao")
    public int method3144(int var1, int var2, int var3, long var4) {
       Tile var6 = this.tiles[var1][var2][var3];
       if(var6 == null) {
@@ -1478,31 +1349,21 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      signature = "(III)Ldj;"
-   )
    public FloorDecoration method3256(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       return var4 != null && var4.floorDecoration != null?var4.floorDecoration:null;
    }
 
-   @ObfuscatedName("ar")
    public long method3140(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       return var4 != null && var4.boundaryObject != null?var4.boundaryObject.tag:0L;
    }
 
-   @ObfuscatedName("as")
    public long method3143(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       return var4 != null && var4.floorDecoration != null?var4.floorDecoration.tag:0L;
    }
 
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      signature = "(Ldd;IIIIII)V"
-   )
    void method3157(TileModel var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       if(!ViewportMouse.client.isGpu()) {
          this.copy$drawTileOverlay(var1, var2, var3, var4, var5, var6, var7);
@@ -1517,9 +1378,9 @@ public class Scene implements RSScene {
                int var13 = ViewportMouse.client.getCenterX();
                int var14 = ViewportMouse.client.getCenterY();
                var8.drawSceneModel(0, var2, var3, var4, var5, -var9, -var10, -var11, var1, ViewportMouse.client.getPlane(), var6, var7, var12, var13, var14);
-               boolean var15 = ViewportMouse.client.isCheckClick();
+               boolean var15 = checkClick;
                if(var15) {
-                  RSTileModel var16 = (RSTileModel)var1;
+                  TileModel var16 = (TileModel)var1;
                   int[] var17 = var16.getFaceX();
                   int[] var18 = var16.getFaceY();
                   int[] var19 = var16.getFaceZ();
@@ -1528,8 +1389,8 @@ public class Scene implements RSScene {
                   int[] var22 = var16.getVertexZ();
                   int var23 = var20.length;
                   int var24 = var17.length;
-                  int var25 = ViewportMouse.client.getMouseX2();
-                  int var26 = ViewportMouse.client.getMouseY2();
+                  int var25 = Scene_selectedScreenX;
+                  int var26 = Scene_selectedScreenY;
 
                   int var27;
                   int var28;
@@ -1569,9 +1430,11 @@ public class Scene implements RSScene {
                      var34 = tmpY[var28];
                      var35 = tmpY[var29];
                      var36 = tmpY[var30];
-                     if((var31 - var32) * (var36 - var35) - (var34 - var35) * (var33 - var32) > 0 && ViewportMouse.client.containsBounds(var25, var26, var34, var35, var36, var31, var32, var33)) {
-                        setTargetTile(var6, var7);
-                        return;
+                     if((var31 - var32) * (var36 - var35) - (var34 - var35) * (var33 - var32) > 0) {
+                        if (containsBounds(var25, var26, var34, var35, var36, var31, var32, var33)) {
+                           setTargetTile(var6, var7);
+                           return;
+                        }
                      }
                   }
 
@@ -1583,7 +1446,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("ax")
    public long method3142(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       if(var4 == null) {
@@ -1600,10 +1462,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("ay")
-   @ObfuscatedSignature(
-      signature = "(Lef;IIIIIII)V"
-   )
    void method3113(TilePaint var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       if(!ViewportMouse.client.isGpu()) {
          try {
@@ -1616,16 +1474,16 @@ public class Scene implements RSScene {
          DrawCallbacks var9 = ViewportMouse.client.getDrawCallbacks();
          if(var9 != null) {
             try {
-               int[][][] var10 = this.getTileHeights();
+               int[][][] var10 = this.tileHeights;
                int var11 = ViewportMouse.client.getCameraX2();
                int var12 = ViewportMouse.client.getCameraY2();
                int var13 = ViewportMouse.client.getCameraZ2();
                int var14 = ViewportMouse.client.get3dZoom();
                int var15 = ViewportMouse.client.getCenterX();
                int var16 = ViewportMouse.client.getCenterY();
-               int var17 = ViewportMouse.client.getMouseX2();
-               int var18 = ViewportMouse.client.getMouseY2();
-               boolean var19 = ViewportMouse.client.isCheckClick();
+               int var17 = Scene_selectedScreenX;
+               int var18 = Scene_selectedScreenY;
+               boolean var19 = checkClick;
                int var20;
                int var21 = var20 = (var7 << 7) - var11;
                int var22;
@@ -1674,12 +1532,16 @@ public class Scene implements RSScene {
                            int var39 = var20 * var14 / var26 + var15;
                            int var40 = var32 * var14 / var26 + var16;
                            var9.drawScenePaint(0, var3, var4, var5, var6, -var11, -var12, -var13, var1, var2, var7, var8, var14, var15, var16);
-                           if((var37 - var39) * (var36 - var40) - (var38 - var40) * (var35 - var39) > 0 && var19 && ViewportMouse.client.containsBounds(var17, var18, var38, var40, var36, var37, var39, var35)) {
-                              setTargetTile(var7, var8);
+                           if((var37 - var39) * (var36 - var40) - (var38 - var40) * (var35 - var39) > 0 && var19) {
+                              if (containsBounds(var17, var18, var38, var40, var36, var37, var39, var35)) {
+                                 setTargetTile(var7, var8);
+                              }
                            }
 
-                           if((var33 - var35) * (var40 - var36) - (var34 - var36) * (var39 - var35) > 0 && var19 && ViewportMouse.client.containsBounds(var17, var18, var34, var36, var40, var33, var35, var39)) {
-                              setTargetTile(var7, var8);
+                           if((var33 - var35) * (var40 - var36) - (var34 - var36) * (var39 - var35) > 0 && var19) {
+                              if (containsBounds(var17, var18, var34, var36, var40, var33, var35, var39)) {
+                                 setTargetTile(var7, var8);
+                              }
                            }
                         }
                      }
@@ -1693,10 +1555,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(IIIIILer;IJZ)Z"
-   )
    public boolean method3125(int var1, int var2, int var3, int var4, int var5, Entity var6, int var7, long var8, boolean var10) {
       if(var6 == null) {
          return true;
@@ -1731,7 +1589,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("bd")
    boolean method3162(int var1, int var2, int var3, int var4) {
       if(!this.method3119(var1, var2, var3)) {
          return false;
@@ -1876,7 +1733,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("bh")
    boolean method3119(int var1, int var2, int var3) {
       int var4 = this.field1832[var1][var2][var3];
       if(var4 == -Scene_drawnCount) {
@@ -1896,7 +1752,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("bj")
    boolean method3165(int var1, int var2, int var3) {
       for(int var4 = 0; var4 < Scene_currentOccludersCount; ++var4) {
          Occluder var5 = Scene_currentOccluders[var4];
@@ -1966,7 +1821,6 @@ public class Scene implements RSScene {
       return false;
    }
 
-   @ObfuscatedName("bm")
    boolean method3200(int var1, int var2, int var3, int var4) {
       if(!this.method3119(var1, var2, var3)) {
          return false;
@@ -1977,7 +1831,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("bv")
    boolean method3164(int var1, int var2, int var3, int var4, int var5, int var6) {
       int var7;
       int var8;
@@ -2021,8 +1874,7 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("bx")
-   void method3160() {
+   void updateOccluders() {
       int var1 = Scene_planeOccluderCounts[Scene_plane];
       Occluder[] var2 = Scene_planeOccluders[Scene_plane];
       Scene_currentOccludersCount = 0;
@@ -2169,10 +2021,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(IIIIIILer;IJI)Z"
-   )
    public boolean method3124(int var1, int var2, int var3, int var4, int var5, int var6, Entity var7, int var8, long var9, int var11) {
       if(var7 == null) {
          return true;
@@ -2183,9 +2031,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(IIIILer;JLer;Ler;)V"
-   )
    public void copy$newGroundItemPile(int var1, int var2, int var3, int var4, Entity var5, long var6, Entity var8, Entity var9) {
       TileItemPile var10 = new TileItemPile();
       var10.first = var5;
@@ -2218,9 +2063,6 @@ public class Scene implements RSScene {
       this.tiles[var1][var2][var3].itemLayerChanged(-1);
    }
 
-   @ObfuscatedSignature(
-      signature = "(IIIILer;JI)V"
-   )
    public void copy$newFloorDecoration(int var1, int var2, int var3, int var4, Entity var5, long var6, int var8) {
       if(var5 != null) {
          FloorDecoration var9 = new FloorDecoration();
@@ -2239,9 +2081,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(IIIILer;Ler;IIJI)V"
-   )
    public void copy$newBoundaryObject(int var1, int var2, int var3, int var4, Entity var5, Entity var6, int var7, int var8, long var9, int var11) {
       if(var5 != null || var6 != null) {
          BoundaryObject var12 = new BoundaryObject();
@@ -2266,9 +2105,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(IIIILer;Ler;IIIIJI)V"
-   )
    public void copy$newWallDecoration(int var1, int var2, int var3, int var4, Entity var5, Entity var6, int var7, int var8, int var9, int var10, long var11, int var13) {
       if(var5 != null) {
          WallDecoration var14 = new WallDecoration();
@@ -2295,13 +2131,11 @@ public class Scene implements RSScene {
       }
    }
 
-   public RSTile[][][] getTiles() {
+   @Override
+   public Tile[][][] getTiles() {
       return this.tiles;
    }
 
-   @ObfuscatedSignature(
-      signature = "(Ldd;IIIIII)V"
-   )
    public void copy$drawTileOverlay(TileModel var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       int var8 = var1.vertexX.length;
 
@@ -2352,7 +2186,7 @@ public class Scene implements RSScene {
                Rasterizer3D.field1727 = true;
             }
 
-            if(checkClick && method3252(Scene_selectedScreenX, Scene_selectedScreenY, var16, var17, var18, var13, var14, var15)) {
+            if(checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var16, var17, var18, var13, var14, var15)) {
                Scene_selectedX = var6;
                Scene_selectedY = var7;
             }
@@ -2376,9 +2210,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(Lef;IIIIIII)V"
-   )
    public void copy$drawTileUnderlay(TilePaint var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       int var9;
       int var10 = var9 = (var7 << 7) - Scene_cameraX;
@@ -2435,7 +2266,7 @@ public class Scene implements RSScene {
                         Rasterizer3D.field1727 = true;
                      }
 
-                     if(checkClick && method3252(Scene_selectedScreenX, Scene_selectedScreenY, var27, var29, var25, var26, var28, var24)) {
+                     if(checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var27, var29, var25, var26, var28, var24)) {
                         Scene_selectedX = var7;
                         Scene_selectedY = var8;
                      }
@@ -2462,7 +2293,7 @@ public class Scene implements RSScene {
                         Rasterizer3D.field1727 = true;
                      }
 
-                     if(checkClick && method3252(Scene_selectedScreenX, Scene_selectedScreenY, var23, var25, var29, var22, var24, var28)) {
+                     if(checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var23, var25, var29, var22, var24, var28)) {
                         Scene_selectedX = var7;
                         Scene_selectedY = var8;
                      }
@@ -2485,9 +2316,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(IIIIIIIILer;IZJI)Z"
-   )
    public boolean copy$newGameObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, Entity var9, int var10, boolean var11, long var12, int var14) {
       int var16;
       for(int var15 = var2; var15 < var2 + var4; ++var15) {
@@ -2558,34 +2386,6 @@ public class Scene implements RSScene {
       return true;
    }
 
-   public int[][][] getTileHeights() {
-      return this.tileHeights;
-   }
-
-   public int getMaxX() {
-      return this.xSize;
-   }
-
-   public int getMaxY() {
-      return this.planes;
-   }
-
-   public int getMaxZ() {
-      return this.ySize;
-   }
-
-   public int getMinLevel() {
-      return this.minPlane;
-   }
-
-   public void updateOccluders() {
-      this.method3160();
-   }
-
-   public void draw(net.runelite.api.Tile var1, boolean var2) {
-      this.method3221((Tile)var1, var2);
-   }
-
    public int getDrawDistance() {
       return rl$drawDistance;
    }
@@ -2599,17 +2399,17 @@ public class Scene implements RSScene {
       int var5 = var3.getY() - ViewportMouse.client.getBaseY();
       int var6 = var3.getPlane();
       if(var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
-         RSTileItem var7 = ViewportMouse.client.newTileItem();
-         var7.setId(var1);
-         var7.setQuantity(var2);
-         RSNodeDeque[][][] var8 = ViewportMouse.client.getGroundItemDeque();
+         TileItem var7 = new TileItem();
+         var7.id = var1;
+         var7.quantity = var2;
+         NodeDeque[][][] var8 = Client.groundItems;
          if(var8[var6][var4][var5] == null) {
-            var8[var6][var4][var5] = ViewportMouse.client.newNodeDeque();
+            var8[var6][var4][var5] = new NodeDeque();
          }
 
          var8[var6][var4][var5].addFirst(var7);
          if(var6 == ViewportMouse.client.getPlane()) {
-            ViewportMouse.client.updateItemPile(var4, var5);
+            WorldMapCacheName.updateItemPile(var4, var5);
          }
 
       }
@@ -2620,9 +2420,9 @@ public class Scene implements RSScene {
       int var5 = var3.getY() - ViewportMouse.client.getBaseY();
       int var6 = var3.getPlane();
       if(var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
-         RSNodeDeque var7 = ViewportMouse.client.getGroundItemDeque()[var6][var4][var5];
+         NodeDeque var7 = Client.groundItems[var6][var4][var5];
          if(var7 != null) {
-            for(RSTileItem var8 = (RSTileItem)var7.last(); var8 != null; var8 = (RSTileItem)var7.previous()) {
+            for(TileItem var8 = (TileItem)var7.last(); var8 != null; var8 = (TileItem)var7.previous()) {
                if(var8.getId() == var1 && var2 == 1) {
                   var8.unlink();
                   break;
@@ -2630,27 +2430,14 @@ public class Scene implements RSScene {
             }
 
             if(var7.last() == null) {
-               ViewportMouse.client.getGroundItemDeque()[var6][var4][var5] = null;
+               Client.groundItems[var6][var4][var5] = null;
             }
 
-            ViewportMouse.client.updateItemPile(var4, var5);
+            WorldMapCacheName.updateItemPile(var4, var5);
          }
       }
    }
 
-   public RSGameObject[] getObjects() {
-      return this.tempGameObjects;
-   }
-
-   public void newGroundItemPile(int var1, int var2, int var3, int var4, RSEntity var5, long var6, RSEntity var8, RSEntity var9) {
-      this.method3233(var1, var2, var3, var4, (Entity)var5, var6, (Entity)var8, (Entity)var9);
-   }
-
-   public void drawTile(int[] var1, int var2, int var3, int var4, int var5, int var6) {
-      this.method3148(var1, var2, var3, var4, var5, var6);
-   }
-
-   @ObfuscatedName("d")
    public void method3134(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       if(var4 != null) {
@@ -2659,7 +2446,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("e")
    public void method3128() {
       for(int var1 = 0; var1 < this.tempGameObjectsCount; ++var1) {
          GameObject var2 = this.tempGameObjects[var1];
@@ -2670,7 +2456,6 @@ public class Scene implements RSScene {
       this.tempGameObjectsCount = 0;
    }
 
-   @ObfuscatedName("f")
    public void method3230(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       if(var4 != null) {
@@ -2679,7 +2464,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("h")
    public void method3195(int var1, int var2, int var3, int var4) {
       Tile var5 = this.tiles[var1][var2][var3];
       if(var5 != null) {
@@ -2691,15 +2475,11 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(IIIILer;Ler;IIIIJI)V"
-   )
    public void method3131(int var1, int var2, int var3, int var4, Entity var5, Entity var6, int var7, int var8, int var9, int var10, long var11, int var13) {
       this.copy$newWallDecoration(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var13);
-      RSTile var14 = this.getTiles()[var1][var2][var3];
+      Tile var14 = this.getTiles()[var1][var2][var3];
       if(var14 != null) {
-         RSWallDecoration var15 = (RSWallDecoration)var14.getDecorativeObject();
+         WallDecoration var15 = (WallDecoration)var14.getDecorativeObject();
          if(var15 != null) {
             var15.setPlane(var1);
          }
@@ -2707,7 +2487,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("j")
    public void method3191(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       if(var4 != null) {
@@ -2722,16 +2501,11 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "(III)Leo;"
-   )
    public BoundaryObject method3136(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       return var4 == null?null:var4.boundaryObject;
    }
 
-   @ObfuscatedName("l")
    public void method3178(int var1, int var2, int var3) {
       Tile var4 = this.tiles[var1][var2][var3];
       if(var4 != null) {
@@ -2740,15 +2514,11 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(IIIILer;JLer;Ler;)V"
-   )
-   public void method3233(int var1, int var2, int var3, int var4, Entity var5, long var6, Entity var8, Entity var9) {
+   public void newGroundItemPile(int var1, int var2, int var3, int var4, Entity var5, long var6, Entity var8, Entity var9) {
       this.copy$newGroundItemPile(var1, var2, var3, var4, var5, var6, var8, var9);
-      RSTile var10 = this.getTiles()[var1][var2][var3];
+      Tile var10 = this.getTiles()[var1][var2][var3];
       if(var10 != null) {
-         RSTileItemPile var11 = (RSTileItemPile)var10.getItemLayer();
+         TileItemPile var11 = (TileItemPile)var10.getItemLayer();
          if(var11 != null) {
             var11.setPlane(var1);
          }
@@ -2756,7 +2526,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("u")
    public static void method3117(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       Occluder var8 = new Occluder();
       var8.minTileX = var2 / 128;
@@ -2773,7 +2542,6 @@ public class Scene implements RSScene {
       Scene_planeOccluders[var0][Scene_planeOccluderCounts[var0]++] = var8;
    }
 
-   @ObfuscatedName("af")
    static final int method3158(int var0, int var1) {
       var1 = (var0 & 127) * var1 >> 7;
       if(var1 < 2) {
@@ -2785,13 +2553,11 @@ public class Scene implements RSScene {
       return (var0 & 65408) + var1;
    }
 
-   @ObfuscatedName("ah")
    public static void method3154() {
       Scene_selectedX = -1;
       viewportWalking = false;
    }
 
-   @ObfuscatedName("ak")
    public static void method3149(int[] var0, int var1, int var2, int var3, int var4) {
       Scene_viewportXMin = 0;
       Scene_viewportYMin = 0;
@@ -2874,7 +2640,6 @@ public class Scene implements RSScene {
 
    }
 
-   @ObfuscatedName("aq")
    static boolean method3121(int var0, int var1, int var2) {
       int var3 = var0 * Scene_cameraYawCosine + var2 * Scene_cameraYawSine >> 16;
       int var4 = var2 * Scene_cameraYawCosine - var0 * Scene_cameraYawSine >> 16;
@@ -2889,8 +2654,7 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("at")
-   static boolean method3252(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+   static boolean containsBounds(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       if(var1 < var2 && var1 < var3 && var1 < var4) {
          return false;
       } else if(var1 > var2 && var1 > var3 && var1 > var4) {
@@ -2907,7 +2671,6 @@ public class Scene implements RSScene {
       }
    }
 
-   @ObfuscatedName("av")
    public static boolean method3153() {
       return viewportWalking && Scene_selectedX != -1;
    }
@@ -2915,9 +2678,9 @@ public class Scene implements RSScene {
    public static boolean shouldDraw(Object var0, boolean var1) {
       if(!Client.isHidingEntities) {
          return true;
-      } else if(!(var0 instanceof RSPlayer)) {
-         if(var0 instanceof RSNPC) {
-            RSNPC var8 = (RSNPC)var0;
+      } else if(!(var0 instanceof Player)) {
+         if(var0 instanceof NPC) {
+            NPC var8 = (NPC)var0;
             if(!Client.hideAttackers && var8.getInteracting() == ViewportMouse.client.getLocalPlayer()) {
                return true;
             } else if(Client.hideDeadNPCs && var8.getHealthRatio() == 0) {
@@ -2929,7 +2692,7 @@ public class Scene implements RSScene {
             } else {
                return var1?!Client.hideNPCs2D:!Client.hideNPCs;
             }
-         } else if(var0 instanceof RSProjectile) {
+         } else if(var0 instanceof Projectile) {
             return !Client.hideProjectiles;
          } else {
             return true;
@@ -2938,7 +2701,7 @@ public class Scene implements RSScene {
          boolean var2 = var1?Client.hideLocalPlayer2D:Client.hideLocalPlayer;
          boolean var3 = var1?Client.hidePlayers2D:Client.hidePlayers;
          boolean var4 = var0 == ViewportMouse.client.getLocalPlayer();
-         RSPlayer var5 = (RSPlayer)var0;
+         Player var5 = (Player)var0;
          Iterator var6 = Client.hideSpecificPlayers.iterator();
 
          while(var6.hasNext()) {
@@ -2967,8 +2730,8 @@ public class Scene implements RSScene {
    }
 
    public static void setTargetTile(int var0, int var1) {
-      ViewportMouse.client.setSelectedSceneTileX(var0);
-      ViewportMouse.client.setSelectedSceneTileY(var1);
+      Scene_selectedX = var0;
+      Scene_selectedY = var1;
    }
 
    private static void rl$$clinit() {
@@ -2976,9 +2739,6 @@ public class Scene implements RSScene {
       tmpY = new int[6];
    }
 
-   @ObfuscatedSignature(
-      signature = "(Lby;IIIIII)V"
-   )
    public static final void copy$drawActor2d(Actor var0, int var1, int var2, int var3, int var4, int var5, int var6) {
       if(var0 != null && var0.vmethod1611()) {
          if(var0 instanceof NPC) {
@@ -3005,7 +2765,7 @@ public class Scene implements RSScene {
                World.method1253(var0, var0.defaultHeight + 15);
                AbstractFont var11 = (AbstractFont)Client.fontsMap.get(FontName.FontName_plain12);
                byte var12 = 9;
-               var11.method5332(var10.username.method5001(), var2 + Client.viewportTempX, var3 + Client.viewportTempY - var12, 16777215, 0);
+               var11.method5332(var10.username.getName(), var2 + Client.viewportTempX, var3 + Client.viewportTempY - var12, 16777215, 0);
                var9 = 18;
             }
          }
@@ -3026,12 +2786,12 @@ public class Scene implements RSScene {
                HealthBarUpdate var78 = var90.method2253(Client.cycle);
                if(var78 == null) {
                   if(var90.method2248()) {
-                     var90.method3497();
+                     var90.unlink();
                   }
                } else {
                   HealthBarDefinition var13 = var90.definition;
-                  Sprite var14 = var13.method4485();
-                  Sprite var15 = var13.method4471();
+                  Sprite var14 = var13.getHealthBarBackSprite();
+                  Sprite var15 = var13.getHealthBarFrontSprite();
                   var17 = 0;
                   if(var14 != null && var15 != null) {
                      if(var6 <= 962629039) {
@@ -3106,8 +2866,8 @@ public class Scene implements RSScene {
                      if(Client.viewportTempX > -1) {
                         var22 = var2 + Client.viewportTempX - (var16 >> 1);
                         var23 = var3 + Client.viewportTempY - var77;
-                        Rasterizer2D.method6469(var22, var23, var95, 5, 65280);
-                        Rasterizer2D.method6469(var22 + var95, var23, var16 - var95, 5, 16711680);
+                        Rasterizer2D.fillRectangle(var22, var23, var95, 5, 65280);
+                        Rasterizer2D.fillRectangle(var22 + var95, var23, var16 - var95, 5, 16711680);
                      }
 
                      var77 += 2;
@@ -3241,7 +3001,7 @@ public class Scene implements RSScene {
                }
 
                var17 = var0.hitSplatTypes[var79];
-               var82 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.method3032((long)var17);
+               var82 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var17);
                HitSplatDefinition var83;
                if(var82 != null) {
                   var83 = var82;
@@ -3273,7 +3033,7 @@ public class Scene implements RSScene {
             HitSplatDefinition var85 = null;
             HitSplatDefinition var97;
             if(var16 >= 0) {
-               var97 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.method3032((long)var16);
+               var97 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var16);
                if(var97 != null) {
                   if(var6 <= 962629039) {
                      return;
@@ -3690,7 +3450,7 @@ public class Scene implements RSScene {
                            var88.method6159(var57 + var66 - var30, var67);
                         }
 
-                        var89.method5329(var46, var56 + var66, var70, var94.textColor | -16777216, 0);
+                        var89.drawTextLeftAligned(var46, var56 + var66, var70, var94.textColor | -16777216, 0);
                         if(var85 != null) {
                            if(var6 <= 962629039) {
                               return;
@@ -3722,7 +3482,7 @@ public class Scene implements RSScene {
                               var34.method6159(var61 + var66 - var42, var67);
                            }
 
-                           var45.method5329(var47, var62 + var66, var73, var85.textColor | -16777216, 0);
+                           var45.drawTextLeftAligned(var47, var62 + var66, var73, var85.textColor | -16777216, 0);
                         }
                      }
                   }

@@ -1,68 +1,19 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("db")
 public class ViewportMouse {
-   @ObfuscatedName("nr")
-   @ObfuscatedGetter(
-      intValue = 69994429
-   )
    static int widgetDragDuration;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 1421874705
-   )
    static int ViewportMouse_x;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -386992233
-   )
    static int field1310;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = -1018697137
-   )
    static int field1316;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1955374903
-   )
    static int field1309;
-   @ObfuscatedName("u")
    static boolean ViewportMouse_false0;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 197980329
-   )
    static int ViewportMouse_y;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -96146427
-   )
    static int field1320;
-   @ObfuscatedName("z")
    static boolean ViewportMouse_isInViewport;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = 1620511435
-   )
    public static int ViewportMouse_entityCount;
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      signature = "Lclient;"
-   )
    static Client client;
-   @ObfuscatedName("e")
    public static long[] ViewportMouse_entityTags;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = -737509043
-   )
    static int field1313;
-   @ObfuscatedName("m")
    static boolean[] Widget_loadedInterfaces;
 
    static {
@@ -74,11 +25,6 @@ public class ViewportMouse {
       ViewportMouse_entityTags = new long[1000];
    }
 
-   @ObfuscatedName("gm")
-   @ObfuscatedSignature(
-      signature = "(IIIIB)V",
-      garbageValue = "13"
-   )
    static final void method2303(int var0, int var1, int var2, int var3) {
       Client.overheadTextCount = 0;
       boolean var4 = false;
@@ -209,7 +155,7 @@ public class ViewportMouse {
             if(Client.overheadTextEffects[var9] == 4) {
                var17 = (150 - Client.overheadTextCyclesRemaining[var9]) * (class170.fontBold12.method5324(var20) + 100) / 150;
                Rasterizer2D.method6478(var0 + Client.viewportTempX - 50, var1, var0 + Client.viewportTempX + 50, var3 + var1);
-               class170.fontBold12.method5329(var20, var0 + Client.viewportTempX + 50 - var17, Client.viewportTempY + var1, var16, 0);
+               class170.fontBold12.drawTextLeftAligned(var20, var0 + Client.viewportTempX + 50 - var17, Client.viewportTempY + var1, var16, 0);
                Rasterizer2D.method6474(var0, var1, var0 + var2, var3 + var1);
             }
 

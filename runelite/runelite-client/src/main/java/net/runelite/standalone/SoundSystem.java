@@ -1,14 +1,6 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("dn")
 public class SoundSystem implements Runnable {
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "[Ldv;"
-   )
    volatile PcmPlayer[] players;
 
    SoundSystem() {
@@ -29,11 +21,6 @@ public class SoundSystem implements Runnable {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "536478263"
-   )
    public static void method2464(Buffer var0, int var1) {
       if(JagexCache.JagexCache_randomDat != null) {
          try {
@@ -46,11 +33,6 @@ public class SoundSystem implements Runnable {
 
    }
 
-   @ObfuscatedName("jn")
-   @ObfuscatedSignature(
-      signature = "(Lho;IIII)V",
-      garbageValue = "-877706061"
-   )
    static final void method2463(Widget var0, int var1, int var2, int var3) {
       SpriteMask var4 = var0.method3975(false);
       if(var4 != null) {

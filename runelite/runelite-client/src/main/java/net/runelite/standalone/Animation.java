@@ -1,36 +1,16 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSAnimation;
-import net.runelite.rs.api.RSSkeleton;
-
-@ObfuscatedName("da")
-public class Animation implements RSAnimation {
-   @ObfuscatedName("n")
+public class Animation {
    static int[] field1295;
-   @ObfuscatedName("u")
    static int[] field1297;
-   @ObfuscatedName("v")
    static int[] field1294;
-   @ObfuscatedName("z")
    static int[] field1304;
-   @ObfuscatedName("p")
    int transformCount;
-   @ObfuscatedName("q")
    int[] transformSkeletonLabels;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lew;"
-   )
    Skeleton skeleton;
-   @ObfuscatedName("y")
    int[] transformYs;
-   @ObfuscatedName("c")
    boolean hasAlphaTransform;
-   @ObfuscatedName("i")
    int[] transformZs;
-   @ObfuscatedName("m")
    int[] transformXs;
 
    static {
@@ -40,9 +20,6 @@ public class Animation implements RSAnimation {
       field1297 = new int[500];
    }
 
-   @ObfuscatedSignature(
-      signature = "([BLew;)V"
-   )
    Animation(byte[] var1, Skeleton var2) {
       this.skeleton = null;
       this.transformCount = -1;
@@ -124,31 +101,4 @@ public class Animation implements RSAnimation {
       }
    }
 
-   public RSSkeleton getSkin() {
-      return this.skeleton;
-   }
-
-   public int getTransformCount() {
-      return this.transformCount;
-   }
-
-   public int[] getTransformTypes() {
-      return this.transformSkeletonLabels;
-   }
-
-   public int[] getTranslatorX() {
-      return this.transformXs;
-   }
-
-   public int[] getTranslatorY() {
-      return this.transformYs;
-   }
-
-   public int[] getTranslatorZ() {
-      return this.transformZs;
-   }
-
-   public boolean isShowing() {
-      return this.hasAlphaTransform;
-   }
 }

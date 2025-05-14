@@ -1,30 +1,9 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ap")
 public class class33 {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lap;"
-   )
    static final class33 field250;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lap;"
-   )
    static final class33 field253;
-   @ObfuscatedName("fk")
-   @ObfuscatedSignature(
-      signature = "Lky;"
-   )
    static AbstractSocket field251;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -2108473881
-   )
    final int value;
 
    static {
@@ -36,20 +15,10 @@ public class class33 {
       this.value = var1;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)[B",
-      garbageValue = "-2057426461"
-   )
    public static synchronized byte[] method679(int var0) {
       return ByteArrayPool.method5765(var0, false);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(IIIIB)V",
-      garbageValue = "44"
-   )
    static final void method675(int var0, int var1, int var2, int var3) {
       for(int var4 = var1; var4 <= var3 + var1; ++var4) {
          for(int var5 = var0; var5 <= var0 + var2; ++var5) {
@@ -76,11 +45,6 @@ public class class33 {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)J",
-      garbageValue = "-1907712043"
-   )
    public static final synchronized long method680() {
       long var0 = System.currentTimeMillis();
       if(var0 < class289.field3628) {
@@ -91,11 +55,6 @@ public class class33 {
       return var0 + class289.field3629;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(III)I",
-      garbageValue = "-476922485"
-   )
    public static int method677(int var0, int var1) {
       int var2;
       for(var2 = 1; var1 > 1; var1 >>= 1) {
@@ -113,11 +72,6 @@ public class class33 {
       }
    }
 
-   @ObfuscatedName("fo")
-   @ObfuscatedSignature(
-      signature = "(Lix;IIII)V",
-      garbageValue = "1243298159"
-   )
    static void method676(SequenceDefinition var0, int var1, int var2, int var3) {
       if(Client.soundEffectCount < 50 && Client.field1076 != 0) {
          if(var0.soundEffects != null && var1 < var0.soundEffects.length) {
@@ -140,11 +94,6 @@ public class class33 {
       }
    }
 
-   @ObfuscatedName("iw")
-   @ObfuscatedSignature(
-      signature = "(Lho;III)V",
-      garbageValue = "-1445345740"
-   )
    static void method678(Widget var0, int var1, int var2) {
       if(var0.xAlignment == 0) {
          var0.x = var0.rawX;

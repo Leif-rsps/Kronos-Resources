@@ -88,8 +88,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 |    \--- org.slf4j:slf4j-api:1.7.25 -> 1.7.28
 +--- project :runescape-api
 |    \--- project :runelite-api (*)
-+--- net.runelite.pushingpixels:trident:1.5.00
-\--- project :injected-client
+\--- net.runelite.pushingpixels:trident:1.5.00
 
 (*) - dependencies omitted (listed previously)
 

@@ -1,20 +1,9 @@
 package net.runelite.standalone;
 
 import java.util.Iterator;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ji")
 public class IterableDualNodeQueue implements Iterable {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lfw;"
-   )
    DualNode head;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lfw;"
-   )
    public DualNode sentinel;
 
    public IterableDualNodeQueue() {
@@ -23,13 +12,9 @@ public class IterableDualNodeQueue implements Iterable {
       this.sentinel.nextDual = this.sentinel;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lfw;)V"
-   )
    public void add(DualNode var1) {
       if(var1.nextDual != null) {
-         var1.method3491();
+         var1.unlinkDual();
       }
 
       var1.nextDual = this.sentinel.nextDual;
@@ -38,10 +23,6 @@ public class IterableDualNodeQueue implements Iterable {
       var1.previousDual.nextDual = var1;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Lfw;)Lfw;"
-   )
    DualNode method4901(DualNode var1) {
       DualNode var2;
       if(var1 == null) {
@@ -59,10 +40,6 @@ public class IterableDualNodeQueue implements Iterable {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "()Lfw;"
-   )
    public DualNode method4902() {
       DualNode var1 = this.head;
       if(var1 == this.sentinel) {
@@ -74,32 +51,23 @@ public class IterableDualNodeQueue implements Iterable {
       }
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "()Lfw;"
-   )
    public DualNode method4898() {
       return this.method4901((DualNode)null);
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "()Lfw;"
-   )
    public DualNode method4920() {
       DualNode var1 = this.sentinel.previousDual;
       if(var1 == this.sentinel) {
          return null;
       } else {
-         var1.method3491();
+         var1.unlinkDual();
          return var1;
       }
    }
 
-   @ObfuscatedName("z")
    public void method4897() {
       while(this.sentinel.previousDual != this.sentinel) {
-         this.sentinel.previousDual.method3491();
+         this.sentinel.previousDual.unlinkDual();
       }
 
    }
@@ -108,13 +76,9 @@ public class IterableDualNodeQueue implements Iterable {
       return new IterableDualNodeQueueIterator(this);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lfw;Lfw;)V"
-   )
    public static void method4899(DualNode var0, DualNode var1) {
       if(var0.nextDual != null) {
-         var0.method3491();
+         var0.unlinkDual();
       }
 
       var0.nextDual = var1;

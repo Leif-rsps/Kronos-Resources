@@ -1,22 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fy")
 public class UserComparator6 extends AbstractUserComparator {
-   @ObfuscatedName("z")
    final boolean reversed;
 
    public UserComparator6(boolean var1) {
       this.reversed = var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljl;Ljl;I)I",
-      garbageValue = "-1158182029"
-   )
    int method3508(Buddy var1, Buddy var2) {
       return var1.world != 0 && var2.world != 0?(this.reversed?var1.method4879().method4992(var2.method4879()):var2.method4879().method4992(var1.method4879())):this.method5015(var1, var2);
    }
@@ -25,11 +15,6 @@ public class UserComparator6 extends AbstractUserComparator {
       return this.method3508((Buddy)var1, (Buddy)var2);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "([BIII)Ljava/lang/String;",
-      garbageValue = "1774248129"
-   )
    public static String method3506(byte[] var0, int var1, int var2) {
       char[] var3 = new char[var2];
       int var4 = 0;
@@ -83,11 +68,6 @@ public class UserComparator6 extends AbstractUserComparator {
       return new String(var3, 0, var4);
    }
 
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-1182264787"
-   )
    static int method3505(int var0, Script var1, boolean var2) {
       Widget var3 = var2?GrandExchangeOfferAgeComparator.field26:KitDefinition.field3452;
       if(var0 == 1600) {
@@ -140,25 +120,20 @@ public class UserComparator6 extends AbstractUserComparator {
       }
    }
 
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "600807723"
-   )
    static int method3500(int var0, Script var1, boolean var2) {
       int var3;
       if(var0 == 6600) {
          var3 = WorldMapRectangle.plane;
          int var9 = (class215.localPlayer.x >> 7) + class215.baseX;
          int var5 = (class215.localPlayer.y * 682054857 >> 7) + class304.baseY;
-         Decimator.method2485().method5881(var3, var9, var5, true);
+         Decimator.getRenderOverview().method5881(var3, var9, var5, true);
          return 1;
       } else {
          WorldMapArea var11;
          if(var0 == 6601) {
             var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
             String var16 = "";
-            var11 = Decimator.method2485().method5899(var3);
+            var11 = Decimator.getRenderOverview().method5899(var3);
             if(var11 != null) {
                var16 = var11.method357();
             }
@@ -167,45 +142,45 @@ public class UserComparator6 extends AbstractUserComparator {
             return 1;
          } else if(var0 == 6602) {
             var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-            Decimator.method2485().method5882(var3);
+            Decimator.getRenderOverview().method5882(var3);
             return 1;
          } else if(var0 == 6603) {
-            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5896();
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5896();
             return 1;
          } else if(var0 == 6604) {
             var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-            Decimator.method2485().method5893(var3);
+            Decimator.getRenderOverview().method5893(var3);
             return 1;
          } else if(var0 == 6605) {
-            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5898()?1:0;
+            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5898()?1:0;
             return 1;
          } else {
             Coord var15;
             if(var0 == 6606) {
                var15 = new Coord(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-               Decimator.method2485().method6000(var15.x, var15.y);
+               Decimator.getRenderOverview().setWorldMapPositionTarget(var15.x, var15.y);
                return 1;
             } else if(var0 == 6607) {
                var15 = new Coord(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-               Decimator.method2485().method5875(var15.x, var15.y);
+               Decimator.getRenderOverview().method5875(var15.x, var15.y);
                return 1;
             } else if(var0 == 6608) {
                var15 = new Coord(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-               Decimator.method2485().method5902(var15.plane, var15.x, var15.y);
+               Decimator.getRenderOverview().method5902(var15.plane, var15.x, var15.y);
                return 1;
             } else if(var0 == 6609) {
                var15 = new Coord(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-               Decimator.method2485().method5903(var15.plane, var15.x, var15.y);
+               Decimator.getRenderOverview().method5903(var15.plane, var15.x, var15.y);
                return 1;
             } else if(var0 == 6610) {
-               Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5904();
-               Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5905();
+               Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5904();
+               Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5905();
                return 1;
             } else {
                WorldMapArea var13;
                if(var0 == 6611) {
                   var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                  var13 = Decimator.method2485().method5899(var3);
+                  var13 = Decimator.getRenderOverview().method5899(var3);
                   if(var13 == null) {
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
                   } else {
@@ -215,7 +190,7 @@ public class UserComparator6 extends AbstractUserComparator {
                   return 1;
                } else if(var0 == 6612) {
                   var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                  var13 = Decimator.method2485().method5899(var3);
+                  var13 = Decimator.getRenderOverview().method5899(var3);
                   if(var13 == null) {
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -227,7 +202,7 @@ public class UserComparator6 extends AbstractUserComparator {
                   return 1;
                } else if(var0 == 6613) {
                   var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                  var13 = Decimator.method2485().method5899(var3);
+                  var13 = Decimator.getRenderOverview().method5899(var3);
                   if(var13 == null) {
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
@@ -243,7 +218,7 @@ public class UserComparator6 extends AbstractUserComparator {
                   return 1;
                } else if(var0 == 6614) {
                   var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                  var13 = Decimator.method2485().method5899(var3);
+                  var13 = Decimator.getRenderOverview().method5899(var3);
                   if(var13 == null) {
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                   } else {
@@ -252,7 +227,7 @@ public class UserComparator6 extends AbstractUserComparator {
 
                   return 1;
                } else if(var0 == 6615) {
-                  var15 = Decimator.method2485().method5906();
+                  var15 = Decimator.getRenderOverview().method5906();
                   if(var15 == null) {
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
@@ -263,11 +238,11 @@ public class UserComparator6 extends AbstractUserComparator {
 
                   return 1;
                } else if(var0 == 6616) {
-                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5883();
+                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5883();
                   return 1;
                } else if(var0 == 6617) {
                   var15 = new Coord(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-                  var13 = Decimator.method2485().method5884();
+                  var13 = Decimator.getRenderOverview().method5884();
                   if(var13 == null) {
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                      Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
@@ -288,7 +263,7 @@ public class UserComparator6 extends AbstractUserComparator {
                   Coord var7;
                   if(var0 == 6618) {
                      var15 = new Coord(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-                     var13 = Decimator.method2485().method5884();
+                     var13 = Decimator.getRenderOverview().method5884();
                      if(var13 == null) {
                         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                         Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
@@ -321,7 +296,7 @@ public class UserComparator6 extends AbstractUserComparator {
                         Interpreter.Interpreter_intStackSize -= 2;
                         var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
                         var12 = new Coord(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]);
-                        var11 = Decimator.method2485().method5899(var3);
+                        var11 = Decimator.getRenderOverview().method5899(var3);
                         if(var11 == null) {
                            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
                            return 1;
@@ -330,12 +305,12 @@ public class UserComparator6 extends AbstractUserComparator {
                            return 1;
                         }
                      } else if(var0 == 6622) {
-                        Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method6009();
-                        Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5967();
+                        Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method6009();
+                        Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5967();
                         return 1;
                      } else if(var0 == 6623) {
                         var15 = new Coord(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-                        var13 = Decimator.method2485().method5918(var15.plane, var15.x, var15.y);
+                        var13 = Decimator.getRenderOverview().method5918(var15.plane, var15.x, var15.y);
                         if(var13 == null) {
                            Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                         } else {
@@ -344,37 +319,37 @@ public class UserComparator6 extends AbstractUserComparator {
 
                         return 1;
                      } else if(var0 == 6624) {
-                        Decimator.method2485().method5909(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+                        Decimator.getRenderOverview().method5909(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
                         return 1;
                      } else if(var0 == 6625) {
-                        Decimator.method2485().method5910();
+                        Decimator.getRenderOverview().method5910();
                         return 1;
                      } else if(var0 == 6626) {
-                        Decimator.method2485().method5921(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+                        Decimator.getRenderOverview().method5921(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
                         return 1;
                      } else if(var0 == 6627) {
-                        Decimator.method2485().method5912();
+                        Decimator.getRenderOverview().method5912();
                         return 1;
                      } else {
                         boolean var10;
                         if(var0 == 6628) {
                            var10 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-                           Decimator.method2485().method6047(var10);
+                           Decimator.getRenderOverview().method6047(var10);
                            return 1;
                         } else if(var0 == 6629) {
                            var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                           Decimator.method2485().method5908(var3);
+                           Decimator.getRenderOverview().method5908(var3);
                            return 1;
                         } else if(var0 == 6630) {
                            var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                           Decimator.method2485().method5915(var3);
+                           Decimator.getRenderOverview().method5915(var3);
                            return 1;
                         } else if(var0 == 6631) {
-                           Decimator.method2485().method5916();
+                           Decimator.getRenderOverview().method5916();
                            return 1;
                         } else if(var0 == 6632) {
                            var10 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
-                           Decimator.method2485().method5917(var10);
+                           Decimator.getRenderOverview().method5917(var10);
                            return 1;
                         } else {
                            boolean var4;
@@ -382,30 +357,30 @@ public class UserComparator6 extends AbstractUserComparator {
                               Interpreter.Interpreter_intStackSize -= 2;
                               var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
                               var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1] == 1;
-                              Decimator.method2485().method6010(var3, var4);
+                              Decimator.getRenderOverview().method6010(var3, var4);
                               return 1;
                            } else if(var0 == 6634) {
                               Interpreter.Interpreter_intStackSize -= 2;
                               var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
                               var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1] == 1;
-                              Decimator.method2485().method5996(var3, var4);
+                              Decimator.getRenderOverview().method5996(var3, var4);
                               return 1;
                            } else if(var0 == 6635) {
-                              Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5950()?1:0;
+                              Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5950()?1:0;
                               return 1;
                            } else if(var0 == 6636) {
                               var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                              Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5907(var3)?1:0;
+                              Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5907(var3)?1:0;
                               return 1;
                            } else if(var0 == 6637) {
                               var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-                              Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.method2485().method5922(var3)?1:0;
+                              Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Decimator.getRenderOverview().method5922(var3)?1:0;
                               return 1;
                            } else if(var0 == 6638) {
                               Interpreter.Interpreter_intStackSize -= 2;
                               var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
                               var12 = new Coord(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]);
-                              var7 = Decimator.method2485().method5925(var3, var12);
+                              var7 = Decimator.getRenderOverview().method5925(var3, var12);
                               if(var7 == null) {
                                  Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                               } else {
@@ -416,7 +391,7 @@ public class UserComparator6 extends AbstractUserComparator {
                            } else {
                               AbstractWorldMapIcon var8;
                               if(var0 == 6639) {
-                                 var8 = Decimator.method2485().method5927();
+                                 var8 = Decimator.getRenderOverview().method5927();
                                  if(var8 == null) {
                                     Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                                     Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
@@ -427,7 +402,7 @@ public class UserComparator6 extends AbstractUserComparator {
 
                                  return 1;
                               } else if(var0 == 6640) {
-                                 var8 = Decimator.method2485().method5928();
+                                 var8 = Decimator.getRenderOverview().method5928();
                                  if(var8 == null) {
                                     Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
                                     Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
@@ -497,11 +472,6 @@ public class UserComparator6 extends AbstractUserComparator {
       }
    }
 
-   @ObfuscatedName("hv")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "2147289809"
-   )
    static void method3507(int var0, int var1) {
       int var2 = class170.fontBold12.method5324("Choose Option");
 
@@ -540,11 +510,6 @@ public class UserComparator6 extends AbstractUserComparator {
       WorldMapDecoration.menuHeight = Client.menuOptionsCount * 15 + 22;
    }
 
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZB)I",
-      garbageValue = "126"
-   )
    static int method3509(int var0, Script var1, boolean var2) {
       Widget var3;
       if(var0 == 2700) {

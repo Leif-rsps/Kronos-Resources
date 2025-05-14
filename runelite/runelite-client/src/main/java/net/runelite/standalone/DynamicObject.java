@@ -1,64 +1,19 @@
 package net.runelite.standalone;
 
 import net.runelite.api.events.DynamicObjectAnimationChanged;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSDynamicObject;
-import net.runelite.rs.api.RSEntity;
 
-@ObfuscatedName("ce")
-public class DynamicObject extends Entity implements RSDynamicObject {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 270171291
-   )
+public class DynamicObject extends Entity implements net.runelite.api.DynamicObject {
    int type;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 1753767283
-   )
    int y;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Lix;"
-   )
    SequenceDefinition sequenceDefinition;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1414323503
-   )
    int x;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -804761033
-   )
    int plane;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 1684018413
-   )
    int orientation;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = 972994897
-   )
    int cycleStart;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 1757320161
-   )
    int id;
    public int animationID;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -1311165823
-   )
    int frame;
 
-   @ObfuscatedSignature(
-      signature = "(IIIIIIIZLer;)V"
-   )
    DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Entity var9) {
       this.id = var1;
       this.type = var2;
@@ -92,48 +47,37 @@ public class DynamicObject extends Entity implements RSDynamicObject {
       this.rl$init(var1, var2, var3, var4, var5, var6, var7, var8, var9);
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    protected final Model vmethod3072(int var1) {
       boolean var8 = false;
 
       Model var3;
       try {
          var8 = true;
-         int var2 = this.getAnimFrame();
+         int var2 = this.frame;
          if(var2 < 0) {
-            this.setAnimFrame((var2 ^ Integer.MIN_VALUE) & 65535);
+            this.frame = (var2 ^ Integer.MIN_VALUE) & 65535;
          }
 
          var3 = this.copy$getModel(var1);
          var8 = false;
       } finally {
          if(var8) {
-            int var6 = this.getAnimFrame();
+            int var6 = this.frame;
             if(var6 < 0) {
-               this.setAnimFrame((var6 ^ Integer.MIN_VALUE) & 65535);
+               this.frame = (var6 ^ Integer.MIN_VALUE) & 65535;
             }
 
          }
       }
 
-      int var4 = this.getAnimFrame();
+      int var4 = this.frame;
       if(var4 < 0) {
-         this.setAnimFrame((var4 ^ Integer.MIN_VALUE) & 65535);
+         this.frame = (var4 ^ Integer.MIN_VALUE) & 65535;
       }
 
       return (Model)var3;
    }
 
-   public int getAnimFrame() {
-      return this.frame;
-   }
-
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    public final Model copy$getModel(int var1) {
       if(this.sequenceDefinition != null) {
          int var2 = Client.cycle - this.cycleStart;
@@ -192,15 +136,7 @@ public class DynamicObject extends Entity implements RSDynamicObject {
       }
    }
 
-   public void setAnimFrame(int var1) {
-      this.frame = var1;
-   }
-
-   public int getAnimCycleCount() {
-      return this.cycleStart;
-   }
-
-   public void rl$init(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, RSEntity var9) {
+   public void rl$init(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Entity var9) {
       this.animationID = var7;
       if(var7 != -1) {
          DynamicObjectAnimationChanged var10 = new DynamicObjectAnimationChanged();
@@ -211,14 +147,10 @@ public class DynamicObject extends Entity implements RSDynamicObject {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void onAnimCycleCountChanged(int var1) {
       if(ViewportMouse.client.isInterpolateObjectAnimations()) {
-         int var2 = ViewportMouse.client.getGameCycle() - this.getAnimCycleCount();
-         this.setAnimFrame(Integer.MIN_VALUE | var2 << 16 | this.getAnimFrame());
+         int var2 = ViewportMouse.client.getGameCycle() - this.cycleStart;
+         this.frame = Integer.MIN_VALUE | var2 << 16 | this.frame;
       }
 
    }
@@ -227,15 +159,6 @@ public class DynamicObject extends Entity implements RSDynamicObject {
       return this.animationID;
    }
 
-   public int getId() {
-      return this.id;
-   }
-
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "1880284014"
-   )
    public static final boolean method1568() {
       KeyHandler var0 = KeyHandler.KeyHandler_instance;
       boolean var10000;
@@ -254,11 +177,6 @@ public class DynamicObject extends Entity implements RSDynamicObject {
       return var10000;
    }
 
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      signature = "(Ldc;I)V",
-      garbageValue = "1888530585"
-   )
    static final void method1573(PcmStream var0) {
       var0.active = false;
       if(var0.sound != null) {
@@ -271,11 +189,6 @@ public class DynamicObject extends Entity implements RSDynamicObject {
 
    }
 
-   @ObfuscatedName("ea")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1099125706"
-   )
    static final void method1570() {
       Client.packetWriter.method1623();
       WorldMapIcon_1.method2278();
@@ -296,16 +209,11 @@ public class DynamicObject extends Entity implements RSDynamicObject {
       Client.field874 = -1;
       Client.field967 = false;
       ClientPacket.method3879();
-      MouseRecorder.method1207(10);
+      MouseRecorder.setGameState(10);
    }
 
-   @ObfuscatedName("gn")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "652940971"
-   )
    static final void method1572() {
-      for(Projectile var0 = (Projectile)Client.projectiles.method5103(); var0 != null; var0 = (Projectile)Client.projectiles.method5126()) {
+      for(Projectile var0 = (Projectile)Client.projectiles.last(); var0 != null; var0 = (Projectile)Client.projectiles.previous()) {
          if(var0.plane == WorldMapRectangle.plane && Client.cycle <= var0.cycleEnd) {
             if(Client.cycle >= var0.cycleStart) {
                if(var0.targetIndex > 0) {
@@ -333,7 +241,7 @@ public class DynamicObject extends Entity implements RSDynamicObject {
                PacketWriter.scene.method3125(WorldMapRectangle.plane, (int)var0.x, (int)var0.y, (int)var0.z, 60, var0, var0.yaw, -1L, false);
             }
          } else {
-            var0.method3497();
+            var0.unlink();
          }
       }
 

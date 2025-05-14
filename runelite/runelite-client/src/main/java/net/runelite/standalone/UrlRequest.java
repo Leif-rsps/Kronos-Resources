@@ -1,56 +1,26 @@
 package net.runelite.standalone;
 
 import java.net.URL;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eh")
 public class UrlRequest {
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -535227307
-   )
    public static int PcmPlayer_sampleRate;
-   @ObfuscatedName("gq")
-   @ObfuscatedSignature(
-      signature = "[Llf;"
-   )
    static Sprite[] crossSprites;
-   @ObfuscatedName("n")
    volatile boolean isDone0;
-   @ObfuscatedName("v")
    volatile byte[] response0;
-   @ObfuscatedName("z")
    final URL url;
 
    UrlRequest(URL var1) {
       this.url = var1;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)[B",
-      garbageValue = "-213988486"
-   )
    public byte[] response() {
       return this.response0;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "737522726"
-   )
    public boolean isDone() {
       return this.isDone0;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "142413926"
-   )
    public static void method2915() {
       Object var0 = ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock;
       synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
@@ -67,11 +37,6 @@ public class UrlRequest {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkf;II)V",
-      garbageValue = "-1347303356"
-   )
    static void method2924(PacketBuffer var0, int var1) {
       boolean var2 = var0.method5281(1) == 1;
       if(var2) {
@@ -276,11 +241,6 @@ public class UrlRequest {
       }
    }
 
-   @ObfuscatedName("gy")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "1"
-   )
    static void method2925() {
       if(Client.combatTargetPlayerIndex >= 0 && Client.players[Client.combatTargetPlayerIndex] != null) {
          Players.method2146(Client.players[Client.combatTargetPlayerIndex], false);
@@ -288,11 +248,6 @@ public class UrlRequest {
 
    }
 
-   @ObfuscatedName("iv")
-   @ObfuscatedSignature(
-      signature = "(Lho;Lit;IIZI)V",
-      garbageValue = "-1977494158"
-   )
    static final void method2923(Widget var0, ItemDefinition var1, int var2, int var3, boolean var4) {
       String[] var5 = var1.inventoryActions;
       byte var6 = -1;

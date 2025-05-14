@@ -1,18 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("bc")
 public class class47 {
-    @ObfuscatedName("gg")
-   static int[] regionLandArchiveIds;
+    static int[] regionLandArchiveIds;
 
-   @ObfuscatedName("fv")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-410662040"
-   )
    static final void method824() {
       if(Client.field851 != WorldMapRectangle.plane) {
          Client.field851 = WorldMapRectangle.plane;
@@ -32,11 +22,11 @@ public class class47 {
 
             for(var5 = 1; var5 < 103; ++var5) {
                if((Tiles.Tiles_renderFlags[var0][var5][var3] & 24) == 0) {
-                  PacketWriter.scene.method3148(var1, var4, 512, var0, var5, var3);
+                  PacketWriter.scene.drawTile(var1, var4, 512, var0, var5, var3);
                }
 
                if(var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var5][var3] & 8) != 0) {
-                  PacketWriter.scene.method3148(var1, var4, 512, var0 + 1, var5, var3);
+                  PacketWriter.scene.drawTile(var1, var4, 512, var0 + 1, var5, var3);
                }
 
                var4 += 4;
@@ -45,17 +35,17 @@ public class class47 {
 
          var3 = (238 + (int)(Math.random() * 20.0D) - 10 << 16) + (238 + (int)(Math.random() * 20.0D) - 10 << 8) + (238 + (int)(Math.random() * 20.0D) - 10);
          var4 = 238 + (int)(Math.random() * 20.0D) - 10 << 16;
-         ObjectSound.sceneMinimapSprite.method6185();
+         ObjectSound.sceneMinimapSprite.setRaster();
 
          int var6;
          for(var5 = 1; var5 < 103; ++var5) {
             for(var6 = 1; var6 < 103; ++var6) {
                if((Tiles.Tiles_renderFlags[var0][var6][var5] & 24) == 0) {
-                  class30.method649(var0, var6, var5, var3, var4);
+                  class30.drawObject(var0, var6, var5, var3, var4);
                }
 
                if(var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var6][var5] & 8) != 0) {
-                  class30.method649(var0 + 1, var6, var5, var3, var4);
+                  class30.drawObject(var0 + 1, var6, var5, var3, var4);
                }
             }
          }
@@ -78,7 +68,7 @@ public class class47 {
             }
          }
 
-         class30.rasterProvider.method6274();
+         class30.rasterProvider.setRaster();
       }
 
    }

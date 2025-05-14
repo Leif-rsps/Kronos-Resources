@@ -1,26 +1,14 @@
 package net.runelite.standalone;
 
 import java.util.concurrent.Callable;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bj")
 public class SecureRandomCallable implements Callable {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive musicSamplesArchive;
 
    public Object call() {
       return AttackOption.method2107();
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(Ldh;IIII)Z",
-      garbageValue = "810507745"
-   )
    static final boolean method1133(Model var0, int var1, int var2, int var3) {
       boolean var4 = ViewportMouse.ViewportMouse_isInViewport;
       if(!var4) {
@@ -81,20 +69,10 @@ public class SecureRandomCallable implements Callable {
       }
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(S)I",
-      garbageValue = "19776"
-   )
    public static int method1136() {
       return KeyHandler.KeyHandler_idleCycles;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IIIB)J",
-      garbageValue = "0"
-   )
    static long method1135(int var0, int var1, int var2) {
       return (long)(var2 << 16 | var0 << 8 | var1);
    }

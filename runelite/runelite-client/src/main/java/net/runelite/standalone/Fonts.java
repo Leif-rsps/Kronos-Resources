@@ -1,38 +1,18 @@
 package net.runelite.standalone;
 
 import java.util.HashMap;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kr")
 public class Fonts {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    AbstractArchive fontsArchive;
-   @ObfuscatedName("v")
    HashMap map;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    AbstractArchive spritesArchive;
 
-   @ObfuscatedSignature(
-      signature = "(Lhp;Lhp;)V"
-   )
    public Fonts(AbstractArchive var1, AbstractArchive var2) {
       this.spritesArchive = var1;
       this.fontsArchive = var2;
       this.map = new HashMap();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([Lko;I)Ljava/util/HashMap;",
-      garbageValue = "-1165155916"
-   )
    public HashMap method5758(FontName[] var1) {
       HashMap var2 = new HashMap();
       FontName[] var3 = var1;
@@ -58,11 +38,6 @@ public class Fonts {
       return var2;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)Lkc;",
-      garbageValue = "274947810"
-   )
    public static PrivateChatMode method5757(int var0) {
       PrivateChatMode[] var1 = BZip2State.method5454();
 

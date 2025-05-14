@@ -6,33 +6,13 @@ import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.NpcDefinitionChanged;
 import net.runelite.api.events.NpcDespawned;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSModel;
-import net.runelite.rs.api.RSNPC;
-import net.runelite.rs.api.RSNPCDefinition;
 
-@ObfuscatedName("ck")
-public final class NPC extends Actor implements RSNPC {
-   @ObfuscatedName("ej")
-   @ObfuscatedGetter(
-      intValue = 2095761251
-   )
+public final class NPC extends Actor implements net.runelite.api.NPC {
    static int port3;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lil;"
-   )
    NPCDefinition definition;
    public int npcIndex;
    public boolean dead;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IIZB)V",
-      garbageValue = "1"
-   )
    final void method1609(int var1, int var2, boolean var3) {
       if(super.sequence != -1 && GrandExchangeOfferUnitPriceComparator.method1468(super.sequence).field3431 == 1) {
          super.sequence = -1;
@@ -69,34 +49,26 @@ public final class NPC extends Actor implements RSNPC {
       super.y = super.size * -297705920 + super.pathY[0] * -595411840;
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(S)Z",
-      garbageValue = "180"
-   )
    final boolean vmethod1611() {
       return this.definition != null;
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    protected final Model vmethod3072(int var1) {
       if(ViewportMouse.client.isInterpolateNpcAnimations() && this.getAnimation() != 6566) {
          int var2 = this.getActionFrame();
-         int var3 = this.getPoseFrame();
-         int var4 = this.getSpotAnimationFrame();
+         int var3 = this.movementFrame;
+         int var4 = this.spotAnimationFrame;
 
          Model var5;
          try {
             this.setActionFrame(Integer.MIN_VALUE | this.getActionFrameCycle() << 16 | var2);
-            this.setPoseFrame(Integer.MIN_VALUE | this.getPoseFrameCycle() << 16 | var3);
-            this.setSpotAnimationFrame(Integer.MIN_VALUE | this.getSpotAnimationFrameCycle() << 16 | var4);
+            int var11 = Integer.MIN_VALUE | this.movementFrameCycle << 16 | var3;
+            this.movementFrame = var11;
+            this.setSpotAnimationFrame(Integer.MIN_VALUE | this.spotAnimationFrameCycle << 16 | var4);
             var5 = this.copy$getModel(var1);
          } finally {
             this.setActionFrame(var2);
-            this.setPoseFrame(var3);
+            this.movementFrame = var3;
             this.setSpotAnimationFrame(var4);
          }
 
@@ -106,11 +78,6 @@ public final class NPC extends Actor implements RSNPC {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IBB)V",
-      garbageValue = "-90"
-   )
    final void method1615(int var1, byte var2) {
       int var3 = super.pathX[0];
       int var4 = super.pathY[0];
@@ -171,23 +138,24 @@ public final class NPC extends Actor implements RSNPC {
    }
 
    public Polygon getConvexHull() {
-      RSModel var1 = this.getModel();
+      Model var1 = this.getModel();
       if(var1 == null) {
          return null;
       } else {
          int var2 = this.getDefinition().getSize();
-         LocalPoint var3 = new LocalPoint(var2 * 64 - 64 + this.getX(), var2 * 64 - 64 + this.getY());
+         LocalPoint var3 = new LocalPoint(var2 * 64 - 64 + this.x, var2 * 64 - 64 + this.y * 682054857);
          int var4 = Perspective.getTileHeight(ViewportMouse.client, var3, ViewportMouse.client.getPlane());
-         return var1.getConvexHull(this.getX(), this.getY(), this.getOrientation(), var4);
+         return var1.getConvexHull(this.x, this.y * 682054857, this.getOrientation(), var4);
       }
    }
 
-   public RSNPCDefinition getDefinition() {
+   @Override
+   public NPCDefinition getDefinition() {
       return this.definition;
    }
 
    public int getId() {
-      RSNPCDefinition var1 = this.getDefinition();
+      NPCDefinition var1 = this.getDefinition();
       if(var1 != null && var1.getConfigs() != null) {
          var1 = var1.transform();
       }
@@ -195,9 +163,6 @@ public final class NPC extends Actor implements RSNPC {
       return var1 == null?-1:var1.getId();
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    public final Model copy$getModel(int var1) {
       if(this.definition == null) {
          return null;
@@ -239,7 +204,7 @@ public final class NPC extends Actor implements RSNPC {
    }
 
    public String getName() {
-      RSNPCDefinition var1 = this.getDefinition();
+      NPCDefinition var1 = this.getDefinition();
       if(var1 != null && var1.getConfigs() != null) {
          var1 = var1.transform();
       }
@@ -248,7 +213,7 @@ public final class NPC extends Actor implements RSNPC {
    }
 
    public int getCombatLevel() {
-      RSNPCDefinition var1 = this.getDefinition();
+      NPCDefinition var1 = this.getDefinition();
       if(var1 != null && var1.getConfigs() != null) {
          var1 = var1.transform();
       }
@@ -256,6 +221,7 @@ public final class NPC extends Actor implements RSNPC {
       return var1 == null?-1:var1.getCombatLevel();
    }
 
+   @Override
    public int getIndex() {
       return this.npcIndex;
    }
@@ -265,7 +231,7 @@ public final class NPC extends Actor implements RSNPC {
    }
 
    public net.runelite.api.NPCDefinition getTransformedDefinition() {
-      RSNPCDefinition var1 = this.getDefinition();
+      NPCDefinition var1 = this.getDefinition();
       if(var1 != null && var1.getConfigs() != null) {
          var1 = var1.transform();
       }
@@ -289,11 +255,6 @@ public final class NPC extends Actor implements RSNPC {
       return "";
    }
 
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;II)V",
-      garbageValue = "89732729"
-   )
    static final void method1617(String var0, int var1) {
       PacketBufferNode var2 = InterfaceParent.method1140(ClientPacket.field2410, Client.packetWriter.isaacCipher);
       var2.packetBuffer.writeByte(class267.method4877(var0) + 1);

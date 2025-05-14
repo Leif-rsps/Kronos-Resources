@@ -1,34 +1,16 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSDualNode;
-import net.runelite.rs.api.RSEvictingDualNodeHashTable;
+import net.runelite.api.NodeCache;
 
-@ObfuscatedName("em")
-public final class EvictingDualNodeHashTable implements RSEvictingDualNodeHashTable {
-   @ObfuscatedName("n")
+public final class EvictingDualNodeHashTable implements NodeCache {
    int capacity;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lji;"
-   )
    IterableDualNodeQueue deque;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Llb;"
-   )
    IterableNodeHashTable hashTable;
-   @ObfuscatedName("v")
    int remainingCapacity;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lfw;"
-   )
-   DualNode field1755;
+   DualNode dualNode;
 
    public EvictingDualNodeHashTable(int var1) {
-      this.field1755 = new DualNode();
+      this.dualNode = new DualNode();
       this.deque = new IterableDualNodeQueue();
       this.capacity = var1;
       this.remainingCapacity = var1;
@@ -41,38 +23,32 @@ public final class EvictingDualNodeHashTable implements RSEvictingDualNodeHashTa
       this.hashTable = new IterableNodeHashTable(var2);
    }
 
-   @ObfuscatedName("n")
-   public void method3033(long var1) {
-      DualNode var3 = (DualNode)this.hashTable.method6061(var1);
+   public void remove(long var1) {
+      DualNode var3 = (DualNode)this.hashTable.get(var1);
       if(var3 != null) {
-         var3.method3497();
-         var3.method3491();
+         var3.unlink();
+         var3.unlinkDual();
          ++this.remainingCapacity;
       }
 
    }
 
-   @ObfuscatedName("u")
-   public void method3035() {
+   public void clear() {
       this.deque.method4897();
       this.hashTable.method6063();
-      this.field1755 = new DualNode();
+      this.dualNode = new DualNode();
       this.remainingCapacity = this.capacity;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lfw;J)V"
-   )
    public void method3034(DualNode var1, long var2) {
       if(this.remainingCapacity == 0) {
          DualNode var4 = this.deque.method4920();
-         var4.method3497();
-         var4.method3491();
-         if(var4 == this.field1755) {
+         var4.unlink();
+         var4.unlinkDual();
+         if(var4 == this.dualNode) {
             var4 = this.deque.method4920();
-            var4.method3497();
-            var4.method3491();
+            var4.unlink();
+            var4.unlinkDual();
          }
       } else {
          --this.remainingCapacity;
@@ -82,12 +58,8 @@ public final class EvictingDualNodeHashTable implements RSEvictingDualNodeHashTa
       this.deque.add(var1);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(J)Lfw;"
-   )
-   public DualNode method3032(long var1) {
-      DualNode var3 = (DualNode)this.hashTable.method6061(var1);
+   public DualNode get(long var1) {
+      DualNode var3 = (DualNode)this.hashTable.get(var1);
       if(var3 != null) {
          this.deque.add(var3);
       }
@@ -95,19 +67,18 @@ public final class EvictingDualNodeHashTable implements RSEvictingDualNodeHashTa
       return var3;
    }
 
+   @Override
    public void setCapacity(int var1) {
       this.capacity = var1;
    }
 
+   @Override
    public void setRemainingCapacity(int var1) {
       this.remainingCapacity = var1;
    }
 
-   public RSDualNode get(long var1) {
-      return this.method3032(var1);
-   }
-
+   @Override
    public void reset() {
-      this.method3035();
+      this.clear();
    }
 }

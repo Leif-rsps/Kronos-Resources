@@ -1,63 +1,16 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSLoginType;
-
-@ObfuscatedName("li")
-public class LoginType implements RSLoginType {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
+public class LoginType {
    static final LoginType field3930;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
    static final LoginType field3931;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
    static final LoginType field3928;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
    static final LoginType field3932;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
    static final LoginType field3929;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
    static final LoginType field3933;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
    public static final LoginType field3936;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
    public static final LoginType oldscape;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
    static final LoginType field3935;
-   @ObfuscatedName("c")
    final String field3938;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 1653780659
-   )
    final int field3937;
 
    static {
@@ -77,9 +30,6 @@ public class LoginType implements RSLoginType {
       this.field3938 = var4;
    }
 
-   @ObfuscatedSignature(
-      signature = "(IILjava/lang/String;Ljava/lang/String;Z[Lli;)V"
-   )
    LoginType(int var1, int var2, String var3, String var4, boolean var5, LoginType[] var6) {
       this.field3937 = var1;
       this.field3938 = var4;

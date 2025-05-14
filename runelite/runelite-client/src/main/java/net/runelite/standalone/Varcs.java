@@ -7,35 +7,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 import net.runelite.api.events.VarClientIntChanged;
 import net.runelite.api.events.VarClientStrChanged;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSVarcs;
 
-@ObfuscatedName("ct")
-public class Varcs implements RSVarcs {
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = -1292567711
-   )
+public class Varcs {
    static int graphicsTickTimeIdx;
-   @ObfuscatedName("ho")
-   @ObfuscatedGetter(
-      intValue = -2002882325
-   )
    static int cameraY;
-   @ObfuscatedName("p")
    boolean unwrittenChanges;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      longValue = 457115256589346479L
-   )
    long field1216;
-   @ObfuscatedName("r")
    String[] strings;
-   @ObfuscatedName("u")
    Map map;
-   @ObfuscatedName("v")
    boolean[] intsPersistence;
 
    Varcs() {
@@ -46,7 +25,7 @@ public class Varcs implements RSVarcs {
 
       int var2;
       for(var2 = 0; var2 < var1; ++var2) {
-         VarcInt var4 = (VarcInt)VarcInt.VarcInt_cached.method3032((long)var2);
+         VarcInt var4 = (VarcInt)VarcInt.VarcInt_cached.get((long)var2);
          VarcInt var3;
          if(var4 != null) {
             var3 = var4;
@@ -73,30 +52,15 @@ public class Varcs implements RSVarcs {
       this.method2171();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IB)I",
-      garbageValue = "104"
-   )
    int method2170(int var1) {
       Object var2 = this.map.get(Integer.valueOf(var1));
       return var2 instanceof Integer?((Integer)var2).intValue():-1;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(IB)Ljava/lang/String;",
-      garbageValue = "1"
-   )
    String method2161(int var1) {
       return this.strings[var1];
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "29"
-   )
    void method2169() {
       int var1;
       for(var1 = 0; var1 < this.intsPersistence.length; ++var1) {
@@ -111,40 +75,20 @@ public class Varcs implements RSVarcs {
 
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(ILjava/lang/String;I)V",
-      garbageValue = "2089409644"
-   )
    void method2166(int var1, String var2) {
       this.strings[var1] = var2;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(IB)Ljava/lang/String;",
-      garbageValue = "-74"
-   )
    String method2165(int var1) {
       Object var2 = this.map.get(Integer.valueOf(var1));
       return var2 instanceof String?(String)var2:"";
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(ILjava/lang/String;B)V",
-      garbageValue = "-65"
-   )
    void method2164(int var1, String var2) {
       this.map.put(Integer.valueOf(var1), var2);
       this.onVarCStrChanged(var1, var2);
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-54"
-   )
    void method2168() {
       AccessFile var1 = this.method2186(true);
 
@@ -209,11 +153,6 @@ public class Varcs implements RSVarcs {
       this.field1216 = class33.method680();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "1021423877"
-   )
    void method2190(int var1, int var2) {
       this.map.put(Integer.valueOf(var1), Integer.valueOf(var2));
       if(this.intsPersistence[var1]) {
@@ -223,20 +162,10 @@ public class Varcs implements RSVarcs {
       this.onVarCIntChanged(var1, var2);
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-1985614095"
-   )
    boolean method2173() {
       return this.unwrittenChanges;
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-71"
-   )
    void method2172() {
       if(this.unwrittenChanges && this.field1216 < class33.method680() - 60000L) {
          this.method2168();
@@ -252,15 +181,6 @@ public class Varcs implements RSVarcs {
       ViewportMouse.client.getCallbacks().post(VarClientIntChanged.class, new VarClientIntChanged(var1));
    }
 
-   public Map getVarcMap() {
-      return this.map;
-   }
-
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-71"
-   )
    void method2171() {
       AccessFile var1 = this.method2186(false);
 
@@ -348,11 +268,6 @@ public class Varcs implements RSVarcs {
       this.unwrittenChanges = false;
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(ZI)Lmh;",
-      garbageValue = "1415923729"
-   )
    AccessFile method2186(boolean var1) {
       return class202.method3853("2", class10.field66.name, var1);
    }

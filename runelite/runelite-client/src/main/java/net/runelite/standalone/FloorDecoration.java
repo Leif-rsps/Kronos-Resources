@@ -3,53 +3,20 @@ package net.runelite.standalone;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Shape;
+
+import net.runelite.api.GroundObject;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSEntity;
-import net.runelite.rs.api.RSFloorDecoration;
-import net.runelite.rs.api.RSModel;
 
-@ObfuscatedName("dj")
-public final class FloorDecoration implements RSFloorDecoration {
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = 1829552079
-   )
+public final class FloorDecoration implements GroundObject {
    public static int canvasWidth;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 1834213503
-   )
    int tileHeight;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -1953587145
-   )
    int flags;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      longValue = 3642112439868332829L
-   )
    public long tag;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -848464295
-   )
    int y;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 461857131
-   )
    int x;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Ler;"
-   )
    public Entity entity;
    public int groundObjectPlane;
 
@@ -58,7 +25,7 @@ public final class FloorDecoration implements RSFloorDecoration {
    }
 
    public Polygon getConvexHull() {
-      RSModel var1 = this.getModel();
+      Model var1 = this.getModel();
       if(var1 == null) {
          return null;
       } else {
@@ -67,19 +34,22 @@ public final class FloorDecoration implements RSFloorDecoration {
       }
    }
 
+   @Override
    public long getHash() {
       return this.tag;
    }
 
-   public RSModel getModel() {
-      RSEntity var1 = this.getEntity();
-      return var1 == null?null:(var1 instanceof net.runelite.api.Model?(RSModel)var1:var1.getModel());
+   public Model getModel() {
+      Entity var1 = this.getEntity();
+      return var1 == null?null:(var1 instanceof net.runelite.api.Model?(Model)var1:var1.getModel());
    }
 
-   public RSEntity getEntity() {
+   @Override
+   public Entity getEntity() {
       return this.entity;
    }
 
+   @Override
    public int getX() {
       return this.x;
    }
@@ -88,6 +58,7 @@ public final class FloorDecoration implements RSFloorDecoration {
       return new LocalPoint(this.getX(), this.getY());
    }
 
+   @Override
    public int getY() {
       return this.y;
    }
@@ -129,11 +100,6 @@ public final class FloorDecoration implements RSFloorDecoration {
       return Perspective.getClickbox(ViewportMouse.client, this.getModel(), 0, this.getLocalLocation());
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(II)Lhs;",
-      garbageValue = "-1156266256"
-   )
    public static ServerBuild method2433(int var0) {
       ServerBuild[] var1 = new ServerBuild[]{ServerBuild.BUILDLIVE, ServerBuild.LIVE, ServerBuild.RC, ServerBuild.WIP};
       ServerBuild[] var2 = var1;
@@ -148,11 +114,6 @@ public final class FloorDecoration implements RSFloorDecoration {
       return null;
    }
 
-   @ObfuscatedName("jl")
-   @ObfuscatedSignature(
-      signature = "(IIIILlf;Lhz;S)V",
-      garbageValue = "1700"
-   )
    static final void method2432(int var0, int var1, int var2, int var3, Sprite var4, SpriteMask var5) {
       int var6 = var3 * var3 + var2 * var2;
       if(var6 > 4225 && var6 < 90000) {

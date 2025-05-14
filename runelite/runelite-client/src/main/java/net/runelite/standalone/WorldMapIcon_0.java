@@ -1,42 +1,13 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("x")
 public class WorldMapIcon_0 extends AbstractWorldMapIcon {
-   @ObfuscatedName("sm")
    static short[] foundItemIds;
-   @ObfuscatedName("be")
-   @ObfuscatedSignature(
-      signature = "Llp;"
-   )
    static IndexedSprite worldSelectLeftSprite;
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Law;"
-   )
    final WorldMapLabel label;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 155630147
-   )
    final int subHeight;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 704139389
-   )
    final int subWidth;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -189436837
-   )
    final int element;
 
-   @ObfuscatedSignature(
-      signature = "(Lhb;Lhb;ILaw;)V"
-   )
    WorldMapIcon_0(Coord var1, Coord var2, int var3, WorldMapLabel var4) {
       super(var1, var2);
       this.element = var3;
@@ -53,58 +24,28 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)Law;",
-      garbageValue = "13348956"
-   )
    WorldMapLabel vmethod2273() {
       return this.label;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "806304417"
-   )
    int vmethod2257() {
       return this.subHeight;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-175699296"
-   )
    int vmethod2269() {
       return this.subWidth;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "-79"
-   )
    public int vmethod2277() {
       return this.element;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(Lhp;Ljava/lang/String;Ljava/lang/String;I)[Llp;",
-      garbageValue = "858097598"
-   )
    public static IndexedSprite[] method193(AbstractArchive var0, String var1, String var2) {
       int var3 = var0.method4059(var1);
       int var4 = var0.method4039(var3, var2);
       return class313.method5840(var0, var3, var4);
    }
 
-   @ObfuscatedName("jd")
-   @ObfuscatedSignature(
-      signature = "(Lho;I)V",
-      garbageValue = "-1181739841"
-   )
    static final void method192(Widget var0) {
       int var1 = var0.contentType;
       if(var1 == 324) {

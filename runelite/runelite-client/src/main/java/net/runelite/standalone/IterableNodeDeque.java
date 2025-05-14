@@ -2,22 +2,9 @@ package net.runelite.standalone;
 
 import java.util.Collection;
 import java.util.Iterator;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSIterableNodeDeque;
-import net.runelite.rs.api.RSNode;
 
-@ObfuscatedName("js")
-public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDeque {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lfx;"
-   )
+public class IterableNodeDeque implements Collection {
    Node field3598;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lfx;"
-   )
    Node sentinel;
 
    public IterableNodeDeque() {
@@ -26,13 +13,9 @@ public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDe
       this.sentinel.next = this.sentinel;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lfx;)V"
-   )
    public void method5019(Node var1) {
       if(var1.next != null) {
-         var1.method3497();
+         var1.unlink();
       }
 
       var1.next = this.sentinel.next;
@@ -41,10 +24,6 @@ public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDe
       var1.previous.next = var1;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Lfx;)Lfx;"
-   )
    Node method5047(Node var1) {
       Node var2;
       if(var1 == null) {
@@ -62,10 +41,6 @@ public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDe
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node method5024() {
       Node var1 = this.field3598;
       if(var1 == this.sentinel) {
@@ -77,21 +52,13 @@ public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDe
       }
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node method5044() {
       return this.method5047((Node)null);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lfx;)V"
-   )
    public void method5027(Node var1) {
       if(var1.next != null) {
-         var1.method3497();
+         var1.unlink();
       }
 
       var1.next = this.sentinel;
@@ -100,23 +67,17 @@ public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDe
       var1.previous.next = var1;
    }
 
-   @ObfuscatedName("y")
    public boolean method5026() {
       return this.sentinel.previous == this.sentinel;
    }
 
-   @ObfuscatedName("z")
    public void method5032() {
       while(this.sentinel.previous != this.sentinel) {
-         this.sentinel.previous.method3497();
+         this.sentinel.previous.unlink();
       }
 
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(Lfx;)Z"
-   )
    boolean method5029(Node var1) {
       this.method5019(var1);
       return true;
@@ -188,14 +149,6 @@ public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDe
       throw new RuntimeException();
    }
 
-   public RSNode getCurrent() {
-      return this.sentinel;
-   }
-
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "()[Lfx;"
-   )
    Node[] method5070() {
       Node[] var1 = new Node[this.method5025()];
       int var2 = 0;
@@ -207,7 +160,6 @@ public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDe
       return var1;
    }
 
-   @ObfuscatedName("m")
    int method5025() {
       int var1 = 0;
 
@@ -218,13 +170,9 @@ public class IterableNodeDeque implements Iterable, Collection, RSIterableNodeDe
       return var1;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Lfx;Lfx;)V"
-   )
    public static void method5021(Node var0, Node var1) {
       if(var0.next != null) {
-         var0.method3497();
+         var0.unlink();
       }
 
       var0.next = var1;

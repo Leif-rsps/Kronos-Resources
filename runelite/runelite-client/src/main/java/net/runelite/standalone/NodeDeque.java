@@ -1,21 +1,7 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSNode;
-import net.runelite.rs.api.RSNodeDeque;
-
-@ObfuscatedName("jv")
-public class NodeDeque implements RSNodeDeque {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lfx;"
-   )
+public class NodeDeque {
    Node current;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lfx;"
-   )
    public Node sentinel;
 
    public NodeDeque() {
@@ -24,13 +10,9 @@ public class NodeDeque implements RSNodeDeque {
       this.sentinel.next = this.sentinel;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lfx;)V"
-   )
-   public void method5105(Node var1) {
+   public void addFirst(Node var1) {
       if(var1.next != null) {
-         var1.method3497();
+         var1.unlink();
       }
 
       var1.next = this.sentinel.next;
@@ -39,25 +21,17 @@ public class NodeDeque implements RSNodeDeque {
       var1.previous.next = var1;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node method5109() {
       Node var1 = this.sentinel.next;
       if(var1 == this.sentinel) {
          return null;
       } else {
-         var1.method3497();
+         var1.unlink();
          return var1;
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
-   public Node method5103() {
+   public Node last() {
       Node var1 = this.sentinel.previous;
       if(var1 == this.sentinel) {
          this.current = null;
@@ -68,27 +42,19 @@ public class NodeDeque implements RSNodeDeque {
       }
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node method5108() {
       Node var1 = this.sentinel.previous;
       if(var1 == this.sentinel) {
          return null;
       } else {
-         var1.method3497();
+         var1.unlink();
          return var1;
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lfx;)V"
-   )
    public void method5106(Node var1) {
       if(var1.next != null) {
-         var1.method3497();
+         var1.unlink();
       }
 
       var1.next = this.sentinel;
@@ -97,11 +63,7 @@ public class NodeDeque implements RSNodeDeque {
       var1.previous.next = var1;
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
-   public Node method5126() {
+   public Node previous() {
       Node var1 = this.current;
       if(var1 == this.sentinel) {
          this.current = null;
@@ -112,7 +74,6 @@ public class NodeDeque implements RSNodeDeque {
       }
    }
 
-   @ObfuscatedName("z")
    public void method5104() {
       while(true) {
          Node var1 = this.sentinel.previous;
@@ -121,34 +82,10 @@ public class NodeDeque implements RSNodeDeque {
             return;
          }
 
-         var1.method3497();
+         var1.unlink();
       }
    }
 
-   public RSNode getHead() {
-      return this.sentinel;
-   }
-
-   public RSNode getCurrent() {
-      return this.current;
-   }
-
-   public void addFirst(RSNode var1) {
-      this.method5105((Node)var1);
-   }
-
-   public RSNode last() {
-      return this.method5103();
-   }
-
-   public RSNode previous() {
-      return this.method5126();
-   }
-
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node getPrevious() {
       Node var1 = this.current;
       if(var1 == this.sentinel) {
@@ -160,10 +97,6 @@ public class NodeDeque implements RSNodeDeque {
       }
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node getTail() {
       Node var1 = this.sentinel.next;
       if(var1 == this.sentinel) {
@@ -175,13 +108,9 @@ public class NodeDeque implements RSNodeDeque {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Lfx;Lfx;)V"
-   )
    public static void method5130(Node var0, Node var1) {
       if(var0.next != null) {
-         var0.method3497();
+         var0.unlink();
       }
 
       var0.next = var1.next;

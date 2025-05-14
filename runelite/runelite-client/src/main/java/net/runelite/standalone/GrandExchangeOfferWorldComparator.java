@@ -1,22 +1,10 @@
 package net.runelite.standalone;
 
 import java.util.Comparator;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("p")
 final class GrandExchangeOfferWorldComparator implements Comparator {
-   @ObfuscatedName("qd")
-   @ObfuscatedSignature(
-      signature = "Ldv;"
-   )
    static PcmPlayer pcmPlayer1;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lm;Lm;I)I",
-      garbageValue = "-1166584542"
-   )
    int method84(GrandExchangeEvent var1, GrandExchangeEvent var2) {
       return var1.world < var2.world?-1:(var2.world == var1.world?0:1);
    }
@@ -29,11 +17,6 @@ final class GrandExchangeOfferWorldComparator implements Comparator {
       return super.equals(var1);
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Lkl;IIIIIII)V",
-      garbageValue = "-109432634"
-   )
    static final void method91(Buffer var0, int var1, int var2, int var3, int var4, int var5, int var6) {
       int var7;
       if(var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
@@ -94,21 +77,11 @@ final class GrandExchangeOfferWorldComparator implements Comparator {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(III)Lho;",
-      garbageValue = "-217608323"
-   )
    public static Widget method93(int var0, int var1) {
       Widget var2 = Canvas.getWidget(var0);
       return var1 == -1?var2:(var2 != null && var2.children != null && var1 < var2.children.length?var2.children[var1]:null);
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(IIIIIZI)Llf;",
-      garbageValue = "-366639753"
-   )
    public static final Sprite createSprite(int var0, int var1, int var2, int var3, int var4, boolean var5) {
       if(var1 == -1) {
          var4 = 0;
@@ -119,7 +92,7 @@ final class GrandExchangeOfferWorldComparator implements Comparator {
       long var6 = ((long)var3 << 42) + ((long)var4 << 40) + ((long)var2 << 38) + (long)var0 + ((long)var1 << 16);
       Sprite var8;
       if(!var5) {
-         var8 = (Sprite)ItemDefinition.ItemDefinition_cachedSprites.method3032(var6);
+         var8 = (Sprite)ItemDefinition.ItemDefinition_cachedSprites.get(var6);
          if(var8 != null) {
             return var8;
          }
@@ -140,7 +113,7 @@ final class GrandExchangeOfferWorldComparator implements Comparator {
          }
       }
 
-      Model var19 = var9.method4575(1, 1336448754);
+      Model var19 = var9.getModel(1, 1336448754);
       if(var19 == null) {
          return null;
       } else {
@@ -210,7 +183,7 @@ final class GrandExchangeOfferWorldComparator implements Comparator {
          }
 
          if(var4 == 1 || var4 == 2 && var9.isStackable == 1) {
-            FaceNormal.ItemDefinition_fontPlain11.method5329(class22.method456(var1), 0, 9, 16776960, 1);
+            FaceNormal.ItemDefinition_fontPlain11.drawTextLeftAligned(class22.method456(var1), 0, 9, 16776960, 1);
          }
 
          if(!var5) {

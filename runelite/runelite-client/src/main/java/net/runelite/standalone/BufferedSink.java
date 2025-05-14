@@ -2,41 +2,16 @@ package net.runelite.standalone;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kv")
 public class BufferedSink implements Runnable {
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      signature = "Lbr;"
-   )
    static LoginScreenAnimation loginScreenRunesAnimation;
-   @ObfuscatedName("n")
    OutputStream outputStream;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -1646863699
-   )
    int limit;
-   @ObfuscatedName("q")
    IOException exception;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 205486611
-   )
    int position;
-   @ObfuscatedName("u")
    byte[] buffer;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 1047270953
-   )
    int capacity;
-   @ObfuscatedName("z")
    Thread thread;
-   @ObfuscatedName("m")
    boolean closed;
 
    BufferedSink(OutputStream var1, int var2) {
@@ -50,11 +25,6 @@ public class BufferedSink implements Runnable {
       this.thread.start();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "([BIIB)V",
-      garbageValue = "30"
-   )
    void method5789(byte[] var1, int var2, int var3) throws IOException {
       if(var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) {
          synchronized(this) {
@@ -90,11 +60,6 @@ public class BufferedSink implements Runnable {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1627292871"
-   )
    void method5783() {
       synchronized(this) {
          this.closed = true;
@@ -109,11 +74,6 @@ public class BufferedSink implements Runnable {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)Z",
-      garbageValue = "-57"
-   )
    boolean method5775() {
       if(this.closed) {
          try {
@@ -213,11 +173,6 @@ public class BufferedSink implements Runnable {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lli;I)I",
-      garbageValue = "-828018974"
-   )
    static final int method5790(LoginType var0) {
       if(var0 == null) {
          return 12;
@@ -231,11 +186,6 @@ public class BufferedSink implements Runnable {
       }
    }
 
-   @ObfuscatedName("fm")
-   @ObfuscatedSignature(
-      signature = "(Lho;IIB)V",
-      garbageValue = "-112"
-   )
    static final void method5774(Widget var0, int var1, int var2) {
       if(Client.minimapState == 0 || Client.minimapState == 3) {
          if(!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !WorldMapIcon_1.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {

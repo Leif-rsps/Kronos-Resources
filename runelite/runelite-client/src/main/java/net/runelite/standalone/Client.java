@@ -78,607 +78,154 @@ import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.callback.Hooks;
 import net.runelite.client.util.MiscUtils;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSAbstractArchive;
-import net.runelite.rs.api.RSAbstractRasterProvider;
-import net.runelite.rs.api.RSChatChannel;
-import net.runelite.rs.api.RSClanChat;
-import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSClientPreferences;
-import net.runelite.rs.api.RSCollisionMap;
-import net.runelite.rs.api.RSDecimator;
-import net.runelite.rs.api.RSEnumDefinition;
-import net.runelite.rs.api.RSEvictingDualNodeHashTable;
-import net.runelite.rs.api.RSFont;
-import net.runelite.rs.api.RSFrames;
-import net.runelite.rs.api.RSFriendSystem;
-import net.runelite.rs.api.RSFriendsList;
-import net.runelite.rs.api.RSGrandExchangeOffer;
-import net.runelite.rs.api.RSIgnoreList;
-import net.runelite.rs.api.RSIndexedSprite;
-import net.runelite.rs.api.RSItemContainer;
-import net.runelite.rs.api.RSItemDefinition;
-import net.runelite.rs.api.RSIterableNodeHashTable;
-import net.runelite.rs.api.RSLoginType;
-import net.runelite.rs.api.RSMenuAction;
-import net.runelite.rs.api.RSMessage;
-import net.runelite.rs.api.RSModel;
-import net.runelite.rs.api.RSMouseRecorder;
-import net.runelite.rs.api.RSNPC;
-import net.runelite.rs.api.RSNPCDefinition;
-import net.runelite.rs.api.RSNode;
-import net.runelite.rs.api.RSNodeDeque;
-import net.runelite.rs.api.RSNodeHashTable;
-import net.runelite.rs.api.RSObjectDefinition;
-import net.runelite.rs.api.RSPacketBuffer;
-import net.runelite.rs.api.RSPcmStream;
-import net.runelite.rs.api.RSPcmStreamMixer;
-import net.runelite.rs.api.RSPlayer;
-import net.runelite.rs.api.RSRawPcmStream;
-import net.runelite.rs.api.RSRawSound;
-import net.runelite.rs.api.RSScene;
-import net.runelite.rs.api.RSScript;
-import net.runelite.rs.api.RSScriptEvent;
-import net.runelite.rs.api.RSSoundEffect;
-import net.runelite.rs.api.RSSprite;
-import net.runelite.rs.api.RSTextureProvider;
-import net.runelite.rs.api.RSTileItem;
-import net.runelite.rs.api.RSUsername;
-import net.runelite.rs.api.RSVarbitDefinition;
-import net.runelite.rs.api.RSVarcs;
-import net.runelite.rs.api.RSWidget;
-import net.runelite.rs.api.RSWorld;
-import net.runelite.rs.api.RSWorldMap;
-import net.runelite.rs.api.RSWorldMapElement;
 import netscape.javascript.JSObject;
 import org.slf4j.Logger;
 
-@ObfuscatedName("client")
-public final class Client extends GameShell implements Usernamed, RSClient {
-   @ObfuscatedName("nz")
+public final class Client extends GameShell implements Usernamed, net.runelite.api.Client {
    static int[] changedSkills;
-   @ObfuscatedName("mx")
-   @ObfuscatedGetter(
-      intValue = -140222153
-   )
    static int runEnergy;
-   @ObfuscatedName("mo")
-   @ObfuscatedGetter(
-      intValue = -1946560921
-   )
    static int weight;
-   @ObfuscatedName("rc")
-   @ObfuscatedGetter(
-      intValue = -1154982749
-   )
    static int viewportOffsetX;
-   @ObfuscatedName("rb")
-   @ObfuscatedGetter(
-      intValue = -654475437
-   )
    static int viewportOffsetY;
-   @ObfuscatedName("pg")
-   @ObfuscatedSignature(
-      signature = "[Llf;"
-   )
    static Sprite[] mapIcons;
-   @ObfuscatedName("ro")
-   @ObfuscatedGetter(
-      intValue = -1929841361
-   )
    static int viewportHeight;
-   @ObfuscatedName("sa")
-   @ObfuscatedSignature(
-      signature = "[Li;"
-   )
    static GrandExchangeOffer[] grandExchangeOffers;
-   @ObfuscatedName("rf")
-   @ObfuscatedGetter(
-      intValue = 720626183
-   )
    static int viewportZoom;
-   @ObfuscatedName("oz")
-   @ObfuscatedGetter(
-      intValue = 1348758997
-   )
    static int gameDrawingMode;
-   @ObfuscatedName("nh")
-   @ObfuscatedGetter(
-      intValue = 1691099913
-   )
    static int chatCycle;
-   @ObfuscatedName("nd")
-   @ObfuscatedGetter(
-      intValue = -15935377
-   )
    static int changedSkillsCount;
-   @ObfuscatedName("rz")
-   @ObfuscatedGetter(
-      intValue = 806304417
-   )
    static int viewportWidth;
-   @ObfuscatedName("qh")
    static int[] soundEffectIds;
-   @ObfuscatedName("qt")
-   @ObfuscatedSignature(
-      signature = "[Lcm;"
-   )
    static SoundEffect[] soundEffects;
-   @ObfuscatedName("qw")
    static int[] queuedSoundEffectLoops;
-   @ObfuscatedName("nc")
    static boolean isDraggingWidget;
-   @ObfuscatedName("ql")
    static int[] soundLocations;
-   @ObfuscatedName("ox")
    static boolean isResizable;
-   @ObfuscatedName("qx")
    static int[] queuedSoundEffectDelays;
-   @ObfuscatedName("mw")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget draggedOnWidget;
-   @ObfuscatedName("qj")
-   @ObfuscatedGetter(
-      intValue = -1492029485
-   )
    static int soundEffectVolume;
-   @ObfuscatedName("nt")
-   @ObfuscatedGetter(
-      intValue = 1655703121
-   )
    static int cycleCntr;
-   @ObfuscatedName("ov")
    static int[] rootWidgetYs;
-   @ObfuscatedName("oq")
-   @ObfuscatedSignature(
-      signature = "Llq;"
-   )
    static NodeHashTable widgetClickMasks;
-   @ObfuscatedName("oy")
    static int[] rootWidgetXs;
-   @ObfuscatedName("px")
-   @ObfuscatedGetter(
-      intValue = 242208529
-   )
    static int destinationY;
-   @ObfuscatedName("pl")
-   @ObfuscatedGetter(
-      intValue = 858875897
-   )
    static int destinationX;
-   @ObfuscatedName("md")
-   @ObfuscatedSignature(
-      signature = "Llq;"
-   )
    static NodeHashTable interfaceParents;
-   @ObfuscatedName("mk")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget clickedWidget;
-   @ObfuscatedName("qm")
-   @ObfuscatedGetter(
-      intValue = -1177667309
-   )
    static int soundEffectCount;
-   @ObfuscatedName("om")
-   @ObfuscatedGetter(
-      intValue = -556975935
-   )
    static int rootWidgetCount;
-   @ObfuscatedName("ol")
-   @ObfuscatedGetter(
-      intValue = -659707133
-   )
    static int field846;
-   @ObfuscatedName("sj")
-   @ObfuscatedGetter(
-      intValue = 11492349
-   )
    public static int field1113;
-   @ObfuscatedName("og")
-   @ObfuscatedGetter(
-      longValue = -2357868230662320483L
-   )
    static long field962;
-   @ObfuscatedName("ot")
    static boolean[] field1049;
-   @ObfuscatedName("oi")
    static boolean[] field1055;
-   @ObfuscatedName("nj")
    static boolean field1025;
-   @ObfuscatedName("op")
    static boolean[] field1050;
-   @ObfuscatedName("nm")
    static boolean field1022;
    static String field10222;
-   @ObfuscatedName("ng")
-   @ObfuscatedGetter(
-      intValue = -1435027681
-   )
    static int field952;
-   @ObfuscatedName("mb")
-   @ObfuscatedGetter(
-      intValue = -1276072491
-   )
    static int widgetClickX;
-   @ObfuscatedName("mv")
-   @ObfuscatedGetter(
-      intValue = 2043143959
-   )
    static int widgetClickY;
-   @ObfuscatedName("qr")
    static boolean field967;
-   @ObfuscatedName("na")
-   @ObfuscatedGetter(
-      intValue = -868722211
-   )
    static int field903;
-   @ObfuscatedName("mj")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget meslayerContinueWidget;
-   @ObfuscatedName("me")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget clickedWidgetParent;
-   @ObfuscatedName("qb")
-   @ObfuscatedGetter(
-      intValue = -910754411
-   )
    static int field874;
-   @ObfuscatedName("nl")
-   @ObfuscatedGetter(
-      intValue = 194862223
-   )
    static int field1024;
-   @ObfuscatedName("oe")
    static int[] rootWidgetWidths;
-   @ObfuscatedName("pw")
-   @ObfuscatedGetter(
-      intValue = 253399583
-   )
    static int publicChatMode;
-   @ObfuscatedName("ru")
-   @ObfuscatedSignature(
-      signature = "Lhr;"
-   )
    static PlayerAppearance playerAppearance;
-   @ObfuscatedName("ms")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget viewportWidget;
-   @ObfuscatedName("ow")
    static int[] rootWidgetHeights;
-   @ObfuscatedName("my")
-   @ObfuscatedGetter(
-      intValue = -2028586371
-   )
    public static int staffModLevel;
-   @ObfuscatedName("nk")
-   @ObfuscatedGetter(
-      intValue = -1019005303
-   )
    static int field1026;
-   @ObfuscatedName("np")
-   @ObfuscatedGetter(
-      intValue = 1046894235
-   )
    static int field1027;
-   @ObfuscatedName("oh")
-   @ObfuscatedSignature(
-      signature = "Ljv;"
-   )
    static NodeDeque scriptEvents;
-   @ObfuscatedName("tb")
-   @ObfuscatedSignature(
-      signature = "Lbu;"
-   )
    static final class65 field1117;
-   @ObfuscatedName("nq")
-   @ObfuscatedGetter(
-      intValue = -861923243
-   )
    static int field1041;
-   @ObfuscatedName("tg")
    static int[] field1118;
-   @ObfuscatedName("nv")
-   @ObfuscatedGetter(
-      intValue = 826785605
-   )
    static int field1040;
-   @ObfuscatedName("td")
    static int[] field1119;
-   @ObfuscatedName("qz")
    static boolean isCameraLocked;
-   @ObfuscatedName("qa")
-   @ObfuscatedGetter(
-      intValue = 892519291
-   )
    static int field1076;
-   @ObfuscatedName("no")
    static int[] field1028;
-   @ObfuscatedName("nb")
-   @ObfuscatedGetter(
-      intValue = -1905651311
-   )
    static int field1038;
-   @ObfuscatedName("nw")
-   @ObfuscatedGetter(
-      intValue = -330072185
-   )
    static int field1033;
-   @ObfuscatedName("on")
-   @ObfuscatedGetter(
-      intValue = -1310890605
-   )
    static int mouseWheelRotation;
-   @ObfuscatedName("sl")
-   @ObfuscatedGetter(
-      intValue = -897184099
-   )
    static int field1108;
-   @ObfuscatedName("sn")
-   @ObfuscatedGetter(
-      intValue = 2123814989
-   )
    static int field1109;
-   @ObfuscatedName("qi")
-   @ObfuscatedGetter(
-      intValue = -114703177
-   )
    static int field969;
-   @ObfuscatedName("nn")
-   @ObfuscatedGetter(
-      intValue = 1294400327
-   )
    static int field1039;
-   @ObfuscatedName("si")
    static ArrayList archiveLoaders;
-   @ObfuscatedName("qf")
-   @ObfuscatedGetter(
-      intValue = 1977131521
-   )
    static int minimapState;
-   @ObfuscatedName("se")
-   @ObfuscatedGetter(
-      intValue = 426040267
-   )
    static int archiveLoadersDone;
-   @ObfuscatedName("rg")
    static short zoomHeight;
-   @ObfuscatedName("ri")
    static short field894;
-   @ObfuscatedName("mt")
    static boolean playerMod;
-   @ObfuscatedName("pa")
-   @ObfuscatedGetter(
-      intValue = 168765299
-   )
    static int tradeChatMode;
-   @ObfuscatedName("rt")
    static short field1088;
-   @ObfuscatedName("re")
    static short field1095;
-   @ObfuscatedName("rd")
    static short field1100;
-   @ObfuscatedName("rp")
    static short zoomWidth;
-   @ObfuscatedName("pd")
    static String field1115;
-   @ObfuscatedName("ra")
    static short field1099;
-   @ObfuscatedName("rr")
    static short field1101;
-   @ObfuscatedName("ma")
-   @ObfuscatedGetter(
-      intValue = 42533643
-   )
    static int chatEffects;
-   @ObfuscatedName("sx")
-   @ObfuscatedSignature(
-      signature = "Lbb;"
-   )
    static GrandExchangeOfferOwnWorldComparator GrandExchangeEvents_worldComparator;
-   @ObfuscatedName("mc")
-   @ObfuscatedGetter(
-      intValue = -1507863629
-   )
    static int field1006;
-   @ObfuscatedName("mr")
-   @ObfuscatedGetter(
-      intValue = -382576035
-   )
    static int field1081;
-   @ObfuscatedName("rm")
    static boolean[] field1043;
-   @ObfuscatedName("pz")
    static long[] field1097;
-   @ObfuscatedName("rk")
    static int[] field1090;
-   @ObfuscatedName("pi")
-   @ObfuscatedGetter(
-      longValue = -2403274902957123209L
-   )
    static long field1068;
-   @ObfuscatedName("rl")
    static int[] field1091;
-   @ObfuscatedName("mz")
-   @ObfuscatedGetter(
-      intValue = -1296819247
-   )
    static int field1032;
-   @ObfuscatedName("nu")
    static int[] field990;
-   @ObfuscatedName("rh")
    static int[] field1092;
-   @ObfuscatedName("ne")
-   @ObfuscatedGetter(
-      intValue = -1128248371
-   )
    static int field1031;
-   @ObfuscatedName("rj")
    static int[] field1093;
-   @ObfuscatedName("pr")
-   @ObfuscatedGetter(
-      intValue = -1812154483
-   )
    static int field1064;
-   @ObfuscatedName("su")
-   @ObfuscatedSignature(
-      signature = "Lly;"
-   )
    static PlatformInfoProvider platformInfoProvider;
-   @ObfuscatedName("pt")
-   @ObfuscatedGetter(
-      intValue = -1929025607
-   )
    static int field851;
-   @ObfuscatedName("mq")
-   @ObfuscatedGetter(
-      intValue = 494577071
-   )
    static int followerIndex;
-   @ObfuscatedName("sr")
-   @ObfuscatedGetter(
-      intValue = -1773628049
-   )
    static int field1116;
-   @ObfuscatedName("pv")
-   @ObfuscatedGetter(
-      intValue = -1079323191
-   )
    static int mapIconCount;
-   @ObfuscatedName("ps")
    static int[] mapIconXs;
-   @ObfuscatedName("pu")
    static int[] mapIconYs;
-   @ObfuscatedName("pf")
-   @ObfuscatedGetter(
-      intValue = -1367796571
-   )
    static int field1065;
-   @ObfuscatedName("pm")
    static int[] field1067;
-   @ObfuscatedName("po")
    static int[] field1066;
-   @ObfuscatedName("os")
-   @ObfuscatedSignature(
-      signature = "Ljv;"
-   )
    static NodeDeque field1044;
-   @ObfuscatedName("ob")
-   @ObfuscatedSignature(
-      signature = "Ljv;"
-   )
    static NodeDeque field971;
-   @ObfuscatedName("ph")
    static int[] field1059;
-   @ObfuscatedName("mh")
-   @ObfuscatedGetter(
-      intValue = 1431344687
-   )
    static int rootInterface;
-   @ObfuscatedName("mm")
    static String selectedSpellName;
-   @ObfuscatedName("mp")
-   @ObfuscatedGetter(
-      intValue = -1549196691
-   )
    static int field1001;
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      signature = "[Lfa;"
-   )
    static CollisionMap[] collisionMaps;
-   @ObfuscatedName("at")
    static boolean field1010;
-   @ObfuscatedName("be")
-   @ObfuscatedGetter(
-      intValue = -1434422805
-   )
    static int clientType;
-   @ObfuscatedName("bh")
-   @ObfuscatedGetter(
-      intValue = -1282298749
-   )
    static int worldProperties;
-   @ObfuscatedName("bi")
-   @ObfuscatedGetter(
-      intValue = -1513198459
-   )
    static int gameState;
-   @ObfuscatedName("bm")
-   @ObfuscatedGetter(
-      intValue = -744372313
-   )
    static int gameBuild;
-   @ObfuscatedName("bs")
    public static boolean isMembersWorld;
-   @ObfuscatedName("bu")
    static boolean onMobile;
-   @ObfuscatedName("bx")
-   @ObfuscatedGetter(
-      intValue = 1846758827
-   )
    public static int worldId;
-   @ObfuscatedName("bz")
    static boolean isLowDetail;
-   @ObfuscatedName("ca")
-   @ObfuscatedGetter(
-      intValue = -204101851
-   )
    static int hintArrowY;
-   @ObfuscatedName("cb")
-   @ObfuscatedGetter(
-      intValue = -445977517
-   )
    static int field854;
-   @ObfuscatedName("cc")
-   @ObfuscatedGetter(
-      intValue = 2049608033
-   )
    static int hintArrowType;
-   @ObfuscatedName("cd")
-   @ObfuscatedGetter(
-      intValue = 1080568465
-   )
    static int cycle;
-   @ObfuscatedName("ce")
-   @ObfuscatedGetter(
-      intValue = -1130052375
-   )
    static int rebootTimer;
-   @ObfuscatedName("cf")
-   @ObfuscatedGetter(
-      intValue = -1373196151
-   )
    static int hintArrowHeight;
-   @ObfuscatedName("ch")
-   @ObfuscatedSignature(
-      signature = "Lcn;"
-   )
    static AttackOption playerAttackOption;
-   @ObfuscatedName("ci")
    static boolean hadFocus;
-   @ObfuscatedName("cl")
-   @ObfuscatedGetter(
-      intValue = 648504057
-   )
    static int hintArrowNpcIndex;
    public static int tickCount;
    public static boolean interpolatePlayerAnimations;
    public static boolean interpolateNpcAnimations;
    public static boolean interpolateObjectAnimations;
    public static boolean interpolateWidgetAnimations;
-   public static RSTileItem lastItemDespawn;
+   public static TileItem lastItemDespawn;
    public static boolean stretchedFast;
    public static boolean stretchedKeepAspectRatio;
    public static boolean stretchedEnabled;
@@ -719,549 +266,151 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    public static boolean oldIsResized;
    public static int[] rl$modelViewportYs;
    public static int lastSoundEffectCount;
-   public static RSScript currentScript;
+   public static Script currentScript;
    public static int lastPitch;
    public static int itemPressedDurationBuffer;
-   public static RSPlayer[] oldPlayers;
+   public static Player[] oldPlayers;
    public static int lastPitchTarget;
    public static int currentScriptPC;
-   @ObfuscatedName("cm")
    static int hintArrowSubY;
-   @ObfuscatedName("cn")
    static boolean isLoading;
-   @ObfuscatedName("cq")
-   @ObfuscatedGetter(
-      intValue = 1932039353
-   )
    static int hintArrowX;
-   @ObfuscatedName("cr")
-   @ObfuscatedGetter(
-      intValue = -624148243
-   )
    static int field855;
-   @ObfuscatedName("ct")
-   @ObfuscatedGetter(
-      longValue = -8037513059658187963L
-   )
    static long field856;
-   @ObfuscatedName("cu")
    static boolean displayFps;
-   @ObfuscatedName("cw")
-   @ObfuscatedGetter(
-      intValue = 275182897
-   )
    static int hintArrowPlayerIndex;
-   @ObfuscatedName("cx")
    static int hintArrowSubX;
-   @ObfuscatedName("cy")
-   @ObfuscatedGetter(
-      longValue = 5290188514648997903L
-   )
    static long mouseLastLastPressedTimeMillis;
-   @ObfuscatedName("dd")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
    static Archive archive10;
-   @ObfuscatedName("de")
-   @ObfuscatedGetter(
-      intValue = -900928897
-   )
    static int field872;
-   @ObfuscatedName("dm")
-   @ObfuscatedGetter(
-      intValue = 963568873
-   )
    static int titleLoadingStage;
-   @ObfuscatedName("dt")
-   @ObfuscatedSignature(
-      signature = "Lcn;"
-   )
    static AttackOption npcAttackOption;
-   @ObfuscatedName("dy")
-   @ObfuscatedGetter(
-      intValue = 584801883
-   )
    static int js5ConnectState;
-   @ObfuscatedName("eb")
-   @ObfuscatedGetter(
-      intValue = -347893507
-   )
    static int npcCount;
-   @ObfuscatedName("ed")
    static byte[] randomDatData;
-   @ObfuscatedName("ee")
-   @ObfuscatedGetter(
-      intValue = 460753713
-   )
    static int field879;
-   @ObfuscatedName("ef")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
    static Archive archive17;
-   @ObfuscatedName("eo")
-   @ObfuscatedGetter(
-      intValue = 1787272407
-   )
    static int field878;
-   @ObfuscatedName("ep")
-   @ObfuscatedSignature(
-      signature = "Lff;"
-   )
    static class158 loginType;
-   @ObfuscatedName("eq")
-   @ObfuscatedGetter(
-      intValue = -14383853
-   )
    static int loginState;
-   @ObfuscatedName("er")
-   @ObfuscatedGetter(
-      intValue = -1286153331
-   )
    static int field877;
-   @ObfuscatedName("et")
-   @ObfuscatedSignature(
-      signature = "[Lck;"
-   )
    static NPC[] npcs;
-   @ObfuscatedName("ev")
    static boolean Login_isUsernameRemembered;
-   @ObfuscatedName("ew")
-   @ObfuscatedGetter(
-      intValue = 982456973
-   )
    static int js5Errors;
-   @ObfuscatedName("ez")
-   @ObfuscatedSignature(
-      signature = "Lcb;"
-   )
    static SecureRandomFuture secureRandomFuture;
-   @ObfuscatedName("fa")
    static HashMap fontsMap;
-   @ObfuscatedName("fb")
    static int[] npcIndices;
-   @ObfuscatedName("fc")
    static boolean field938;
-   @ObfuscatedName("fd")
    static int[] field889;
-   @ObfuscatedName("fe")
-   @ObfuscatedGetter(
-      intValue = -1928648709
-   )
    static int field841;
-   @ObfuscatedName("fh")
-   @ObfuscatedSignature(
-      signature = "Len;"
-   )
    static UrlRequester urlRequester;
-   @ObfuscatedName("fj")
-   @ObfuscatedGetter(
-      intValue = 543460729
-   )
    static int field897;
-   @ObfuscatedName("fm")
-   @ObfuscatedSignature(
-      signature = "Ljd;"
-   )
    static Timer timer;
-   @ObfuscatedName("fo")
-   @ObfuscatedSignature(
-      signature = "Lcl;"
-   )
    public static final PacketWriter packetWriter;
-   @ObfuscatedName("fp")
-   @ObfuscatedGetter(
-      intValue = -355199335
-   )
    static int field899;
-   @ObfuscatedName("fq")
-   @ObfuscatedGetter(
-      intValue = -1810258911
-   )
    static int logoutTimer;
-   @ObfuscatedName("fv")
    static boolean useBufferedSocket;
-   @ObfuscatedName("fx")
-   @ObfuscatedGetter(
-      intValue = -1697289513
-   )
    static int field898;
-   @ObfuscatedName("gf")
-   @ObfuscatedGetter(
-      intValue = -2045474947
-   )
    static int field906;
-   @ObfuscatedName("gl")
    static boolean isInInstance;
-   @ObfuscatedName("gm")
    static final int[] field905;
-   @ObfuscatedName("gs")
    static int[][][] instanceChunkTemplates;
-   @ObfuscatedName("gv")
-   @ObfuscatedGetter(
-      intValue = 1416543095
-   )
    static int field900;
-   @ObfuscatedName("gy")
-   @ObfuscatedGetter(
-      intValue = 1539626603
-   )
    static int field901;
-   @ObfuscatedName("hb")
-   @ObfuscatedGetter(
-      intValue = -1280891227
-   )
    static int alternativeScrollbarWidth;
-   @ObfuscatedName("hc")
-   @ObfuscatedGetter(
-      intValue = -1192657817
-   )
    static int field974;
-   @ObfuscatedName("hd")
-   @ObfuscatedGetter(
-      intValue = -148858111
-   )
    static int mouseCamClickedY;
-   @ObfuscatedName("hf")
-   @ObfuscatedGetter(
-      intValue = 1391902969
-   )
    static int mouseCamClickedX;
-   @ObfuscatedName("hh")
-   @ObfuscatedGetter(
-      intValue = -1078673109
-   )
    static int field907;
-   @ObfuscatedName("hi")
-   @ObfuscatedGetter(
-      intValue = 56611529
-   )
    static int camAngleDY;
-   @ObfuscatedName("hj")
    static int camFollowHeight;
-   @ObfuscatedName("hk")
-   @ObfuscatedGetter(
-      intValue = -1693078415
-   )
    static int field909;
-   @ObfuscatedName("hl")
    static boolean field911;
-   @ObfuscatedName("hm")
-   @ObfuscatedGetter(
-      intValue = -851788043
-   )
    static int camAngleX;
-   @ObfuscatedName("hp")
-   @ObfuscatedGetter(
-      intValue = -1637520021
-   )
    static int field922;
-   @ObfuscatedName("ht")
-   @ObfuscatedGetter(
-      intValue = 1330821821
-   )
    static int field908;
-   @ObfuscatedName("hu")
-   @ObfuscatedGetter(
-      intValue = 1157777555
-   )
    static int camAngleY;
-   @ObfuscatedName("hw")
-   @ObfuscatedGetter(
-      intValue = 1963305499
-   )
    static int oculusOrbState;
-   @ObfuscatedName("hx")
-   @ObfuscatedGetter(
-      intValue = 594555395
-   )
    static int camAngleDX;
-   @ObfuscatedName("hz")
-   @ObfuscatedGetter(
-      intValue = -572241931
-   )
    static int field910;
-   @ObfuscatedName("ia")
    static int[] overheadTextCyclesRemaining;
-   @ObfuscatedName("ib")
-   @ObfuscatedGetter(
-      intValue = -1611804213
-   )
    static int oculusOrbSlowedSpeed;
-   @ObfuscatedName("ic")
-   @ObfuscatedGetter(
-      intValue = -527920877
-   )
    static int viewportTempY;
-   @ObfuscatedName("id")
    static int[] overheadTextXOffsets;
-   @ObfuscatedName("if")
    static int[] overheadTextColors;
-   @ObfuscatedName("ig")
    static boolean field1087;
-   @ObfuscatedName("ih")
-   @ObfuscatedGetter(
-      intValue = -1473797019
-   )
    static int field923;
-   @ObfuscatedName("ii")
-   @ObfuscatedGetter(
-      intValue = -1627292871
-   )
    static int viewportTempX;
-   @ObfuscatedName("ij")
    static boolean field929;
-   @ObfuscatedName("ik")
-   @ObfuscatedGetter(
-      intValue = -1967946355
-   )
    static int overheadTextCount;
-   @ObfuscatedName("il")
-   @ObfuscatedGetter(
-      intValue = -1976595977
-   )
    static int viewportDrawCount;
-   @ObfuscatedName("im")
-   @ObfuscatedGetter(
-      intValue = -1513473005
-   )
    static int field926;
-   @ObfuscatedName("in")
    static int[][] tileLastDrawnActor;
-   @ObfuscatedName("io")
-   @ObfuscatedGetter(
-      intValue = -925368297
-   )
    static int oculusOrbNormalSpeed;
-   @ObfuscatedName("ip")
    static int[] overheadTextYs;
-   @ObfuscatedName("iq")
-   @ObfuscatedGetter(
-      intValue = 773031175
-   )
    static int field928;
-   @ObfuscatedName("ir")
    static int[] overheadTextEffects;
-   @ObfuscatedName("is")
-   @ObfuscatedGetter(
-      intValue = 130801757
-   )
    static int field930;
-   @ObfuscatedName("it")
    static String selectedItemName;
-   @ObfuscatedName("iu")
-   @ObfuscatedGetter(
-      intValue = 2101736993
-   )
    static int overheadTextLimit;
-   @ObfuscatedName("iv")
    static String[] overheadText;
-   @ObfuscatedName("iw")
    static int[] overheadTextAscents;
-   @ObfuscatedName("iy")
    static int[] overheadTextXs;
-   @ObfuscatedName("jb")
-   @ObfuscatedGetter(
-      intValue = 1577400495
-   )
    static int field842;
-   @ObfuscatedName("jc")
-   @ObfuscatedGetter(
-      intValue = 2007699929
-   )
    static int field951;
-   @ObfuscatedName("jd")
-   @ObfuscatedGetter(
-      intValue = -438601773
-   )
    static int field953;
-   @ObfuscatedName("je")
-   @ObfuscatedGetter(
-      intValue = 1152437527
-   )
    static int mouseCrossState;
-   @ObfuscatedName("jf")
-   @ObfuscatedGetter(
-      intValue = 2052271037
-   )
    static int field958;
-   @ObfuscatedName("jh")
-   @ObfuscatedGetter(
-      intValue = 1036462411
-   )
    static int dragItemSlotDestination;
-   @ObfuscatedName("jj")
    static boolean renderSelf;
-   @ObfuscatedName("jl")
    static boolean showLoadingMessages;
-   @ObfuscatedName("jm")
-   @ObfuscatedSignature(
-      signature = "[Lbi;"
-   )
    static Player[] players;
-   @ObfuscatedName("jo")
-   @ObfuscatedGetter(
-      intValue = -1643414129
-   )
    static int field954;
-   @ObfuscatedName("jp")
-   @ObfuscatedGetter(
-      intValue = -1979890787
-   )
    static int dragItemSlotSource;
-   @ObfuscatedName("jq")
-   @ObfuscatedGetter(
-      intValue = 87159269
-   )
    static int localPlayerIndex;
-   @ObfuscatedName("jr")
    static boolean field956;
-   @ObfuscatedName("js")
-   @ObfuscatedGetter(
-      intValue = 978670267
-   )
    static int mouseCrossX;
-   @ObfuscatedName("jt")
-   @ObfuscatedGetter(
-      intValue = -588599615
-   )
    static int mouseCrossColor;
-   @ObfuscatedName("jv")
-   @ObfuscatedGetter(
-      intValue = -1556961545
-   )
    static int mouseCrossY;
-   @ObfuscatedName("jw")
-   @ObfuscatedGetter(
-      intValue = -1965230699
-   )
    static int itemDragDuration;
-   @ObfuscatedName("jx")
    static boolean showMouseCross;
-   @ObfuscatedName("jy")
-   @ObfuscatedGetter(
-      intValue = 1781220751
-   )
    static int field844;
-   @ObfuscatedName("ka")
-   @ObfuscatedSignature(
-      signature = "Ljv;"
-   )
    static NodeDeque pendingSpawns;
-   @ObfuscatedName("kb")
    static boolean[] playerOptionsPriorities;
-   @ObfuscatedName("kd")
    static int[] experience;
-   @ObfuscatedName("kf")
-   @ObfuscatedGetter(
-      intValue = 722101389
-   )
    static int combatTargetPlayerIndex;
-   @ObfuscatedName("kg")
    static boolean isMenuOpen;
-   @ObfuscatedName("kh")
    static String[] playerMenuActions;
-   @ObfuscatedName("ki")
-   @ObfuscatedGetter(
-      intValue = -2014818077
-   )
    static int drawPlayerNames;
-   @ObfuscatedName("kj")
-   @ObfuscatedSignature(
-      signature = "Ljv;"
-   )
    static NodeDeque graphicsObjects;
-   @ObfuscatedName("kl")
-   @ObfuscatedSignature(
-      signature = "[[[Ljv;"
-   )
    static NodeDeque[][][] groundItems;
-   @ObfuscatedName("km")
    static int[] currentLevels;
-   @ObfuscatedName("kn")
    static final int[] playerMenuOpcodes;
-   @ObfuscatedName("ko")
-   @ObfuscatedGetter(
-      intValue = 729085131
-   )
    static int field848;
-   @ObfuscatedName("kr")
    static int[] field966;
-   @ObfuscatedName("kt")
-   @ObfuscatedSignature(
-      signature = "Ljv;"
-   )
    static NodeDeque projectiles;
-   @ObfuscatedName("kv")
-   @ObfuscatedGetter(
-      intValue = 421096745
-   )
    static int leftClickOpensMenu;
-   @ObfuscatedName("ky")
    static int[] levels;
-   @ObfuscatedName("kz")
    static int[] defaultRotations;
-   @ObfuscatedName("la")
-   @ObfuscatedGetter(
-      intValue = 1721267483
-   )
    static int field996;
-   @ObfuscatedName("lb")
    static int[] menuArguments2;
-   @ObfuscatedName("ld")
    static int[] menuArguments1;
-   @ObfuscatedName("lf")
    static boolean tapToDrop;
-   @ObfuscatedName("lg")
-   @ObfuscatedGetter(
-      intValue = -546279315
-   )
    static int viewportY;
-   @ObfuscatedName("lh")
-   @ObfuscatedGetter(
-      intValue = -1819095265
-   )
    static int viewportX;
-   @ObfuscatedName("li")
-   @ObfuscatedGetter(
-      intValue = -133249451
-   )
    static int selectedSpellChildIndex;
-   @ObfuscatedName("lj")
-   @ObfuscatedGetter(
-      intValue = 509497683
-   )
    static int field995;
-   @ObfuscatedName("ll")
    static String[] menuActions;
-   @ObfuscatedName("lm")
    static boolean followerOpsLowPriority;
-   @ObfuscatedName("ln")
    static String[] menuTargets;
-   @ObfuscatedName("lo")
    static boolean showMouseOverText;
-   @ObfuscatedName("lp")
    static boolean shiftClickDrop;
-   @ObfuscatedName("lq")
    static int[] menuIdentifiers;
-   @ObfuscatedName("lr")
-   @ObfuscatedGetter(
-      intValue = 241697491
-   )
    static int isItemSelected;
-   @ObfuscatedName("ls")
    static int[] menuOpcodes;
-   @ObfuscatedName("lw")
-   @ObfuscatedGetter(
-      intValue = 813297127
-   )
    static int menuOptionsCount;
-   @ObfuscatedName("lx")
    static boolean[] menuShiftClick;
-   @ObfuscatedName("lz")
    static boolean isSpellSelected;
-   @ObfuscatedName("mf")
    static String selectedSpellActionName;
    public DrawCallbacks drawCallbacks;
    @Inject
@@ -1563,11 +712,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       this.rl$$init1();
    }
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-60"
-   )
    protected final void vmethod1937() {
       ++cycle;
       this.method1650();
@@ -1686,19 +830,9 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-2052837160"
-   )
    protected final void vmethod1643() {
    }
 
-   @ObfuscatedName("ar")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "16"
-   )
    protected final void vmethod1646() {
       int[] var1 = new int[]{20, 260, 10000};
       int[] var2 = new int[]{1000, 100, 500};
@@ -1746,11 +880,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       Tiles.friendSystem = new FriendSystem(WorldMapSection1.loginType);
    }
 
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "87"
-   )
    protected final void vmethod1699() {
       if(class197.varcs.method2173()) {
          class197.varcs.method2168();
@@ -1783,11 +912,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       Occluder.method3081();
    }
 
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      signature = "(ZI)V",
-      garbageValue = "-1679134607"
-   )
    protected final void vmethod1732(boolean var1) {
       this.draw(var1);
 
@@ -1899,11 +1023,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "2027797509"
-   )
    protected final void vmethod1819() {
       field962 = class33.method680() + 500L;
       this.method1656();
@@ -1913,27 +1032,27 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   public RSItemContainer getItemContainer(InventoryID var1) {
-      RSNodeHashTable var2 = this.getItemContainers();
-      return (RSItemContainer)var2.get((long)var1.getId());
+   public ItemContainer getItemContainer(InventoryID var1) {
+      NodeHashTable var2 = ItemContainer.itemContainers;
+      return (ItemContainer)var2.get((long)var1.getId());
    }
 
-   public RSSprite[] getSprites(IndexDataBase var1, int var2, int var3) {
-      RSAbstractArchive var4 = (RSAbstractArchive)var1;
-      byte[] var5 = var4.getConfigData(var2, var3);
+   public Sprite[] getSprites(IndexDataBase var1, int var2, int var3) {
+      AbstractArchive var4 = (AbstractArchive)var1;
+      byte[] var5 = var4.method4020(var2, var3, (short) 3526);
       if(var5 == null) {
          return null;
       } else {
-         this.decodeSprite(var5);
-         int var6 = this.getIndexedSpriteCount();
-         int var7 = this.getIndexedSpriteWidth();
-         int var8 = this.getIndexedSpriteHeight();
-         int[] var9 = this.getIndexedSpriteOffsetXs();
-         int[] var10 = this.getIndexedSpriteOffsetYs();
-         int[] var11 = this.getIndexedSpriteWidths();
-         int[] var12 = this.getIndexedSpriteHeights();
-         byte[][] var13 = this.getSpritePixels();
-         int[] var14 = this.getIndexedSpritePalette();
+         Tiles.decodeSprite(var5);
+         int var6 = class329.SpriteBuffer_spriteCount;
+         int var7 = class329.SpriteBuffer_spriteWidth;
+         int var8 = Frames.SpriteBuffer_spriteHeight;
+         int[] var9 = class329.SpriteBuffer_xOffsets;
+         int[] var10 = MusicPatchPcmStream.SpriteBuffer_yOffsets;
+         int[] var11 = class329.SpriteBuffer_spriteWidths;
+         int[] var12 = RunException.SpriteBuffer_spriteHeights;
+         byte[][] var13 = PacketBufferNode.SpriteBuffer_pixels;
+         int[] var14 = class329.SpriteBuffer_spritePalette;
          Sprite[] var15 = new Sprite[var6];
 
          for(int var16 = 0; var16 < var6; ++var16) {
@@ -1941,7 +1060,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
             int var18 = var12[var16];
             byte[] var19 = var13[var16];
             int[] var20 = new int[var17 * var18];
-            RSSprite var21 = this.createSprite(var20, var17, var18);
+            Sprite var21 = this.createSprite(var20, var17, var18);
             var21.setMaxHeight(var8);
             var21.setMaxWidth(var7);
             var21.setOffsetX(var9[var16]);
@@ -1954,25 +1073,25 @@ public final class Client extends GameShell implements Usernamed, RSClient {
             var15[var16] = (Sprite)var21;
          }
 
-         this.setIndexedSpriteOffsetXs((int[])null);
-         this.setIndexedSpriteOffsetYs((int[])null);
-         this.setIndexedSpriteWidths((int[])null);
-         this.setIndexedSpriteHeights((int[])null);
-         this.setIndexedSpritePalette((int[])null);
-         this.setSpritePixels((byte[][])null);
+         class329.SpriteBuffer_xOffsets = (int[])null;
+         MusicPatchPcmStream.SpriteBuffer_yOffsets = (int[])null;
+         class329.SpriteBuffer_spriteWidths = (int[])null;
+         RunException.SpriteBuffer_spriteHeights = (int[])null;
+         class329.SpriteBuffer_spritePalette = (int[])null;
+         PacketBufferNode.SpriteBuffer_pixels = (byte[][])null;
          return var15;
       }
    }
 
-   public RSSprite drawInstanceMap(int var1) {
-      RSSprite var2 = this.createSprite(new int[262144], 512, 512);
-      RSSprite var3 = this.getMinimapSprite();
-      RSScene var4 = this.getScene();
+   public Sprite drawInstanceMap(int var1) {
+      Sprite var2 = this.createSprite(new int[262144], 512, 512);
+      Sprite var3 = ObjectSound.sceneMinimapSprite;
+      Scene var4 = this.getScene();
       int[] var5 = var2.getPixels();
       byte[][][] var6 = this.getTileSettings();
 
       try {
-         this.setMinimapSprite(var2);
+         ObjectSound.sceneMinimapSprite = (Sprite) var2;
 
          int var8;
          int var9;
@@ -1999,80 +1118,34 @@ public final class Client extends GameShell implements Usernamed, RSClient {
          for(int var10 = 1; var10 < 103; ++var10) {
             for(int var11 = 1; var11 < 103; ++var11) {
                if((var6[var1][var11][var10] & 24) == 0) {
-                  this.drawObject(var1, var11, var10, var8, var9);
+                  class30.drawObject(var1, var11, var10, var8, var9);
                }
 
                if(var1 < 3 && (var6[var1 + 1][var11][var10] & 8) != 0) {
-                  this.drawObject(var1 + 1, var11, var10, var8, var9);
+                  class30.drawObject(var1 + 1, var11, var10, var8, var9);
                }
             }
          }
       } finally {
          this.getBufferProvider().setRaster();
-         this.setMinimapSprite(var3);
+         ObjectSound.sceneMinimapSprite = (Sprite) var3;
       }
 
       return var2;
    }
 
-   public void setRSModIcons(RSIndexedSprite[] var1) {
+   public void setRSModIcons(IndexedSprite[] var1) {
       AbstractFont.AbstractFont_modIconSprites = (IndexedSprite[])var1;
    }
 
-   public int getCycleCntr() {
-      return cycleCntr;
-   }
-
-   public int getDestinationX() {
-      return destinationX;
-   }
-
-   public int getFlags() {
-      return worldProperties;
-   }
-
-   public void setLowMemory(boolean var1) {
-      isLowDetail = var1;
-   }
-
-   public int getRSGameState() {
-      return gameState;
-   }
-
-   public int getNpcIndexesCount() {
-      return npcCount;
-   }
-
+   @Override
    public int[] getBoostedSkillLevels() {
       return currentLevels;
    }
 
+   @Override
    public int[] getRealSkillLevels() {
       return levels;
-   }
-
-   public int getWidgetRoot() {
-      return rootInterface;
-   }
-
-   public RSAbstractArchive getIndexCache4() {
-      return GrandExchangeOfferAgeComparator.archive4;
-   }
-
-   public RSEvictingDualNodeHashTable getHealthBarCache() {
-      return HealthBarDefinition.HealthBarDefinition_cached;
-   }
-
-   public int getPlayerIndexesCount() {
-      return Players.Players_count;
-   }
-
-   public int getSelectedSceneTileX() {
-      return Scene.Scene_selectedX;
-   }
-
-   public int getMenuX() {
-      return UrlRequester.menuX;
    }
 
    public boolean isStretchedEnabled() {
@@ -2081,34 +1154,22 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public void playSoundEffect(int var1, int var2, int var3, int var4, int var5) {
       int var6 = ((var2 & 255) << 16) + ((var3 & 255) << 8) + (var4 & 255);
-      int[] var7 = this.getQueuedSoundEffectIDs();
-      int[] var8 = this.getQueuedSoundEffectLoops();
-      int[] var9 = this.getQueuedSoundEffectDelays();
-      RSSoundEffect[] var10 = this.getAudioEffects();
-      int[] var11 = this.getSoundLocations();
-      int var12 = this.getQueuedSoundEffectCount();
+      int[] var7 = soundEffectIds;
+      int[] var8 = queuedSoundEffectLoops;
+      int[] var9 = queuedSoundEffectDelays;
+      SoundEffect[] var10 = soundEffects;
+      int[] var11 = soundLocations;
+      int var12 = soundEffectCount;
       var7[var12] = var1;
       var8[var12] = 1;
       var9[var12] = var5;
       var10[var12] = null;
       var11[var12] = var6;
-      this.setQueuedSoundEffectCount(var12 + 1);
-   }
-
-   public RSNodeHashTable getItemContainers() {
-      return ItemContainer.itemContainers;
-   }
-
-   public int getMouseX() {
-      return MouseHandler.MouseHandler_xVolatile;
-   }
-
-   public RSLoginType getLoginType() {
-      return WorldMapSection1.loginType;
+      soundEffectCount = var12 + 1;
    }
 
    public HintArrowType getHintArrowType() {
-      int var1 = ViewportMouse.client.getHintArrowTargetType();
+      int var1 = hintArrowType;
       return var1 == HintArrowType.NPC.getValue()?HintArrowType.NPC:(var1 == HintArrowType.PLAYER.getValue()?HintArrowType.PLAYER:(var1 == HintArrowType.WORLD_POSITION.getValue()?HintArrowType.WORLD_POSITION:HintArrowType.NONE));
    }
 
@@ -2121,6 +1182,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       return this.getVarbitValue(this.getVarps(), var2);
    }
 
+   @Override
    public int[] getSkillExperiences() {
       return experience;
    }
@@ -2136,15 +1198,12 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public Map getVarcMap() {
-      return this.getVarcs().getVarcMap();
+      return class197.varcs.map;
    }
 
+   @Override
    public boolean isResized() {
       return isResizable;
-   }
-
-   public RSWidget[][] getWidgets() {
-      return UserComparator5.Widget_interfaceComponents;
    }
 
    public final boolean copy$shouldLeftClickOpenMenu(byte var1) {
@@ -2152,44 +1211,19 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       return (leftClickOpensMenu == 1 && menuOptionsCount > 2 || ParamDefinition.method4325(var2)) && !menuShiftClick[var2];
    }
 
-   public RSVarcs getVarcs() {
-      return class197.varcs;
-   }
-
-   public RSClanChat getClanMemberManager() {
-      return Varps.clanChat;
-   }
-
-   public RSSprite createSprite(int[] var1, int var2, int var3) {
+   @Override
+   public Sprite createSprite(int[] var1, int var2, int var3) {
       return new Sprite(var1, var2, var3);
    }
 
+   @Override
    public int[] getVarps() {
       return Varps.Varps_main;
    }
 
-   public String[] getMenuOptions() {
-      return menuActions;
-   }
-
-   public RSFriendSystem getFriendManager() {
-      return Tiles.friendSystem;
-   }
-
+   @Override
    public int getMenuOptionCount() {
       return menuOptionsCount;
-   }
-
-   public RSNodeDeque getProjectilesDeque() {
-      return projectiles;
-   }
-
-   public RSNodeDeque getGraphicsObjectDeque() {
-      return graphicsObjects;
-   }
-
-   public void addChatMessage(int var1, String var2, String var3, String var4) {
-      WorldMapData_1.method514(var1, var2, var3, var4);
    }
 
    public Callbacks getCallbacks() {
@@ -2198,13 +1232,13 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public MenuEntry[] getMenuEntries() {
       int var1 = this.getMenuOptionCount();
-      String[] var2 = this.getMenuOptions();
-      String[] var3 = this.getMenuTargets();
-      int[] var4 = this.getMenuIdentifiers();
-      int[] var5 = this.getMenuOpcodes();
-      int[] var6 = this.getMenuArguments1();
-      int[] var7 = this.getMenuArguments2();
-      boolean[] var8 = this.getMenuForceLeftClick();
+      String[] var2 = menuActions;
+      String[] var3 = menuTargets;
+      int[] var4 = menuIdentifiers;
+      int[] var5 = menuOpcodes;
+      int[] var6 = menuArguments1;
+      int[] var7 = menuArguments2;
+      boolean[] var8 = menuShiftClick;
       MenuEntry[] var9 = new MenuEntry[var1];
 
       for(int var10 = 0; var10 < var1; ++var10) {
@@ -2226,97 +1260,42 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       this.modulus = new BigInteger("94210824259843347324509385276594109263523823612210415282840685497179394322370180677069205378760490069724955139827325518162089726630921395369270393801925644637806226306156731189625154078707248525519618118185550146216513714101970726787284175941436804270501308516733103597242337227056455402809871503542425244523");
    }
 
-   public int getMenuY() {
-      return class37.menuY;
-   }
-
-   public int getDestinationY() {
-      return destinationY;
-   }
-
-   public void setChatCycle(int var1) {
-      chatCycle = var1;
-   }
-
-   public int[] getNpcIndices() {
-      return npcIndices;
-   }
-
-   public int[] getPlayerIndices() {
-      return Players.Players_indices;
-   }
-
-   public void setSceneLowMemory(boolean var1) {
-      Scene.Scene_isLowDetail = var1;
-   }
-
-   public int getSelectedSceneTileY() {
-      return Scene.Scene_selectedY;
-   }
-
-   public RSSoundEffect getTrack(RSAbstractArchive var1, int var2, int var3) {
-      return SoundEffect.method2092((AbstractArchive)var1, var2, var3);
-   }
-
    public void invokeMenuAction(int var1, int var2, int var3, int var4, String var5, String var6, int var7, int var8) {
-      ViewportMouse.client.sendMenuAction(var1, var2, var3, var4, var5, "!AUTHENTIC" + var6, var7, var8);
+      InvDefinition.sendMenuAction(var1, var2, var3, var4, var5, "!AUTHENTIC" + var6, var7, var8, 1826014571);
    }
 
-   public RSUsername createName(String var1, RSLoginType var2) {
+   public Username createName(String var1, LoginType var2) {
       return new Username(var1, (LoginType)var2);
    }
 
-   public int getMouseY() {
-      return MouseHandler.MouseHandler_yVolatile;
-   }
-
-   public RSSprite getMinimapSprite() {
-      return ObjectSound.sceneMinimapSprite;
-   }
-
+   @Override
    public int get3dZoom() {
       return Rasterizer3D.Rasterizer3D_zoom;
    }
 
-   public void decodeSprite(byte[] var1) {
-      Tiles.method1200(var1);
-   }
-
-   public int[] getQueuedSoundEffectIDs() {
-      return soundEffectIds;
-   }
-
    public net.runelite.api.widgets.Widget getWidget(int var1, int var2) {
-      RSWidget[][] var3 = this.getWidgets();
+      Widget[][] var3 = UserComparator5.Widget_interfaceComponents;
       if(var3 != null && var3.length > var1) {
-         RSWidget[] var4 = var3[var1];
+         Widget[] var4 = var3[var1];
          return var4 != null && var4.length > var2?var4[var2]:null;
       } else {
          return null;
       }
    }
 
-   public String[] getMenuTargets() {
-      return menuTargets;
-   }
-
    public void setVarbitValue(int[] var1, int var2, int var3) {
-      RSVarbitDefinition var4 = (RSVarbitDefinition)this.varbitCache.getIfPresent(Integer.valueOf(var2));
+      VarbitDefinition var4 = (VarbitDefinition)this.varbitCache.getIfPresent(Integer.valueOf(var2));
       if(var4 == null) {
-         ViewportMouse.client.getVarbit(var2);
-         RSEvictingDualNodeHashTable var5 = ViewportMouse.client.getVarbitCache();
-         var4 = (RSVarbitDefinition)var5.get((long)var2);
+         WorldMapSprite.getVarbit(var2);
+         EvictingDualNodeHashTable var5 = VarbitDefinition.VarbitDefinition_cached;
+         var4 = (VarbitDefinition)var5.get((long)var2);
          this.varbitCache.put(Integer.valueOf(var2), var4);
       }
 
-      int var8 = var4.getLeastSignificantBit();
-      int var6 = var4.getMostSignificantBit();
+      int var8 = var4.startBit;
+      int var6 = var4.endBit;
       int var7 = (1 << var6 - var8 + 1) - 1;
-      var1[var4.getIndex()] = var1[var4.getIndex()] & ~(var7 << var8) | (var3 & var7) << var8;
-   }
-
-   public RSEvictingDualNodeHashTable getHealthBarSpriteCache() {
-      return HealthBarDefinition.HealthBarDefinition_cachedSprites;
+      var1[var4.baseVar] = var1[var4.baseVar] & ~(var7 << var8) | (var3 & var7) << var8;
    }
 
    public net.runelite.api.widgets.Widget getWidget(WidgetInfo var1) {
@@ -2329,20 +1308,20 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       if(!$assertionsDisabled && !ViewportMouse.client.isClientThread()) {
          throw new AssertionError();
       } else {
-         RSVarbitDefinition var3 = (RSVarbitDefinition)this.varbitCache.getIfPresent(Integer.valueOf(var2));
+         VarbitDefinition var3 = (VarbitDefinition)this.varbitCache.getIfPresent(Integer.valueOf(var2));
          if(var3 == null) {
-            ViewportMouse.client.getVarbit(var2);
-            RSEvictingDualNodeHashTable var4 = ViewportMouse.client.getVarbitCache();
-            var3 = (RSVarbitDefinition)var4.get((long)var2);
+            WorldMapSprite.getVarbit(var2);
+            EvictingDualNodeHashTable var4 = VarbitDefinition.VarbitDefinition_cached;
+            var3 = (VarbitDefinition)var4.get((long)var2);
             this.varbitCache.put(Integer.valueOf(var2), var3);
          }
 
-         if(var3.getIndex() == 0 && var3.getLeastSignificantBit() == 0 && var3.getMostSignificantBit() == 0) {
+         if(var3.baseVar == 0 && var3.startBit == 0 && var3.endBit == 0) {
             throw new IndexOutOfBoundsException("Varbit " + var2 + " does not exist");
          } else {
-            int var8 = var1[var3.getIndex()];
-            int var5 = var3.getLeastSignificantBit();
-            int var6 = var3.getMostSignificantBit();
+            int var8 = var1[var3.baseVar];
+            int var5 = var3.startBit;
+            int var6 = var3.endBit;
             int var7 = (1 << var6 - var5 + 1) - 1;
             return var8 >> var5 & var7;
          }
@@ -2353,40 +1332,19 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       this.varbitCache = CacheBuilder.newBuilder().maximumSize(128L).build();
    }
 
-   public RSNPC[] getCachedNPCs() {
+   @Override
+   public NPC[] getCachedNPCs() {
       return npcs;
    }
 
-   public RSPlayer[] getCachedPlayers() {
+   @Override
+   public Player[] getCachedPlayers() {
       return players;
    }
 
-   public int getMenuWidth() {
-      return FriendSystem.menuWidth;
-   }
-
-   public void setAudioHighMemory(boolean var1) {
-      PcmPlayer.PcmPlayer_stereo = var1;
-   }
-
-   public int getIndexedSpriteCount() {
-      return class329.SpriteBuffer_spriteCount;
-   }
-
-   public int[] getQueuedSoundEffectLoops() {
-      return queuedSoundEffectLoops;
-   }
-
-   public RSScene getScene() {
+   @Override
+   public Scene getScene() {
       return PacketWriter.scene;
-   }
-
-   public int[] getMenuIdentifiers() {
-      return menuIdentifiers;
-   }
-
-   public void set3dZoom(int var1) {
-      Rasterizer3D.Rasterizer3D_zoom = var1;
    }
 
    public long getOverallExperience() {
@@ -2401,22 +1359,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
 
       return var2;
-   }
-
-   public int getSoundEffectVolume() {
-      return soundEffectVolume;
-   }
-
-   public void setObjectDefinitionLowDetail(boolean var1) {
-      ObjectDefinition.ObjectDefinition_isLowDetail = var1;
-   }
-
-   public RSEnumDefinition getRsEnum(int var1) {
-      return UserComparator10.getEnum(var1);
-   }
-
-   public int getMenuHeight() {
-      return WorldMapDecoration.menuHeight;
    }
 
    public final void copy$menu(short var1) {
@@ -2617,26 +1559,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   public int getIndexedSpriteWidth() {
-      return class329.SpriteBuffer_spriteWidth;
-   }
-
-   public RSSprite createItemSprite(int var1, int var2, int var3, int var4, int var5, boolean var6) {
-      return GrandExchangeOfferWorldComparator.createSprite(var1, var2, var3, var4, var5, var6);
-   }
-
-   public RSScriptEvent createScriptEvent() {
-      return new ScriptEvent();
-   }
-
-   public int[] getQueuedSoundEffectDelays() {
-      return queuedSoundEffectDelays;
-   }
-
-   public int[] getMenuOpcodes() {
-      return menuOpcodes;
-   }
-
    public Dimension getRealDimensions() {
       if(!this.isStretchedEnabled()) {
          return this.getCanvas().getSize();
@@ -2675,8 +1597,8 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       int var10 = Perspective.COSINE[var6];
       int var11 = ViewportMouse.client.getCenterX();
       int var12 = ViewportMouse.client.getCenterY();
-      int var13 = ViewportMouse.client.getViewportMouseX();
-      int var14 = ViewportMouse.client.getViewportMouseY();
+      int var13 = ViewportMouse.ViewportMouse_x;
+      int var14 = ViewportMouse.ViewportMouse_y;
       int var15 = ViewportMouse.client.get3dZoom();
       int var16 = (var13 - var11) * 50 / var15;
       int var17 = (var14 - var12) * 50 / var15;
@@ -2731,35 +1653,25 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       return var41;
    }
 
+   @Override
    public byte[][][] getTileSettings() {
       return Tiles.Tiles_renderFlags;
    }
 
-   public int getIndexedSpriteHeight() {
-      return Frames.SpriteBuffer_spriteHeight;
-   }
-
-   public RSSoundEffect[] getAudioEffects() {
-      return soundEffects;
-   }
-
-   public int[] getMenuArguments1() {
-      return menuArguments1;
-   }
-
+   @Override
    public int getPlane() {
       return WorldMapRectangle.plane;
    }
 
    public void setMenuEntries(MenuEntry[] var1) {
       int var2 = 0;
-      String[] var3 = this.getMenuOptions();
-      String[] var4 = this.getMenuTargets();
-      int[] var5 = this.getMenuIdentifiers();
-      int[] var6 = this.getMenuOpcodes();
-      int[] var7 = this.getMenuArguments1();
-      int[] var8 = this.getMenuArguments2();
-      boolean[] var9 = this.getMenuForceLeftClick();
+      String[] var3 = menuActions;
+      String[] var4 = menuTargets;
+      int[] var5 = menuIdentifiers;
+      int[] var6 = menuOpcodes;
+      int[] var7 = menuArguments1;
+      int[] var8 = menuArguments2;
+      boolean[] var9 = menuShiftClick;
       MenuEntry[] var10 = var1;
       int var11 = var1.length;
 
@@ -2781,146 +1693,24 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       oldMenuEntryCount = var2;
    }
 
-   public RSDecimator getSoundEffectResampler() {
-      return Interpreter.decimator;
-   }
-
-   public void runScript(RSScriptEvent var1, int var2) {
-      KeyHandler.method506((ScriptEvent)var1, var2, (byte)0);
-   }
-
-   public RSAbstractRasterProvider getBufferProvider() {
+   @Override
+   public AbstractRasterProvider getBufferProvider() {
       return class30.rasterProvider;
    }
 
-   public void setMinimapSprite(net.runelite.api.Sprite var1) {
-      ObjectSound.sceneMinimapSprite = (Sprite)var1;
-   }
-
-   public int[] getIndexedSpriteOffsetXs() {
-      return class329.SpriteBuffer_xOffsets;
-   }
-
-   public int[] getSoundLocations() {
-      return soundLocations;
-   }
-
-   public void rasterizerDrawHorizontalLine(int var1, int var2, int var3, int var4) {
-      Rasterizer2D.method6424(var1, var2, var3, var4);
-   }
-
-   public int[] getMenuArguments2() {
-      return menuArguments2;
-   }
-
-   public int[] getIndexedSpriteOffsetYs() {
-      return MusicPatchPcmStream.SpriteBuffer_yOffsets;
-   }
-
-   public RSRawPcmStream createRawPcmStream(RSRawSound var1, int var2, int var3) {
-      return RawPcmStream.method2601((RawSound)var1, var2, var3);
-   }
-
-   public int getQueuedSoundEffectCount() {
-      return soundEffectCount;
-   }
-
-   public boolean[] getMenuForceLeftClick() {
-      return menuShiftClick;
-   }
-
-   public int[] getIndexedSpriteWidths() {
-      return class329.SpriteBuffer_spriteWidths;
-   }
-
+   @Override
    public void setMenuOptionCount(int var1) {
       menuOptionsCount = var1;
    }
 
-   public RSPcmStreamMixer getSoundEffectAudioQueue() {
-      return WorldMapLabelSize.pcmStreamMixer;
-   }
-
    public void addHashAtMouse(long var1) {
-      long[] var3 = ViewportMouse.client.getEntitiesAtMouse();
-      int var4 = ViewportMouse.client.getEntitiesAtMouseCount();
+      long[] var3 = ViewportMouse.ViewportMouse_entityTags;
+      int var4 = ViewportMouse.ViewportMouse_entityCount;
       if(var4 < 1000) {
          var3[var4] = var1;
-         ViewportMouse.client.setEntitiesAtMouseCount(var4 + 1);
+         ViewportMouse.ViewportMouse_entityCount = var4 + 1;
       }
 
-   }
-
-   public int[] getIndexedSpriteHeights() {
-      return RunException.SpriteBuffer_spriteHeights;
-   }
-
-   public byte[][] getSpritePixels() {
-      return PacketBufferNode.SpriteBuffer_pixels;
-   }
-
-   public int[] getIndexedSpritePalette() {
-      return class329.SpriteBuffer_spritePalette;
-   }
-
-   public void setQueuedSoundEffectCount(int var1) {
-      soundEffectCount = var1;
-   }
-
-   public void rasterizerDrawVerticalLine(int var1, int var2, int var3, int var4) {
-      Rasterizer2D.method6426(var1, var2, var3, var4);
-   }
-
-   public void setIndexedSpriteOffsetXs(int[] var1) {
-      class329.SpriteBuffer_xOffsets = var1;
-   }
-
-   public void setIndexedSpriteOffsetYs(int[] var1) {
-      MusicPatchPcmStream.SpriteBuffer_yOffsets = var1;
-   }
-
-   public void setIndexedSpriteWidths(int[] var1) {
-      class329.SpriteBuffer_spriteWidths = var1;
-   }
-
-   public void setIndexedSpriteHeights(int[] var1) {
-      RunException.SpriteBuffer_spriteHeights = var1;
-   }
-
-   public void setIndexedSpritePalette(int[] var1) {
-      class329.SpriteBuffer_spritePalette = var1;
-   }
-
-   public void rasterizerDrawRectangle(int var1, int var2, int var3, int var4, int var5) {
-      Rasterizer2D.drawRectangle(var1, var2, var3, var4, var5);
-   }
-
-   public void setSpritePixels(byte[][] var1) {
-      PacketBufferNode.SpriteBuffer_pixels = var1;
-   }
-
-   public void drawObject(int var1, int var2, int var3, int var4, int var5) {
-      class30.method649(var1, var2, var3, var4, var5);
-   }
-
-   public void rasterizerDrawCircle(int var1, int var2, int var3, int var4) {
-      Rasterizer2D.method6415(var1, var2, var3, var4);
-   }
-
-   public void rasterizerDrawGradient(int var1, int var2, int var3, int var4, int var5, int var6) {
-      Rasterizer2D.method6419(var1, var2, var3, var4, var5, var6);
-   }
-
-   public void rasterizerFillRectangle(int var1, int var2, int var3, int var4, int var5) {
-      Rasterizer2D.method6469(var1, var2, var3, var4, var5);
-   }
-
-   public RSFont getFontBold12() {
-      return class170.fontBold12;
-   }
-
-   public void rasterizerFillRectangleAlpha(int var1, int var2, int var3, int var4, int var5, int var6) {
-      Rasterizer2D.fillRectangleAlpha(var1, var2, var3, var4, var5, var6);
    }
 
    public final void init() {
@@ -3234,15 +2024,15 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public net.runelite.api.Tile getSelectedSceneTile() {
-      int var1 = this.getSelectedSceneTileX();
-      int var2 = this.getSelectedSceneTileY();
+      int var1 = Scene.Scene_selectedX;
+      int var2 = Scene.Scene_selectedY;
       return var1 != -1 && var2 != -1?this.getScene().getTiles()[this.getPlane()][var1][var2]:null;
    }
 
    public List getPlayers() {
-      int var1 = this.getPlayerIndexesCount();
-      int[] var2 = this.getPlayerIndices();
-      RSPlayer[] var3 = this.getCachedPlayers();
+      int var1 = Players.Players_count;
+      int[] var2 = Players.Players_indices;
+      Player[] var3 = this.getCachedPlayers();
       ArrayList var4 = new ArrayList(var1);
 
       for(int var5 = 0; var5 < var1; ++var5) {
@@ -3253,9 +2043,9 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public List getNpcs() {
-      int var1 = this.getNpcIndexesCount();
-      int[] var2 = this.getNpcIndices();
-      RSNPC[] var3 = this.getCachedNPCs();
+      int var1 = npcCount;
+      int[] var2 = npcIndices;
+      NPC[] var3 = this.getCachedNPCs();
       ArrayList var4 = new ArrayList(var1);
 
       for(int var5 = 0; var5 < var1; ++var5) {
@@ -3290,39 +2080,41 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public void addChatMessage(ChatMessageType var1, String var2, String var3, String var4) {
-      this.addChatMessage(var1.getType(), var2, var3, var4);
+      WorldMapData_1.addChatMessage(var1.getType(), var2, var3, var4);
    }
 
    public GameState getGameState() {
-      return GameState.of(this.getRSGameState());
+      return GameState.of(gameState);
    }
 
    public void setGameState(GameState var1) {
-      ViewportMouse.client.setGameState(var1.getState());
+      MouseRecorder.setGameState(var1.getState());
    }
 
    public Point getMouseCanvasPosition() {
-      return new Point(this.getMouseX(), this.getMouseY());
+      return new Point(MouseHandler.MouseHandler_xVolatile, MouseHandler.MouseHandler_yVolatile);
    }
 
    public net.runelite.api.widgets.Widget[] getWidgetRoots() {
-      int var1 = this.getWidgetRoot();
+      int var1 = rootInterface;
       ArrayList var2 = new ArrayList();
-      RSWidget[] var3 = this.getWidgets()[var1];
+      Widget[] var3 = UserComparator5.Widget_interfaceComponents[var1];
       int var4 = var3.length;
 
       for(int var5 = 0; var5 < var4; ++var5) {
-         RSWidget var6 = var3[var5];
-         if(var6 != null && var6.getRSParentId() == -1) {
-            var2.add(var6);
+         Widget var6 = var3[var5];
+         if(var6 != null) {
+            if (var6.parentId == -1) {
+               var2.add(var6);
+            }
          }
       }
 
       return (net.runelite.api.widgets.Widget[])var2.toArray(new net.runelite.api.widgets.Widget[var2.size()]);
    }
 
-   public RSWidget[] getGroup(int var1) {
-      RSWidget[][] var2 = this.getWidgets();
+   public Widget[] getGroup(int var1) {
+      Widget[][] var2 = UserComparator5.Widget_interfaceComponents;
       return var2 != null && var1 >= 0 && var1 < var2.length && var2[var1] != null?var2[var1]:null;
    }
 
@@ -3355,7 +2147,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public void refreshChat() {
-      this.setChatCycle(this.getCycleCntr());
+      chatCycle = cycleCntr;
    }
 
    public net.runelite.api.widgets.Widget getViewportWidget() {
@@ -3364,8 +2156,8 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public List getProjectiles() {
       ArrayList var1 = new ArrayList();
-      RSNodeDeque var2 = this.getProjectilesDeque();
-      RSNode var3 = var2.getHead();
+      NodeDeque var2 = projectiles;
+      Node var3 = var2.sentinel;
 
       for(net.runelite.api.Node var4 = var3.getNext(); var4 != var3; var4 = var4.getNext()) {
          var1.add((net.runelite.api.Projectile)var4);
@@ -3376,8 +2168,8 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public List getGraphicsObjects() {
       ArrayList var1 = new ArrayList();
-      RSNodeDeque var2 = this.getGraphicsObjectDeque();
-      RSNode var3 = var2.getHead();
+      NodeDeque var2 = graphicsObjects;
+      Node var3 = var2.sentinel;
 
       for(net.runelite.api.Node var4 = var3.getNext(); var4 != var3; var4 = var4.getNext()) {
          var1.add((net.runelite.api.GraphicsObject)var4);
@@ -3386,104 +2178,105 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       return var1;
    }
 
+   @Override
    public void setModIcons(net.runelite.api.IndexedSprite[] var1) {
-      this.setRSModIcons((RSIndexedSprite[])((RSIndexedSprite[])var1));
+      this.setRSModIcons((IndexedSprite[])((IndexedSprite[])var1));
    }
 
    public LocalPoint getLocalDestinationLocation() {
-      int var1 = this.getDestinationX();
-      int var2 = this.getDestinationY();
+      int var1 = destinationX;
+      int var2 = destinationY;
       return var1 != 0 && var2 != 0?LocalPoint.fromScene(var1, var2):null;
    }
 
    public void changeMemoryMode(boolean var1) {
-      this.setLowMemory(var1);
-      this.setSceneLowMemory(var1);
-      this.setAudioHighMemory(true);
-      this.setObjectDefinitionLowDetail(var1);
+      isLowDetail = var1;
+      Scene.Scene_isLowDetail = var1;
+      PcmPlayer.PcmPlayer_stereo = true;
+      ObjectDefinition.ObjectDefinition_isLowDetail = var1;
    }
 
    public boolean isFriended(String var1, boolean var2) {
-      RSUsername var3 = this.createName(var1, this.getLoginType());
-      return this.getFriendManager().isFriended(var3, var2);
+      Username var3 = this.createName(var1, WorldMapSection1.loginType);
+      return Tiles.friendSystem.isFriended(var3, var2);
    }
 
    public int getClanChatCount() {
-      RSClanChat var1 = this.getClanMemberManager();
+      ClanChat var1 = Varps.clanChat;
       return var1 != null?var1.getCount():0;
    }
 
    public ClanMember[] getClanMembers() {
-      RSClanChat var1 = this.getClanMemberManager();
+      ClanChat var1 = Varps.clanChat;
       if(var1 == null) {
          return null;
       } else {
          int var2 = var1.getCount();
-         return (ClanMember[])Arrays.copyOf(var1.getNameables(), var2);
+         return (ClanMember[])Arrays.copyOf((ClanMate[]) var1.array, var2);
       }
    }
 
    public String getClanOwner() {
-      return this.getClanMemberManager().getClanOwner();
+      return Varps.clanChat.owner;
    }
 
    public String getClanChatName() {
-      return this.getClanMemberManager().getClanChatName();
+      return Varps.clanChat.name;
    }
 
    public net.runelite.api.Friend[] getFriends() {
-      RSFriendSystem var1 = this.getFriendManager();
+      FriendSystem var1 = Tiles.friendSystem;
       if(var1 == null) {
          return null;
       } else {
-         RSFriendsList var2 = var1.getFriendContainer();
+         FriendsList var2 = var1.friendsList;
          if(var2 == null) {
             return null;
          } else {
             int var3 = var2.getCount();
-            return (net.runelite.api.Friend[])Arrays.copyOf(var2.getNameables(), var3);
+            return (net.runelite.api.Friend[])Arrays.copyOf((Friend[]) var2.array, var3);
          }
       }
    }
 
    public int getFriendsCount() {
-      RSFriendSystem var1 = this.getFriendManager();
+      FriendSystem var1 = Tiles.friendSystem;
       if(var1 == null) {
          return -1;
       } else {
-         RSFriendsList var2 = var1.getFriendContainer();
+         FriendsList var2 = var1.friendsList;
          return var2 == null?-1:var2.getCount();
       }
    }
 
    public Ignore[] getIgnores() {
-      RSFriendSystem var1 = this.getFriendManager();
+      FriendSystem var1 = Tiles.friendSystem;
       if(var1 == null) {
          return null;
       } else {
-         RSIgnoreList var2 = var1.getIgnoreContainer();
+         IgnoreList var2 = var1.ignoreList;
          if(var2 == null) {
             return null;
          } else {
             int var3 = var2.getCount();
-            return (Ignore[])Arrays.copyOf(var2.getNameables(), var3);
+            return (Ignore[])Arrays.copyOf((Ignored[]) var2.array, var3);
          }
       }
    }
 
    public int getIgnoreCount() {
-      RSFriendSystem var1 = this.getFriendManager();
+      FriendSystem var1 = Tiles.friendSystem;
       if(var1 == null) {
          return -1;
       } else {
-         RSIgnoreList var2 = var1.getIgnoreContainer();
+         IgnoreList var2 = var1.ignoreList;
          return var2 == null?-1:var2.getCount();
       }
    }
 
    public boolean isClanMember(String var1) {
-      RSClanChat var2 = this.getClanMemberManager();
-      return var2 != null && var2.isMember(this.createName(var1, this.getLoginType()));
+      ClanChat var2 = Varps.clanChat;
+      return var2 != null && var2.isMember(this.createName(var1, WorldMapSection1.loginType));
    }
 
    public net.runelite.api.Sprite createItemSprite(int var1, int var2, int var3, int var4, int var5, boolean var6, int var7) {
@@ -3491,13 +2284,13 @@ public final class Client extends GameShell implements Usernamed, RSClient {
          throw new AssertionError();
       } else {
          int var8 = this.get3dZoom();
-         this.set3dZoom(var7);
+         Rasterizer3D.Rasterizer3D_zoom = var7;
 
-         RSSprite var9;
+         Sprite var9;
          try {
-            var9 = this.createItemSprite(var1, var2, var3, var4, var5, var6);
+            var9 = GrandExchangeOfferWorldComparator.createSprite(var1, var2, var3, var4, var5, var6);
          } finally {
-            this.set3dZoom(var8);
+            Rasterizer3D.Rasterizer3D_zoom = var8;
          }
 
          return var9;
@@ -3505,35 +2298,36 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public boolean hasHintArrow() {
-      return ViewportMouse.client.getHintArrowTargetType() != HintArrowType.NONE.getValue();
+      return hintArrowType != HintArrowType.NONE.getValue();
    }
 
    public void clearHintArrow() {
-      ViewportMouse.client.setHintArrowTargetType(HintArrowType.NONE.getValue());
+      hintArrowType = HintArrowType.NONE.getValue();
    }
 
    public void setHintArrow(net.runelite.api.NPC var1) {
-      ViewportMouse.client.setHintArrowTargetType(HintArrowType.NPC.getValue());
-      ViewportMouse.client.setHintArrowNpcTargetIdx(var1.getIndex());
+      hintArrowType = HintArrowType.NPC.getValue();
+      int var11 = var1.getIndex();
+      hintArrowNpcIndex = var11;
    }
 
    public void setHintArrow(net.runelite.api.Player var1) {
-      ViewportMouse.client.setHintArrowTargetType(HintArrowType.PLAYER.getValue());
-      ViewportMouse.client.setHintArrowPlayerTargetIdx(((RSPlayer)var1).getPlayerId());
+      hintArrowType = HintArrowType.PLAYER.getValue();
+      hintArrowPlayerIndex = ((Player)var1).getPlayerId();
    }
 
    public void setHintArrow(WorldPoint var1) {
-      ViewportMouse.client.setHintArrowTargetType(HintArrowType.WORLD_POSITION.getValue());
-      ViewportMouse.client.setHintArrowX(var1.getX());
-      ViewportMouse.client.setHintArrowY(var1.getY());
-      ViewportMouse.client.setHintArrowOffsetX(64);
-      ViewportMouse.client.setHintArrowOffsetY(64);
+      hintArrowType = HintArrowType.WORLD_POSITION.getValue();
+      hintArrowX = var1.getX();
+      hintArrowY = var1.getY();
+      hintArrowSubX = 64 * -759871936;
+      hintArrowSubY = 64 * 99349824;
    }
 
    public WorldPoint getHintArrowPoint() {
       if(this.getHintArrowType() == HintArrowType.WORLD_POSITION) {
-         int var1 = ViewportMouse.client.getHintArrowX();
-         int var2 = ViewportMouse.client.getHintArrowY();
+         int var1 = hintArrowX;
+         int var2 = hintArrowY;
          return new WorldPoint(var1, var2, ViewportMouse.client.getPlane());
       } else {
          return null;
@@ -3542,8 +2336,8 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public net.runelite.api.Player getHintArrowPlayer() {
       if(this.getHintArrowType() == HintArrowType.PLAYER) {
-         int var1 = ViewportMouse.client.getHintArrowPlayerTargetIdx();
-         RSPlayer[] var2 = ViewportMouse.client.getCachedPlayers();
+         int var1 = hintArrowPlayerIndex;
+         Player[] var2 = ViewportMouse.client.getCachedPlayers();
          return var1 >= 0 && var1 < var2.length?var2[var1]:null;
       } else {
          return null;
@@ -3552,8 +2346,8 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public net.runelite.api.NPC getHintArrowNpc() {
       if(this.getHintArrowType() == HintArrowType.NPC) {
-         int var1 = ViewportMouse.client.getHintArrowNpcTargetIdx();
-         RSNPC[] var2 = ViewportMouse.client.getCachedNPCs();
+         int var1 = hintArrowNpcIndex;
+         NPC[] var2 = ViewportMouse.client.getCachedNPCs();
          return var1 >= 0 && var1 < var2.length?var2[var1]:null;
       } else {
          return null;
@@ -3569,15 +2363,15 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public EnumSet getWorldType() {
-      int var1 = this.getFlags();
+      int var1 = worldProperties;
       return WorldType.fromMask(var1);
    }
 
-   public RSTileItem getLastItemDespawn() {
+   public TileItem getLastItemDespawn() {
       return lastItemDespawn;
    }
 
-   public void setLastItemDespawn(RSTileItem var1) {
+   public void setLastItemDespawn(TileItem var1) {
       lastItemDespawn = var1;
    }
 
@@ -3590,11 +2384,11 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public void queueChangedSkill(Skill var1) {
-      int[] var2 = ViewportMouse.client.getChangedSkills();
-      int var3 = ViewportMouse.client.getChangedSkillsCount();
+      int[] var2 = changedSkills;
+      int var3 = changedSkillsCount;
       ++var3;
       var2[var3 - 1 & 31] = var1.ordinal();
-      ViewportMouse.client.setChangedSkillsCount(var3);
+      changedSkillsCount = var3;
    }
 
    public void setSkyboxColor(int var1) {
@@ -3609,11 +2403,11 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       if(!$assertionsDisabled && !this.isClientThread()) {
          throw new AssertionError("getEnum must be called on client thread");
       } else {
-         RSEnumDefinition var2 = (RSEnumDefinition)this.enumCache.getIfPresent(Integer.valueOf(var1));
+         EnumDefinition var2 = (EnumDefinition)this.enumCache.getIfPresent(Integer.valueOf(var1));
          if(var2 != null) {
             return var2;
          } else {
-            var2 = this.getRsEnum(var1);
+            var2 = UserComparator10.getEnum(var1);
             this.enumCache.put(Integer.valueOf(var1), var2);
             return var2;
          }
@@ -3621,17 +2415,17 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public void resetHealthBarCaches() {
-      this.getHealthBarCache().reset();
-      this.getHealthBarSpriteCache().reset();
+      HealthBarDefinition.HealthBarDefinition_cached.reset();
+      HealthBarDefinition.HealthBarDefinition_cachedSprites.reset();
    }
 
    public void addFriend(String var1) {
-      RSFriendSystem var2 = this.getFriendManager();
+      FriendSystem var2 = Tiles.friendSystem;
       var2.addFriend(var1);
    }
 
    public void removeFriend(String var1) {
-      RSFriendSystem var2 = this.getFriendManager();
+      FriendSystem var2 = Tiles.friendSystem;
       var2.removeFriend(var1);
    }
 
@@ -3711,7 +2505,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       cachedRealDimensions = null;
       cachedStretchedDimensions = null;
       if(var1 && this.isResized()) {
-         this.setResizeCanvasNextFrame(true);
+         this.resizeCanvasNextFrame = true;
       }
 
    }
@@ -3720,9 +2514,9 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       if(pitchRelaxEnabled != var1) {
          pitchRelaxEnabled = var1;
          if(!var1) {
-            int var2 = ViewportMouse.client.getCameraPitchTarget();
+            int var2 = camAngleX;
             if(var2 > 383) {
-               ViewportMouse.client.setCameraPitchTarget(383);
+               camAngleX = 383;
             }
          }
 
@@ -3737,9 +2531,9 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       } else if(!$assertionsDisabled && !(var1[0] instanceof Integer) && !(var1[0] instanceof JavaScriptCallback)) {
          throw new AssertionError("The first argument should always be a ScriptID!");
       } else {
-         RSScriptEvent var2 = this.createScriptEvent();
-         var2.setArguments(var1);
-         this.runScript(var2, 5000000);
+         ScriptEvent var2 = new ScriptEvent();
+         var2.args = var1;
+         KeyHandler.runScript((ScriptEvent) var2, 5000000, (byte)0);
       }
    }
 
@@ -3752,24 +2546,24 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public void playSoundEffect(int var1, int var2) {
-      RSSoundEffect var3 = this.getTrack(this.getIndexCache4(), var1, 0);
+      SoundEffect var3 = SoundEffect.method2092((AbstractArchive) GrandExchangeOfferAgeComparator.archive4, var1, 0);
       if(var3 != null) {
-         int var4 = this.getSoundEffectVolume();
+         int var4 = soundEffectVolume;
          if(var4 != 0) {
             var2 = var4;
          }
 
-         RSRawSound var5 = var3.toRawAudioNode().applyResampler(this.getSoundEffectResampler());
-         RSRawPcmStream var6 = this.createRawPcmStream(var5, 100, var2);
+         RawSound var5 = var3.toRawAudioNode().applyResampler(Interpreter.decimator);
+         RawPcmStream var6 = RawPcmStream.createRawPcmStream((RawSound) var5, 100, var2);
          var6.setNumLoops(1);
-         this.getSoundEffectAudioQueue().addSubStream((RSPcmStream)var6);
+         WorldMapLabelSize.pcmStreamMixer.addSubStream((PcmStream)var6);
       }
    }
 
    public void checkClickbox(net.runelite.api.Model var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, long var10) {
-      RSModel var12 = (RSModel)var1;
+      Model var12 = (Model)var1;
       boolean var13 = var10 != 0L && (int)(var10 >>> 16 & 1L) != 1;
-      boolean var14 = ViewportMouse.client.getViewportContainsMouse();
+      boolean var14 = ViewportMouse.ViewportMouse_isInViewport;
       if(var13 && var14) {
          if(this.boundingboxCheck(var12, var7, var8, var9)) {
             if(Math.sqrt((double)(var7 * var7 + var9 * var9)) <= 12800.0D) {
@@ -3826,8 +2620,8 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                      }
                   }
 
-                  var29 = ViewportMouse.client.getViewportMouseX();
-                  var30 = ViewportMouse.client.getViewportMouseY();
+                  var29 = ViewportMouse.ViewportMouse_x;
+                  var30 = ViewportMouse.ViewportMouse_y;
 
                   for(var31 = 0; var31 < var16; ++var31) {
                      if(var23[var31] != -2) {
@@ -3880,37 +2674,37 @@ public final class Client extends GameShell implements Usernamed, RSClient {
    }
 
    public void draw2010Menu() {
-      int var1 = this.getMenuX();
-      int var2 = this.getMenuY();
-      int var3 = this.getMenuWidth();
-      int var4 = this.getMenuHeight();
-      this.rasterizerDrawHorizontalLine(var1 + 2, var2, var3 - 4, 7170651);
-      this.rasterizerDrawHorizontalLine(var1 + 2, var2 + var4 - 1, var3 - 4, 7170651);
-      this.rasterizerDrawVerticalLine(var1, var2 + 2, var4 - 4, 7170651);
-      this.rasterizerDrawVerticalLine(var1 + var3 - 1, var2 + 2, var4 - 4, 7170651);
-      this.rasterizerDrawRectangle(var1 + 1, var2 + 5, var3 - 2, var4 - 6, 2827810);
-      this.rasterizerDrawHorizontalLine(var1 + 1, var2 + 17, var3 - 2, 2827810);
-      this.rasterizerDrawCircle(var1 + 2, var2 + var4 - 3, 0, 2827810);
-      this.rasterizerDrawCircle(var1 + var3 - 3, var2 + var4 - 3, 0, 2827810);
-      this.rasterizerDrawGradient(var1 + 2, var2 + 1, var3 - 4, 16, 3288610, 592388);
-      this.rasterizerFillRectangle(var1 + 1, var2 + 1, 2, 4, 2827810);
-      this.rasterizerFillRectangle(var1 + var3 - 3, var2 + 1, 2, 4, 2827810);
-      this.rasterizerDrawHorizontalLine(var1 + 2, var2 + 18, var3 - 4, 5392957);
-      this.rasterizerDrawHorizontalLine(var1 + 3, var2 + var4 - 3, var3 - 6, 5392957);
-      this.rasterizerDrawVerticalLine(var1 + 2, var2 + 18, var4 - 21, 5392957);
-      this.rasterizerDrawVerticalLine(var1 + var3 - 3, var2 + 18, var4 - 21, 5392957);
-      this.rasterizerFillRectangle(var1 + 3, var2 + 19, var3 - 6, var4 - 22, 2828060);
-      this.rasterizerDrawCircle(var1 + 1, var2 + 1, 0, 7170651);
-      this.rasterizerDrawCircle(var1 + var3 - 2, var2 + 1, 0, 7170651);
-      this.rasterizerDrawCircle(var1 + 1, var2 + var4 - 2, 0, 7170651);
-      this.rasterizerDrawCircle(var1 + var3 - 2, var2 + var4 - 2, 0, 7170651);
-      RSFont var5 = this.getFontBold12();
+      int var1 = UrlRequester.menuX;
+      int var2 = class37.menuY;
+      int var3 = FriendSystem.menuWidth;
+      int var4 = WorldMapDecoration.menuHeight;
+      Rasterizer2D.drawHorizontalLine(var1 + 2, var2, var3 - 4, 7170651);
+      Rasterizer2D.drawHorizontalLine(var1 + 2, var2 + var4 - 1, var3 - 4, 7170651);
+      Rasterizer2D.drawVerticalLine(var1, var2 + 2, var4 - 4, 7170651);
+      Rasterizer2D.drawVerticalLine(var1 + var3 - 1, var2 + 2, var4 - 4, 7170651);
+      Rasterizer2D.drawRectangle(var1 + 1, var2 + 5, var3 - 2, var4 - 6, 2827810);
+      Rasterizer2D.drawHorizontalLine(var1 + 1, var2 + 17, var3 - 2, 2827810);
+      Rasterizer2D.drawCircle(var1 + 2, var2 + var4 - 3, 0, 2827810);
+      Rasterizer2D.drawCircle(var1 + var3 - 3, var2 + var4 - 3, 0, 2827810);
+      Rasterizer2D.fillRectangleGradient(var1 + 2, var2 + 1, var3 - 4, 16, 3288610, 592388);
+      Rasterizer2D.fillRectangle(var1 + 1, var2 + 1, 2, 4, 2827810);
+      Rasterizer2D.fillRectangle(var1 + var3 - 3, var2 + 1, 2, 4, 2827810);
+      Rasterizer2D.drawHorizontalLine(var1 + 2, var2 + 18, var3 - 4, 5392957);
+      Rasterizer2D.drawHorizontalLine(var1 + 3, var2 + var4 - 3, var3 - 6, 5392957);
+      Rasterizer2D.drawVerticalLine(var1 + 2, var2 + 18, var4 - 21, 5392957);
+      Rasterizer2D.drawVerticalLine(var1 + var3 - 3, var2 + 18, var4 - 21, 5392957);
+      Rasterizer2D.fillRectangle(var1 + 3, var2 + 19, var3 - 6, var4 - 22, 2828060);
+      Rasterizer2D.drawCircle(var1 + 1, var2 + 1, 0, 7170651);
+      Rasterizer2D.drawCircle(var1 + var3 - 2, var2 + 1, 0, 7170651);
+      Rasterizer2D.drawCircle(var1 + 1, var2 + var4 - 2, 0, 7170651);
+      Rasterizer2D.drawCircle(var1 + var3 - 2, var2 + var4 - 2, 0, 7170651);
+      Font var5 = class170.fontBold12;
       var5.drawTextLeftAligned("Choose Option", var1 + 3, var2 + 14, 13023381, -1);
-      int var6 = this.getMouseX();
-      int var7 = this.getMouseY();
+      int var6 = MouseHandler.MouseHandler_xVolatile;
+      int var7 = MouseHandler.MouseHandler_yVolatile;
       int var8 = this.getMenuOptionCount();
-      String[] var9 = this.getMenuTargets();
-      String[] var10 = this.getMenuOptions();
+      String[] var9 = menuTargets;
+      String[] var10 = menuActions;
 
       for(int var11 = 0; var11 < var8; ++var11) {
          int var12 = (var8 - 1 - var11) * 15 + var2 + 31;
@@ -3921,7 +2715,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
          var5.drawTextLeftAligned(var13, var1 + 3, var12, 13023381, -1);
          if(var6 > var1 && var6 < var3 + var1 && var7 > var12 - 13 && var7 < var12 + 3) {
-            this.rasterizerFillRectangleAlpha(var1 + 3, var12 - 12, var3 - 6, 15, 16777215, 80);
+            Rasterizer2D.fillRectangleAlpha(var1 + 3, var12 - 12, var3 - 6, 15, 16777215, 80);
          }
       }
 
@@ -3929,18 +2723,18 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public MenuEntry getLeftClickMenuEntry() {
       int var1 = this.getMenuOptionCount() - 1;
-      return new MenuEntry(this.getMenuOptions()[var1], this.getMenuTargets()[var1], this.getMenuIdentifiers()[var1], this.getMenuOpcodes()[var1], this.getMenuArguments1()[var1], this.getMenuArguments2()[var1], this.getMenuForceLeftClick()[var1]);
+      return new MenuEntry(menuActions[var1], menuTargets[var1], menuIdentifiers[var1], menuOpcodes[var1], menuArguments1[var1], menuArguments2[var1], menuShiftClick[var1]);
    }
 
    public void setLeftClickMenuEntry(MenuEntry var1) {
       int var2 = this.getMenuOptionCount() - 1;
-      this.getMenuOptions()[var2] = var1.getOption();
-      this.getMenuTargets()[var2] = var1.getTarget();
-      this.getMenuIdentifiers()[var2] = var1.getIdentifier();
-      this.getMenuOpcodes()[var2] = var1.getOpcode();
-      this.getMenuArguments1()[var2] = var1.getParam0();
-      this.getMenuArguments2()[var2] = var1.getParam1();
-      this.getMenuForceLeftClick()[var2] = var1.isForceLeftClick();
+      menuActions[var2] = var1.getOption();
+      menuTargets[var2] = var1.getTarget();
+      menuIdentifiers[var2] = var1.getIdentifier();
+      menuOpcodes[var2] = var1.getOpcode();
+      menuArguments1[var2] = var1.getParam0();
+      menuArguments2[var2] = var1.getParam1();
+      menuShiftClick[var2] = var1.isForceLeftClick();
    }
 
    public void setVarbit(Varbits var1, int var2) {
@@ -4081,815 +2875,611 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       hideDeadNPCs = var1;
    }
 
-   public RSWorld createWorld() {
+   @Override
+   public World createWorld() {
       return new World();
    }
 
-   public RSWidget createWidget() {
+   @Override
+   public Widget createWidget() {
       return new Widget();
    }
 
-   public RSNodeDeque newNodeDeque() {
-      return new NodeDeque();
-   }
-
-   public RSTileItem newTileItem() {
-      return new TileItem();
-   }
-
-   public RSIndexedSprite createIndexedSprite() {
+   @Override
+   public IndexedSprite createIndexedSprite() {
       return new IndexedSprite();
    }
 
-   public RSClientPreferences getPreferences() {
+   @Override
+   public ClientPreferences getPreferences() {
       return AbstractArchive.clientPreferences;
    }
 
-   public RSIndexedSprite[] getModIcons() {
+   @Override
+   public IndexedSprite[] getModIcons() {
       return AbstractFont.AbstractFont_modIconSprites;
    }
 
+   @Override
    public void setSelectedItemID(int var1) {
       AbstractWorldMapData.selectedItemId = var1;
    }
 
-   public RSTextureProvider getTextureProvider() {
+   @Override
+   public TextureProvider getTextureProvider() {
       return Archive.textureProvider;
    }
 
+   @Override
    public void setCompass(net.runelite.api.Sprite var1) {
       AttackOption.compass = (Sprite)var1;
    }
 
+   @Override
    public void setSelectedSpellWidget(int var1) {
       AttackOption.selectedSpellWidget = var1;
    }
 
+   @Override
    public int getSelectedSpellWidget() {
       return AttackOption.selectedSpellWidget;
    }
 
+   @Override
    public void insertMenuItem(String var1, String var2, int var3, int var4, int var5, int var6, boolean var7) {
       AttackOption.method2104(var1, var2, var3, var4, var5, var6, var7);
    }
 
-   public RSSprite[] getMapDots() {
+   @Override
+   public Sprite[] getMapDots() {
       return class17.mapDotSprites;
    }
 
-   public RSIndexedSprite[] getMapScene() {
+   @Override
+   public IndexedSprite[] getMapScene() {
       return class125.mapSceneSprites;
    }
 
+   @Override
    public int getOculusOrbFocalPointY() {
       return class125.oculusOrbFocalPointY;
    }
 
+   @Override
    public void setSelectedItemWidget(int var1) {
       class12.selectedItemWidget = var1;
    }
 
+   @Override
    public int getBaseX() {
       return class215.baseX;
    }
 
-   public RSPlayer getLocalPlayer() {
+   @Override
+   public Player getLocalPlayer() {
       return class215.localPlayer;
    }
 
-   public RSFrames getFrames(int var1) {
-      return class210.method3930(var1);
-   }
-
+   @Override
    public int getBaseY() {
       return class304.baseY;
    }
 
+   @Override
    public int[][] getXteaKeys() {
       return class289.xteaKeys;
    }
 
+   @Override
    public void changeWorld(net.runelite.api.World var1) {
       class8.method101((World)var1);
    }
 
-   public RSWidget getDraggedWidget() {
+   @Override
+   public Widget getDraggedWidget() {
       return clickedWidget;
    }
 
-   public RSNodeHashTable getComponentTable() {
+   @Override
+   public NodeHashTable getComponentTable() {
       return interfaceParents;
    }
 
+   @Override
    public int[] getWidgetPositionsX() {
       return rootWidgetXs;
    }
 
-   public RSNodeHashTable getWidgetFlags() {
+   @Override
+   public NodeHashTable getWidgetFlags() {
       return widgetClickMasks;
    }
 
+   @Override
    public void setGameDrawingMode(int var1) {
       gameDrawingMode = var1;
    }
 
+   @Override
    public int getGameDrawingMode() {
       return gameDrawingMode;
    }
 
+   @Override
    public int[] getWidgetPositionsY() {
       return rootWidgetYs;
    }
 
+   @Override
    public boolean isDraggingWidget() {
       return isDraggingWidget;
    }
 
+   @Override
    public int getEnergy() {
       return runEnergy;
    }
 
+   @Override
    public int getWeight() {
       return weight;
    }
 
+   @Override
    public void setDraggedOnWidget(net.runelite.api.widgets.Widget var1) {
       draggedOnWidget = (Widget)var1;
    }
 
-   public RSWidget getDraggedOnWidget() {
+   @Override
+   public Widget getDraggedOnWidget() {
       return draggedOnWidget;
    }
 
-   public RSGrandExchangeOffer[] getGrandExchangeOffers() {
+   @Override
+   public GrandExchangeOffer[] getGrandExchangeOffers() {
       return grandExchangeOffers;
    }
 
-   public RSSprite[] getMapIcons() {
+   @Override
+   public Sprite[] getMapIcons() {
       return mapIcons;
    }
 
+   @Override
    public int getScale() {
       return viewportZoom;
    }
 
+   @Override
    public int getViewportWidth() {
       return viewportWidth;
    }
 
+   @Override
    public int getViewportHeight() {
       return viewportHeight;
    }
 
+   @Override
    public int getViewportXOffset() {
       return viewportOffsetX;
    }
 
-   public int[] getChangedSkills() {
-      return changedSkills;
-   }
-
+   @Override
    public int getViewportYOffset() {
       return viewportOffsetY;
    }
 
-   public void setChangedSkillsCount(int var1) {
-      changedSkillsCount = var1;
-   }
-
-   public int getChangedSkillsCount() {
-      return changedSkillsCount;
-   }
-
-   public RSCollisionMap[] getCollisionMaps() {
+   @Override
+   public CollisionMap[] getCollisionMaps() {
       return collisionMaps;
    }
 
+   @Override
    public int getWorld() {
       return worldId;
    }
 
+   @Override
    public int getGameCycle() {
       return cycle;
    }
 
-   public void setHintArrowTargetType(int var1) {
-      hintArrowType = var1;
-   }
-
-   public int getHintArrowTargetType() {
-      return hintArrowType;
-   }
-
-   public void setHintArrowNpcTargetIdx(int var1) {
-      hintArrowNpcIndex = var1;
-   }
-
-   public int getHintArrowNpcTargetIdx() {
-      return hintArrowNpcIndex;
-   }
-
-   public void setHintArrowPlayerTargetIdx(int var1) {
-      hintArrowPlayerIndex = var1;
-   }
-
-   public int getHintArrowPlayerTargetIdx() {
-      return hintArrowPlayerIndex;
-   }
-
-   public void setHintArrowX(int var1) {
-      hintArrowX = var1;
-   }
-
-   public int getHintArrowX() {
-      return hintArrowX;
-   }
-
-   public void setHintArrowY(int var1) {
-      hintArrowY = var1;
-   }
-
-   public int getHintArrowY() {
-      return hintArrowY;
-   }
-
-   public void setHintArrowOffsetX(int var1) {
-      hintArrowSubX = var1 * -759871936;
-   }
-
-   public void setHintArrowOffsetY(int var1) {
-      hintArrowSubY = var1 * 99349824;
-   }
-
+   @Override
    public boolean isInInstancedRegion() {
       return isInInstance;
    }
 
+   @Override
    public int[][][] getInstanceTemplateChunks() {
       return instanceChunkTemplates;
    }
 
-   public void setCameraPitchTarget(int var1) {
-      camAngleX = var1;
-   }
-
-   public int getCameraPitchTarget() {
-      return camAngleX;
-   }
-
+   @Override
    public int getMapAngle() {
       return camAngleY;
    }
 
+   @Override
    public void setOculusOrbState(int var1) {
       oculusOrbState = var1;
    }
 
+   @Override
    public int getOculusOrbState() {
       return oculusOrbState;
    }
 
+   @Override
    public void setOculusOrbNormalSpeed(int var1) {
       oculusOrbNormalSpeed = var1;
    }
 
-   public int[][] getOccupiedTilesTick() {
-      return tileLastDrawnActor;
-   }
-
+   @Override
    public int getIf1DraggedItemIndex() {
       return dragItemSlotSource;
    }
 
-   public void setItemPressedDuration(int var1) {
-      itemDragDuration = var1;
-   }
-
+   @Override
    public int getItemPressedDuration() {
       return itemDragDuration;
    }
 
+   @Override
    public int getLocalPlayerIndex() {
       return localPlayerIndex;
    }
 
+   @Override
    public void setRenderSelf(boolean var1) {
       renderSelf = var1;
    }
 
+   @Override
    public boolean getRenderSelf() {
       return renderSelf;
    }
 
+   @Override
    public int[] getPlayerMenuTypes() {
       return playerMenuOpcodes;
    }
 
+   @Override
    public String[] getPlayerOptions() {
       return playerMenuActions;
    }
 
+   @Override
    public boolean[] getPlayerOptionsPriorities() {
       return playerOptionsPriorities;
    }
 
-   public int getLocalInteractingIndex() {
-      return combatTargetPlayerIndex;
-   }
-
-   public RSNodeDeque[][][] getGroundItemDeque() {
-      return groundItems;
-   }
-
+   @Override
    public boolean isMenuOpen() {
       return isMenuOpen;
    }
 
+   @Override
    public void setSpellSelected(boolean var1) {
       isSpellSelected = var1;
    }
 
+   @Override
    public boolean isSpellSelected() {
       return isSpellSelected;
    }
 
+   @Override
    public void setSelectedSpellChildIndex(int var1) {
       selectedSpellChildIndex = var1;
    }
 
+   @Override
    public int getSelectedSpellChildIndex() {
       return selectedSpellChildIndex;
    }
 
+   @Override
    public void setSelectedSpellName(String var1) {
       selectedSpellName = var1;
    }
 
+   @Override
    public String getSelectedSpellName() {
       return selectedSpellName;
    }
 
-   public void revalidateWidget(net.runelite.api.widgets.Widget var1) {
-      this.method1774((Widget)var1);
+   @Override
+   public WorldMap getRenderOverview() {
+      return Decimator.getRenderOverview();
    }
 
-   public RSWorldMap getRenderOverview() {
-      return Decimator.method2485();
-   }
-
+   @Override
    public void setOtp(String var1) {
       DesktopPlatformInfoProvider.otp = var1;
    }
 
+   @Override
    public void setSelectedItemSlot(int var1) {
       DevicePcmPlayerProvider.selectedItemSlot = var1;
    }
 
+   @Override
    public int getCanvasWidth() {
       return FloorDecoration.canvasWidth;
    }
 
-   public RSWidget getIf1DraggedWidget() {
+   @Override
+   public Widget getIf1DraggedWidget() {
       return Frames.dragInventoryWidget;
    }
 
+   @Override
    public int getFPS() {
       return GameShell.fps;
    }
 
-   public void revalidateWidgetScroll(net.runelite.api.widgets.Widget[] var1, net.runelite.api.widgets.Widget var2, boolean var3) {
-      GameShell.method1005((Widget[])var1, (Widget)var2, var3);
-   }
-
-   public RSAbstractArchive getIndexSprites() {
+   @Override
+   public AbstractArchive getIndexSprites() {
       return GrandExchangeOfferAgeComparator.archive8;
    }
 
-   public RSAbstractArchive getIndexScripts() {
+   @Override
+   public AbstractArchive getIndexScripts() {
       return GrandExchangeOfferOwnWorldComparator.archive12;
    }
 
+   @Override
    public int getCameraX() {
       return GrandExchangeOfferOwnWorldComparator.cameraX;
    }
 
-   public RSObjectDefinition getObjectDefinition(int var1) {
+   @Override
+   public ObjectDefinition getObjectDefinition(int var1) {
       return GrandExchangeOfferOwnWorldComparator.getObjectDefinition(var1);
    }
 
-   public void setCameraPitch(int var1) {
-      IgnoreList.cameraPitch = var1;
-   }
-
+   @Override
    public int getCameraPitch() {
       return IgnoreList.cameraPitch;
    }
 
+   @Override
    public int[] getIntStack() {
       return Interpreter.Interpreter_intStack;
    }
 
+   @Override
    public void setIntStackSize(int var1) {
       Interpreter.Interpreter_intStackSize = var1;
    }
 
+   @Override
    public int getIntStackSize() {
       return Interpreter.Interpreter_intStackSize;
    }
 
+   @Override
    public String[] getStringStack() {
       return Interpreter.Interpreter_stringStack;
    }
 
+   @Override
    public void setStringStackSize(int var1) {
       Interpreter.Interpreter_stringStackSize = var1;
    }
 
+   @Override
    public int getStringStackSize() {
       return Interpreter.Interpreter_stringStackSize;
    }
 
-   public void sendMenuAction(int var1, int var2, int var3, int var4, String var5, String var6, int var7, int var8) {
-      InvDefinition.method4339(var1, var2, var3, var4, var5, var6, var7, var8, 1826014571);
-   }
-
-   public RSEvictingDualNodeHashTable getItemDefinitionCache() {
+   @Override
+   public EvictingDualNodeHashTable getItemDefinitionCache() {
       return ItemDefinition.ItemDefinition_cached;
    }
 
+   @Override
    public int getItemCount() {
       return JagexCache.ItemDefinition_fileCount;
    }
 
+   @Override
    public boolean[] getPressedKeys() {
       return KeyHandler.KeyHandler_pressedKeys;
    }
 
+   @Override
    public int getKeyboardIdleTicks() {
       return KeyHandler.KeyHandler_idleCycles;
    }
 
+   @Override
    public int getLoginIndex() {
       return Login.loginIndex;
    }
 
+   @Override
    public void setUsername(String var1) {
       Login.Login_username = var1;
    }
 
+   @Override
    public String getUsername() {
       return Login.Login_username;
    }
 
+   @Override
    public void setPassword(String var1) {
       Login.Login_password = var1;
    }
 
+   @Override
    public int getCurrentLoginField() {
       return Login.currentLoginField;
    }
 
-   public void queueSoundEffect(int var1, int var2, int var3) {
-      Message.method888(var1, var2, var3);
-   }
-
+   @Override
    public Map getChatLineMap() {
       return Messages.Messages_channels;
    }
 
-   public RSIterableNodeHashTable getMessages() {
+   @Override
+   public IterableNodeHashTable getMessages() {
       return Messages.Messages_hashTable;
    }
 
-   public void setAnimOffsetX(int var1) {
-      Model.Model_transformTempX = var1;
-   }
-
-   public void setAnimOffsetY(int var1) {
-      Model.Model_transformTempY = var1;
-   }
-
-   public void setAnimOffsetZ(int var1) {
-      Model.Model_transformTempZ = var1;
-   }
-
+   @Override
    public int getMouseIdleTicks() {
       return MouseHandler.MouseHandler_idleCycles;
    }
 
+   @Override
    public int getMouseCurrentButton() {
       return MouseHandler.MouseHandler_currentButton;
    }
 
+   @Override
    public long getMouseLastPressedMillis() {
       return MouseHandler.MouseHandler_lastPressedTimeMillis;
    }
 
+   @Override
    public int[] getMapRegions() {
       return MouseHandler.regions;
    }
 
-   public void setGameState(int var1) {
-      MouseRecorder.method1207(var1);
-   }
-
-   public RSEvictingDualNodeHashTable getCachedModels2() {
+   @Override
+   public EvictingDualNodeHashTable getCachedModels2() {
       return ObjectDefinition.ObjectDefinition_cachedModels;
    }
 
+   @Override
    public int getOculusOrbFocalPointX() {
       return ObjectSound.oculusOrbFocalPointX;
    }
 
-   public RSItemDefinition getItemDefinition(int var1) {
+   @Override
+   public ItemDefinition getItemDefinition(int var1) {
       return Occluder.getItemDefinition(var1);
    }
 
-   public RSNPCDefinition getNpcDefinition(int var1) {
+   @Override
+   public NPCDefinition getNpcDefinition(int var1) {
       return PacketBufferNode.getNpcDefinition(var1);
    }
 
-   public RSMenuAction getTempMenuAction() {
-      return ParamDefinition.tempMenuAction;
-   }
-
-   public int[] getGraphicsPixels() {
-      return Rasterizer2D.Rasterizer2D_pixels;
-   }
-
-   public int getGraphicsPixelsWidth() {
-      return Rasterizer2D.Rasterizer2D_width;
-   }
-
-   public int getGraphicsPixelsHeight() {
-      return Rasterizer2D.Rasterizer2D_height;
-   }
-
-   public int getStartY() {
-      return Rasterizer2D.Rasterizer2D_yClipStart;
-   }
-
-   public int getEndY() {
-      return Rasterizer2D.Rasterizer2D_yClipEnd;
-   }
-
-   public int getStartX() {
-      return Rasterizer2D.Rasterizer2D_xClipStart;
-   }
-
-   public int getEndX() {
-      return Rasterizer2D.Rasterizer2D_xClipEnd;
-   }
-
+   @Override
    public int getCenterX() {
       return Rasterizer3D.Rasterizer3D_clipMidX;
    }
 
+   @Override
    public int getCenterY() {
       return Rasterizer3D.Rasterizer3D_clipMidY;
    }
 
+   @Override
    public int getRasterizer3D_clipNegativeMidX() {
       return Rasterizer3D.Rasterizer3D_clipNegativeMidX;
    }
 
+   @Override
    public int getRasterizer3D_clipMidX2() {
       return Rasterizer3D.Rasterizer3D_clipMidX2;
    }
 
+   @Override
    public int getRasterizer3D_clipNegativeMidY() {
       return Rasterizer3D.Rasterizer3D_clipNegativeMidY;
    }
 
+   @Override
    public int getRasterizer3D_clipMidY2() {
       return Rasterizer3D.Rasterizer3D_clipMidY2;
    }
 
+   @Override
    public int getRevision() {
       return RunException.RunException_revision;
    }
 
-   public void setTileUpdateCount(int var1) {
-      Scene.tileUpdateCount = var1;
-   }
-
-   public int getTileUpdateCount() {
-      return Scene.tileUpdateCount;
-   }
-
-   public void setScenePlane(int var1) {
-      Scene.Scene_plane = var1;
-   }
-
-   public void setCycle(int var1) {
-      Scene.Scene_drawnCount = var1;
-   }
-
-   public int getCycle() {
-      return Scene.Scene_drawnCount;
-   }
-
-   public void setMinTileX(int var1) {
-      Scene.Scene_cameraXTileMin = var1;
-   }
-
-   public void setMaxTileX(int var1) {
-      Scene.Scene_cameraXTileMax = var1;
-   }
-
-   public void setMinTileZ(int var1) {
-      Scene.Scene_cameraYTileMin = var1;
-   }
-
-   public void setMaxTileZ(int var1) {
-      Scene.Scene_cameraYTileMax = var1;
-   }
-
-   public void setScreenCenterX(int var1) {
-      Scene.Scene_cameraXTile = var1;
-   }
-
-   public void setScreenCenterZ(int var1) {
-      Scene.Scene_cameraYTile = var1;
-   }
-
-   public void setCameraX2(int var1) {
-      Scene.Scene_cameraX = var1;
-   }
-
+   @Override
    public int getCameraX2() {
       return Scene.Scene_cameraX;
    }
 
-   public void setCameraY2(int var1) {
-      Scene.Scene_cameraY = var1;
-   }
-
+   @Override
    public int getCameraY2() {
       return Scene.Scene_cameraY;
    }
 
-   public void setCameraZ2(int var1) {
-      Scene.Scene_cameraZ = var1;
-   }
-
+   @Override
    public int getCameraZ2() {
       return Scene.Scene_cameraZ;
    }
 
-   public void setPitchSin(int var1) {
-      Scene.Scene_cameraPitchSine = var1;
-   }
-
-   public void setPitchCos(int var1) {
-      Scene.Scene_cameraPitchCosine = var1;
-   }
-
-   public void setYawSin(int var1) {
-      Scene.Scene_cameraYawSine = var1;
-   }
-
-   public void setYawCos(int var1) {
-      Scene.Scene_cameraYawCosine = var1;
-   }
-
-   public void setCheckClick(boolean var1) {
-      Scene.checkClick = var1;
-   }
-
-   public boolean isCheckClick() {
-      return Scene.checkClick;
-   }
-
-   public void setMouseCanvasHoverPositionX(int var1) {
-      Scene.Scene_selectedScreenX = var1;
-   }
-
-   public int getMouseX2() {
-      return Scene.Scene_selectedScreenX;
-   }
-
-   public void setMouseCanvasHoverPositionY(int var1) {
-      Scene.Scene_selectedScreenY = var1;
-   }
-
-   public int getMouseY2() {
-      return Scene.Scene_selectedScreenY;
-   }
-
-   public void setSelectedSceneTileX(int var1) {
-      Scene.Scene_selectedX = var1;
-   }
-
-   public void setSelectedSceneTileY(int var1) {
-      Scene.Scene_selectedY = var1;
-   }
-
-   public void setViewportWalking(boolean var1) {
-      Scene.viewportWalking = var1;
-   }
-
-   public boolean[][][][] getVisibilityMaps() {
-      return Scene.visibilityMap;
-   }
-
+   @Override
    public void setRenderArea(boolean[][] var1) {
       Scene.visibleTiles = var1;
    }
 
-   public boolean containsBounds(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-      return Scene.method3252(var1, var2, var3, var4, var5, var6, var7, var8);
-   }
-
+   @Override
    public void scaleSprite(int[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12) {
       Sprite.method6111(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12);
    }
 
-   public void promptCredentials(boolean var1) {
-      TilePaint.method2911(var1);
-   }
-
+   @Override
    public int[][][] getTileHeights() {
       return Tiles.Tiles_heights;
    }
 
-   public RSSprite[] getCrossSprites() {
+   @Override
+   public Sprite[] getCrossSprites() {
       return UrlRequest.crossSprites;
    }
 
-   public RSEvictingDualNodeHashTable getVarbitCache() {
-      return VarbitDefinition.VarbitDefinition_cached;
-   }
-
+   @Override
    public int getCameraZ() {
       return Varcs.cameraY;
    }
 
-   public boolean getViewportContainsMouse() {
-      return ViewportMouse.ViewportMouse_isInViewport;
-   }
-
-   public int getViewportMouseX() {
-      return ViewportMouse.ViewportMouse_x;
-   }
-
-   public int getViewportMouseY() {
-      return ViewportMouse.ViewportMouse_y;
-   }
-
-   public void setEntitiesAtMouseCount(int var1) {
-      ViewportMouse.ViewportMouse_entityCount = var1;
-   }
-
-   public int getEntitiesAtMouseCount() {
-      return ViewportMouse.ViewportMouse_entityCount;
-   }
-
-   public long[] getEntitiesAtMouse() {
-      return ViewportMouse.ViewportMouse_entityTags;
-   }
-
+   @Override
    public int getCanvasHeight() {
       return WallDecoration.canvasHeight;
    }
 
-   public RSEvictingDualNodeHashTable getWidgetSpriteCache() {
+   @Override
+   public EvictingDualNodeHashTable getWidgetSpriteCache() {
       return Widget.Widget_cachedSprites;
    }
 
-   public RSWorld[] getWorldList() {
+   @Override
+   public World[] getWorldList() {
       return World.World_worlds;
    }
 
-   public void updateItemPile(int var1, int var2) {
-      WorldMapCacheName.method673(var1, var2);
-   }
-
-   public RSWorldMapElement[] getMapElementConfigs() {
+   @Override
+   public WorldMapElement[] getMapElementConfigs() {
       return WorldMapElement.WorldMapElement_cached;
    }
 
+   @Override
    public int getCameraY() {
       return WorldMapIcon_1.cameraZ;
    }
 
-   public RSMouseRecorder getMouseRecorder() {
+   @Override
+   public MouseRecorder getMouseRecorder() {
       return WorldMapLabel.mouseRecorder;
    }
 
+   @Override
    public int getCameraYaw() {
       return WorldMapSection2.cameraYaw;
    }
 
-   public int getVarbit(int var1) {
-      return WorldMapSprite.method782(var1);
-   }
-
-   @ObfuscatedName("eh")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1951808439"
-   )
    void method1890() {
       if(false && NetCache.NetCache_crcMismatches >= 4) {
          this.method984("js5crc");
@@ -4976,11 +3566,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedName("em")
-   @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "0"
-   )
    void method1652(int var1) {
       Login.js5SocketTask = null;
       class22.js5Socket = null;
@@ -5016,11 +3601,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedName("en")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "942594737"
-   )
    void method1650() {
       if(gameState != 1000) {
          boolean var1 = PlayerAppearance.method4159();
@@ -5031,11 +3611,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedName("ey")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "684778966"
-   )
    final void method1653() {
       Object var1 = packetWriter.method1624();
       PacketBuffer var2 = packetWriter.packetBuffer;
@@ -5552,7 +4127,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
             String var27 = var2.readString();
             String var30 = var2.readString();
             PlayerType.method3939(var24, var27, var30);
-            MouseRecorder.method1207(10);
+            MouseRecorder.setGameState(10);
          }
 
          if(loginState != 16) {
@@ -5622,7 +4197,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
             }
 
             FontName.method5744();
-            MouseRecorder.method1207(30);
+            MouseRecorder.setGameState(30);
 
             for(var14 = 0; var14 < 100; ++var14) {
                field1049[var14] = true;
@@ -5655,11 +4230,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedName("fd")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1173156947"
-   )
    final void method1654() {
       if(rebootTimer > 1) {
          --rebootTimer;
@@ -6402,11 +4972,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedName("fj")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1430506238"
-   )
    final void method1657() {
       int var1;
       if(rootInterface != -1) {
@@ -6476,10 +5041,10 @@ public final class Client extends GameShell implements Usernamed, RSClient {
          var3 = FriendSystem.menuWidth;
          int var13 = WorldMapDecoration.menuHeight;
          int var5 = 6116423;
-         Rasterizer2D.method6469(var1, var2, var3, var13, var5);
-         Rasterizer2D.method6469(var1 + 1, var2 + 1, var3 - 2, 16, 0);
+         Rasterizer2D.fillRectangle(var1, var2, var3, var13, var5);
+         Rasterizer2D.fillRectangle(var1 + 1, var2 + 1, var3 - 2, 16, 0);
          Rasterizer2D.drawRectangle(var1 + 1, var2 + 18, var3 - 2, var13 - 19, 0);
-         class170.fontBold12.method5329("Choose Option", var1 + 3, var2 + 14, var5, -1);
+         class170.fontBold12.drawTextLeftAligned("Choose Option", var1 + 3, var2 + 14, var5, -1);
          int var6 = MouseHandler.MouseHandler_x;
          int var7 = MouseHandler.MouseHandler_y;
 
@@ -6493,7 +5058,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                var10 = 16776960;
             }
 
-            class170.fontBold12.method5329(class28.method591(var8), var1 + 3, var9, var10, 0);
+            class170.fontBold12.drawTextLeftAligned(class28.method591(var8), var1 + 3, var9, var10, 0);
          }
 
          var8 = UrlRequester.menuX;
@@ -6522,11 +5087,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       field906 = 0;
    }
 
-   @ObfuscatedName("fs")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-6"
-   )
    void method1656() {
       int var1 = FloorDecoration.canvasWidth;
       int var2 = WallDecoration.canvasHeight;
@@ -6550,11 +5110,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedName("gh")
-   @ObfuscatedSignature(
-      signature = "(Lcl;I)Z",
-      garbageValue = "-1809167955"
-   )
    final boolean parsePacket(PacketWriter var1) {
       AbstractSocket var2 = var1.method1624();
       PacketBuffer var3 = var1.packetBuffer;
@@ -6662,7 +5217,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                   var9 = ((long)slot << 32) + (long)var8;
                   Node var42 = widgetClickMasks.method6346(var9);
                   if(var42 != null) {
-                     var42.method3497();
+                     var42.unlink();
                   }
 
                   widgetClickMasks.put(new IntegerNode(var6), var9);
@@ -6693,9 +5248,9 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                   var46.xAlignment = 0;
                   var46.yAlignment = 0;
                   WorldMapSectionType.method116(var46);
-                  this.method1774(var46);
+                  this.revalidateWidget(var46);
                   if(var46.type == 0) {
-                     GameShell.method1005(UserComparator5.Widget_interfaceComponents[var6 >> 16], var46, false);
+                     GameShell.revalidateWidgetScroll(UserComparator5.Widget_interfaceComponents[var6 >> 16], var46, false);
                   }
                }
 
@@ -6893,7 +5448,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                }
 
                if(var52 != null) {
-                  var52.method3497();
+                  var52.unlink();
                   interfaceParents.put(var52, (long)var4);
                }
 
@@ -6905,7 +5460,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                var20 = Canvas.getWidget(var4);
                if(var20 != null) {
                   WorldMapSectionType.method116(var20);
-                  GameShell.method1005(UserComparator5.Widget_interfaceComponents[var20.id >>> 16], var20, true);
+                  GameShell.revalidateWidgetScroll(UserComparator5.Widget_interfaceComponents[var20.id >>> 16], var20, true);
                }
 
                if(rootInterface != -1) {
@@ -6960,9 +5515,9 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                   field1064 = (field1064 + 1) % 100;
                   String var25 = AbstractFont.method5328(NetSocket.method3456(class65.method1308(var3)));
                   if(var11.modIcon != -1) {
-                     WorldMapData_1.method514(9, class256.method4655(var11.modIcon) + var36, var25, clanName);
+                     WorldMapData_1.addChatMessage(9, class256.method4655(var11.modIcon) + var36, var25, clanName);
                   } else {
-                     WorldMapData_1.method514(9, var36, var25, clanName);
+                     WorldMapData_1.addChatMessage(9, var36, var25, clanName);
                   }
                }
 
@@ -7225,7 +5780,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                var39.id = var3.readUnsignedShort();
                var5 = var3.readInt();
                var39.properties = var5;
-               MouseRecorder.method1207(45);
+               MouseRecorder.setGameState(45);
                var2.vmethod5821();
                var2 = null;
                class8.method101(var39);
@@ -7735,12 +6290,12 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                      for (var5 = WorldMapSection2.field3815; var5 < WorldMapSection2.field3815 + 8; ++var5) {
                         if (groundItems[WorldMapRectangle.plane][var4][var5] != null) {
                            groundItems[WorldMapRectangle.plane][var4][var5] = null;
-                           WorldMapCacheName.method673(var4, var5);
+                           WorldMapCacheName.updateItemPile(var4, var5);
                         }
                      }
                   }
 
-                  for (PendingSpawn var37 = (PendingSpawn) pendingSpawns.method5103(); var37 != null; var37 = (PendingSpawn) pendingSpawns.method5126()) {
+                  for (PendingSpawn var37 = (PendingSpawn) pendingSpawns.last(); var37 != null; var37 = (PendingSpawn) pendingSpawns.previous()) {
                      if (var37.x >= class28.field199 && var37.x < class28.field199 + 8 && var37.y >= WorldMapSection2.field3815 && var37.y < WorldMapSection2.field3815 + 8 && var37.plane == WorldMapRectangle.plane) {
                         var37.hitpoints = 0;
                      }
@@ -8198,7 +6753,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedName("he")
    final void method1659(short var1) {
       Menu var2 = Menu.MENU;
       var2.reset();
@@ -8209,11 +6763,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedName("ho")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "1079121521"
-   )
    final void method1661(int var1, int var2) {
       this.menuOpened(var1, var2);
       UserComparator6.method3507(var1, var2);
@@ -8221,7 +6770,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       isMenuOpen = true;
    }
 
-   @ObfuscatedName("hq")
    final boolean method1660(byte var1) {
       if(this.copy$shouldLeftClickOpenMenu(var1)) {
          return true;
@@ -8233,7 +6781,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
          } else {
             int var3 = this.getMenuOptionCount();
             if(var3 > 0) {
-               int var4 = this.getMenuOpcodes()[var3 - 1];
+               int var4 = menuOpcodes[var3 - 1];
                return var4 == MenuOpcode.RUNELITE_OVERLAY.getId();
             } else {
                return false;
@@ -8242,21 +6790,11 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedName("ij")
-   @ObfuscatedSignature(
-      signature = "(ZI)V",
-      garbageValue = "313560965"
-   )
    final void method1874(boolean var1) {
       class256.method4654(rootInterface, FloorDecoration.canvasWidth, WallDecoration.canvasHeight, var1);
    }
 
-   @ObfuscatedName("is")
-   @ObfuscatedSignature(
-      signature = "(Lho;B)V",
-      garbageValue = "1"
-   )
-   void method1774(Widget var1) {
+   void revalidateWidget(Widget var1) {
       Widget var2 = var1.parentId == -1?null:Canvas.getWidget(var1.parentId);
       int var3;
       int var4;
@@ -8272,11 +6810,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       class33.method678(var1, var3, var4);
    }
 
-   @ObfuscatedName("jt")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-808375331"
-   )
    final void method1663() {
       WorldMapSectionType.method116(clickedWidget);
       ++ViewportMouse.widgetDragDuration;
@@ -8360,25 +6893,14 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedName("kz")
-   @ObfuscatedSignature(
-      signature = "(S)Ljq;",
-      garbageValue = "9955"
-   )
    public Username vmethod5099() {
       return class215.localPlayer != null?class215.localPlayer.username:null;
    }
 
-   @ObfuscatedName("q")
    static int method2043(long var0) {
       return (int)(var0 >>> 14 & 3L);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "431297908"
-   )
    public static void method1901() {
       if(MouseHandler.MouseHandler_instance != null) {
          MouseHandler var0 = MouseHandler.MouseHandler_instance;
@@ -8389,9 +6911,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(Lba;IB)V"
-   )
    public static void copy$runScript(ScriptEvent var0, int var1, byte var2) {
       try {
          Object[] var3 = var0.args;
@@ -8620,7 +7139,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                                        ScriptFrame.field1761 = var38.field641;
                                     } else if(var33 == 25) {
                                        var12 = var7[var18];
-                                       Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = WorldMapSprite.method782(var12);
+                                       Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = WorldMapSprite.getVarbit(var12);
                                     } else if(var33 == 27) {
                                        var12 = var7[var18];
                                        WorldMapElement.method4378(var12, Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
@@ -8733,7 +7252,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                                              }
 
                                              IterableNodeHashTable var37 = ((Script)var4).switches[var7[var18]];
-                                             IntegerNode var34 = (IntegerNode)var37.method6061((long)Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+                                             IntegerNode var34 = (IntegerNode)var37.get((long)Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
                                              if(var34 != null) {
                                                 var18 = currentScriptPC = var18 + var34.integer;
                                              }
@@ -8838,35 +7357,20 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void canvasWidthChanged(int var0) {
       ViewportMouse.client.getCallbacks().post(CanvasSizeChanged.class, CanvasSizeChanged.INSTANCE);
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void gameStateChanged(int var0) {
       GameStateChanged var1 = new GameStateChanged();
       var1.setGameState(ViewportMouse.client.getGameState());
       ViewportMouse.client.getCallbacks().post(GameStateChanged.class, var1);
    }
 
-   @ObfuscatedSignature(
-      signature = "(Lhp;III)Llf;"
-   )
    public static Sprite copy$SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2, int var3) {
       return !VertexNormal.method2468(var0, var1, var2)?null:FillMode.method6384();
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void canvasHeightChanged(int var0) {
       ViewportMouse.client.getCallbacks().post(CanvasSizeChanged.class, CanvasSizeChanged.INSTANCE);
    }
@@ -8878,28 +7382,24 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
 
       Map var5 = ViewportMouse.client.getChatLineMap();
-      RSChatChannel var6 = (RSChatChannel)var5.get(Integer.valueOf(var0));
-      RSMessage var7 = var6.getLines()[0];
+      ChatChannel var6 = (ChatChannel)var5.get(Integer.valueOf(var0));
+      Message var7 = var6.getLines()[0];
       ChatMessageType var8 = ChatMessageType.of(var0);
       ChatMessage var9 = new ChatMessage(var7, var8, var1, var2, var3, var7.getTimestamp());
       ViewportMouse.client.getCallbacks().post(ChatMessage.class, var9);
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void onMenuOptionsChanged(int var0) {
       int var1 = oldMenuEntryCount;
       int var2 = ViewportMouse.client.getMenuOptionCount();
       oldMenuEntryCount = var2;
-      String[] var3 = ViewportMouse.client.getMenuOptions();
-      String[] var4 = ViewportMouse.client.getMenuTargets();
-      int[] var5 = ViewportMouse.client.getMenuIdentifiers();
-      int[] var6 = ViewportMouse.client.getMenuOpcodes();
-      int[] var7 = ViewportMouse.client.getMenuArguments1();
-      int[] var8 = ViewportMouse.client.getMenuArguments2();
-      boolean[] var9 = ViewportMouse.client.getMenuForceLeftClick();
+      String[] var3 = menuActions;
+      String[] var4 = menuTargets;
+      int[] var5 = menuIdentifiers;
+      int[] var6 = menuOpcodes;
+      int[] var7 = menuArguments1;
+      int[] var8 = menuArguments2;
+      boolean[] var9 = menuShiftClick;
       if(var2 == var1 + 1) {
          MenuEntryAdded var10 = new MenuEntryAdded(var3[var1], var4[var1], var5[var1], var6[var1], var7[var1], var8[var1], var9[var1]);
          ViewportMouse.client.getCallbacks().post(MenuEntryAdded.class, var10);
@@ -8916,10 +7416,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void onUsernameChanged(int var0) {
       ViewportMouse.client.getCallbacks().post(UsernameChanged.class, UsernameChanged.INSTANCE);
    }
@@ -8999,30 +7495,26 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void queuedSoundEffectCountChanged(int var0) {
-      int var1 = ViewportMouse.client.getQueuedSoundEffectCount();
+      int var1 = soundEffectCount;
       if(var1 == lastSoundEffectCount + 1) {
          int var2 = var1 - 1;
-         int var3 = ViewportMouse.client.getSoundLocations()[var2];
+         int var3 = soundLocations[var2];
          if(var3 == 0) {
             SoundEffectPlayed var4 = new SoundEffectPlayed();
-            var4.setSoundId(ViewportMouse.client.getQueuedSoundEffectIDs()[var2]);
-            var4.setDelay(ViewportMouse.client.getQueuedSoundEffectDelays()[var2]);
+            var4.setSoundId(soundEffectIds[var2]);
+            var4.setDelay(queuedSoundEffectDelays[var2]);
             ViewportMouse.client.getCallbacks().post(SoundEffectPlayed.class, var4);
          } else {
             int var8 = var3 >> 16 & 255;
             int var5 = var3 >> 8 & 255;
             int var6 = var3 & 255;
             AreaSoundEffectPlayed var7 = new AreaSoundEffectPlayed();
-            var7.setSoundId(ViewportMouse.client.getQueuedSoundEffectIDs()[var2]);
+            var7.setSoundId(soundEffectIds[var2]);
             var7.setSceneX(var8);
             var7.setSceneY(var5);
             var7.setRange(var6);
-            var7.setDelay(ViewportMouse.client.getQueuedSoundEffectDelays()[var2]);
+            var7.setDelay(queuedSoundEffectDelays[var2]);
             ViewportMouse.client.getCallbacks().post(AreaSoundEffectPlayed.class, var7);
          }
       }
@@ -9049,53 +7541,55 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public static void renderWidgetLayer(net.runelite.api.widgets.Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       Callbacks var9 = ViewportMouse.client.getCallbacks();
-      RSNodeHashTable var10 = ViewportMouse.client.getComponentTable();
+      NodeHashTable var10 = ViewportMouse.client.getComponentTable();
       net.runelite.api.widgets.Widget[] var11 = var0;
       int var12 = var0.length;
 
       for(int var13 = 0; var13 < var12; ++var13) {
          net.runelite.api.widgets.Widget var14 = var11[var13];
-         RSWidget var15 = (RSWidget)var14;
-         if(var15 != null && var15.getRSParentId() == var1 && !var15.isSelfHidden()) {
-            if(var1 != -1) {
-               var15.setRenderParentId(var1);
-            }
-
-            int var16 = var6 + var15.getRelativeX();
-            int var17 = var7 + var15.getRelativeY();
-            var15.setRenderX(var16);
-            var15.setRenderY(var17);
-            int var18 = var15.getType();
-            if(var18 == 5 && var15.getItemId() != -1) {
-               if(var16 >= var2 && var16 <= var4 && var17 >= var3 && var17 <= var5) {
-                  String[] attributes = new String[3];
-                  WidgetItem var29 = new WidgetItem(var15.getItemId(), var15.getItemQuantity(), -1, var15.getBounds(), var15, attributes);
-                  var9.drawItem(var15.getItemId(), var29);
+         Widget var15 = (Widget)var14;
+         if(var15 != null) {
+            if (var15.parentId == var1 && !var15.isSelfHidden()) {
+               if (var1 != -1) {
+                  var15.setRenderParentId(var1);
                }
-            } else if(var18 == 2) {
-               Collection var19 = var15.getWidgetItems();
-               Iterator var27 = var19.iterator();
 
-               while(var27.hasNext()) {
-                  WidgetItem var28 = (WidgetItem)var27.next();
-                  var9.drawItem(var28.getId(), var28);
+               int var16 = var6 + var15.getRelativeX();
+               int var17 = var7 + var15.getRelativeY();
+               var15.setRenderX(var16);
+               var15.setRenderY(var17);
+               int var18 = var15.getType();
+               if (var18 == 5 && var15.getItemId() != -1) {
+                  if (var16 >= var2 && var16 <= var4 && var17 >= var3 && var17 <= var5) {
+                     String[] attributes = new String[3];
+                     WidgetItem var29 = new WidgetItem(var15.getItemId(), var15.getItemQuantity(), -1, var15.getBounds(), var15, attributes);
+                     var9.drawItem(var15.getItemId(), var29);
+                  }
+               } else if (var18 == 2) {
+                  Collection var19 = var15.getWidgetItems();
+                  Iterator var27 = var19.iterator();
+
+                  while (var27.hasNext()) {
+                     WidgetItem var28 = (WidgetItem) var27.next();
+                     var9.drawItem(var28.getId(), var28);
+                  }
                }
-            }
 
-            WidgetNode var30 = (WidgetNode)var10.get((long)var15.getId());
-            if(var30 != null) {
-               int var20 = var15.getId();
-               int var21 = var30.getId();
-               RSWidget[] var22 = ViewportMouse.client.getWidgets()[var21];
-               RSWidget[] var23 = var22;
-               int var24 = var22.length;
+               WidgetNode var30 = (WidgetNode) var10.get((long) var15.getId());
+               if (var30 != null) {
+                  int var20 = var15.getId();
+                  int var21 = var30.getId();
+                  Widget[] var22 = UserComparator5.Widget_interfaceComponents[var21];
+                  Widget[] var23 = var22;
+                  int var24 = var22.length;
 
-               for(int var25 = 0; var25 < var24; ++var25) {
-                  RSWidget var26 = var23[var25];
-                  if (var26 == null)
-                     var26 = new Widget();
-                  if(var26.getRSParentId() == -1) {
-                     var26.setRenderParentId(var20);
+                  for (int var25 = 0; var25 < var24; ++var25) {
+                     Widget var26 = var23[var25];
+                     if (var26 == null)
+                        var26 = new Widget();
+                     if (var26.parentId == -1) {
+                        var26.setRenderParentId(var20);
+                     }
                   }
                }
             }
@@ -9112,17 +7606,13 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       return var2 * var1 + var3 * var0 >> 16;
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void itemPressedDurationChanged(int var0) {
       if(ViewportMouse.client.getItemPressedDuration() > 0) {
          ++itemPressedDurationBuffer;
          if(itemPressedDurationBuffer >= inventoryDragDelay) {
-            ViewportMouse.client.setItemPressedDuration(itemPressedDurationBuffer);
+            itemDragDuration = itemPressedDurationBuffer;
          } else {
-            ViewportMouse.client.setItemPressedDuration(0);
+            itemDragDuration = 0;
          }
       } else {
          itemPressedDurationBuffer = 0;
@@ -10134,10 +8624,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void resizeChanged(int var0) {
       boolean var1 = ViewportMouse.client.isResized();
       if(var1 != oldIsResized) {
@@ -10155,22 +8641,14 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       ViewportMouse.client.getCallbacks().post(VarbitChanged.class, var1);
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void draggingWidgetChanged(int var0) {
       DraggingWidgetChanged var1 = new DraggingWidgetChanged();
       var1.setDraggingWidget(ViewportMouse.client.isDraggingWidget());
       ViewportMouse.client.getCallbacks().post(DraggingWidgetChanged.class, var1);
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void onTempMenuActionChanged(int var0) {
-      if(ViewportMouse.client.getTempMenuAction() != null) {
+      if(ParamDefinition.tempMenuAction != null) {
          ViewportMouse.client.getCallbacks().post(WidgetPressed.class, WidgetPressed.INSTANCE);
       }
 
@@ -10178,7 +8656,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    public static void onGrandExchangeOffersChanged(int var0) {
       if(var0 != -1) {
-         RSGrandExchangeOffer var1 = ViewportMouse.client.getGrandExchangeOffers()[var0];
+         GrandExchangeOffer var1 = ViewportMouse.client.getGrandExchangeOffers()[var0];
          if(var1 != null) {
             GrandExchangeOfferChanged var2 = new GrandExchangeOfferChanged();
             var2.setOffer(var1);
@@ -10188,16 +8666,12 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   public static void updateNpcs(boolean var0, RSPacketBuffer var1) {
+   public static void updateNpcs(boolean var0, PacketBuffer var1) {
       ViewportMouse.client.getCallbacks().updateNpcs();
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void onCameraPitchTargetChanged(int var0) {
-      int var1 = ViewportMouse.client.getCameraPitchTarget();
+      int var1 = camAngleX;
       int var2 = var1;
       if(pitchRelaxEnabled && lastPitchTarget > 383 && var1 == 383) {
          var2 = lastPitchTarget;
@@ -10205,7 +8679,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
             var2 = 512;
          }
 
-         ViewportMouse.client.setCameraPitchTarget(var2);
+         camAngleX = var2;
       }
 
       lastPitchTarget = var2;
@@ -10236,18 +8710,14 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       ViewportMouse.client.getCallbacks().post(PlayerMenuOptionsChanged.class, var3);
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void clanMemberManagerChanged(int var0) {
-      ViewportMouse.client.getCallbacks().post(ClanChanged.class, new ClanChanged(ViewportMouse.client.getClanMemberManager() != null));
+      ViewportMouse.client.getCallbacks().post(ClanChanged.class, new ClanChanged(Varps.clanChat != null));
    }
 
    public static void cachedNPCsChanged(int var0) {
-      RSNPC[] var1 = ViewportMouse.client.getCachedNPCs();
+      NPC[] var1 = ViewportMouse.client.getCachedNPCs();
       if(var0 >= 0 && var0 < var1.length) {
-         RSNPC var2 = var1[var0];
+         NPC var2 = var1[var0];
          if(var2 != null) {
             var2.setIndex(var0);
             ViewportMouse.client.getCallbacks().postDeferred(NpcSpawned.class, new NpcSpawned(var2));
@@ -10274,7 +8744,7 @@ public final class Client extends GameShell implements Usernamed, RSClient {
                   ScriptEvent var5 = new ScriptEvent();
                   var5.widget = var4;
                   var5.args = var4.onLoad;
-                  KeyHandler.method506(var5, 5000000, (byte)0);
+                  KeyHandler.runScript(var5, 5000000, (byte)0);
                }
             }
 
@@ -10360,10 +8830,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void onCameraPitchChanged(int var0) {
       int var1 = ViewportMouse.client.getCameraPitch();
       int var2 = var1;
@@ -10373,17 +8839,17 @@ public final class Client extends GameShell implements Usernamed, RSClient {
             var2 = 512;
          }
 
-         ViewportMouse.client.setCameraPitch(var2);
+         IgnoreList.cameraPitch = var2;
       }
 
       lastPitch = var2;
    }
 
    public static void cachedPlayersChanged(int var0) {
-      RSPlayer[] var1 = ViewportMouse.client.getCachedPlayers();
+      Player[] var1 = ViewportMouse.client.getCachedPlayers();
       if(var0 >= 0 && var0 < var1.length) {
-         RSPlayer var2 = var1[var0];
-         RSPlayer var3 = oldPlayers[var0];
+         Player var2 = var1[var0];
+         Player var3 = oldPlayers[var0];
          oldPlayers[var0] = var2;
          if(var3 != null) {
             ViewportMouse.client.getCallbacks().post(PlayerDespawned.class, new PlayerDespawned(var3));
@@ -10396,15 +8862,11 @@ public final class Client extends GameShell implements Usernamed, RSClient {
       }
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public static void onCycleCntrChanged(int var0) {
       ViewportMouse.client.getCallbacks().post(ClientTick.class, ClientTick.INSTANCE);
    }
 
-   public static boolean shouldHideAttackOptionFor(RSPlayer var0) {
+   public static boolean shouldHideAttackOptionFor(Player var0) {
       return ViewportMouse.client.isSpellSelected()?(hideFriendCastOptions && var0.isFriended() || hideClanmateCastOptions && var0.isClanMember()) && !unhiddenCasts.contains(ViewportMouse.client.getSelectedSpellName().replaceAll("<[^>]*>", "").toLowerCase()):hideFriendAttackOptions && var0.isFriended() || hideClanmateAttackOptions && var0.isClanMember();
    }
 
@@ -10534,11 +8996,6 @@ public final class Client extends GameShell implements Usernamed, RSClient {
 
    }
 
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-1109826367"
-   )
    static int method2082(int var0, Script var1, boolean var2) {
       Widget var3 = Canvas.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
       if(var0 == 2600) {

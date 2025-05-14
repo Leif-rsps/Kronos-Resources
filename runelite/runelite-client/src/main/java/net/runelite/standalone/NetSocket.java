@@ -5,63 +5,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
 public final class NetSocket extends AbstractSocket implements Runnable {
-   @ObfuscatedName("ly")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    static Widget mousedOverWidgetIf1;
-   @ObfuscatedName("n")
    OutputStream outputStream;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Lfv;"
-   )
    Task task;
-   @ObfuscatedName("q")
    byte[] outBuffer;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lfm;"
-   )
    TaskHandler taskHandler;
-   @ObfuscatedName("u")
    boolean isClosed;
-   @ObfuscatedName("v")
    Socket socket;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = 386347925
-   )
    int outOffset;
-   @ObfuscatedName("z")
    InputStream inputStream;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = 312930257
-   )
    final int maxPacketLength;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -539294119
-   )
    final int bufferLength;
-   @ObfuscatedName("i")
    boolean exceptionWriting;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -428981347
-   )
    int outLength;
 
-   @ObfuscatedSignature(
-      signature = "(Ljava/net/Socket;Lfm;I)V"
-   )
    public NetSocket(Socket var1, TaskHandler var2, int var3) throws IOException {
       this.isClosed = false;
       this.outLength = 0;
@@ -79,20 +38,10 @@ public final class NetSocket extends AbstractSocket implements Runnable {
       this.outputStream = this.socket.getOutputStream();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "1784126558"
-   )
    public int vmethod5815() throws IOException {
       return this.isClosed?0:this.inputStream.read();
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "([BIII)V",
-      garbageValue = "-2110504051"
-   )
    void method3462(byte[] var1, int var2, int var3) throws IOException {
       if(!this.isClosed) {
          if(this.exceptionWriting) {
@@ -123,20 +72,10 @@ public final class NetSocket extends AbstractSocket implements Runnable {
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "([BIIB)V",
-      garbageValue = "6"
-   )
    public void vmethod5817(byte[] var1, int var2, int var3) throws IOException {
       this.method3462(var1, var2, var3);
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "([BIII)I",
-      garbageValue = "-2035668362"
-   )
    public int vmethod5832(byte[] var1, int var2, int var3) throws IOException {
       if(this.isClosed) {
          return 0;
@@ -156,29 +95,14 @@ public final class NetSocket extends AbstractSocket implements Runnable {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(II)Z",
-      garbageValue = "-336706705"
-   )
    public boolean vmethod5816(int var1) throws IOException {
       return this.isClosed?false:this.inputStream.available() >= var1;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "3"
-   )
    public int vmethod5838() throws IOException {
       return this.isClosed?0:this.inputStream.available();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-119"
-   )
    public void vmethod5821() {
       if(!this.isClosed) {
          synchronized(this) {
@@ -294,20 +218,10 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;B)Z",
-      garbageValue = "-100"
-   )
    public static boolean method3488(CharSequence var0) {
       return MouseRecorder.method1204(var0, 10, true);
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)Ljava/lang/String;",
-      garbageValue = "-175447114"
-   )
    public static String method3456(String var0) {
       int var1 = var0.length();
       char[] var2 = new char[var1];
@@ -341,11 +255,6 @@ public final class NetSocket extends AbstractSocket implements Runnable {
       return new String(var2);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([Lga;II)Lga;",
-      garbageValue = "-846037107"
-   )
    public static Enumerated getEnumeratedTypeIndex(Enumerated[] enumeratedToSearch, int id) {
       Enumerated[] holder = enumeratedToSearch;
       for(int index = 0; index < holder.length; ++index) {
@@ -357,15 +266,10 @@ public final class NetSocket extends AbstractSocket implements Runnable {
       return null;
    }
 
-   @ObfuscatedName("jp")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "-1514465632"
-   )
    static final void method3457(int var0) {
       class329.method6295();
 
-      for(ObjectSound var1 = (ObjectSound)ObjectSound.objectSounds.method5103(); var1 != null; var1 = (ObjectSound)ObjectSound.objectSounds.method5126()) {
+      for(ObjectSound var1 = (ObjectSound)ObjectSound.objectSounds.last(); var1 != null; var1 = (ObjectSound)ObjectSound.objectSounds.previous()) {
          if(var1.obj != null) {
             var1.method949();
          }
@@ -395,7 +299,7 @@ public final class NetSocket extends AbstractSocket implements Runnable {
                ((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).method2840(0.6D);
             }
 
-            ItemDefinition.ItemDefinition_cachedSprites.method3035();
+            ItemDefinition.ItemDefinition_cachedSprites.clear();
          }
 
          if(var4 == 3) {

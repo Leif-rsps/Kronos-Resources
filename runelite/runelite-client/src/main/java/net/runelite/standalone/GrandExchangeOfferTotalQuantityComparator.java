@@ -1,22 +1,10 @@
 package net.runelite.standalone;
 
 import java.util.Comparator;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("y")
 final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
-   @ObfuscatedName("bk")
-   @ObfuscatedSignature(
-      signature = "[Llp;"
-   )
    static IndexedSprite[] worldSelectArrows;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lm;Lm;I)I",
-      garbageValue = "-1270482233"
-   )
    int method195(GrandExchangeEvent var1, GrandExchangeEvent var2) {
       return var1.grandExchangeOffer.totalQuantity < var2.grandExchangeOffer.totalQuantity?-1:(var2.grandExchangeOffer.totalQuantity == var1.grandExchangeOffer.totalQuantity?0:1);
    }
@@ -29,20 +17,10 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
       return super.equals(var1);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(II)Z",
-      garbageValue = "1729511296"
-   )
    public static boolean method196(int var0) {
       return (var0 >> 20 & 1) != 0;
    }
 
-   @ObfuscatedName("ec")
-   @ObfuscatedSignature(
-      signature = "(IIB)V",
-      garbageValue = "99"
-   )
    static void method194(int var0, int var1) {
       int[] var2 = new int[9];
 
@@ -65,11 +43,6 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
       Scene.method3149(var2, 500, 800, var0 * 334 / var1, 334);
    }
 
-   @ObfuscatedName("ez")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-1447475674"
-   )
    static int method203() {
       if(Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
          int var0 = 0;
@@ -84,11 +57,6 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
       }
    }
 
-   @ObfuscatedName("gq")
-   @ObfuscatedSignature(
-      signature = "(Lgw;I)V",
-      garbageValue = "865930097"
-   )
    static final void method208(class202 var0) {
       PacketBuffer var1 = Client.packetWriter.packetBuffer;
       int var4;
@@ -248,18 +216,18 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
             if(var38 >= 0 && var4 >= 0 && var38 < 104 && var4 < 104) {
                NodeDeque var32 = Client.groundItems[WorldMapRectangle.plane][var38][var4];
                if(var32 != null) {
-                  for(var33 = (TileItem)var32.method5103(); var33 != null; var33 = (TileItem)var32.method5126()) {
+                  for(var33 = (TileItem)var32.last(); var33 != null; var33 = (TileItem)var32.previous()) {
                      if((var5 & 32767) == var33.id) {
-                        var33.method3497();
+                        var33.unlink();
                         break;
                      }
                   }
 
-                  if(var32.method5103() == null) {
+                  if(var32.last() == null) {
                      Client.groundItems[WorldMapRectangle.plane][var38][var4] = null;
                   }
 
-                  WorldMapCacheName.method673(var38, var4);
+                  WorldMapCacheName.updateItemPile(var38, var4);
                }
             }
 
@@ -290,8 +258,8 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
                   Client.groundItems[WorldMapRectangle.plane][var5][var6] = new NodeDeque();
                }
 
-               Client.groundItems[WorldMapRectangle.plane][var5][var6].method5105(var33);
-               WorldMapCacheName.method673(var5, var6);
+               Client.groundItems[WorldMapRectangle.plane][var5][var6].addFirst(var33);
+               WorldMapCacheName.updateItemPile(var5, var6);
             }
 
          } else {
@@ -354,7 +322,7 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
                   var8 = var8 * 128 + 64;
                   Projectile var34 = new Projectile(var37, WorldMapRectangle.plane, var4, var5, MusicPatchPcmStream.method3798(var4, var5, WorldMapRectangle.plane) - var14, var6 + Client.cycle, var7 + Client.cycle, var40, var10, var13, var9);
                   var34.method2237(var12, var8, MusicPatchPcmStream.method3798(var12, var8, WorldMapRectangle.plane) - var9, var6 + Client.cycle);
-                  Client.projectiles.method5105(var34);
+                  Client.projectiles.addFirst(var34);
                }
 
             } else if(class202.field2333 != var0) {
@@ -369,7 +337,7 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
                      var5 = var5 * 128 + 64;
                      var6 = var6 * 128 + 64;
                      GraphicsObject var45 = new GraphicsObject(var7, WorldMapRectangle.plane, var5, var6, MusicPatchPcmStream.method3798(var5, var6, WorldMapRectangle.plane) - var38, var37, Client.cycle);
-                     Client.graphicsObjects.method5105(var45);
+                     Client.graphicsObjects.addFirst(var45);
                   }
 
                }
@@ -383,7 +351,7 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
                if(var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
                   NodeDeque var35 = Client.groundItems[WorldMapRectangle.plane][var5][var6];
                   if(var35 != null) {
-                     for(TileItem var36 = (TileItem)var35.method5103(); var36 != null; var36 = (TileItem)var35.method5126()) {
+                     for(TileItem var36 = (TileItem)var35.last(); var36 != null; var36 = (TileItem)var35.previous()) {
                         if((var37 & 32767) == var36.id && var7 == var36.quantity) {
                            var36.quantityChanged(var38);
                            var36.quantity = var38;
@@ -391,7 +359,7 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
                         }
                      }
 
-                     WorldMapCacheName.method673(var5, var6);
+                     WorldMapCacheName.updateItemPile(var5, var6);
                   }
                }
 

@@ -22,141 +22,42 @@ import net.runelite.api.events.ItemSpawned;
 import net.runelite.api.events.WallObjectChanged;
 import net.runelite.api.events.WallObjectDespawned;
 import net.runelite.api.events.WallObjectSpawned;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSActor;
-import net.runelite.rs.api.RSCollisionMap;
-import net.runelite.rs.api.RSEntity;
-import net.runelite.rs.api.RSGameObject;
-import net.runelite.rs.api.RSGraphicsObject;
-import net.runelite.rs.api.RSNode;
-import net.runelite.rs.api.RSNodeDeque;
-import net.runelite.rs.api.RSProjectile;
-import net.runelite.rs.api.RSTile;
-import net.runelite.rs.api.RSTileItem;
-import net.runelite.rs.api.RSTileItemPile;
 import org.slf4j.Logger;
 
-@ObfuscatedName("dl")
-public final class Tile extends Node implements RSTile {
-   public static RSNodeDeque[][][] lastGroundItems;
-   public static RSGameObject lastGameObject;
-   @ObfuscatedName("da")
-   @ObfuscatedSignature(
-      signature = "Lie;"
-   )
+public final class Tile extends Node implements net.runelite.api.Tile {
+   public static NodeDeque[][][] lastGroundItems;
+   public static GameObject lastGameObject;
    static Archive archive13;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 1518104939
-   )
    int plane;
-   @ObfuscatedName("o")
    int[] gameObjectEdgeMasks;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Ldd;"
-   )
    TileModel model;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Leo;"
-   )
    BoundaryObject boundaryObject;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lef;"
-   )
    TilePaint paint;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = 1620350221
-   )
    int field1496;
-   @ObfuscatedName("t")
    boolean drawSecondary;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 1362708877
-   )
    int y;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1003607853
-   )
    int x;
-   @ObfuscatedName("w")
    boolean drawPrimary;
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = 824924819
-   )
    int drawGameObjectEdges;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "Ldj;"
-   )
    FloorDecoration floorDecoration;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 16369307
-   )
    int originalPlane;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = 2078500007
-   )
    int gameObjectsEdgeMask;
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "[Lej;"
-   )
    GameObject[] gameObjects;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -308551417
-   )
    int gameObjectsCount;
    public WallObject previousWallObject;
    public DecorativeObject previousDecorativeObject;
    public GroundObject previousGroundObject;
-   public RSGameObject[] previousGameObjects;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = -260677087
-   )
+   public GameObject[] previousGameObjects;
    int minPlane;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = 2139191781
-   )
    int field1501;
-   @ObfuscatedName("g")
    boolean drawGameObjects;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = 1066984119
-   )
    int field1482;
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "Ldo;"
-   )
    TileItemPile tileItemPile;
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      signature = "Ldl;"
-   )
    Tile linkedBelowTile;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Leg;"
-   )
    WallDecoration wallDecoration;
 
    static {
-      lastGroundItems = new RSNodeDeque[4][104][104];
+      lastGroundItems = new NodeDeque[4][104][104];
    }
 
    Tile(int var1, int var2, int var3) {
@@ -169,32 +70,29 @@ public final class Tile extends Node implements RSTile {
       this.y = var3;
    }
 
+   @Override
    public int getPlane() {
       return this.plane;
    }
 
-   public int getX() {
-      return this.x;
-   }
-
+   @Override
    public net.runelite.api.TileItemPile getItemLayer() {
       return this.tileItemPile;
    }
 
+   @Override
    public WallObject getWallObject() {
       return this.boundaryObject;
    }
 
+   @Override
    public DecorativeObject getDecorativeObject() {
       return this.wallDecoration;
    }
 
+   @Override
    public GroundObject getGroundObject() {
       return this.floorDecoration;
-   }
-
-   public int getY() {
-      return this.y;
    }
 
    public void gameObjectsChanged(int var1) {
@@ -203,24 +101,24 @@ public final class Tile extends Node implements RSTile {
             this.previousGameObjects = new GameObject[5];
          }
 
-         RSGameObject var2 = this.previousGameObjects[var1];
-         RSGameObject var3 = (RSGameObject)this.getGameObjects()[var1];
+         GameObject var2 = this.previousGameObjects[var1];
+         GameObject var3 = (GameObject)this.getGameObjects()[var1];
          this.previousGameObjects[var1] = var3;
-         RSGameObject var4 = lastGameObject;
+         GameObject var4 = lastGameObject;
          lastGameObject = var3;
          if(var3 != var2) {
             if(var3 == null || var3 != var4) {
                boolean var5 = false;
                boolean var6 = false;
-               RSEntity var7;
+               Entity var7;
                if(var3 != null) {
                   var7 = var3.getEntity();
-                  var5 = var7 instanceof RSActor || var7 instanceof RSProjectile || var7 instanceof RSGraphicsObject;
+                  var5 = var7 instanceof NPC || var7 instanceof Projectile || var7 instanceof GraphicsObject;
                }
 
                if(var2 != null) {
                   var7 = var2.getEntity();
-                  var6 = var7 instanceof RSActor || var7 instanceof RSProjectile || var7 instanceof RSGraphicsObject;
+                  var6 = var7 instanceof NPC || var7 instanceof Projectile || var7 instanceof GraphicsObject;
                }
 
                Logger var9 = ViewportMouse.client.getLogger();
@@ -262,14 +160,11 @@ public final class Tile extends Node implements RSTile {
       }
    }
 
+   @Override
    public net.runelite.api.GameObject[] getGameObjects() {
       return this.gameObjects;
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void wallObjectChanged(int var1) {
       WallObject var2 = this.previousWallObject;
       WallObject var3 = this.getWallObject();
@@ -294,10 +189,6 @@ public final class Tile extends Node implements RSTile {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void decorativeObjectChanged(int var1) {
       DecorativeObject var2 = this.previousDecorativeObject;
       DecorativeObject var3 = this.getDecorativeObject();
@@ -322,10 +213,6 @@ public final class Tile extends Node implements RSTile {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void groundObjectChanged(int var1) {
       GroundObject var2 = this.previousGroundObject;
       GroundObject var3 = this.getGroundObject();
@@ -350,24 +237,20 @@ public final class Tile extends Node implements RSTile {
 
    }
 
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1"
-   )
    public void itemLayerChanged(int var1) {
-      int var2 = this.getX();
-      int var3 = this.getY();
+      int var2 = this.x;
+      int var3 = this.y;
       int var4 = ViewportMouse.client.getPlane();
-      RSNodeDeque[][][] var5 = ViewportMouse.client.getGroundItemDeque();
-      RSNodeDeque var6 = lastGroundItems[var4][var2][var3];
-      RSNodeDeque var7 = var5[var4][var2][var3];
+       NodeDeque[][][] var5 = Client.groundItems;
+      NodeDeque var6 = lastGroundItems[var4][var2][var3];
+      NodeDeque var7 = var5[var4][var2][var3];
       ItemDespawned var11;
       if(var6 != var7) {
          if(var6 != null) {
-            RSNode var8 = var6.getHead();
+            Node var8 = var6.sentinel;
 
-            for(RSNode var9 = var8.getNext(); var9 != var8; var9 = var9.getNext()) {
-               RSTileItem var10 = (RSTileItem)var9;
+            for(Node var9 = var8.getNext(); var9 != var8; var9 = var9.getNext()) {
+               TileItem var10 = (TileItem)var9;
                var11 = new ItemDespawned(this, var10);
                ViewportMouse.client.getCallbacks().post(ItemDespawned.class, var11);
             }
@@ -376,12 +259,12 @@ public final class Tile extends Node implements RSTile {
          lastGroundItems[var4][var2][var3] = var7;
       }
 
-      RSTileItem var18 = ViewportMouse.client.getLastItemDespawn();
+      TileItem var18 = ViewportMouse.client.getLastItemDespawn();
       if(var18 != null) {
-         ViewportMouse.client.setLastItemDespawn((RSTileItem)null);
+         ViewportMouse.client.setLastItemDespawn((TileItem)null);
       }
 
-      RSTileItemPile var19 = (RSTileItemPile)this.getItemLayer();
+      TileItemPile var19 = (TileItemPile)this.getItemLayer();
       if(var19 == null) {
          if(var18 != null) {
             ItemDespawned var20 = new ItemDespawned(this, var18);
@@ -395,21 +278,21 @@ public final class Tile extends Node implements RSTile {
          }
 
       } else {
-         RSNode var21 = var7.getHead();
+         Node var21 = var7.sentinel;
          Object var12 = null;
-         RSNode var13 = var21.getPrevious();
+         Node var13 = var21.getPrevious();
          boolean var14 = false;
          if(var21 != var13) {
-            RSTileItem var15 = (RSTileItem)var13;
+            TileItem var15 = (TileItem)var13;
             if(var2 != var15.getX() || var3 != var15.getY()) {
                var12 = var15;
             }
          }
 
-         RSNode var22 = var21.getNext();
-         RSTileItem var16;
+         Node var22 = var21.getNext();
+         TileItem var16;
          if(var12 == null && var21 != var22) {
-            var16 = (RSTileItem)var22;
+            var16 = (TileItem)var22;
             if(var2 != var16.getX() || var3 != var16.getY()) {
                var12 = var16;
                var14 = true;
@@ -423,35 +306,35 @@ public final class Tile extends Node implements RSTile {
 
          if(var12 != null) {
             do {
-               var16 = (RSTileItem)var12;
+               var16 = (TileItem)var12;
                var16.setX(var2);
                var16.setY(var3);
                ItemSpawned var17 = new ItemSpawned(this, var16);
                ViewportMouse.client.getCallbacks().post(ItemSpawned.class, var17);
-               var12 = var14?((RSNode)var12).getNext():((RSNode)var12).getPrevious();
-            } while(var12 != var21 && (((RSTileItem)var12).getX() != var2 || ((RSTileItem)var12).getY() != var3));
+               var12 = var14?((Node)var12).getNext():((Node)var12).getPrevious();
+            } while(var12 != var21 && (((TileItem)var12).getX() != var2 || ((TileItem)var12).getY() != var3));
 
          }
       }
    }
 
    public Point getSceneLocation() {
-      return new Point(this.getX(), this.getY());
+      return new Point(this.x, this.y);
    }
 
    public WorldPoint getWorldLocation() {
-      return WorldPoint.fromScene(ViewportMouse.client, this.getX(), this.getY(), this.getPlane());
+      return WorldPoint.fromScene(ViewportMouse.client, this.x, this.y, this.getPlane());
    }
 
    public LocalPoint getLocalLocation() {
-      return LocalPoint.fromScene(this.getX(), this.getY());
+      return LocalPoint.fromScene(this.x, this.y);
    }
 
    public boolean hasLineOfSightTo(net.runelite.api.Tile var1) {
       if(this.getPlane() != var1.getPlane()) {
          return false;
       } else {
-         RSCollisionMap[] var2 = ViewportMouse.client.getCollisionMaps();
+         CollisionMap[] var2 = ViewportMouse.client.getCollisionMaps();
          if(var2 == null) {
             return false;
          } else {
@@ -557,59 +440,26 @@ public final class Tile extends Node implements RSTile {
       }
    }
 
+   @Override
    public int getRenderLevel() {
       return this.originalPlane;
    }
 
+   @Override
    public net.runelite.api.TilePaint getTilePaint() {
       return this.paint;
    }
 
+   @Override
    public net.runelite.api.TileModel getTileModel() {
       return this.model;
    }
 
-   public int getFlags() {
-      return this.gameObjectsEdgeMask;
-   }
-
-   public int getPhysicalLevel() {
-      return this.minPlane;
-   }
-
-   public void setDraw(boolean var1) {
-      this.drawPrimary = var1;
-   }
-
-   public boolean isDraw() {
-      return this.drawPrimary;
-   }
-
-   public void setVisible(boolean var1) {
-      this.drawSecondary = var1;
-   }
-
-   public boolean isVisible() {
-      return this.drawSecondary;
-   }
-
-   public void setDrawEntities(boolean var1) {
-      this.drawGameObjects = var1;
-   }
-
-   public void setWallCullDirection(int var1) {
-      this.drawGameObjectEdges = var1;
-   }
-
-   public RSTile getBridge() {
+   @Override
+   public Tile getBridge() {
       return this.linkedBelowTile;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)Lgn;",
-      garbageValue = "283500885"
-   )
    public static PacketBufferNode method2444() {
       PacketBufferNode var0;
       if(PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) {

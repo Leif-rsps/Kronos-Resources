@@ -2,46 +2,16 @@ package net.runelite.standalone;
 
 import net.runelite.api.events.ClanMemberJoined;
 import net.runelite.api.events.ClanMemberLeft;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSClanChat;
-import net.runelite.rs.api.RSClanMate;
-import net.runelite.rs.api.RSUser;
-import net.runelite.rs.api.RSUsername;
 
-@ObfuscatedName("jk")
-public class ClanChat extends UserList<RSClanMate> implements RSClanChat {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lli;"
-   )
+public class ClanChat extends UserList<ClanMate> {
    final LoginType loginType;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = 198699637
-   )
    public int rank;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lju;"
-   )
    final Usernamed localUser;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = -2033888675
-   )
    int field3568;
-   @ObfuscatedName("b")
    public byte minKick;
-   @ObfuscatedName("c")
    public String owner;
-   @ObfuscatedName("i")
    public String name;
 
-   @ObfuscatedSignature(
-      signature = "(Lli;Lju;)V"
-   )
    public ClanChat(LoginType var1, Usernamed var2) {
       super(200);
       this.name = null;
@@ -51,29 +21,14 @@ public class ClanChat extends UserList<RSClanMate> implements RSClanChat {
       this.localUser = var2;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)[Ljh;",
-      garbageValue = "951526901"
-   )
    User[] vmethod5186(int var1) {
       return new ClanMate[var1];
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)V",
-      garbageValue = "969628158"
-   )
    final void method4926(String var1) {
       this.name = VertexNormal.method2467(var1);
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(Lkl;S)V",
-      garbageValue = "20227"
-   )
    public final void method4928(Buffer var1) {
       this.method4951(var1.readString());
       /*long var2 = var1.method5502();
@@ -126,20 +81,10 @@ public class ClanChat extends UserList<RSClanMate> implements RSClanChat {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)Ljh;",
-      garbageValue = "2"
-   )
    User vmethod5179() {
       return new ClanMate();
    }
 
-   @ObfuscatedName("ci")
-   @ObfuscatedSignature(
-      signature = "(Ljo;I)V",
-      garbageValue = "345857456"
-   )
    final void method4932(ClanMate var1) {
       if(var1.method4879().equals(this.localUser.vmethod5099())) {
          this.rank = var1.rank;
@@ -147,59 +92,36 @@ public class ClanChat extends UserList<RSClanMate> implements RSClanChat {
 
    }
 
-   public void rl$add(RSUsername var1, RSUsername var2) {
-      RSClanMate var3 = (RSClanMate)this.findByName(var1);
+   public void rl$add(Username var1, Username var2) {
+      ClanMate var3 = (ClanMate)this.findByName(var1);
       if(var3 != null) {
          ClanMemberJoined var4 = new ClanMemberJoined(var3);
          ViewportMouse.client.getCallbacks().postDeferred(ClanMemberJoined.class, var4);
       }
    }
 
-   public void rl$remove(RSUser var1) {
-      RSClanMate var2 = (RSClanMate)this.findByName(var1.getRsName());
+   public void rl$remove(User var1) {
+       ClanMate var2 = (ClanMate)this.findByName(var1.username);
       if(var2 != null) {
          ClanMemberLeft var3 = new ClanMemberLeft(var2);
          ViewportMouse.client.getCallbacks().postDeferred(ClanMemberLeft.class, var3);
       }
    }
 
-   public String getClanChatName() {
-      return this.name;
-   }
-
-   public String getClanOwner() {
-      return this.owner;
-   }
-
-   @ObfuscatedName("cr")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "85012014"
-   )
    public final void method4930() {
-      for(int var1 = 0; var1 < this.method4800(); ++var1) {
+      for(int var1 = 0; var1 < this.getCount(); ++var1) {
          ((ClanMate)this.method4778(var1)).method4973();
       }
 
    }
 
-   @ObfuscatedName("ct")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "313560965"
-   )
    public final void method4931() {
-      for(int var1 = 0; var1 < this.method4800(); ++var1) {
+      for(int var1 = 0; var1 < this.getCount(); ++var1) {
          ((ClanMate)this.method4778(var1)).method4975();
       }
 
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(Lkl;B)V",
-      garbageValue = "-31"
-   )
    public final void method4929(Buffer var1) {
       Username var2 = new Username(var1.readString(), this.loginType);
       int var3 = var1.readUnsignedShort();
@@ -211,7 +133,7 @@ public class ClanChat extends UserList<RSClanMate> implements RSClanChat {
 
       ClanMate var6;
       if(var5) {
-         if(this.method4800() == 0) {
+         if(this.getCount() == 0) {
             return;
          }
 
@@ -224,7 +146,7 @@ public class ClanChat extends UserList<RSClanMate> implements RSClanChat {
          var6 = (ClanMate)this.method4815(var2);
 
          if(var6 == null) {
-            if(this.method4800() > super.capacity) {
+            if(this.getCount() > super.capacity) {
                return;
             }
 
@@ -238,11 +160,6 @@ public class ClanChat extends UserList<RSClanMate> implements RSClanChat {
 
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)V",
-      garbageValue = "-1129044853"
-   )
    final void method4951(String var1) {
       this.owner = VertexNormal.method2467(var1);
    }

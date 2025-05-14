@@ -1,37 +1,11 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("fc")
 public class MilliClock extends Clock {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 1174263325
-   )
    int field1935;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -432514755
-   )
    int field1938;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -118742351
-   )
    int field1939;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      longValue = 4855142476282651555L
-   )
    long field1940;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -133065269
-   )
    int field1937;
-   @ObfuscatedName("z")
    long[] field1936;
 
    MilliClock() {
@@ -47,11 +21,6 @@ public class MilliClock extends Clock {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(III)I",
-      garbageValue = "569029249"
-   )
    public int vmethod3511(int var1, int var2) {
       int var3 = this.field1935;
       int var4 = this.field1937;
@@ -126,11 +95,6 @@ public class MilliClock extends Clock {
       return var13;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-54"
-   )
    public void vmethod3510() {
       for(int var1 = 0; var1 < 10; ++var1) {
          this.field1936[var1] = 0L;

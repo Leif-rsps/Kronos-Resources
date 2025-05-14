@@ -1,48 +1,16 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSEnumDefinition;
-
-@ObfuscatedName("ia")
-public class EnumDefinition extends DualNode implements RSEnumDefinition {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
+public class EnumDefinition extends DualNode implements net.runelite.api.EnumDefinition {
    static EvictingDualNodeHashTable EnumDefinition_cached;
-   @ObfuscatedName("t")
-   @ObfuscatedSignature(
-      signature = "Laq;"
-   )
    static WorldMapEvent worldMapEvent;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive EnumDefinition_archive;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 213418595
-   )
    public int defaultInt;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = -1372083607
-   )
    public int outputCount;
-   @ObfuscatedName("r")
    public String defaultStr;
-   @ObfuscatedName("u")
    public char outputType;
-   @ObfuscatedName("v")
    public char inputType;
-   @ObfuscatedName("y")
    public int[] intVals;
-   @ObfuscatedName("i")
    public String[] strVals;
-   @ObfuscatedName("m")
    public int[] keys;
 
    static {
@@ -54,11 +22,6 @@ public class EnumDefinition extends DualNode implements RSEnumDefinition {
       this.outputCount = 0;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "-1933011246"
-   )
    void method4220(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
@@ -70,20 +33,10 @@ public class EnumDefinition extends DualNode implements RSEnumDefinition {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-1423753567"
-   )
    public int method4219() {
       return this.outputCount;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "1574226398"
-   )
    void method4221(Buffer var1, int var2) {
       if(var2 == 1) {
          this.inputType = (char)var1.readUnsignedByte();
@@ -118,22 +71,17 @@ public class EnumDefinition extends DualNode implements RSEnumDefinition {
 
    }
 
+   @Override
    public int[] getKeys() {
       return this.keys;
    }
 
-   public String getDefaultString() {
-      return this.defaultStr;
-   }
-
-   public int getDefaultInt() {
-      return this.defaultInt;
-   }
-
+   @Override
    public int[] getIntVals() {
       return this.intVals;
    }
 
+   @Override
    public String[] getStringVals() {
       return this.strVals;
    }
@@ -141,7 +89,7 @@ public class EnumDefinition extends DualNode implements RSEnumDefinition {
    public int getIntValue(int var1) {
       int[] var2 = this.getKeys();
       if(var2 == null) {
-         return this.getDefaultInt();
+         return this.defaultInt;
       } else {
          for(int var3 = 0; var3 < var2.length; ++var3) {
             if(var2[var3] == var1) {
@@ -150,14 +98,14 @@ public class EnumDefinition extends DualNode implements RSEnumDefinition {
             }
          }
 
-         return this.getDefaultInt();
+         return this.defaultInt;
       }
    }
 
    public String getStringValue(int var1) {
       int[] var2 = this.getKeys();
       if(var2 == null) {
-         return this.getDefaultString();
+         return this.defaultStr;
       } else {
          for(int var3 = 0; var3 < var2.length; ++var3) {
             if(var2[var3] == var1) {
@@ -166,15 +114,10 @@ public class EnumDefinition extends DualNode implements RSEnumDefinition {
             }
          }
 
-         return this.getDefaultString();
+         return this.defaultStr;
       }
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;B)V",
-      garbageValue = "54"
-   )
    static final void method4225(String var0) {
       class217.sendGameMessage(30, "", var0);
    }

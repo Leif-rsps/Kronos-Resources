@@ -1,64 +1,26 @@
 package net.runelite.standalone;
 
 import java.util.zip.CRC32;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSArchive;
 
-@ObfuscatedName("ie")
-public class Archive extends AbstractArchive implements RSArchive {
-   @ObfuscatedName("aw")
+import net.runelite.api.IndexDataBase;
+
+public class Archive extends AbstractArchive {
    static CRC32 Archive_crc;
-   @ObfuscatedName("jn")
-   @ObfuscatedSignature(
-      signature = "Ldz;"
-   )
    static TextureProvider textureProvider;
-   @ObfuscatedName("aa")
-   @ObfuscatedGetter(
-      intValue = 2033402119
-   )
    int indexCrc;
-   @ObfuscatedName("ac")
    boolean field3138;
-   @ObfuscatedName("ap")
-   @ObfuscatedGetter(
-      intValue = -302073813
-   )
    int indexVersion;
-   @ObfuscatedName("ar")
-   @ObfuscatedGetter(
-      intValue = -630367829
-   )
    int field3146;
-   @ObfuscatedName("az")
    volatile boolean[] validGroups;
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      signature = "Lkg;"
-   )
    ArchiveDisk masterDisk;
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      signature = "Lkg;"
-   )
    ArchiveDisk archiveDisk;
-   @ObfuscatedName("k")
    volatile boolean field3140;
-   @ObfuscatedName("l")
-   @ObfuscatedGetter(
-      intValue = -341991117
-   )
    int index;
 
    static {
       Archive_crc = new CRC32();
    }
 
-   @ObfuscatedSignature(
-      signature = "(Lkg;Lkg;IZZZ)V"
-   )
    public Archive(ArchiveDisk var1, ArchiveDisk var2, int var3, boolean var4, boolean var5, boolean var6) {
       super(var4, var5);
       this.field3140 = false;
@@ -81,11 +43,6 @@ public class Archive extends AbstractArchive implements RSArchive {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "15"
-   )
    void vmethod4267(int var1) {
       int var2 = this.index;
       long var3 = (long)((var2 << 16) + var1);
@@ -96,11 +53,6 @@ public class Archive extends AbstractArchive implements RSArchive {
 
    }
 
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "848617854"
-   )
    void vmethod4268(int var1) {
       if(this.archiveDisk != null && this.validGroups != null && this.validGroups[var1]) {
          WorldMapArea.method424(var1, this.archiveDisk, this);
@@ -110,11 +62,6 @@ public class Archive extends AbstractArchive implements RSArchive {
 
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "-2030453035"
-   )
    int vmethod4272(int var1) {
       if(super.groups[var1] != null) {
          return 100;
@@ -134,15 +81,6 @@ public class Archive extends AbstractArchive implements RSArchive {
       }
    }
 
-   public int getIndex() {
-      return this.index;
-   }
-
-   @ObfuscatedName("dc")
-   @ObfuscatedSignature(
-      signature = "(I[BZZI)V",
-      garbageValue = "1316980907"
-   )
    void method4297(int var1, byte[] var2, boolean var3, boolean var4) {
       if(var3) {
          if(this.field3140) {
@@ -170,11 +108,6 @@ public class Archive extends AbstractArchive implements RSArchive {
 
    }
 
-   @ObfuscatedName("di")
-   @ObfuscatedSignature(
-      signature = "(Lkg;I[BZB)V",
-      garbageValue = "1"
-   )
    public void method4287(ArchiveDisk var1, int var2, byte[] var3, boolean var4) {
       int var5;
       if(var1 == this.masterDisk) {
@@ -248,11 +181,6 @@ public class Archive extends AbstractArchive implements RSArchive {
 
    }
 
-   @ObfuscatedName("dk")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "8"
-   )
    void method4295() {
       this.validGroups = new boolean[super.groups.length];
 
@@ -276,7 +204,7 @@ public class Archive extends AbstractArchive implements RSArchive {
                var4.archive = this;
                NodeDeque var5 = ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue;
                synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-                  ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.method5105(var4);
+                  ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var4);
                }
 
                Object var10 = ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock;
@@ -302,11 +230,6 @@ public class Archive extends AbstractArchive implements RSArchive {
       }
    }
 
-   @ObfuscatedName("do")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "727894645"
-   )
    public int method4275() {
       int var1 = 0;
       int var2 = 0;
@@ -327,20 +250,10 @@ public class Archive extends AbstractArchive implements RSArchive {
       }
    }
 
-   @ObfuscatedName("dr")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "2035998705"
-   )
    public boolean method4265() {
       return this.field3140;
    }
 
-   @ObfuscatedName("ds")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "684167120"
-   )
    void method4269(int var1, int var2) {
       this.indexCrc = var1;
       this.indexVersion = var2;
@@ -352,11 +265,6 @@ public class Archive extends AbstractArchive implements RSArchive {
 
    }
 
-   @ObfuscatedName("du")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "1744835603"
-   )
    public int method4270() {
       if(this.field3140) {
          return 100;
@@ -381,29 +289,14 @@ public class Archive extends AbstractArchive implements RSArchive {
       }
    }
 
-   @ObfuscatedName("dx")
-   @ObfuscatedSignature(
-      signature = "(II)Z",
-      garbageValue = "-433634856"
-   )
    public boolean method4273(int var1) {
       return this.validGroups[var1];
    }
 
-   @ObfuscatedName("dz")
-   @ObfuscatedSignature(
-      signature = "(II)Z",
-      garbageValue = "805361618"
-   )
    public boolean method4274(int var1) {
       return this.method4042(var1) != null;
    }
 
-   @ObfuscatedName("jq")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-212508230"
-   )
    static final void method4308() {
       for(int var0 = 0; var0 < Players.Players_count; ++var0) {
          Player var1 = Client.players[Players.Players_indices[var0]];
@@ -412,11 +305,6 @@ public class Archive extends AbstractArchive implements RSArchive {
 
    }
 
-   @ObfuscatedName("km")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "26372698"
-   )
    static void method4280() {
       if(StudioGame.field2468 != null) {
          Client.field1113 = Client.cycle;

@@ -1,21 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("a")
 public class class17 {
-   @ObfuscatedName("gx")
-   @ObfuscatedSignature(
-      signature = "[Llf;"
-   )
    static Sprite[] mapDotSprites;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(CLgt;I)C",
-      garbageValue = "-1706308889"
-   )
    static char method214(char var0, Language var1) {
       if(var0 >= 192 && var0 <= 255) {
          if(var0 >= 192 && var0 <= 198) {
@@ -98,21 +85,11 @@ public class class17 {
       }
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "-114703177"
-   )
    static int method216(int var0) {
-      Message var1 = (Message)Messages.Messages_hashTable.method6061((long)var0);
+      Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
       return var1 == null?-1:(var1.previousDual == Messages.Messages_queue.sentinel?-1:((Message)var1.previousDual).count);
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(Lho;II)V",
-      garbageValue = "891811325"
-   )
    static final void method215(Widget var0, int var1) {
       if(var0.field2585 == null) {
          throw new RuntimeException();

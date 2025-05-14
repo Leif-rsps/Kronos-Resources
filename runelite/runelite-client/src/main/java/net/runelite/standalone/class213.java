@@ -1,45 +1,18 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hg")
 public class class213 {
-   @ObfuscatedName("qe")
-   @ObfuscatedSignature(
-      signature = "Ldv;"
-   )
    static PcmPlayer pcmPlayer0;
-   @ObfuscatedName("pe")
-   @ObfuscatedSignature(
-      signature = "Lkc;"
-   )
    static PrivateChatMode privateChatMode;
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "689014870"
-   )
    public static void method3933() {
-      SpotAnimationDefinition.SpotAnimationDefinition_cached.method3035();
-      SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.method3035();
+      SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
+      SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
    }
 
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "412788434"
-   )
    static int method3935(int var0) {
       return (int)((Math.log((double)var0) / Interpreter.field648 - 7.0D) * 256.0D);
    }
 
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "1490314370"
-   )
    static int method3934(int var0, Script var1, boolean var2) {
       if(var0 == 6500) {
          Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = BufferedNetSocket.method5242()?1:0;

@@ -1,15 +1,6 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("ki")
 public final class class296 {
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Lkf;IB)Z",
-      garbageValue = "14"
-   )
    static boolean method5453(PacketBuffer var0, int var1) {
       int var2 = var0.method5281(2);
       int var3;

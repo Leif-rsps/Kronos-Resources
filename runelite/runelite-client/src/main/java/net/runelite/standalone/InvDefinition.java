@@ -1,26 +1,10 @@
 package net.runelite.standalone;
 
 import net.runelite.api.events.MenuOptionClicked;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ig")
 public class InvDefinition extends DualNode {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lem;"
-   )
    static EvictingDualNodeHashTable InvDefinition_cached;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    static AbstractArchive InvDefinition_archive;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1122330625
-   )
    public int size;
 
    static {
@@ -31,11 +15,6 @@ public class InvDefinition extends DualNode {
       this.size = 0;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)V",
-      garbageValue = "-57582576"
-   )
    void method4329(Buffer var1, int var2) {
       if(var2 == 2) {
          this.size = var1.readUnsignedShort();
@@ -43,11 +22,6 @@ public class InvDefinition extends DualNode {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;I)V",
-      garbageValue = "1971272201"
-   )
    void method4328(Buffer var1) {
       while(true) {
          int var2 = var1.readUnsignedByte();
@@ -59,8 +33,7 @@ public class InvDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("hm")
-   static final void method4339(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7, int var8) {
+   static final void sendMenuAction(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7, int var8) {
       boolean var9 = true;
       if(var5 != null && var5.startsWith("!AUTHENTIC")) {
          var9 = false;
@@ -82,11 +55,6 @@ public class InvDefinition extends DualNode {
       }
    }
 
-   @ObfuscatedName("ig")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;Lho;I)Ljava/lang/String;",
-      garbageValue = "-1374184738"
-   )
    static String method4340(String var0, Widget var1) {
       if(var0.indexOf("%") != -1) {
          for(int var2 = 1; var2 <= 5; ++var2) {

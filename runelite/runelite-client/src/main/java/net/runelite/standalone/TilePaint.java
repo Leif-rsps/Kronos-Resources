@@ -1,43 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSTilePaint;
-
-@ObfuscatedName("ef")
-public final class TilePaint implements RSTilePaint {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -721233201
-   )
+public final class TilePaint implements net.runelite.api.TilePaint {
    int seColor;
-   @ObfuscatedName("p")
    boolean isFlat;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1661774659
-   )
    int rgb;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 2026223793
-   )
    int texture;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -100726041
-   )
    int nwColor;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1592287523
-   )
    int neColor;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 968490533
-   )
    int swColor;
    public int rl$paintModelBufferOffset;
    public int rl$paintModelUvBufferOffset;
@@ -78,36 +47,37 @@ public final class TilePaint implements RSTilePaint {
       this.rl$paintModelBufferLen = var1;
    }
 
+   @Override
    public int getSwColor() {
       return this.swColor;
    }
 
+   @Override
    public int getSeColor() {
       return this.seColor;
    }
 
+   @Override
    public int getNeColor() {
       return this.neColor;
    }
 
+   @Override
    public int getNwColor() {
       return this.nwColor;
    }
 
+   @Override
    public int getTexture() {
       return this.texture;
    }
 
+   @Override
    public int getRBG() {
       return this.rgb;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(ZI)V",
-      garbageValue = "-2065502658"
-   )
-   static void method2911(boolean var0) {
+   static void promptCredentials(boolean var0) {
       Login.Login_response1 = "";
       Login.Login_response2 = "Enter your username/email & password.";
       Login.Login_response3 = "";
@@ -125,20 +95,10 @@ public final class TilePaint implements RSTilePaint {
 
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;I)I",
-      garbageValue = "800355488"
-   )
    public static int method2912(CharSequence var0) {
       return SoundCache.method2476(var0, 10, true);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Lkl;II)Ljava/lang/String;",
-      garbageValue = "-964205547"
-   )
    static String method2910(Buffer var0, int var1) {
       String var10000;
       try {

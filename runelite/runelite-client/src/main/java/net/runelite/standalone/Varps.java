@@ -1,20 +1,9 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hl")
 public class Varps {
-   @ObfuscatedName("pb")
-   @ObfuscatedSignature(
-      signature = "Ljk;"
-   )
    static ClanChat clanChat;
-   @ObfuscatedName("n")
    public static int[] Varps_temp;
-   @ObfuscatedName("v")
    public static int[] Varps_main;
-   @ObfuscatedName("z")
    static int[] Varps_masks;
 
    static {

@@ -1,10 +1,7 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-
 import java.util.zip.Inflater;
 
-@ObfuscatedName("lr")
 public class GZipDecompressor {
    Inflater inflater;
 

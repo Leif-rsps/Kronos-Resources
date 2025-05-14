@@ -1,11 +1,6 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("az")
 public final class WorldMapSprite {
-   @ObfuscatedName("n")
    final int[] tileColors;
 
    WorldMapSprite() {
@@ -16,22 +11,12 @@ public final class WorldMapSprite {
       this.tileColors = var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IIS)I",
-      garbageValue = "-9220"
-   )
    final int method783(int var1, int var2) {
       return this.tileColors[var2 * 64 + var1];
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IB)I",
-      garbageValue = "-104"
-   )
-   public static int method782(int var0) {
-      VarbitDefinition var2 = (VarbitDefinition)VarbitDefinition.VarbitDefinition_cached.method3032((long)var0);
+   public static int getVarbit(int var0) {
+      VarbitDefinition var2 = (VarbitDefinition)VarbitDefinition.VarbitDefinition_cached.get((long)var0);
       VarbitDefinition var1;
       if(var2 != null) {
          var1 = var2;
@@ -53,11 +38,6 @@ public final class WorldMapSprite {
       return Varps.Varps_main[var3] >> var4 & var6;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;Lhp;ZII)V",
-      garbageValue = "257961128"
-   )
    static void method786(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
       if(Login.field755) {
          if(var3 == 4) {
@@ -125,11 +105,6 @@ public final class WorldMapSprite {
       }
    }
 
-   @ObfuscatedName("fx")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;ZB)V",
-      garbageValue = "-87"
-   )
    static final void method784(String var0, boolean var1) {
       if(Client.showLoadingMessages) {
          byte var2 = 4;
@@ -137,7 +112,7 @@ public final class WorldMapSprite {
          int var4 = var2 + 6;
          int var5 = GraphicsDefaults.fontPlain12.method5389(var0, 250);
          int var6 = GraphicsDefaults.fontPlain12.method5327(var0, 250) * 13;
-         Rasterizer2D.method6469(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var6 + var2, 0);
+         Rasterizer2D.fillRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var6 + var2, 0);
          Rasterizer2D.drawRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var2 + var6, 16777215);
          GraphicsDefaults.fontPlain12.method5333(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
          int var7 = var3 - var2;
@@ -170,11 +145,6 @@ public final class WorldMapSprite {
       }
    }
 
-   @ObfuscatedName("in")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-240794843"
-   )
    static boolean method788() {
       return Client.tapToDrop;
    }

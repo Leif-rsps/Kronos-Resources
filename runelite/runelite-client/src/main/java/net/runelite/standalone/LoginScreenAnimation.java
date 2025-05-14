@@ -2,74 +2,26 @@ package net.runelite.standalone;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("br")
 public class LoginScreenAnimation {
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      signature = "Lll;"
-   )
    static Bounds field610;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = 1054808651
-   )
    int field601;
-   @ObfuscatedName("q")
    int[] field595;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = -389038271
-   )
    int field603;
-   @ObfuscatedName("t")
    int[] field609;
-   @ObfuscatedName("w")
    int[] field605;
-   @ObfuscatedName("x")
-   @ObfuscatedGetter(
-      intValue = 153935283
-   )
    int field607;
-   @ObfuscatedName("y")
    int[] field597;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "[Llp;"
-   )
    IndexedSprite[] sprites;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = -1416071611
-   )
    int field592;
-   @ObfuscatedName("b")
    int[] field600;
-   @ObfuscatedName("c")
    int[] field599;
-   @ObfuscatedName("e")
    int[] field598;
-   @ObfuscatedName("g")
    int[] field593;
-   @ObfuscatedName("h")
-   @ObfuscatedGetter(
-      intValue = 1803502465
-   )
    int field602;
-   @ObfuscatedName("i")
    int[] field608;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 433825167
-   )
    int field596;
 
-   @ObfuscatedSignature(
-      signature = "([Llp;)V"
-   )
    LoginScreenAnimation(IndexedSprite[] var1) {
       this.field595 = new int[256];
       this.field596 = 0;
@@ -82,11 +34,6 @@ public class LoginScreenAnimation {
       this.method1265();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1384251878"
-   )
    void method1266() {
       this.field608 = null;
       this.field599 = null;
@@ -100,11 +47,6 @@ public class LoginScreenAnimation {
       this.field602 = 0;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "97"
-   )
    final void method1285(int var1) {
       int var2 = this.field597.length;
       if(this.field601 > 0) {
@@ -120,11 +62,6 @@ public class LoginScreenAnimation {
       this.method1272(var1);
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(I[II)V",
-      garbageValue = "-1982126918"
-   )
    final void method1271(int var1, int[] var2) {
       int var3 = this.field597.length;
 
@@ -140,21 +77,11 @@ public class LoginScreenAnimation {
 
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(IIII)I",
-      garbageValue = "1638746019"
-   )
    final int method1269(int var1, int var2, int var3) {
       int var4 = 256 - var3;
       return (var3 * (var2 & 65280) + var4 * (var1 & 65280) & 16711680) + (var4 * (var1 & 16711935) + var3 * (var2 & 16711935) & -16711936) >> 8;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "-1108655518"
-   )
    final void method1268(int var1) {
       this.field607 += var1 * 128;
       int var2;
@@ -284,11 +211,6 @@ public class LoginScreenAnimation {
 
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "-938798150"
-   )
    void method1267(int var1, int var2) {
       if(this.field598 == null) {
          this.method1265();
@@ -311,11 +233,6 @@ public class LoginScreenAnimation {
       this.method1285(var1);
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(Llp;I)V",
-      garbageValue = "1363271921"
-   )
    final void method1273(IndexedSprite var1) {
       int var2;
       for(var2 = 0; var2 < this.field609.length; ++var2) {
@@ -360,11 +277,6 @@ public class LoginScreenAnimation {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-27245818"
-   )
    void method1265() {
       this.field608 = new int[256];
 
@@ -430,11 +342,6 @@ public class LoginScreenAnimation {
       this.field605 = new int['耀'];
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "-224486060"
-   )
    final void method1272(int var1) {
       int var2 = 0;
 
@@ -474,11 +381,6 @@ public class LoginScreenAnimation {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(CI)Z",
-      garbageValue = "1979853088"
-   )
    public static boolean method1288(char var0) {
       if((var0 <= 0 || var0 >= 128) && (var0 < 160 || var0 > 255)) {
          if(var0 != 0) {
@@ -498,11 +400,6 @@ public class LoginScreenAnimation {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)Z",
-      garbageValue = "666011978"
-   )
    static boolean method1290(String var0) {
       if(var0 == null) {
          return false;
@@ -517,11 +414,6 @@ public class LoginScreenAnimation {
       }
    }
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      signature = "([BIII)I",
-      garbageValue = "-1562433827"
-   )
    static int method1293(byte[] var0, int var1, int var2) {
       int var3 = -1;
 
@@ -533,11 +425,6 @@ public class LoginScreenAnimation {
       return var3;
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(Lho;IIII)V",
-      garbageValue = "1378912334"
-   )
    static final void method1274(Widget var0, int var1, int var2, int var3) {
       if(var0.field2619 == null) {
          throw new RuntimeException();
@@ -547,11 +434,6 @@ public class LoginScreenAnimation {
       }
    }
 
-   @ObfuscatedName("kh")
-   @ObfuscatedSignature(
-      signature = "([BII)V",
-      garbageValue = "-2002563170"
-   )
    static void method1277(byte[] var0, int var1) {
       if(Client.randomDatData == null) {
          Client.randomDatData = new byte[24];

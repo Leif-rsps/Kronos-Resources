@@ -3,112 +3,32 @@ package net.runelite.standalone;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.ProjectileMoved;
 import net.runelite.api.events.ProjectileSpawned;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSNPC;
-import net.runelite.rs.api.RSPlayer;
-import net.runelite.rs.api.RSProjectile;
 
-@ObfuscatedName("cy")
-public final class Projectile extends Entity implements RSProjectile {
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 373161727
-   )
+public final class Projectile extends Entity implements net.runelite.api.Projectile {
    int plane;
-   @ObfuscatedName("o")
    double x;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 396414685
-   )
    int endHeight;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 655131925
-   )
    int cycleStart;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = -1560824427
-   )
    int sourceZ;
-   @ObfuscatedName("s")
-   @ObfuscatedGetter(
-      intValue = 797140937
-   )
    int yaw;
-   @ObfuscatedName("t")
    double speedY;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 1525037115
-   )
    int sourceY;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -2017111693
-   )
    int sourceX;
-   @ObfuscatedName("w")
    double speedX;
-   @ObfuscatedName("x")
    double speedZ;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -1319621727
-   )
    int slope;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -704302089
-   )
    int id;
-   @ObfuscatedName("a")
    double y;
-   @ObfuscatedName("b")
    boolean isMoving;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -216257617
-   )
    int targetIndex;
-   @ObfuscatedName("d")
-   @ObfuscatedGetter(
-      intValue = 1931929967
-   )
    int frame;
-   @ObfuscatedName("e")
    double z;
-   @ObfuscatedName("f")
-   @ObfuscatedGetter(
-      intValue = -1677081341
-   )
    int pitch;
-   @ObfuscatedName("g")
    double speed;
-   @ObfuscatedName("h")
    double accelerationZ;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = -1718323581
-   )
    int startHeight;
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      signature = "Lix;"
-   )
    SequenceDefinition sequenceDefinition;
-   @ObfuscatedName("l")
-   @ObfuscatedGetter(
-      intValue = -1977187681
-   )
    int frameCycle;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = -673682431
-   )
    int cycleEnd;
 
    Projectile(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
@@ -137,11 +57,6 @@ public final class Projectile extends Entity implements RSProjectile {
       this.rl$$init();
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IS)V",
-      garbageValue = "-22789"
-   )
    final void method2236(int var1) {
       this.isMoving = true;
       this.x += this.speedX * (double)var1;
@@ -172,10 +87,6 @@ public final class Projectile extends Entity implements RSProjectile {
       }
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    protected final Model vmethod3072(int var1) {
       SpotAnimationDefinition var2 = InterfaceParent.method1139(this.id);
       Model var3 = var2.method4392(this.frame);
@@ -187,11 +98,6 @@ public final class Projectile extends Entity implements RSProjectile {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IIIII)V",
-      garbageValue = "1126340593"
-   )
    final void method2237(int var1, int var2, int var3, int var4) {
       this.projectileMoved(var1, var2, var3, var4);
       double var5;
@@ -215,10 +121,6 @@ public final class Projectile extends Entity implements RSProjectile {
       this.accelerationZ = 2.0D * ((double)var3 - this.z - var5 * this.speedZ) / (var5 * var5);
    }
 
-   public int getRsInteracting() {
-      return this.targetIndex;
-   }
-
    public void projectileMoved(int var1, int var2, int var3, int var4) {
       LocalPoint var5 = new LocalPoint(var1, var2);
       ProjectileMoved var6 = new ProjectileMoved();
@@ -228,6 +130,7 @@ public final class Projectile extends Entity implements RSProjectile {
       ViewportMouse.client.getCallbacks().post(ProjectileMoved.class, var6);
    }
 
+   @Override
    public int getEndCycle() {
       return this.cycleEnd;
    }
@@ -244,106 +147,112 @@ public final class Projectile extends Entity implements RSProjectile {
    }
 
    public net.runelite.api.Actor getInteracting() {
-      int var1 = this.getRsInteracting();
+      int var1 = this.targetIndex;
       if(var1 == 0) {
          return null;
       } else {
          int var2;
          if(var1 > 0) {
             var2 = var1 - 1;
-            RSNPC[] var4 = ViewportMouse.client.getCachedNPCs();
+            NPC[] var4 = ViewportMouse.client.getCachedNPCs();
             return var4[var2];
          } else {
             var2 = -var1 - 1;
-            if(var2 == ViewportMouse.client.getLocalInteractingIndex()) {
+             if(var2 == Client.combatTargetPlayerIndex) {
                return ViewportMouse.client.getLocalPlayer();
             } else {
-               RSPlayer[] var3 = ViewportMouse.client.getCachedPlayers();
+               Player[] var3 = ViewportMouse.client.getCachedPlayers();
                return var3[var2];
             }
          }
       }
    }
 
+   @Override
    public int getId() {
       return this.id;
    }
 
+   @Override
    public int getFloor() {
       return this.plane;
    }
 
+   @Override
    public int getX1() {
       return this.sourceX;
    }
 
+   @Override
    public int getY1() {
       return this.sourceY;
    }
 
+   @Override
    public int getHeight() {
       return this.sourceZ;
    }
 
+   @Override
    public int getEndHeight() {
       return this.endHeight;
    }
 
+   @Override
    public int getStartMovementCycle() {
       return this.cycleStart;
    }
 
+   @Override
    public int getSlope() {
       return this.slope;
    }
 
+   @Override
    public int getStartHeight() {
       return this.startHeight;
    }
 
+   @Override
    public double getX() {
       return this.x;
    }
 
+   @Override
    public double getY() {
       return this.y;
    }
 
+   @Override
    public double getZ() {
       return this.z;
    }
 
+   @Override
    public double getVelocityX() {
       return this.speedX;
    }
 
+   @Override
    public double getVelocityY() {
       return this.speedY;
    }
 
+   @Override
    public double getScalar() {
       return this.speed;
    }
 
+   @Override
    public double getVelocityZ() {
       return this.speedZ;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(IB)I",
-      garbageValue = "106"
-   )
    static int method2238(int var0) {
       ChatChannel var1 = (ChatChannel)Messages.Messages_channels.get(Integer.valueOf(var0));
       return var1 == null?0:var1.method1525();
    }
 
-   @ObfuscatedName("ir")
-   @ObfuscatedSignature(
-      signature = "(Lho;I)Z",
-      garbageValue = "-1182032943"
-   )
    static final boolean method2244(Widget var0) {
       if(var0.cs1Comparisons == null) {
          return false;

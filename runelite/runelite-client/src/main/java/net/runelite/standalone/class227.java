@@ -1,22 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hu")
 public class class227 {
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -1634764861
-   )
    static int field2769;
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "1936251414"
-   )
    static int method4175(int var0, Script var1, boolean var2) {
       if(var0 == 5630) {
          Client.logoutTimer = 250;
@@ -26,11 +12,6 @@ public class class227 {
       }
    }
 
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "1931429415"
-   )
    static int method4176(int var0, Script var1, boolean var2) {
       int var3;
       if(var0 == 4200) {

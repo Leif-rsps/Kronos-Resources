@@ -1,31 +1,14 @@
 package net.runelite.standalone;
 
 import java.util.Iterator;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSIterableNodeHashTable;
-import net.runelite.rs.api.RSNode;
 
-@ObfuscatedName("lb")
-public final class IterableNodeHashTable implements Iterable, RSIterableNodeHashTable {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "[Lfx;"
-   )
+import net.runelite.api.IterableHashTable;
+
+public final class IterableNodeHashTable implements IterableHashTable {
    Node[] buckets;
-   @ObfuscatedName("r")
    int index;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lfx;"
-   )
    Node current;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lfx;"
-   )
    Node currentGet;
-   @ObfuscatedName("z")
    int size;
 
    public IterableNodeHashTable(int var1) {
@@ -41,13 +24,9 @@ public final class IterableNodeHashTable implements Iterable, RSIterableNodeHash
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lfx;J)V"
-   )
    public void put(Node var1, long var2) {
       if(var1.next != null) {
-         var1.method3497();
+         var1.unlink();
       }
 
       Node var4 = this.buckets[(int)(var2 & (long)(this.size - 1))];
@@ -58,10 +37,6 @@ public final class IterableNodeHashTable implements Iterable, RSIterableNodeHash
       var1.key = var2;
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node method6064() {
       Node var1;
       if(this.index > 0 && this.buckets[this.index - 1] != this.current) {
@@ -82,16 +57,11 @@ public final class IterableNodeHashTable implements Iterable, RSIterableNodeHash
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node method6068() {
       this.index = 0;
       return this.method6064();
    }
 
-   @ObfuscatedName("v")
    public void method6063() {
       for(int var1 = 0; var1 < this.size; ++var1) {
          Node var2 = this.buckets[var1];
@@ -102,7 +72,7 @@ public final class IterableNodeHashTable implements Iterable, RSIterableNodeHash
                break;
             }
 
-            var3.method3497();
+            var3.unlink();
          }
       }
 
@@ -110,11 +80,8 @@ public final class IterableNodeHashTable implements Iterable, RSIterableNodeHash
       this.current = null;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(J)Lfx;"
-   )
-   public Node method6061(long var1) {
+   @Override
+   public Node get(long var1) {
       Node var3 = this.buckets[(int)(var1 & (long)(this.size - 1))];
 
       for(this.currentGet = var3.previous; var3 != this.currentGet; this.currentGet = this.currentGet.previous) {
@@ -131,9 +98,5 @@ public final class IterableNodeHashTable implements Iterable, RSIterableNodeHash
 
    public Iterator iterator() {
       return new IterableNodeHashTableIterator(this);
-   }
-
-   public RSNode get(long var1) {
-      return this.method6061(var1);
    }
 }

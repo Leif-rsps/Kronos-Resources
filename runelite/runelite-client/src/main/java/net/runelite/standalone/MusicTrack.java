@@ -1,21 +1,9 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("gh")
 public class MusicTrack extends Node {
-   @ObfuscatedName("n")
    byte[] midi;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Llq;"
-   )
    NodeHashTable table;
 
-   @ObfuscatedSignature(
-      signature = "(Lkl;)V"
-   )
    MusicTrack(Buffer var1) {
       var1.offset = var1.array.length - 3;
       int var2 = var1.readUnsignedByte();
@@ -332,7 +320,6 @@ public class MusicTrack extends Node {
 
    }
 
-   @ObfuscatedName("n")
    void method3730() {
       if(this.table == null) {
          this.table = new NodeHashTable(16);
@@ -413,15 +400,10 @@ public class MusicTrack extends Node {
       }
    }
 
-   @ObfuscatedName("v")
    void method3729() {
       this.table = null;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;II)Lgh;"
-   )
    public static MusicTrack method3731(AbstractArchive var0, int var1, int var2) {
       byte[] var3 = var0.method4020(var1, var2, (short)-5149);
       return var3 == null?null:new MusicTrack(new Buffer(var3));

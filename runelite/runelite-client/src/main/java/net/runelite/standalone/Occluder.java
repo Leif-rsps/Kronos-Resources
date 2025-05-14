@@ -1,115 +1,30 @@
 package net.runelite.standalone;
 
 import java.util.Date;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("es")
 public final class Occluder {
-   @ObfuscatedName("ns")
-   @ObfuscatedGetter(
-      intValue = 1790718175
-   )
    static int field1806;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = -1045185805
-   )
    int maxTileX;
-   @ObfuscatedName("o")
-   @ObfuscatedGetter(
-      intValue = -1799381643
-   )
    int field1801;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -629573769
-   )
    int minX;
-   @ObfuscatedName("q")
-   @ObfuscatedGetter(
-      intValue = 1170068749
-   )
    int maxX;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1843610955
-   )
    int type;
-   @ObfuscatedName("t")
-   @ObfuscatedGetter(
-      intValue = -1265477601
-   )
    int field1796;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 2061838755
-   )
    int maxTileY;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 1813082719
-   )
    int minTileY;
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 265274287
-   )
    int field1803;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = 88556865
-   )
    int maxZ;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = 1195661333
-   )
    int minTileX;
-   @ObfuscatedName("a")
-   @ObfuscatedGetter(
-      intValue = -269756741
-   )
    int field1788;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = -1230823835
-   )
    int field1799;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -486759885
-   )
    int maxY;
-   @ObfuscatedName("e")
-   @ObfuscatedGetter(
-      intValue = 1633183437
-   )
    int field1802;
-   @ObfuscatedName("g")
-   @ObfuscatedGetter(
-      intValue = -163200097
-   )
    int field1804;
-   @ObfuscatedName("i")
-   @ObfuscatedGetter(
-      intValue = 1146642601
-   )
    int minY;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 1998915961
-   )
    int minZ;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)Lit;",
-      garbageValue = "-825225135"
-   )
    public static ItemDefinition getItemDefinition(int var0) {
-      ItemDefinition var1 = (ItemDefinition)ItemDefinition.ItemDefinition_cached.method3032((long)var0);
+      ItemDefinition var1 = (ItemDefinition)ItemDefinition.ItemDefinition_cached.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {
@@ -148,7 +63,7 @@ public final class Occluder {
                for(Node var4 = var1.params.method6068(); var4 != null; var4 = var1.params.method6064()) {
                   ParamDefinition var5 = WallDecoration.method2913((int)var4.key);
                   if(var5.autoDisable) {
-                     var4.method3497();
+                     var4.unlink();
                   } else {
                      var3 = true;
                   }
@@ -165,11 +80,6 @@ public final class Occluder {
       }
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-37"
-   )
    public static void method3081() {
       try {
          JagexCache.JagexCache_dat2File.method23();
@@ -186,11 +96,6 @@ public final class Occluder {
 
    }
 
-   @ObfuscatedName("ku")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;I)V",
-      garbageValue = "-1221499190"
-   )
    static void method3080(String var0) {
       class197.field2177 = var0;
 

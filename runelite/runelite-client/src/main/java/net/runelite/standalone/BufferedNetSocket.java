@@ -3,28 +3,11 @@ package net.runelite.standalone;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kd")
 public class BufferedNetSocket extends AbstractSocket {
-   @ObfuscatedName("w")
-   @ObfuscatedGetter(
-      intValue = 966969419
-   )
    public static int cacheGamebuild;
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lkx;"
-   )
    BufferedSource source;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lkv;"
-   )
    BufferedSink sink;
-   @ObfuscatedName("z")
    Socket socket;
 
    public BufferedNetSocket(Socket var1, int var2, int var3) throws IOException {
@@ -37,56 +20,26 @@ public class BufferedNetSocket extends AbstractSocket {
       this.sink = new BufferedSink(this.socket.getOutputStream(), var3);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "1784126558"
-   )
    public int vmethod5815() throws IOException {
       return this.source.method5799();
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "([BIIB)V",
-      garbageValue = "6"
-   )
    public void vmethod5817(byte[] var1, int var2, int var3) throws IOException {
       this.sink.method5789(var1, var2, var3);
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "([BIII)I",
-      garbageValue = "-2035668362"
-   )
    public int vmethod5832(byte[] var1, int var2, int var3) throws IOException {
       return this.source.method5800(var1, var2, var3);
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(II)Z",
-      garbageValue = "-336706705"
-   )
    public boolean vmethod5816(int var1) throws IOException {
       return this.source.method5797(var1);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(B)I",
-      garbageValue = "3"
-   )
    public int vmethod5838() throws IOException {
       return this.source.method5810();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "-119"
-   )
    public void vmethod5821() {
       this.sink.method5783();
 
@@ -111,11 +64,6 @@ public class BufferedNetSocket extends AbstractSocket {
       this.vmethod5821();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "2009022285"
-   )
    static boolean method5242() {
       try {
          if(class37.World_request == null) {

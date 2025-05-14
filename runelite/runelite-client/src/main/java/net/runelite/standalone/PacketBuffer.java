@@ -1,23 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSPacketBuffer;
-
-@ObfuscatedName("kf")
-public class PacketBuffer extends Buffer implements RSPacketBuffer {
-   @ObfuscatedName("n")
+public class PacketBuffer extends Buffer {
    static final int[] field3647;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = -1801396377
-   )
    int bitIndex;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Llg;"
-   )
    IsaacCipher isaacCipher;
 
    static {
@@ -28,30 +13,15 @@ public class PacketBuffer extends Buffer implements RSPacketBuffer {
       super(var1);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Llg;B)V",
-      garbageValue = "100"
-   )
    public void method5303(IsaacCipher var1) {
       this.isaacCipher = var1;
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "427431431"
-   )
    public int method5302() {
       int var1 = super.array[++super.offset - 1] - this.isaacCipher.method6234() & 255;
       return var1 < 128?var1:(var1 - 128 << 8) + (super.array[++super.offset - 1] - this.isaacCipher.method6234() & 255);
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "([BIII)V",
-      garbageValue = "1740365961"
-   )
    public void method5282(byte[] var1, int var2, int var3) {
       for(int var4 = 0; var4 < var3; ++var4) {
          var1[var4 + var2] = (byte)(super.array[++super.offset - 1] - this.isaacCipher.method6234());
@@ -59,39 +29,19 @@ public class PacketBuffer extends Buffer implements RSPacketBuffer {
 
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-1080759401"
-   )
    public boolean method5277() {
       int var1 = super.array[super.offset] - this.isaacCipher.method6223() & 255;
       return var1 >= 128;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-2099772642"
-   )
    public int method5276() {
       return super.array[++super.offset - 1] - this.isaacCipher.method6234() & 255;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "1358666817"
-   )
    public void method5275(int var1) {
       super.array[++super.offset - 1] = (byte)(var1 + this.isaacCipher.method6234());
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "1367970229"
-   )
    public int method5281(int var1) {
       int var2 = this.bitIndex >> 3;
       int var3 = 8 - (this.bitIndex & 7);
@@ -111,47 +61,22 @@ public class PacketBuffer extends Buffer implements RSPacketBuffer {
       return var4;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([II)V",
-      garbageValue = "2116683841"
-   )
    public void method5273(int[] var1) {
       this.isaacCipher = new IsaacCipher(var1);
    }
 
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "(II)I",
-      garbageValue = "586994412"
-   )
    public int method5283(int var1) {
       return var1 * 8 - this.bitIndex;
    }
 
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "4"
-   )
    public void method5279() {
       super.offset = (this.bitIndex + 7) / 8;
    }
 
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1647095141"
-   )
    public void method5293() {
       this.bitIndex = super.offset * 8;
    }
 
-   @ObfuscatedName("aa")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZB)I",
-      garbageValue = "82"
-   )
    static int method5305(int var0, Script var1, boolean var2) {
       int var3;
       int var4;

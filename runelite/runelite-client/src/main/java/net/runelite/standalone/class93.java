@@ -1,20 +1,10 @@
 package net.runelite.standalone;
 
 import java.math.BigInteger;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cv")
 public class class93 {
-   @ObfuscatedName("rs")
-   @ObfuscatedGetter(
-      intValue = 436556705
-   )
    static int field1241;
-   @ObfuscatedName("p")
    static final BigInteger field1235;
-   @ObfuscatedName("r")
    static final BigInteger field1234;
 
    static {
@@ -22,11 +12,6 @@ public class class93 {
       field1235 = new BigInteger("7237300117305667488707183861728052766358166655052137727439795191253340127955075499635575104901523446809299097934591732635674173519120047404024393881551683");
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "84"
-   )
    public static void method2215() {
       if(NetCache.NetCache_socket != null) {
          NetCache.NetCache_socket.vmethod5821();
@@ -34,11 +19,6 @@ public class class93 {
 
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "([BIIIIIIILex;[Lfa;I)V",
-      garbageValue = "1963296713"
-   )
    static final void method2209(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
       Buffer var10 = new Buffer(var0);
       int var11 = -1;
@@ -133,11 +113,6 @@ public class class93 {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "([BI)V",
-      garbageValue = "555042891"
-   )
    public static synchronized void method2214(byte[] var0) {
       if(var0.length == 100 && ByteArrayPool.ByteArrayPool_smallCount < 1000) {
          ByteArrayPool.ByteArrayPool_small[++ByteArrayPool.ByteArrayPool_smallCount - 1] = var0;

@@ -3,61 +3,18 @@ package net.runelite.standalone;
 import java.security.SecureRandom;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.GraphicsObjectCreated;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSGraphicsObject;
 
-@ObfuscatedName("bp")
-public final class GraphicsObject extends Entity implements RSGraphicsObject {
-   @ObfuscatedName("ec")
+public final class GraphicsObject extends Entity implements net.runelite.api.GraphicsObject {
    static SecureRandom secureRandom;
-   @ObfuscatedName("n")
-   @ObfuscatedGetter(
-      intValue = 781452541
-   )
    int id;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = -1722241771
-   )
    int y;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Lix;"
-   )
    SequenceDefinition sequenceDefinition;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 1240960337
-   )
    int x;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -1951259679
-   )
    int plane;
-   @ObfuscatedName("v")
-   @ObfuscatedGetter(
-      intValue = 34616617
-   )
    int cycleStart;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -1223841967
-   )
    int frameCycle;
-   @ObfuscatedName("z")
-   @ObfuscatedGetter(
-      intValue = -725302413
-   )
    int height;
-   @ObfuscatedName("i")
    boolean isFinished;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 926579167
-   )
    int frame;
 
    GraphicsObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
@@ -81,10 +38,6 @@ public final class GraphicsObject extends Entity implements RSGraphicsObject {
       this.rl$$init();
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(I)Ldh;"
-   )
    protected final Model vmethod3072(int var1) {
       SpotAnimationDefinition var2 = InterfaceParent.method1139(this.id);
       Model var3;
@@ -97,11 +50,6 @@ public final class GraphicsObject extends Entity implements RSGraphicsObject {
       return var3 == null?null:var3;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(IB)V",
-      garbageValue = "-72"
-   )
    final void method1255(int var1) {
       if(!this.isFinished) {
          this.frameCycle += var1;
@@ -118,35 +66,31 @@ public final class GraphicsObject extends Entity implements RSGraphicsObject {
       }
    }
 
-   public int getX() {
-      return this.x;
-   }
-
-   public int getY() {
-      return this.y;
-   }
-
    private void rl$$init() {
       GraphicsObjectCreated var1 = new GraphicsObjectCreated(this);
       ViewportMouse.client.getCallbacks().post(GraphicsObjectCreated.class, var1);
    }
 
    public LocalPoint getLocation() {
-      return new LocalPoint(this.getX(), this.getY());
+      return new LocalPoint(this.x, this.y);
    }
 
+   @Override
    public int getHeight() {
       return this.height;
    }
 
+   @Override
    public int getId() {
       return this.id;
    }
 
+   @Override
    public int getStartCycle() {
       return this.cycleStart;
    }
 
+   @Override
    public int getLevel() {
       return this.plane;
    }

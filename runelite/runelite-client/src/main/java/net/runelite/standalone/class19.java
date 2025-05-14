@@ -1,27 +1,12 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSRunException;
-
-@ObfuscatedName("ab")
 public class class19 {
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Llp;"
-   )
    static IndexedSprite titleboxSprite;
 
-   @ObfuscatedName("r")
    public static int method345(long var0) {
       return (int)(var0 >>> 7 & 127L);
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(CI)C",
-      garbageValue = "-2024660468"
-   )
    static char method344(char var0) {
       switch(var0) {
       case ' ':
@@ -96,19 +81,14 @@ public class class19 {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;Ljava/lang/Throwable;I)V",
-      garbageValue = "-806391378"
-   )
    public static void method342(String var0, Throwable var1) {
       if(var1 != null) {
          var1.printStackTrace();
       } else {
          if(var1 != null) {
             Throwable var2 = var1;
-            if(var1 instanceof RSRunException) {
-               var2 = ((RSRunException)var1).getParent();
+            if(var1 instanceof RunException) {
+                var2 = ((RunException) var1).throwable;
             }
 
             ViewportMouse.client.getLogger().error("Game crash: {}", var0, var2);
@@ -117,11 +97,6 @@ public class class19 {
       }
    }
 
-   @ObfuscatedName("fg")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1866608014"
-   )
    static final void method338() {
       int var0 = Players.Players_count;
       int[] var1 = Players.Players_indices;
@@ -135,11 +110,6 @@ public class class19 {
 
    }
 
-   @ObfuscatedName("hi")
-   @ObfuscatedSignature(
-      signature = "(IIIII)V",
-      garbageValue = "1810963756"
-   )
    static void method340(int var0, int var1, int var2, int var3) {
       Widget var4 = GrandExchangeOfferWorldComparator.method93(var0, var1);
       if(var4 != null && var4.onTargetEnter != null) {
@@ -157,11 +127,6 @@ public class class19 {
       WorldMapSectionType.method116(var4);
    }
 
-   @ObfuscatedName("hp")
-   @ObfuscatedSignature(
-      signature = "(IIIII)V",
-      garbageValue = "-1928557491"
-   )
    static final void method343(int var0, int var1, int var2, int var3) {
       if(Client.isItemSelected == 0 && !Client.isSpellSelected) {
          WorldMapData_1.method519("Walk here", "", 23, 0, var0 - var2, var1 - var3);

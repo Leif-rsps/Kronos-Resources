@@ -1,456 +1,95 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("gv")
 public class ServerPacket {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket UPDATE_CONATINER_ITEMS;
-   @ObfuscatedName("o")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2248;
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2240;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2242;
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2254;
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2256;
-   @ObfuscatedName("t")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2252;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2239;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2246;
-   @ObfuscatedName("w")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2251;
-   @ObfuscatedName("x")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2286;
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2244;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2267;
-   @ObfuscatedName("a")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2243;
-   @ObfuscatedName("aa")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2265;
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2268;
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2236;
-   @ObfuscatedName("ad")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2282;
-   @ObfuscatedName("ae")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2279;
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2283;
-   @ObfuscatedName("ag")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2315;
-   @ObfuscatedName("ah")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2270;
-   @ObfuscatedName("ai")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2247;
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2323;
-   @ObfuscatedName("ak")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2276;
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2300;
-   @ObfuscatedName("am")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2278;
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2262;
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2271;
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2245;
-   @ObfuscatedName("aq")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2277;
-   @ObfuscatedName("ar")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2274;
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2258;
-   @ObfuscatedName("at")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2287;
-   @ObfuscatedName("au")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket SEND_CONTAINER_ITEMS;
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2241;
-   @ObfuscatedName("aw")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2264;
-   @ObfuscatedName("ax")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2269;
-   @ObfuscatedName("ay")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2309;
-   @ObfuscatedName("az")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2263;
-   @ObfuscatedName("b")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2308;
-   @ObfuscatedName("ba")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2238;
-   @ObfuscatedName("bb")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2303;
-   @ObfuscatedName("bc")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2296;
-   @ObfuscatedName("bd")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2290;
-   @ObfuscatedName("be")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2298;
-   @ObfuscatedName("bf")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2310;
-   @ObfuscatedName("bg")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2311;
-   @ObfuscatedName("bh")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2289;
-   @ObfuscatedName("bi")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2302;
-   @ObfuscatedName("bj")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2293;
-   @ObfuscatedName("bk")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2297;
-   @ObfuscatedName("bl")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2307;
-   @ObfuscatedName("bm")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2291;
-   @ObfuscatedName("bn")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2299;
-   @ObfuscatedName("bo")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2257;
-   @ObfuscatedName("bp")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2313;
-   @ObfuscatedName("bq")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2306;
-   @ObfuscatedName("br")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2284;
-   @ObfuscatedName("bs")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2294;
-   @ObfuscatedName("bt")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2304;
-   @ObfuscatedName("bu")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2301;
-   @ObfuscatedName("bv")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2292;
-   @ObfuscatedName("bw")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2312;
-   @ObfuscatedName("bx")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2288;
-   @ObfuscatedName("by")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2305;
-   @ObfuscatedName("bz")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2295;
-   @ObfuscatedName("c")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2273;
-   @ObfuscatedName("cd")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2321;
-   @ObfuscatedName("cg")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2319;
-   @ObfuscatedName("ck")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2324;
-   @ObfuscatedName("cn")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2266;
-   @ObfuscatedName("co")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2317;
-   @ObfuscatedName("cs")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2320;
-   @ObfuscatedName("cv")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2316;
-   @ObfuscatedName("cz")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2314;
-   @ObfuscatedName("d")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2259;
-   @ObfuscatedName("e")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2250;
-   @ObfuscatedName("f")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2237;
 
-    @ObfuscatedName("fl")
-   @ObfuscatedGetter(
-      intValue = -302162321
-   )
-   static int field2272;
-   @ObfuscatedName("g")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
+    static int field2272;
    public static final ServerPacket field2253;
-   @ObfuscatedName("h")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2255;
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2281;
-   @ObfuscatedName("j")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2280;
-   @ObfuscatedName("k")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2261;
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2260;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Lgv;"
-   )
    public static final ServerPacket field2318;
-   @ObfuscatedName("cj")
-   @ObfuscatedGetter(
-      intValue = -1349590603
-   )
    public final int length;
-   @ObfuscatedName("cy")
-   @ObfuscatedGetter(
-      intValue = -1102910255
-   )
    public final int id;
 
    public static final ServerPacket CLAN_CHAT_SETTINGS = new ServerPacket(86, -1);
@@ -554,11 +193,6 @@ public class ServerPacket {
       this.length = var2;
    }
 
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-402041204"
-   )
    static int method3848(int var0, Script var1, boolean var2) {
       if(var0 == 3300) {
          Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.cycle;

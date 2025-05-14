@@ -5,45 +5,22 @@ import java.lang.management.ManagementFactory;
 import java.util.Iterator;
 import net.runelite.api.InventoryID;
 import net.runelite.api.events.ItemContainerChanged;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("r")
 final class class8 implements class16 {
-   @ObfuscatedName("gj")
-   @ObfuscatedSignature(
-      signature = "[Llp;"
-   )
    static IndexedSprite[] scrollBarSprites;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lkl;B)Ljava/lang/Object;",
-      garbageValue = "-93"
-   )
    public Object vmethod210(Buffer var1) {
       return var1.readString();
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/String;Lkl;I)V",
-      garbageValue = "-1135540783"
-   )
    void method102(String var1, Buffer var2) {
       var2.writeString(var1);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/Object;Lkl;B)V",
-      garbageValue = "0"
-   )
    public void vmethod213(Object var1, Buffer var2) {
       this.method102((String)var1, var2);
    }
 
-   @ObfuscatedName("u")
    static void setContainerItem(int container, int index, int itemId, int amount, String[] attributes, int attributeCount) {
       ItemContainer.copy$itemContainerSetItem(container, index, itemId, amount, attributes, attributeCount);
       int lastUpdateCycle = ViewportMouse.client.getGameCycle();
@@ -58,11 +35,6 @@ final class class8 implements class16 {
       }
    }
 
-   @ObfuscatedName("y")
-   @ObfuscatedSignature(
-      signature = "(Lbo;I)V",
-      garbageValue = "688122635"
-   )
    static void method101(World var0) {
       if(var0.method1212() != Client.isMembersWorld) {
          Client.isMembersWorld = var0.method1212();
@@ -76,11 +48,6 @@ final class class8 implements class16 {
       NPC.port3 = HitSplatDefinition.port1;
    }
 
-   @ObfuscatedName("aq")
-   @ObfuscatedSignature(
-      signature = "(I)I",
-      garbageValue = "-1757923424"
-   )
    protected static int method111() {
       int var0 = 0;
       if(AbstractUserComparator.garbageCollector == null || !AbstractUserComparator.garbageCollector.isValid()) {
@@ -118,11 +85,6 @@ final class class8 implements class16 {
       return var0;
    }
 
-   @ObfuscatedName("gg")
-   @ObfuscatedSignature(
-      signature = "(ZB)V",
-      garbageValue = "57"
-   )
    static final void method104(boolean var0) {
       for(int var1 = 0; var1 < Client.npcCount; ++var1) {
          NPC var2 = Client.npcs[Client.npcIndices[var1]];

@@ -1,30 +1,12 @@
 package net.runelite.standalone;
 
 import java.applet.Applet;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("at")
 public class class37 {
-   @ObfuscatedName("n")
    public static String field279;
-   @ObfuscatedName("z")
    public static Applet applet;
-   @ObfuscatedName("i")
-   @ObfuscatedSignature(
-      signature = "Leh;"
-   )
    static UrlRequest World_request;
-   @ObfuscatedName("kc")
-   @ObfuscatedGetter(
-      intValue = -1418069311
-   )
    static int menuY;
-   @ObfuscatedName("m")
-   @ObfuscatedSignature(
-      signature = "Llf;"
-   )
    static Sprite rightTitleSprite;
 
    static {
@@ -32,11 +14,6 @@ public class class37 {
       field279 = "";
    }
 
-   @ObfuscatedName("s")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-150727859"
-   )
    static int method727(int var0, Script var1, boolean var2) {
       Widget var3 = Canvas.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
       if(var0 == 2500) {
@@ -62,11 +39,6 @@ public class class37 {
       }
    }
 
-   @ObfuscatedName("jo")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-1595444520"
-   )
    static final void method728() {
       PacketBufferNode var0 = InterfaceParent.method1140(ClientPacket.field2397, Client.packetWriter.isaacCipher);
       Client.packetWriter.method1622(var0);

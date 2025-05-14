@@ -12,15 +12,12 @@ import java.awt.image.DirectColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.util.Hashtable;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSRasterProvider;
 
-@ObfuscatedName("bx")
-public final class RasterProvider extends AbstractRasterProvider implements RSRasterProvider {
-   @ObfuscatedName("n")
+import net.runelite.api.BufferProvider;
+import net.runelite.api.MainBufferProvider;
+
+public final class RasterProvider extends AbstractRasterProvider implements MainBufferProvider {
    Image image;
-   @ObfuscatedName("z")
    Component component;
 
    RasterProvider(int var1, int var2, Component var3) {
@@ -32,24 +29,14 @@ public final class RasterProvider extends AbstractRasterProvider implements RSRa
       WritableRaster var6 = Raster.createWritableRaster(var5.createCompatibleSampleModel(super.width, super.height), var4, (Point)null);
       this.image = new BufferedImage(var5, var6, false, new Hashtable());
       this.method1421(var3);
-      this.method6274();
+      this.setRaster();
       this.init(var1, var2, var3);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(III)V",
-      garbageValue = "-1952064900"
-   )
    public final void vmethod6275(int var1, int var2) {
       this.method1414(this.component.getGraphics(), var1, var2);
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(Ljava/awt/Graphics;IIIII)V",
-      garbageValue = "1517141753"
-   )
    final void method1413(Graphics var1, int var2, int var3, int var4, int var5) {
       try {
          Shape var6 = var1.getClip();
@@ -62,35 +49,16 @@ public final class RasterProvider extends AbstractRasterProvider implements RSRa
 
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(Ljava/awt/Graphics;IIB)V",
-      garbageValue = "111"
-   )
    final void method1414(Graphics var1, int var2, int var3) {
       ViewportMouse.client.getCallbacks().draw(this, var1, var2, var3);
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(IIIII)V",
-      garbageValue = "-67564732"
-   )
    public final void vmethod6276(int var1, int var2, int var3, int var4) {
       this.method1413(this.component.getGraphics(), var1, var2, var3, var4);
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljava/awt/Component;I)V",
-      garbageValue = "1269592003"
-   )
    final void method1421(Component var1) {
       this.component = var1;
-   }
-
-   public void setImage(Image var1) {
-      this.image = var1;
    }
 
    public void init(int var1, int var2, Component var3) {
@@ -100,14 +68,11 @@ public final class RasterProvider extends AbstractRasterProvider implements RSRa
          DirectColorModel var6 = new DirectColorModel(ColorSpace.getInstance(1000), 32, 16711680, 65280, 255, -16777216, true, 3);
          WritableRaster var7 = Raster.createWritableRaster(var6.createCompatibleSampleModel(var1, var2), var5, (Point)null);
          BufferedImage var8 = new BufferedImage(var6, var7, true, new Hashtable());
-         this.setImage(var8);
+         this.image = var8;
       }
    }
 
-   public Component getCanvas() {
-      return this.component;
-   }
-
+   @Override
    public Image getImage() {
       return this.image;
    }

@@ -1,6 +1,5 @@
 package net.runelite.standalone;
 
-
 public class IntHashTable {
    int[] array;
 

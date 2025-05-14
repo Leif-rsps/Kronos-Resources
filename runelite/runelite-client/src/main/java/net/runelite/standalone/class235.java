@@ -1,27 +1,12 @@
 package net.runelite.standalone;
 
 import java.util.HashMap;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ib")
 public class class235 {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Lll;"
-   )
    Bounds bounds;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 459040833
-   )
    int field3125;
-   @ObfuscatedName("u")
    int[] field3121;
-   @ObfuscatedName("v")
    int[] field3123;
-   @ObfuscatedName("z")
    final HashMap spriteMap;
 
    public class235() {
@@ -53,11 +38,6 @@ public class class235 {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(IB)Llf;",
-      garbageValue = "-125"
-   )
    Sprite method4229(int var1) {
       if(!this.spriteMap.containsKey(Integer.valueOf(var1))) {
          this.method4230(var1);
@@ -66,11 +46,6 @@ public class class235 {
       return (Sprite)this.spriteMap.get(Integer.valueOf(var1));
    }
 
-   @ObfuscatedName("p")
-   @ObfuscatedSignature(
-      signature = "(Llf;Llf;Lll;I)V",
-      garbageValue = "-1255792875"
-   )
    void method4235(Sprite var1, Sprite var2, Bounds var3) {
       if(var3.highX != 0 && var3.highY != 0) {
          int var4 = 0;
@@ -99,11 +74,6 @@ public class class235 {
       }
    }
 
-   @ObfuscatedName("r")
-   @ObfuscatedSignature(
-      signature = "(IILlf;FI)V",
-      garbageValue = "-177737442"
-   )
    public final void method4234(int var1, int var2, Sprite var3, float var4) {
       int var5 = (int)(var4 * 18.0F);
       Sprite var6 = this.method4229(var5);
@@ -150,20 +120,10 @@ public class class235 {
       System.nanoTime();
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "1070284652"
-   )
    public final void method4231() {
       this.field3125 = 0;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(IIB)V",
-      garbageValue = "5"
-   )
    public final void method4232(int var1, int var2) {
       if(this.field3125 < this.field3123.length) {
          this.field3123[this.field3125] = var1;
@@ -172,11 +132,6 @@ public class class235 {
       }
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "1811962046"
-   )
    void method4230(int var1) {
       int var2 = var1 * 2 + 1;
       double[] var3 = class298.method5477(0.0D, (double)((float)var1 / 3.0F), var1);

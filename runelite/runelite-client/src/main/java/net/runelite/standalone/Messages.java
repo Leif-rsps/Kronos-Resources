@@ -2,33 +2,12 @@ package net.runelite.standalone;
 
 import java.util.HashMap;
 import java.util.Map;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
 public class Messages {
-   @ObfuscatedName("qu")
-   @ObfuscatedGetter(
-      intValue = -859114081
-   )
    static int field813;
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "Llb;"
-   )
    static final IterableNodeHashTable Messages_hashTable;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = 229573181
-   )
    static int Messages_count;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lji;"
-   )
    static final IterableDualNodeQueue Messages_queue;
-   @ObfuscatedName("z")
    static final Map Messages_channels;
 
    static {
@@ -38,11 +17,6 @@ public class Messages {
       Messages_count = 0;
    }
 
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      signature = "(ILcu;ZI)I",
-      garbageValue = "-1500079981"
-   )
    static int method1601(int var0, Script var1, boolean var2) {
       String var3;
       if(var0 == 3100) {

@@ -1,13 +1,7 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hm")
 public class Skills {
-   @ObfuscatedName("n")
    public static final boolean[] Skills_enabled;
-   @ObfuscatedName("v")
    public static int[] Skills_experienceTable;
 
    static {
@@ -24,11 +18,6 @@ public class Skills {
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(S)V",
-      garbageValue = "255"
-   )
    static void method3958() {
       if(TaskHandler.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
          KeyHandler.KeyHandler_keyCodes[186] = 57;

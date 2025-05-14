@@ -1,23 +1,12 @@
 package net.runelite.standalone;
 
+import net.runelite.api.ChatPlayer;
 import net.runelite.client.callback.Hooks;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSFriend;
-import net.runelite.rs.api.RSUsername;
 
-@ObfuscatedName("jy")
-public class Friend extends Buddy implements RSFriend {
-   @ObfuscatedName("n")
+public class Friend extends Buddy implements net.runelite.api.Friend {
    boolean field3614;
-   @ObfuscatedName("z")
    boolean field3615;
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Ljy;I)I",
-      garbageValue = "371914259"
-   )
    int method5175(Friend var1) {
       return super.world == Client.worldId && Client.worldId != var1.world?-1:(Client.worldId == var1.world && super.world != Client.worldId?1:(super.world != 0 && var1.world == 0?-1:(var1.world != 0 && super.world == 0?1:(this.field3615 && !var1.field3615?-1:(!this.field3615 && var1.field3615?1:(this.field3614 && !var1.field3614?-1:(!this.field3614 && var1.field3614?1:(super.world != 0?super.int2 - var1.int2:var1.int2 - super.int2))))))));
    }
@@ -27,28 +16,18 @@ public class Friend extends Buddy implements RSFriend {
    }
 
    public String getName() {
-      return this.getRsName().getName();
+      return this.username.getName();
    }
 
    public String getPrevName() {
-      RSUsername var1 = this.getRsPrevName();
+       Username var1 = this.previousUsername;
       return var1 == null?null:var1.getName();
    }
 
-   @ObfuscatedName("l")
-   @ObfuscatedSignature(
-      signature = "(Ljh;I)I",
-      garbageValue = "-531306911"
-   )
    public int vmethod5168(User var1) {
       return this.method5175((Friend)var1);
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "530220947"
-   )
    static void method5166() {
       Tiles.field540 = null;
       Tiles.field522 = null;
@@ -64,11 +43,6 @@ public class Friend extends Buddy implements RSFriend {
       Tiles.field526 = null;
    }
 
-   @ObfuscatedName("fp")
-   @ObfuscatedSignature(
-      signature = "(IIIII)V",
-      garbageValue = "-541695875"
-   )
    static final void method5176(int var0, int var1, int var2, int var3) {
       ++Client.viewportDrawCount;
       if(class215.localPlayer.x >> 7 == Client.destinationX && class215.localPlayer.y * 682054857 >> 7 == Client.destinationY) {
@@ -85,18 +59,18 @@ public class Friend extends Buddy implements RSFriend {
       class8.method104(false);
       DynamicObject.method1572();
 
-      for(GraphicsObject var4 = (GraphicsObject)Client.graphicsObjects.method5103(); var4 != null; var4 = (GraphicsObject)Client.graphicsObjects.method5126()) {
+      for(GraphicsObject var4 = (GraphicsObject)Client.graphicsObjects.last(); var4 != null; var4 = (GraphicsObject)Client.graphicsObjects.previous()) {
          if(var4.plane == WorldMapRectangle.plane && !var4.isFinished) {
             if(Client.cycle >= var4.cycleStart) {
                var4.method1255(Client.field906);
                if(var4.isFinished) {
-                  var4.method3497();
+                  var4.unlink();
                } else {
                   PacketWriter.scene.method3125(var4.plane, var4.x, var4.y, var4.height, 60, var4, 0, -1L, false);
                }
             }
          } else {
-            var4.method3497();
+            var4.unlink();
          }
       }
 

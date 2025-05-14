@@ -1,17 +1,8 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("hq")
 public class class223 {
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(II)Liy;",
-      garbageValue = "126503223"
-   )
    public static KitDefinition method4125(int var0) {
-      KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.method3032((long)var0);
+      KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.get((long)var0);
       if(var1 != null) {
          return var1;
       } else {
@@ -26,11 +17,6 @@ public class class223 {
       }
    }
 
-   @ObfuscatedName("ia")
-   @ObfuscatedSignature(
-      signature = "(Lho;IB)I",
-      garbageValue = "25"
-   )
    static final int method4124(Widget var0, int var1) {
       if(var0.cs1Instructions != null && var1 < var0.cs1Instructions.length) {
          try {
@@ -133,7 +119,7 @@ public class class223 {
 
                if(var6 == 14) {
                   var9 = var2[var4++];
-                  var7 = WorldMapSprite.method782(var9);
+                  var7 = WorldMapSprite.getVarbit(var9);
                }
 
                if(var6 == 15) {

@@ -2,31 +2,14 @@ package net.runelite.standalone;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSNode;
-import net.runelite.rs.api.RSNodeHashTable;
 
-@ObfuscatedName("lq")
-public final class NodeHashTable implements RSNodeHashTable {
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "[Lfx;"
-   )
+import net.runelite.api.HashTable;
+
+public final class NodeHashTable implements HashTable {
    Node[] buckets;
-   @ObfuscatedName("r")
    int index;
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "Lfx;"
-   )
    Node current;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lfx;"
-   )
    Node currentGet;
-   @ObfuscatedName("z")
    int size;
 
    public NodeHashTable(int var1) {
@@ -42,13 +25,9 @@ public final class NodeHashTable implements RSNodeHashTable {
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lfx;J)V"
-   )
    public void put(Node var1, long var2) {
       if(var1.next != null) {
-         var1.method3497();
+         var1.unlink();
       }
 
       Node var4 = this.buckets[(int)(var2 & (long)(this.size - 1))];
@@ -59,10 +38,6 @@ public final class NodeHashTable implements RSNodeHashTable {
       var1.key = var2;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node method6345() {
       Node var1;
       if(this.index > 0 && this.buckets[this.index - 1] != this.current) {
@@ -83,19 +58,11 @@ public final class NodeHashTable implements RSNodeHashTable {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "()Lfx;"
-   )
    public Node method6348() {
       this.index = 0;
       return this.method6345();
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(J)Lfx;"
-   )
    public Node method6346(long var1) {
       Node var3 = this.buckets[(int)(var1 & (long)(this.size - 1))];
 
@@ -111,16 +78,12 @@ public final class NodeHashTable implements RSNodeHashTable {
       return null;
    }
 
-   public RSNode[] getBuckets() {
-      return this.buckets;
-   }
-
    public Collection getNodes() {
       ArrayList var1 = new ArrayList();
-      RSNode[] var2 = this.getBuckets();
+      Node[] var2 = this.buckets;
 
       for(int var3 = 0; var3 < var2.length; ++var3) {
-         RSNode var4 = var2[var3];
+         Node var4 = var2[var3];
 
          for(net.runelite.api.Node var5 = var4.getNext(); var5 != var4; var5 = var5.getNext()) {
             var1.add(var5);
@@ -130,11 +93,8 @@ public final class NodeHashTable implements RSNodeHashTable {
       return var1;
    }
 
-   public int getSize() {
-      return this.size;
-   }
-
-   public RSNode get(long var1) {
+   @Override
+   public Node get(long var1) {
       return this.method6346(var1);
    }
 }

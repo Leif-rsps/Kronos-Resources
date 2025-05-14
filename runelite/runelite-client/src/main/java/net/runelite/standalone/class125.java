@@ -1,36 +1,11 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-
-@ObfuscatedName("e")
 public class class125 {
-   @ObfuscatedName("ry")
-   @ObfuscatedGetter(
-      intValue = 1308893635
-   )
    static int field1658;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lhp;"
-   )
    public static AbstractArchive SpotAnimationDefinition_archive;
-   @ObfuscatedName("gu")
-   @ObfuscatedSignature(
-      signature = "[Llp;"
-   )
    static IndexedSprite[] mapSceneSprites;
-   @ObfuscatedName("hy")
-   @ObfuscatedGetter(
-      intValue = -1228592435
-   )
    static int oculusOrbFocalPointY;
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/Throwable;Ljava/lang/String;)Lmf;"
-   )
    public static RunException method2877(Throwable var0, String var1) {
       RunException var2;
       if(var0 instanceof RunException) {
@@ -43,11 +18,6 @@ public class class125 {
       return var2;
    }
 
-   @ObfuscatedName("u")
-   @ObfuscatedSignature(
-      signature = "(IIILfi;Lfa;B)Z",
-      garbageValue = "-110"
-   )
    static final boolean method2873(int var0, int var1, int var2, RouteStrategy var3, CollisionMap var4) {
       int var5 = var0;
       int var6 = var1;
@@ -257,20 +227,10 @@ public class class125 {
       }
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(CI)C",
-      garbageValue = "-2022718130"
-   )
    static char method2876(char var0) {
       return (char)(var0 == 198?69:(var0 == 230?101:(var0 == 223?115:(var0 == 338?69:(var0 == 339?'e':'\u0000')))));
    }
 
-   @ObfuscatedName("il")
-   @ObfuscatedSignature(
-      signature = "(I)Z",
-      garbageValue = "-259743374"
-   )
    static boolean method2875() {
       return Client.tapToDrop || KeyHandler.KeyHandler_pressedKeys[81];
    }

@@ -5,73 +5,27 @@ import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Iterator;
+
+import net.runelite.api.KeyFocusListener;
 import net.runelite.api.events.FocusChanged;
 import net.runelite.api.widgets.JavaScriptCallback;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSKeyHandler;
 
-@ObfuscatedName("ah")
-public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandler {
-   @ObfuscatedName("oc")
-   @ObfuscatedSignature(
-      signature = "Lft;"
-   )
+public final class KeyHandler implements KeyListener, FocusListener, KeyFocusListener {
    static MouseWheel mouseWheel;
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "Lah;"
-   )
    public static KeyHandler KeyHandler_instance;
-   @ObfuscatedName("ca")
-   @ObfuscatedGetter(
-      intValue = -1429227913
-   )
    public static int field181;
-   @ObfuscatedName("cc")
    public static int[] field177;
-   @ObfuscatedName("ce")
    static int[] field176;
-   @ObfuscatedName("cf")
-   @ObfuscatedGetter(
-      intValue = -844580135
-   )
    public static volatile int KeyHandler_idleCycles;
-   @ObfuscatedName("ci")
-   @ObfuscatedGetter(
-      intValue = -939573745
-   )
    public static int field174;
-   @ObfuscatedName("cj")
    public static char field182;
-   @ObfuscatedName("cl")
-   @ObfuscatedGetter(
-      intValue = 1675440071
-   )
    public static int field162;
-   @ObfuscatedName("cq")
-   @ObfuscatedGetter(
-      intValue = 900188775
-   )
    public static int field172;
-   @ObfuscatedName("cr")
    public static int[] field166;
-   @ObfuscatedName("ct")
-   @ObfuscatedGetter(
-      intValue = 1575072845
-   )
    public static int field173;
-   @ObfuscatedName("cu")
    static char[] field175;
-   @ObfuscatedName("cw")
-   @ObfuscatedGetter(
-      intValue = -1686544141
-   )
    public static int field179;
-   @ObfuscatedName("cx")
    static int[] KeyHandler_keyCodes;
-   @ObfuscatedName("cy")
    public static boolean[] KeyHandler_pressedKeys;
 
    static {
@@ -207,12 +161,8 @@ public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandle
 
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(Lba;IB)V"
-   )
-   static void method506(ScriptEvent var0, int var1, byte var2) {
-      Object[] var3 = var0.getArguments();
+   static void runScript(ScriptEvent var0, int var1, byte var2) {
+      Object[] var3 = var0.args;
       if(var3 != null && var3.length > 0 && var3[0] instanceof JavaScriptCallback) {
          try {
             ((JavaScriptCallback)var3[0]).run(var0);
@@ -230,11 +180,6 @@ public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandle
       }
    }
 
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "(B)V",
-      garbageValue = "96"
-   )
    static void method504() {
       Iterator var0 = Messages.Messages_hashTable.iterator();
 
@@ -245,20 +190,10 @@ public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandle
 
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "(Lhp;I)V",
-      garbageValue = "1410088025"
-   )
    public static void method484(AbstractArchive var0) {
       InvDefinition.InvDefinition_archive = var0;
    }
 
-   @ObfuscatedName("gk")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "133309082"
-   )
    static final void method482() {
       GrandExchangeOffer.method4218(false);
       Client.field897 = 0;
@@ -774,7 +709,7 @@ public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandle
 
                                  if(var57 > 0) {
                                     var36 = var57 - 1;
-                                    var59 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.method3032((long)var36);
+                                    var59 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var36);
                                     FloorOverlayDefinition var60;
                                     if(var59 != null) {
                                        var60 = var59;
@@ -811,7 +746,7 @@ public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandle
                                  var35 = DevicePcmPlayerProvider.field156[var4][var13][var51] + 1;
                                  byte var70 = class298.field3719[var4][var13][var51];
                                  int var38 = var57 - 1;
-                                 FloorOverlayDefinition var39 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.method3032((long)var38);
+                                 FloorOverlayDefinition var39 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var38);
                                  if(var39 != null) {
                                     var59 = var39;
                                  } else {
@@ -1084,22 +1019,22 @@ public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandle
 
             for(var5 = 0; var5 < 104; ++var5) {
                for(var6 = 0; var6 < 104; ++var6) {
-                  WorldMapCacheName.method673(var5, var6);
+                  WorldMapCacheName.updateItemPile(var5, var6);
                }
             }
 
             WorldMapID.method687();
 
-            for(PendingSpawn var72 = (PendingSpawn)Client.pendingSpawns.method5103(); var72 != null; var72 = (PendingSpawn)Client.pendingSpawns.method5126()) {
+            for(PendingSpawn var72 = (PendingSpawn)Client.pendingSpawns.last(); var72 != null; var72 = (PendingSpawn)Client.pendingSpawns.previous()) {
                if(var72.hitpoints == -1) {
                   var72.delay = 0;
                   GrandExchangeEvent.method6488(var72);
                } else {
-                  var72.method3497();
+                  var72.unlink();
                }
             }
 
-            ObjectDefinition.ObjectDefinition_cachedModelData.method3035();
+            ObjectDefinition.ObjectDefinition_cachedModelData.clear();
             PacketBufferNode var73;
             if(ViewportMouse.client.method987()) {
                var73 = InterfaceParent.method1140(ClientPacket.field2364, Client.packetWriter.isaacCipher);
@@ -1123,7 +1058,7 @@ public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandle
                }
             }
 
-            MouseRecorder.method1207(30);
+            MouseRecorder.setGameState(30);
             WorldMapID.method687();
             Friend.method5166();
             var73 = InterfaceParent.method1140(ClientPacket.field2385, Client.packetWriter.isaacCipher);
@@ -1133,11 +1068,6 @@ public final class KeyHandler implements KeyListener, FocusListener, RSKeyHandle
       }
    }
 
-   @ObfuscatedName("hr")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "819665124"
-   )
    static void method505() {
       ScriptEvent.method808();
       Client.menuActions[0] = "Cancel";

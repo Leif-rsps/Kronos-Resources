@@ -1,116 +1,47 @@
 package net.runelite.standalone;
 
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.api.RSScriptEvent;
-
-@ObfuscatedName("ba")
-public class ScriptEvent extends Node implements RSScriptEvent {
-   @ObfuscatedName("rn")
-   @ObfuscatedGetter(
-      intValue = -1797586275
-   )
+public class ScriptEvent extends Node implements net.runelite.api.ScriptEvent {
    static int field339;
-   @ObfuscatedName("n")
    boolean isMouseInputEvent;
-   @ObfuscatedName("p")
-   @ObfuscatedGetter(
-      intValue = 523814267
-   )
    int opIndex;
-   @ObfuscatedName("q")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    Widget dragTarget;
-   @ObfuscatedName("r")
-   @ObfuscatedGetter(
-      intValue = 339811595
-   )
    int mouseY;
-   @ObfuscatedName("u")
-   @ObfuscatedGetter(
-      intValue = -536253001
-   )
    int mouseX;
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "Lho;"
-   )
    Widget widget;
-   @ObfuscatedName("y")
-   @ObfuscatedGetter(
-      intValue = -463436489
-   )
    int keyPressed;
-   @ObfuscatedName("z")
    Object[] args;
-   @ObfuscatedName("b")
-   @ObfuscatedGetter(
-      intValue = 1041391975
-   )
    int type;
-   @ObfuscatedName("c")
-   @ObfuscatedGetter(
-      intValue = -1373208137
-   )
    int field337;
-   @ObfuscatedName("i")
    String targetName;
-   @ObfuscatedName("m")
-   @ObfuscatedGetter(
-      intValue = 890448357
-   )
    int keyTyped;
 
    public ScriptEvent() {
       this.type = 76;
    }
 
-   @ObfuscatedName("n")
-   @ObfuscatedSignature(
-      signature = "(II)V",
-      garbageValue = "2089299641"
-   )
    public void method803(int var1) {
       this.type = var1;
    }
 
-   @ObfuscatedName("z")
-   @ObfuscatedSignature(
-      signature = "([Ljava/lang/Object;I)V",
-      garbageValue = "345377680"
-   )
    public void method802(Object[] var1) {
       this.args = var1;
    }
 
-   public void setArguments(Object[] var1) {
-      this.args = var1;
-   }
-
-   public Object[] getArguments() {
-      return this.args;
-   }
-
+   @Override
    public net.runelite.api.widgets.Widget getSource() {
       return this.widget;
    }
 
+   @Override
    public int getOp() {
       return this.opIndex;
    }
 
+   @Override
    public String getOpbase() {
       return this.targetName;
    }
 
-   @ObfuscatedName("v")
-   @ObfuscatedSignature(
-      signature = "(Ljava/lang/CharSequence;Lli;I)Ljava/lang/String;",
-      garbageValue = "254330677"
-   )
    public static String method801(CharSequence var0, LoginType var1) {
       if(var0 == null) {
          return null;
@@ -188,22 +119,12 @@ public class ScriptEvent extends Node implements RSScriptEvent {
       }
    }
 
-   @ObfuscatedName("hb")
-   @ObfuscatedSignature(
-      signature = "(I)V",
-      garbageValue = "-2065771075"
-   )
    static void method808() {
       Client.menuOptionsCount = 0;
       Client.onMenuOptionsChanged(-1);
       Client.isMenuOpen = false;
    }
 
-   @ObfuscatedName("ib")
-   @ObfuscatedSignature(
-      signature = "([Lho;IIIIIIIIB)V",
-      garbageValue = "50"
-   )
    static final void method806(Widget[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
       Client.renderWidgetLayer(var0, var1, var2, var3, var4, var5, var6, var7, var8);
       Rasterizer2D.method6474(var2, var3, var4, var5);
@@ -524,14 +445,14 @@ public class ScriptEvent extends Node implements RSScriptEvent {
                            if(var10.fill) {
                               switch(var10.fillMode.value) {
                               case 1:
-                                 Rasterizer2D.method6419(var12, var13, var10.width, var10.height, var10.color, var10.color2);
+                                 Rasterizer2D.fillRectangleGradient(var12, var13, var10.width, var10.height, var10.color, var10.color2);
                                  break;
                               case 2:
                                  Rasterizer2D.method6420(var12, var13, var10.width, var10.height, var10.color, var10.color2, 255 - (var10.transparencyTop & 255), 255 - (var10.transparencyBot & 255));
                                  break;
                               default:
                                  if(var14 == 0) {
-                                    Rasterizer2D.method6469(var12, var13, var10.width, var10.height, var19);
+                                    Rasterizer2D.fillRectangle(var12, var13, var10.width, var10.height, var19);
                                  } else {
                                     Rasterizer2D.fillRectangleAlpha(var12, var13, var10.width, var10.height, var19, 256 - (var14 & 255));
                                  }
@@ -661,7 +582,7 @@ public class ScriptEvent extends Node implements RSScriptEvent {
                                     var34 = Occluder.getItemDefinition(var10.itemId);
                                     if(var34 != null) {
                                        var34 = var34.method4559(var10.itemQuantity);
-                                       var42 = var34.method4575(1, 1336448754);
+                                       var42 = var34.getModel(1, 1336448754);
                                        if(var42 != null) {
                                           var42.method2359();
                                           var22 = var42.height / 2;
@@ -731,7 +652,7 @@ public class ScriptEvent extends Node implements RSScriptEvent {
                                              var25 = var12 + var22 * (var10.paddingX + 115);
                                              var26 = var13 + (var10.paddingY + 12) * var21;
                                              if(var10.textXAlignment == 0) {
-                                                var39.method5329(var31, var25, var26, var10.color, var10.textShadowed?0:-1);
+                                                var39.drawTextLeftAligned(var31, var25, var26, var10.color, var10.textShadowed?0:-1);
                                              } else if(var10.textXAlignment == 1) {
                                                 var39.method5332(var31, var10.width / 2 + var25, var26, var10.color, var10.textShadowed?0:-1);
                                              } else {
@@ -783,7 +704,7 @@ public class ScriptEvent extends Node implements RSScriptEvent {
                                        var25 = var5 - var20;
                                     }
 
-                                    Rasterizer2D.method6469(var24, var25, var19, var20, 16777120);
+                                    Rasterizer2D.fillRectangle(var24, var25, var19, var20, 16777120);
                                     Rasterizer2D.drawRectangle(var24, var25, var19, var20, 0);
                                     var33 = var10.text;
                                     var26 = var25 + var32.ascent + 2;
@@ -798,7 +719,7 @@ public class ScriptEvent extends Node implements RSScriptEvent {
                                           var33 = "";
                                        }
 
-                                       var32.method5329(var44, var24 + 3, var26, 0, -1);
+                                       var32.drawTextLeftAligned(var44, var24 + 3, var26, 0, -1);
                                     }
                                  }
 
@@ -833,11 +754,6 @@ public class ScriptEvent extends Node implements RSScriptEvent {
 
    }
 
-   @ObfuscatedName("it")
-   @ObfuscatedSignature(
-      signature = "(ZI)V",
-      garbageValue = "-374133932"
-   )
    static void method807(boolean var0) {
       Client.tapToDrop = var0;
    }
